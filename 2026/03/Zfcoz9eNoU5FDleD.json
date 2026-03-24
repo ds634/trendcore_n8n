@@ -1,0 +1,2724 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-03-20T09:06:02.000Z",
+    "createdAt": "2026-03-20T09:05:25.253Z",
+    "versionId": "29e2b324-a43f-4ebc-9232-5facb7b6454f",
+    "workflowId": "Zfcoz9eNoU5FDleD",
+    "nodes": [
+      {
+        "parameters": {
+          "operation": "editMessageText",
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "messageId": "={{ $('GetMsgId1').item.json.replyToMessageIdGallery }}",
+          "text": "Загрузка отменена.",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          448,
+          176
+        ],
+        "id": "15d7ed92-4c59-4ce4-93c7-e6fd6a50e3fa",
+        "name": "Edit a text message1",
+        "webhookId": "513cfb9a-8cac-4dd8-91c6-506dfb517402",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "=Done"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Error"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "status": "Error"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "Process",
+                "displayName": "Process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceGalleryUrl",
+                "displayName": "faceGalleryUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "FaceErrToMsgId",
+                "displayName": "FaceErrToMsgId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          672,
+          176
+        ],
+        "id": "95330567-b518-42e2-9bf1-4994eb3dcdb5",
+        "name": "Set Error if left not done1",
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "4c8db9da-d4a5-4079-8e4f-938b39ef7007",
+                "name": "id",
+                "value": "={{ $json.id }}",
+                "type": "number"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          896,
+          176
+        ],
+        "id": "5187461b-b405-4332-8fd8-371d73f9c523",
+        "name": "UpdatedIds",
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $json.message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $json.message_chat_id }}"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Error"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Done"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -224,
+          176
+        ],
+        "id": "2956988c-420f-4c1e-ac3b-b7c2fe3daed3",
+        "name": "GetMsgId1",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json._message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "objectMainId",
+                "keyValue": "= {{ $json.id }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "status": "Error"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objNames",
+                "displayName": "objNames",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objUrl",
+                "displayName": "objUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objectDescr",
+                "displayName": "objectDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          1120,
+          176
+        ],
+        "id": "ac17d2e2-744b-48d9-a398-1c20184612db",
+        "name": "Set ErrorForDescr",
+        "alwaysOutputData": false
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "message_chat_id",
+                "type": "any"
+              },
+              {
+                "name": "message_text"
+              },
+              {
+                "name": "replyMarkup"
+              }
+            ]
+          }
+        },
+        "id": "13cc4ec9-1730-4191-ba42-8fe3956af7c2",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          -224,
+          -272
+        ]
+      },
+      {
+        "parameters": {
+          "keep": "lastItems"
+        },
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          0,
+          176
+        ],
+        "id": "4fc40cd2-7924-45d2-a2ba-bbbd9954a22b",
+        "name": "Limit",
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "editMessageText",
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "messageId": "={{ $('Limit').item.json.replyToMessageIdGallery }}",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          224,
+          176
+        ],
+        "id": "fb63668c-2977-4cce-a16b-29e9c15d2d9e",
+        "name": "Edit a text message",
+        "webhookId": "a37bcfb9-c873-4346-915b-d3059251a03f",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "disabled": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{\"Вы можете добавить другие предметы или завершить образ.\" \n\n}}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Добавить предметы",
+                      "additionalFields": {
+                        "callback_data": "addObject"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Завершить образ",
+                      "additionalFields": {
+                        "callback_data": "done"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1984,
+          -272
+        ],
+        "id": "35279f16-644d-40ce-a7b7-19d20c0c98af",
+        "name": "OP_final_model3",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('GetMsgId').item.json.id }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          2224,
+          -272
+        ],
+        "id": "ccc590a7-8b91-4900-a260-99844ca00a82",
+        "name": "UpdateImgCount1"
+      },
+      {
+        "parameters": {
+          "operation": "editMessageText",
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "messageId": "={{ $('GetMsgId').item.json.replyToMessageIdGallery }}",
+          "text": "Действие отменено.",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1776,
+          -272
+        ],
+        "id": "ab41ad28-b6ff-4df7-b9de-182de0551cbf",
+        "name": "Edit a text message2",
+        "webhookId": "888b2dc8-23ec-450f-8f07-bba9bed18dde",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Error"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Done"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          0,
+          -272
+        ],
+        "id": "0c960f58-0c2d-473e-a76b-515ad60080b0",
+        "name": "GetMsgId",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "1702576b-2076-4f9e-8fa4-236f53fa13f8",
+                "name": "ClbkLocal",
+                "value": "={{$('Start').item.json.replyMarkup.parseJson().inline_keyboard.reduce((acc, row) => acc || row.find(b => b.callback_data === $('Start').item.json.callback_data)?.text || null, null) }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -224,
+          -496
+        ],
+        "id": "3551f8e3-b1c7-4dc5-af72-4e700ff68fef",
+        "name": "ClbkLngFromText"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "5d55ce4a-9480-46fa-8025-6324edb005bf",
+                "name": "selectedObjects",
+                "value": "={{ $(\"Start\").item.json.message_text.split(\".\").slice(1).join(\".\").split(\";\").map(s => s.trim()).filter(s => s.length > 0) }}",
+                "type": "array"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          240,
+          -272
+        ],
+        "id": "dd3bd42f-70be-47e1-9efc-ff5f2707b15b",
+        "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "objectMainId",
+                "keyValue": "={{$('GetMsgId').item.json.id }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          352,
+          -480
+        ],
+        "id": "e85ddaf2-9e3e-4d5d-9e26-80af39b68448",
+        "name": "GetMsgId2",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "selectedObjects",
+          "options": {}
+        },
+        "id": "799c8db2-3e3e-4fd0-a48e-dc68aada8a73",
+        "name": "Split To Items",
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          464,
+          -272
+        ],
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "objectMainId",
+                "keyValue": "={{ $('GetMsgId').item.json.id }}"
+              },
+              {
+                "keyName": "objNamesLocal",
+                "keyValue": "={{ $json.selectedObjects }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "status": "Canceled",
+              "objNames": "={{null}}",
+              "objNamesLocal": "={{null}}",
+              "objectTGbuttons": "={{null}}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objNames",
+                "displayName": "objNames",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objNamesLocal",
+                "displayName": "objNamesLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objUrl",
+                "displayName": "objUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objectTGbuttons",
+                "displayName": "objectTGbuttons",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objectDescr",
+                "displayName": "objectDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "id": "58b7579c-481d-4b41-9e9d-904354308ad1",
+        "name": "Update Object Descr",
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          960,
+          -96
+        ],
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          1040,
+          -272
+        ],
+        "id": "d3030119-47af-47a5-90b7-38e14732c4c9",
+        "name": "Aggregate",
+        "alwaysOutputData": true,
+        "executeOnce": false,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          752,
+          -256
+        ],
+        "id": "e307e981-7f4a-40c3-bedd-7ec470705048",
+        "name": "Loop Over Items",
+        "alwaysOutputData": false,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "objectMainId",
+                "keyValue": "={{ $('GetMsgId').item.json.id }}"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetGalleryForFace"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "objectTGbuttons": "={{ null }}",
+              "status": "Canceled"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objNames",
+                "displayName": "objNames",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objNamesLocal",
+                "displayName": "objNamesLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objUrl",
+                "displayName": "objUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objectTGbuttons",
+                "displayName": "objectTGbuttons",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objectDescr",
+                "displayName": "objectDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "id": "580bbd47-4e41-4d68-af75-a50b19831d8c",
+        "name": "UpdateButtons",
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          1296,
+          -272
+        ],
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "aggregate": "aggregateAllItemData",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          1504,
+          -272
+        ],
+        "id": "06588dd6-a263-4bf8-8e89-f565f958d477",
+        "name": "Aggregate1",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      }
+    ],
+    "connections": {
+      "Edit a text message1": {
+        "main": [
+          [
+            {
+              "node": "Set Error if left not done1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set Error if left not done1": {
+        "main": [
+          [
+            {
+              "node": "UpdatedIds",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UpdatedIds": {
+        "main": [
+          [
+            {
+              "node": "Set ErrorForDescr",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetMsgId1": {
+        "main": [
+          [
+            {
+              "node": "Limit",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "GetMsgId",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit": {
+        "main": [
+          [
+            {
+              "node": "Edit a text message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit a text message": {
+        "main": [
+          [
+            {
+              "node": "Edit a text message1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OP_final_model3": {
+        "main": [
+          [
+            {
+              "node": "UpdateImgCount1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit a text message2": {
+        "main": [
+          [
+            {
+              "node": "OP_final_model3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetMsgId": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Split To Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetMsgId2": {
+        "main": [
+          []
+        ]
+      },
+      "Split To Items": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Update Object Descr": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate": {
+        "main": [
+          [
+            {
+              "node": "UpdateButtons",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Update Object Descr",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UpdateButtons": {
+        "main": [
+          [
+            {
+              "node": "Aggregate1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Aggregate1": {
+        "main": [
+          [
+            {
+              "node": "Edit a text message2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "DLS  ",
+    "name": "Version 29e2b324",
+    "description": "",
+    "autosaved": true,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-03-20T09:06:02.341Z",
+        "id": 1532,
+        "workflowId": "Zfcoz9eNoU5FDleD",
+        "versionId": "29e2b324-a43f-4ebc-9232-5facb7b6454f",
+        "event": "activated",
+        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    ]
+  },
+  "activeVersionId": "29e2b324-a43f-4ebc-9232-5facb7b6454f",
+  "connections": {
+    "Edit a text message1": {
+      "main": [
+        [
+          {
+            "node": "Set Error if left not done1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Error if left not done1": {
+      "main": [
+        [
+          {
+            "node": "UpdatedIds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdatedIds": {
+      "main": [
+        [
+          {
+            "node": "Set ErrorForDescr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetMsgId1": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "GetMsgId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Edit a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit a text message": {
+      "main": [
+        [
+          {
+            "node": "Edit a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OP_final_model3": {
+      "main": [
+        [
+          {
+            "node": "UpdateImgCount1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit a text message2": {
+      "main": [
+        [
+          {
+            "node": "OP_final_model3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetMsgId": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Split To Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetMsgId2": {
+      "main": [
+        []
+      ]
+    },
+    "Split To Items": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Object Descr": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "UpdateButtons",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update Object Descr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateButtons": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Edit a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-02T16:41:23.035Z",
+  "description": null,
+  "id": "Zfcoz9eNoU5FDleD",
+  "isArchived": false,
+  "meta": null,
+  "name": "subTR_CL_CancelClbk",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "editMessageText",
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "messageId": "={{ $('GetMsgId1').item.json.replyToMessageIdGallery }}",
+        "text": "Загрузка отменена.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        176
+      ],
+      "id": "15d7ed92-4c59-4ce4-93c7-e6fd6a50e3fa",
+      "name": "Edit a text message1",
+      "webhookId": "513cfb9a-8cac-4dd8-91c6-506dfb517402",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "=Done"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Error"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "Error"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Process",
+              "displayName": "Process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceGalleryUrl",
+              "displayName": "faceGalleryUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "FaceErrToMsgId",
+              "displayName": "FaceErrToMsgId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        672,
+        176
+      ],
+      "id": "95330567-b518-42e2-9bf1-4994eb3dcdb5",
+      "name": "Set Error if left not done1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4c8db9da-d4a5-4079-8e4f-938b39ef7007",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        896,
+        176
+      ],
+      "id": "5187461b-b405-4332-8fd8-371d73f9c523",
+      "name": "UpdatedIds",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $json.message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $json.message_chat_id }}"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Error"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Done"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -224,
+        176
+      ],
+      "id": "2956988c-420f-4c1e-ac3b-b7c2fe3daed3",
+      "name": "GetMsgId1",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json._message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "objectMainId",
+              "keyValue": "= {{ $json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "Error"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objNames",
+              "displayName": "objNames",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objUrl",
+              "displayName": "objUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objectDescr",
+              "displayName": "objectDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        176
+      ],
+      "id": "ac17d2e2-744b-48d9-a398-1c20184612db",
+      "name": "Set ErrorForDescr",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "message_chat_id",
+              "type": "any"
+            },
+            {
+              "name": "message_text"
+            },
+            {
+              "name": "replyMarkup"
+            }
+          ]
+        }
+      },
+      "id": "13cc4ec9-1730-4191-ba42-8fe3956af7c2",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -224,
+        -272
+      ]
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        0,
+        176
+      ],
+      "id": "4fc40cd2-7924-45d2-a2ba-bbbd9954a22b",
+      "name": "Limit",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "editMessageText",
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "messageId": "={{ $('Limit').item.json.replyToMessageIdGallery }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        176
+      ],
+      "id": "fb63668c-2977-4cce-a16b-29e9c15d2d9e",
+      "name": "Edit a text message",
+      "webhookId": "a37bcfb9-c873-4346-915b-d3059251a03f",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{\"Вы можете добавить другие предметы или завершить образ.\" \n\n}}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Добавить предметы",
+                    "additionalFields": {
+                      "callback_data": "addObject"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Завершить образ",
+                    "additionalFields": {
+                      "callback_data": "done"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1984,
+        -272
+      ],
+      "id": "35279f16-644d-40ce-a7b7-19d20c0c98af",
+      "name": "OP_final_model3",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('GetMsgId').item.json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        2224,
+        -272
+      ],
+      "id": "ccc590a7-8b91-4900-a260-99844ca00a82",
+      "name": "UpdateImgCount1"
+    },
+    {
+      "parameters": {
+        "operation": "editMessageText",
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "messageId": "={{ $('GetMsgId').item.json.replyToMessageIdGallery }}",
+        "text": "Действие отменено.",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1776,
+        -272
+      ],
+      "id": "ab41ad28-b6ff-4df7-b9de-182de0551cbf",
+      "name": "Edit a text message2",
+      "webhookId": "888b2dc8-23ec-450f-8f07-bba9bed18dde",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Error"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Done"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        -272
+      ],
+      "id": "0c960f58-0c2d-473e-a76b-515ad60080b0",
+      "name": "GetMsgId",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1702576b-2076-4f9e-8fa4-236f53fa13f8",
+              "name": "ClbkLocal",
+              "value": "={{$('Start').item.json.replyMarkup.parseJson().inline_keyboard.reduce((acc, row) => acc || row.find(b => b.callback_data === $('Start').item.json.callback_data)?.text || null, null) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -224,
+        -496
+      ],
+      "id": "3551f8e3-b1c7-4dc5-af72-4e700ff68fef",
+      "name": "ClbkLngFromText"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5d55ce4a-9480-46fa-8025-6324edb005bf",
+              "name": "selectedObjects",
+              "value": "={{ $(\"Start\").item.json.message_text.split(\".\").slice(1).join(\".\").split(\";\").map(s => s.trim()).filter(s => s.length > 0) }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        -272
+      ],
+      "id": "dd3bd42f-70be-47e1-9efc-ff5f2707b15b",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "objectMainId",
+              "keyValue": "={{$('GetMsgId').item.json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        352,
+        -480
+      ],
+      "id": "e85ddaf2-9e3e-4d5d-9e26-80af39b68448",
+      "name": "GetMsgId2",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "selectedObjects",
+        "options": {}
+      },
+      "id": "799c8db2-3e3e-4fd0-a48e-dc68aada8a73",
+      "name": "Split To Items",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        464,
+        -272
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "objectMainId",
+              "keyValue": "={{ $('GetMsgId').item.json.id }}"
+            },
+            {
+              "keyName": "objNamesLocal",
+              "keyValue": "={{ $json.selectedObjects }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "Canceled",
+            "objNames": "={{null}}",
+            "objNamesLocal": "={{null}}",
+            "objectTGbuttons": "={{null}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objNames",
+              "displayName": "objNames",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objNamesLocal",
+              "displayName": "objNamesLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objUrl",
+              "displayName": "objUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objectTGbuttons",
+              "displayName": "objectTGbuttons",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objectDescr",
+              "displayName": "objectDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "58b7579c-481d-4b41-9e9d-904354308ad1",
+      "name": "Update Object Descr",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        -96
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        -272
+      ],
+      "id": "d3030119-47af-47a5-90b7-38e14732c4c9",
+      "name": "Aggregate",
+      "alwaysOutputData": true,
+      "executeOnce": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        752,
+        -256
+      ],
+      "id": "e307e981-7f4a-40c3-bedd-7ec470705048",
+      "name": "Loop Over Items",
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "objectMainId",
+              "keyValue": "={{ $('GetMsgId').item.json.id }}"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetGalleryForFace"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "objectTGbuttons": "={{ null }}",
+            "status": "Canceled"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objNames",
+              "displayName": "objNames",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objNamesLocal",
+              "displayName": "objNamesLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objUrl",
+              "displayName": "objUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objectTGbuttons",
+              "displayName": "objectTGbuttons",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objectDescr",
+              "displayName": "objectDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "580bbd47-4e41-4d68-af75-a50b19831d8c",
+      "name": "UpdateButtons",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1296,
+        -272
+      ],
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1504,
+        -272
+      ],
+      "id": "06588dd6-a263-4bf8-8e89-f565f958d477",
+      "name": "Aggregate1",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {
+    "Start": [
+      {
+        "json": {
+          "message_chat_id": 1723701965,
+          "message_text": "Выберите предметы, которые должны войти в образ.\n\nКоричневая Куртка;\nЧёрная Сумка;",
+          "replyMarkup": "{\"inline_keyboard\":[[{\"text\":\"Коричневая Куртка\",\"callback_data\":\"Brown Jacket\"}],[{\"text\":\"Чёрная Сумка\",\"callback_data\":\"Black Bag\"}],[{\"text\":\"Полосатая Рубашка\",\"callback_data\":\"Striped Shirt\"}],[{\"text\":\"Отменить\",\"callback_data\":\"cancel\"},{\"text\":\"Продолжить\",\"callback_data\":\"submit\"}]]}"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "repo_name": "trendcore_n8n",
+  "repo_owner": "ds634",
+  "repo_path": "/repos/ds634/trendcore_n8n/contents/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "Db9RTL99yUCO77oO",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-02T16:41:23.037Z",
+      "createdAt": "2026-03-02T16:41:23.037Z",
+      "role": "workflow:owner",
+      "workflowId": "Zfcoz9eNoU5FDleD",
+      "projectId": "M9bTlSGaaAbsZxvs",
+      "project": {
+        "updatedAt": "2026-03-02T14:12:07.095Z",
+        "createdAt": "2026-03-02T14:12:01.275Z",
+        "id": "M9bTlSGaaAbsZxvs",
+        "name": "DLS   <ds@trendcore.ai>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-02T14:25:49.831Z",
+      "createdAt": "2026-03-02T14:25:49.831Z",
+      "id": "6ZyTvRGaNVzskE04",
+      "name": "TG_PROD"
+    },
+    {
+      "updatedAt": "2026-03-02T14:26:06.738Z",
+      "createdAt": "2026-03-02T14:26:06.738Z",
+      "id": "tzvi3HGYBgqT00vr",
+      "name": "CM"
+    },
+    {
+      "updatedAt": "2026-03-02T14:25:49.805Z",
+      "createdAt": "2026-03-02T14:25:49.805Z",
+      "id": "uZYZiWAvyVAXbBbR",
+      "name": "CL"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-20T09:05:25.252Z",
+  "versionCounter": 458,
+  "versionId": "29e2b324-a43f-4ebc-9232-5facb7b6454f",
+  "wf_name": "subTR_CL_CancelClbk"
+}
