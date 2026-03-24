@@ -1,0 +1,4578 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-03-22T13:38:37.000Z",
+    "createdAt": "2026-03-22T13:38:11.824Z",
+    "versionId": "4b4c9894-7428-4793-9e3b-dc35d035aca2",
+    "workflowId": "MJ56MiweXUyRxLMn",
+    "nodes": [
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+              },
+              {
+                "keyValue": "={{ $('Start').item.json.objMainId }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -4816,
+          592
+        ],
+        "id": "c6e4238f-210d-433f-8dbe-9b5591879eef",
+        "name": "GetDescr"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.recievedPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -3040,
+          608
+        ],
+        "id": "68b35d40-9dd1-41fe-a906-d499bbbd9a12",
+        "name": "subMkPlnTxt-SP"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+                "leftValue": "={{$json.data === empty }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -2288,
+          608
+        ],
+        "id": "c9502951-0ccd-4a5d-80dc-23dc4a084ecf",
+        "name": "IfResponseOk2"
+      },
+      {
+        "parameters": {
+          "operation": "sendChatAction",
+          "chatId": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -5008,
+          592
+        ],
+        "id": "69d526df-144c-4eea-83c9-f7465859cf78",
+        "name": "Send a chat action4",
+        "webhookId": "d9b28dce-5a43-45b7-ae61-7a0113460e73",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "MCKUe6c7lEWRrPCq",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+            "cachedResultName": "subTR_API_AI_Selector"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "modelName": "={{ $('Start').item.json.modelName }}",
+              "apiName": "={{ $('Start').item.json.api }}",
+              "systemPrompt": "={{ $('subMkPlnTxt-SP').item.json.plainText }}",
+              "chat_id": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+              "userPrompt": "={{ $json.plainText }}",
+              "objectMainId": 0,
+              "botTocken": "={{ $('Start').item.json.botTocken }}",
+              "debugMode": "={{ $('Start').item.json.debugMode }}",
+              "urlList_bool": false
+            },
+            "matchingColumns": [
+              "modelName",
+              "objectDescr",
+              "plainText"
+            ],
+            "schema": [
+              {
+                "id": "modelName",
+                "displayName": "modelName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "userPrompt",
+                "displayName": "userPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "imgUrls",
+                "displayName": "imgUrls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chat_id",
+                "displayName": "chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjName",
+                "displayName": "ObjName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjNameLocal",
+                "displayName": "ObjNameLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "botTocken",
+                "displayName": "botTocken",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urlList_bool",
+                "displayName": "urlList_bool",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "boolean",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          -2512,
+          608
+        ],
+        "name": "call AIPreparePrompt",
+        "id": "61affb09-84e7-4ab2-8241-8043e59aa4d1"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $('call AIPreparePrompt').item.json.data }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -2064,
+          512
+        ],
+        "id": "993a7760-7b3b-4b03-8df2-a21fae8c81c2",
+        "name": "CrearSPprompt"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://api.laozhang.ai/v1/chat/completions",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpBearerAuth",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n    \"model\": \"gemini-3-pro-image-preview\",\n    \"responseModalities\": [\"IMAGE\"],\n    \"stream\": false,\n \n    \"resolution\": \"2K\",\n    \"output_format\": \".png\",\n    \"aspect_ratio\": \"1:1\",\n    \"temperature\": 0,\n\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"{{ $('CrearSPprompt').item.json.plainText }}\"\n                }\n                   \n            ]\n           \n        }\n    ]    \n}",
+          "options": {
+            "redirect": {
+              "redirect": {}
+            },
+            "response": {
+              "response": {
+                "responseFormat": "json"
+              }
+            },
+            "timeout": 100000
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -1568,
+          512
+        ],
+        "id": "3e7daaca-f30d-432d-b46d-713bbc132909",
+        "name": "SetNBgen",
+        "executeOnce": false,
+        "credentials": {
+          "httpBearerAuth": {
+            "id": "l0RE3N1j86lmu3ck",
+            "name": "LaoZhang API"
+          }
+        },
+        "onError": "continueErrorOutput"
+      },
+      {
+        "parameters": {
+          "operation": "toBinary",
+          "sourceProperty": "choices",
+          "options": {
+            "mimeType": ""
+          }
+        },
+        "type": "n8n-nodes-base.convertToFile",
+        "typeVersion": 1.1,
+        "position": [
+          912,
+          544
+        ],
+        "id": "afe00a02-78cd-4969-919f-4473590d6816",
+        "name": "Convert to File"
+      },
+      {
+        "parameters": {
+          "operation": "sendPhoto",
+          "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+          "binaryData": true,
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1152,
+          720
+        ],
+        "id": "61a0b47d-e5e9-4771-89d1-04c1459010fc",
+        "name": "Send a photo message",
+        "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "23d8f101-b8b7-4eb2-992d-2bed28cc7da5",
+                "name": "choices",
+                "value": "={{ $('SetNBgen').item.json.choices[0].message.content.split(',')[1].replaceAll(')','')}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          688,
+          544
+        ],
+        "id": "5685f3d1-333b-4a27-ad1c-4d5c6ae957fb",
+        "name": "str"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+          "text": "=Генерация прошла успешно. Загружаем изображение... ",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          464,
+          544
+        ],
+        "id": "67091db9-ec65-45cf-a4ef-2d74da6d2804",
+        "name": "Send a text message3",
+        "webhookId": "d15fcd15-1189-434f-9861-c1fd95f04108",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('call AIPreparePrompt').item.json.chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('call AIPreparePrompt').item.json.chat_id }}"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createmodel"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "FeatureGalleryRecieved"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $('NextSteps').item.json.result.message_id }}",
+              "imgsCount": 0,
+              "status": "ModelGenerated",
+              "generatedModelUrl": "={{\"https://api.telegram.org/file/bot\" + $('call AIPreparePrompt').item.json.botTocken + \"/\" + $('GetModelUrl').item.json.result.file_path }}",
+              "generatedModelPrompt": "={{ $('CrearSPprompt').item.json.plainText }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          1920,
+          928
+        ],
+        "id": "9f1297a7-1252-4037-8aab-5fec9b68f5b2",
+        "name": "Set GetGalleryForFace+MsgId2",
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "callback_query_message_chat_id",
+                "type": "any"
+              },
+              {
+                "name": "objMainId",
+                "type": "any"
+              },
+              {
+                "name": "modelName",
+                "type": "any"
+              },
+              {
+                "name": "api",
+                "type": "any"
+              },
+              {
+                "name": "result_message_id",
+                "type": "any"
+              },
+              {
+                "name": "botTocken"
+              },
+              {
+                "name": "debugMode"
+              },
+              {
+                "name": "apiNameNB"
+              }
+            ]
+          }
+        },
+        "id": "3a246eb0-09b6-4c61-9c62-da43bffcb61e",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          -5200,
+          592
+        ]
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "fileId": "={{ $('Send a photo message').item.json.result.photo.last().file_id }}",
+          "download": false
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1696,
+          928
+        ],
+        "id": "c3c65321-b70d-40ec-81ce-db1c58211b49",
+        "name": "GetModelUrl",
+        "webhookId": "8af5dd91-d43b-4ed1-8483-d29da458d626",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "upsert",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+              },
+              {
+                "keyValue": "={{ $('Start').item.json.objMainId }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "status": "FeatureGalleryRecieved",
+              "replyToMessageIdGallery": 0,
+              "imgsCount": 0,
+              "generatedModelPrompt": "={{ $json.objectDescr }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -4160,
+          592
+        ],
+        "id": "09740d85-8567-4852-9416-e2624da07a28",
+        "name": "SetFeatureGaleryRecieved"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+          "text": "={{\"Пожалуйста, сохраните это изображение, если оно вас устраивает: его можно использовать для создания фотосессий.\\n 🤖 Что бы хотелось сделать с этим вариантом дальше?\"}}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Сделать еще версию",
+                      "additionalFields": {
+                        "callback_data": "onceMoreGen"
+                      }
+                    },
+                    {
+                      "text": "Пробное фото с этой моделью",
+                      "additionalFields": {
+                        "callback_data": "modelPhotoTest"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1440,
+          928
+        ],
+        "id": "2ac143fa-9cd0-4092-a2de-684cbdf4a9ad",
+        "name": "NextSteps",
+        "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "objectMainId",
+                "keyValue": "={{ $('Start').item.json.objMainId }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -4640,
+          592
+        ],
+        "id": "2df03cb2-2053-415e-92d8-126b8410bb0b",
+        "name": "GetLastDescr",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "keep": "lastItems"
+        },
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          -4432,
+          592
+        ],
+        "id": "ad710236-e579-46da-a083-f04064650b82",
+        "name": "LastDescr",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $('LastDescr').item.json.objectDescr ?? $('GetDescr').item.json.faceDescr }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -2768,
+          608
+        ],
+        "id": "d88002bf-4ed6-496f-bb83-57472f70f682",
+        "name": "subUPdescr"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+                "name": "Descr",
+                "value": "\"SYSTEM PROMPT: Model-Prompter v3.6 (Handle and Verifications). Role: I am a generator of luxury model portfolio beauty portrait prompts.\n\nMy task is to transform a structured physical description of a person into a single detailed image-generation prompt that produces a super photorealistic, clean, professional head-and-shoulders beauty portrait in a high-end fashion photography style similar to agency portfolio covers or model digitals.\nThe generated prompt must strictly follow the rules below.\n\n1. Subject Analysis\n\nI carefully analyze the provided physical description and preserve all defining physical characteristics.\nThis includes: ethnicity, age range, face shape and facial proportions, skin tone and skin texture, freckles, pores and natural skin markers, hair color, density, length and styling, eyebrow structure, eye shape and eye color, nose structure, cheekbones and facial contours, lips and mouth features, jawline and chin, visible ears.\nI translate anatomical descriptions into natural, visually precise language suitable for hyper-photorealistic image generation.\nI must not invent new physical features that are not present in the description.\nAll defining facial characteristics must remain consistent with the source description.\n\n2. Photography Style\n\nThe portrait must resemble a super photorealistic high-end fashion agency portfolio beauty portrait.\nThe subject must maintain direct eye contact with the camera. The gaze should be clearly directed toward the lens, creating a strong visual connection with the viewer.\nThe image must look like a real professional studio photograph, not CGI or illustration.\nThe subject should appear almost front-facing with a subtle natural head turn.\nAllowed pose variation includes the head turned slightly left or right (~5–15°), while the eyes remain directed toward the camera. Shoulders should remain mostly frontal with slight natural rotation up to ~10–15°.\nThe shoulder rotation must remain very subtle, similar to relaxed fashion portfolio portraits, and must never become a strong three-quarter body pose.\nThe head must never appear perfectly straight or rigidly symmetrical, but the gaze must remain clearly aligned with the camera.\nThe pose must remain natural and editorial, similar to a relaxed model during a studio photoshoot.\nRendering Requirements: Super photorealistic skin; natural pores and micro skin texture; realistic hair strands; physically plausible lighting; natural color rendering.\nThe aesthetic must resemble modern modeling agency portfolio photography.\n\nFacial Expression Rules: Subject must have a natural relaxed facial expression with life and personality, while maintaining eye contact with the camera.\nAllowed micro-expressions: slightly relaxed lips, faint natural smile, soft attentive gaze, subtle asymmetry in facial muscles.\n\nThe expression must feel alive, organic, and human, not rigid, frozen, or mannequin-like.\nMinor natural asymmetry in head tilt, shoulders, and facial expression is encouraged to avoid a static studio pose while maintaining clear engagement with the camera.\n\n3. Framing and Composition\n\nThe image must follow strict portrait composition: head-and-shoulders framing, camera positioned at eye level, subject centered horizontally, shoulders clearly visible, bare shoulders with no visible clothing.\nThe presentation must resemble luxury beauty or skincare campaign portraits and remain tasteful and non-sexualized.\nSpacing Rules: The entire head must be fully visible; the hairline and full hair volume must remain inside the frame; comfortable negative space must exist above the head; the face should occupy approximately 60–70% of the vertical image height; shoulders should remain visible without tight cropping; no cropping through hair, forehead, or chin; composition must feel balanced, calm, and editorial.\n\n4. Lighting\n\nLighting Rules: Use soft professional studio lighting optimized for hyper-photorealistic skin rendering. Characteristics: soft diffused key light primarily from the left side; left side of the face slightly brighter; right side receives gentle fill light; very soft shadows defining cheekbones and jawline; no strong or high-contrast shadows; no dramatic lighting; natural skin rendering with visible pores and fine skin texture; subtle catchlights in the eyes; evenly balanced exposure; neutral color grading. Lighting must resemble real professional beauty studio photography.\n\n5. Background\n\nUse a smooth light gray studio background.\nThe background must be light gray, smooth, unobtrusive, evenly lit. \nRestrictions: no texture, no stone surfaces, no gradients, no patterns, no visual distractions.\n\nThe background must remain minimal and neutral.\n\n6. Styling\n\nThe portrait must emphasize natural beauty and facial structure.\nStyling Rules: Minimal or natural makeup; natural skin rendering; no visible clothing; bare shoulders similar to professional beauty campaigns; hair styled naturally according to the provided description.\n\n7. Unique Handle Generation\n\nGenerate a unique social-media handle for the model. Requirements: must start with @; one word only; lowercase letters; no numbers or symbols; derived from the model’s appearance (eye color, hair, facial features, mood, aesthetic). First generate 5–7 descriptive root words inspired by the model’s appearance (color, texture, mood, element, material, atmosphere, or poetic traits). Then randomly select two of these roots and merge them into a single word to form the handle. Avoid commonly reused roots such as luna, flora, vera, aqua, amber, silver, fern. Prefer uncommon descriptive words related to the specific model. Define the final value as MODEL_HANDLE. Example style (do not repeat): @ivorydrift, @sableglow, @ceruleveil, @opalcurrent, @ashenbloom.\n\n8. Short Description Generation\n\nI generate a short descriptive sentence of approximately 20 words summarizing the person including age, ethnicity, face shape, eye color, and hairstyle.\nThe sentence should read naturally and concisely, like a short portfolio description.\nThe sentence must not contain any information not related to person's appearance.\n\n9. Typography Overlay\n\nThe generated prompt must include a minimal editorial typography overlay placed on the image.\nThe typography overlay must appear in the generated prompt exactly as written below, word-for-word, without any modification, rewriting, shortening, or formatting changes.\nThe text block must be inserted verbatim (mandatory).\n\nTYPOGRAPHY OVERLAY (STRICT TEXT-ONLY RENDERING)\n\nThe text is a clean typographic overlay added in post-production.\nIt is not part of the photographed scene and must not interact with lighting.\nOnly plain text characters are allowed.\n\nABSOLUTE GRAPHIC RESTRICTIONS\n\nNo graphic elements are allowed.\nSpecifically forbidden elements include lines, borders, frames, brackets, corner marks, boxes, separators, icons, UI elements, decorative shapes, and design accents.\nThe overlay must contain ONLY the three lines of text specified below.\n\nTEXT RENDERING RULES\n\nThe text must be rendered as flat vector typography.\nAll characters must be solid pure white (#FFFFFF).\n\nAbsolutely no visual effects allowed. Prohibited: drop shadow, cast shadow, halo, glow, outline, stroke, bevel, emboss, gradient, blur, transparency, lighting interaction.\nThe text must appear perfectly flat and clean with sharp edges.\nThe model must not add shadows or contrast helpers even if the background is light.\n\nLAYOUT POSITION (ANCHOR-LOCKED)\n\nTypography overlay must use a fixed anchor in the bottom-left region. \nPrimary anchor: bottom-left corner of the text block positioned at 10% of image width from the left edge and 10% of image height from the bottom edge; this point acts as the layout anchor for the entire text block. \nAlignment rules: all text lines left-aligned; left edges of all lines vertically aligned; text block expands upward and to the right from the anchor point.\nBounding constraint: The entire text block must remain within the bottom-left quadrant of the frame and must never overlap the subject's face.\nAll text lines are left-aligned on the same vertical axis.\n\nTEXT TO RENDER (VISIBLE TEXT)\n\nOnly the following two lines must appear in the image.\n\nLine 1\n\nGenerated MODEL_HANDLE\n\nLine 2\n\nGenerated ~20-word description summarizing age, ethnicity, face shape, eye color, and hairstyle.\n\nLITERAL TEXT LOCK\n\nOnly the literal characters from the TEXT lines above may appear in the rendered image.\nFont parameters, style descriptions, and layout instructions are metadata only.\nMetadata must influence styling but must never appear as visible characters.\nThe renderer must ignore any font or size descriptions when producing visible text.\nOnly the two TEXT lines may be visible in the final typography layer.\nThe renderer must treat all typography specification lines as non-renderable metadata.\n\nTYPOGRAPHY SPECIFICATIONS (STYLING INSTRUCTIONS — NOT VISIBLE TEXT)\n\nAll text must use the same font and base size.\n\nFont family: Inter  \nFont size: 20 px  \nColor: pure white (#FFFFFF)\n\nLine 1 (MODEL_HANDLE)\n\nFont weight: Bold\n\nLine 2 (Description)\n\nFont weight: Regular\n\n\nTYPOGRAPHY APPLICATION RULE\n\nLine 1 must use the Bold weight.\nLine 2 must use the Regular weight.\nBoth lines must use the same font family, size, and color defined above.\n\nTEXT LAYOUT SPECIFICATION\n\nVertical spacing between the two lines must remain consistent.\nLine spacing (baseline-to-baseline distance): Line 1 → Line 2 : 14 px\n\nIMPORTANT RENDERING RULE\n\nThe image must only display the three text lines from the TEXT TO RENDER section.\nThe following words must never appear in the rendered image because they are styling instructions: Font, Size, px, Color, Inter, Bold, Regular.\nThese are metadata instructions only, not renderable text.\n\nTEXT RENDERING PHYSICS LOCK\n\nThe typography is rendered as pure digital vector glyphs with emissive color.\nThe text does not exist as a physical object in the photographed environment.\nThe text does not interact with lighting, shadows, or reflections.\nThe text behaves like UI overlay graphics placed above the image layer.\n\nEMISSION RULE\n\nEach character emits flat pure white (#FFFFFF).\nThe text is not shaded and does not receive lighting.\nThere is no simulated depth or extrusion.\n\nEDGE RENDERING RULE\n\nCharacter edges must be perfectly sharp. Forbidden artifacts: halo, glow, fringe, feathering, bloom, edge blur, contrast halos.\nThe alpha edge must be perfectly clean.\n\nNO CONTRAST COMPENSATION RULE\n\nThe model must not add readability helpers.\nEven if the background is bright, the text must remain pure white without shadow, glow, or outline.\n\nABSOLUTE TEXT EFFECT BAN\n\nThe following visual effects are strictly forbidden: drop shadow, cast shadow, ambient shadow, halo, glow, outline, stroke, bevel, emboss, gradient, blur, transparency, bloom, lighting interaction.\n\nFINAL CONSTRAINT\n\nThe overlay must contain exactly three text elements and nothing else.\nNo additional graphics, marks, or visual effects are permitted.\nThe rendered text must not contain quotation marks.\n\nPOSE AND FRAMING VALIDATION\n\nBefore returning the final image-generation prompt perform an internal validation of pose, gaze, and portrait framing. Verify the portrait description includes direct eye contact with the camera, a slight head turn (~5–15°), subtle shoulder rotation avoiding a perfectly frontal symmetrical pose, and a natural micro-expression (e.g., relaxed lips, faint smile, soft attentive gaze). Also verify framing balance: comfortable negative space above the head, face occupying ~60–70% of the vertical image height, and shoulders clearly visible without tight cropping. If the description results in perfect symmetry, lack of eye contact, an over-zoomed face, the head touching the top edge, or cropped shoulders, the prompt is invalid and must be regenerated until all conditions are satisfied. This validation occurs internally and must not appear in the final output.\n\nOUTPUT INTEGRITY VALIDATION\n\nBefore returning the final image-generation prompt, perform an internal validation check.\n\nVerify the generated prompt contains the complete Typography Overlay specification including all typography specification lines, the entire TEXT RENDERING PHYSICS LOCK section, the entire EMISSION RULE section, the entire EDGE RENDERING RULE section, the entire NO CONTRAST COMPENSATION RULE section, and the entire ABSOLUTE TEXT EFFECT BAN section.\n\nIf any of these sections are missing, shortened, altered, or omitted,\nthe prompt must be considered invalid.\nIf the prompt is invalid, regenerate the entire image-generation prompt from the beginning\nuntil all required sections are present and complete.\n\nThis validation step must occur internally and must not appear in the final output.\n\nAdditionally verify that Line 1 styling is applied to Line 1 text, Line 2 styling is applied to Line 2 text, Line 3 styling is applied to Line 3 text, and that line spacing rules are present.\n\n10. Output Prompt Structure\n\nThe final generated prompt must always follow this exact structure:\n\n1 — portrait description\n2 — camera & lighting\n3 — background\n4 — typography overlay rules\n\n11. Output Format\n\nI output only one final image-generation prompt.\nI do not explain the process.\nI do not include commentary.\nOnly the final structured prompt is produced.\"",
+                "type": "string"
+              },
+              {
+                "id": "1b2dcb78-90bf-4ef0-b716-7bc80e779032",
+                "name": "promptName",
+                "value": "Model-Prompter",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -3840,
+          592
+        ],
+        "id": "db068ee0-dc5e-4398-a6f8-045eb904a01c",
+        "name": "SP_ModelPrompter"
+      },
+      {
+        "parameters": {
+          "content": "",
+          "height": 192,
+          "width": 192
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -3904,
+          544
+        ],
+        "typeVersion": 1,
+        "id": "c6b13b97-530d-40f3-867a-75eb600c3766",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "errorMessage": "={{\"⚠️\" + $('call AIPreparePrompt').item.json.msg }}"
+        },
+        "type": "n8n-nodes-base.stopAndError",
+        "typeVersion": 1,
+        "position": [
+          -2080,
+          704
+        ],
+        "id": "65de5b41-ed1b-47c2-b1e1-da4127a1eb14",
+        "name": "Stop and Error"
+      },
+      {
+        "parameters": {
+          "errorMessage": "⚠️ Ошибка генерации."
+        },
+        "type": "n8n-nodes-base.stopAndError",
+        "typeVersion": 1,
+        "position": [
+          -1184,
+          736
+        ],
+        "id": "f00b4616-8e98-40e3-9e97-f6a9c47a26a1",
+        "name": "Stop and Error1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "426f7bb3-d212-4d21-9f74-2682c61d9dde",
+                "name": "debugMsg",
+                "value": "={{\"*model*: gemini-3-pro-image-preview\"  + \"\\n\\n\" +  \"*sytemPrompt*: '\"+  $('CrearSPprompt').item.json.plainText  + \"' \\n\\n\"  + \"*userPrompt*: \"  + \"\\n\\n\" +  \"*responseModalities*: ['IMAGE']\" + \"\\n\"  + \"*temperature*: 0,\" + \"\\n\"  + \n\"*stream*: false,\" + \"\\n\"  + \n\"*aspect_ratio*: 1:1,\" + \"\\n\"  + \n\"*resolution*: 2K,\" + \"\\n\"  + \"*output_format* :'png'\"  \n}}\n\n \n  \n",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -992,
+          240
+        ],
+        "id": "32ee9d60-67e8-4f2b-836a-c68f233e9ca9",
+        "name": "DebugMsg"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+          "text": "={{ $('DebugMsg').item.json.debugMsg }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -288,
+          336
+        ],
+        "id": "92ba3c91-0beb-4baf-99b3-f00b3895556b",
+        "name": "Send a text message8",
+        "webhookId": "8b1910d1-cda2-4d91-a401-86928c95a9ab",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+          "text": "={{ $('DebugMsg').item.json.debugMsg.substring(0,4000) }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -624,
+          64
+        ],
+        "id": "1480a309-e245-43c9-82b9-011d76c1f105",
+        "name": "SendParam1part",
+        "webhookId": "8b1910d1-cda2-4d91-a401-86928c95a9ab",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+          "text": "={{ $('DebugMsg').item.json.debugMsg.substring(4000,8000) }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -448,
+          80
+        ],
+        "id": "ccc8a1f8-f9dc-4d08-aaea-8a8eada8ef88",
+        "name": "SendParam2part",
+        "webhookId": "8b1910d1-cda2-4d91-a401-86928c95a9ab",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "c0de765e-567c-4916-984a-5e4d15aa13bb",
+                "leftValue": "={{ $('call AIPreparePrompt').item.json.debugMode }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -1264,
+          480
+        ],
+        "id": "74919e5d-80a9-4193-a98e-39f50cdd1dd3",
+        "name": "IfDebug"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "cab538c3-5d16-4717-8392-8cea80e6ff3a",
+                "leftValue": "={{ $json.debugMsg.length>4000 }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -784,
+          240
+        ],
+        "id": "fe743127-aa6f-4ad6-9071-3f026bf4ea9c",
+        "name": "If>4000"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "cab538c3-5d16-4717-8392-8cea80e6ff3a",
+                "leftValue": "={{ $json.debugMsg.length>8000 }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -256,
+          64
+        ],
+        "id": "a9b06a1b-1e53-4b6b-9a22-236ce649ba88",
+        "name": "If>8000"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+          "text": "={{ $('DebugMsg').item.json.debugMsg.substring(8000) }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          0,
+          0
+        ],
+        "id": "2542b7a8-575e-4dbe-9530-581d0fceba03",
+        "name": "SendParam2part1",
+        "webhookId": "8b1910d1-cda2-4d91-a401-86928c95a9ab",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "resource": "image",
+          "modelId": {
+            "__rl": true,
+            "value": "models/gemini-3-pro-image-preview",
+            "mode": "list",
+            "cachedResultName": "models/gemini-3-pro-image-preview (Nano Banana Pro)"
+          },
+          "prompt": "={{ $('CrearSPprompt').item.json.plainText }}",
+          "options": {
+            "sampleCount": 1,
+            "binaryPropertyOutput": "data"
+          }
+        },
+        "type": "@n8n/n8n-nodes-langchain.googleGemini",
+        "typeVersion": 1.1,
+        "position": [
+          -1104,
+          976
+        ],
+        "id": "1edd68a7-e7a6-4c10-bbfc-54e014ee3d5b",
+        "name": "Generate an image",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "7uq26pW3rjLVZ4Re",
+            "name": "Google Gemini(PaLM) Api account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+                "leftValue": "={{ $('Start').item.json.debugMode }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -3648,
+          592
+        ],
+        "id": "681746d3-3447-42c2-a41d-13ff5287f8a0",
+        "name": "IfDebug1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+                "name": "recievedPrompt",
+                "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_ModelPrompter').item.json.Descr\n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -3264,
+          608
+        ],
+        "id": "73ee6c63-f4c4-4319-ba57-51507b71112f",
+        "name": "SP_recievedPrompt1"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+            "mode": "list",
+            "cachedResultName": "N8N prompts",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Database",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "PromptName",
+                "lookupValue": "={{ $('SP_ModelPrompter').item.json.promptName }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -3440,
+          432
+        ],
+        "id": "25617ac7-d541-4d46-9e85-2efe62649aca",
+        "name": "GetPrompt1",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "x0BIkYcbd4ffwTqr",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{$('Start').item.json.apiNameNB.toLowerCase()  }}",
+                      "rightValue": "laozhang",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      },
+                      "id": "13b7a774-7a01-4ecb-9a14-da2f3b5891b7"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "laozhang"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "ed735cd5-2d59-49dc-a384-d3be2f8dc49b",
+                      "leftValue": "={{ $('Start').item.json.apiNameNB.toLowerCase()  }}",
+                      "rightValue": "google",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "google"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "0de8e230-9eca-42a7-91e8-1f445140209f",
+                      "leftValue": "={{ $('Start').item.json.apiNameNB.toLowerCase() }}",
+                      "rightValue": "fal",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "fal"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          -1840,
+          688
+        ],
+        "id": "884e7921-6edf-4a22-a57c-0619db0e9e23",
+        "name": "Switch"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "9A6kp0SAPV2FCdMQ",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/9A6kp0SAPV2FCdMQ",
+            "cachedResultName": "subTR_NB_Fal"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt": "={{ $('CrearSPprompt').item.json.plainText }}",
+              "urls": "=",
+              "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+              "debugMode": "={{ $('Start').item.json.debugMode }}",
+              "apiName": "={{ $('call AIPreparePrompt').item.json.apiName }}",
+              "apiNameNB": "={{ $('Start').item.json.apiNameNB }}",
+              "aspectRatioNoCommas": "3:4"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urls",
+                "displayName": "urls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chatId",
+                "displayName": "chatId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "apiNameNB",
+                "displayName": "apiNameNB",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "aspectRatioNoCommas",
+                "displayName": "aspectRatioNoCommas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -1344,
+          1264
+        ],
+        "id": "2ba061fe-3c0e-45d1-aefb-ed6bb0662391",
+        "name": "Call 'subTR_NB_Fal'"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('call AIPreparePrompt').item.json.chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('call AIPreparePrompt').item.json.chat_id }}"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createmodel"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "FeatureGalleryRecieved"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $('NextSteps1').item.json.result.message_id }}",
+              "imgsCount": 0,
+              "status": "ModelGenerated",
+              "generatedModelUrl": "={{ $('Call \\'subTR_NB_Fal\\'').item.json.result }}",
+              "generatedModelPrompt": "={{ $('CrearSPprompt').item.json.plainText }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -640,
+          1264
+        ],
+        "id": "73893cc5-e3ff-490a-93e4-fc05e92ba805",
+        "name": "Set GetGalleryForFace+MsgId",
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+          "text": "={{\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Вы также можете сделать пробное фото модели и завершить работу.\"\n}}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать еще",
+                      "additionalFields": {
+                        "callback_data": "onceMoreGen"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Сделать пробное фото",
+                      "additionalFields": {
+                        "callback_data": "modelPhotoTest"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -992,
+          1264
+        ],
+        "id": "b0e67962-07e2-488c-8bc5-af3c2f05c46e",
+        "name": "NextSteps1",
+        "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "IfResponseOk2": {
+        "main": [
+          [
+            {
+              "node": "CrearSPprompt",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Stop and Error",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetDescr": {
+        "main": [
+          [
+            {
+              "node": "GetLastDescr",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a chat action4": {
+        "main": [
+          [
+            {
+              "node": "GetDescr",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "subMkPlnTxt-SP": {
+        "main": [
+          [
+            {
+              "node": "subUPdescr",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "call AIPreparePrompt": {
+        "main": [
+          [
+            {
+              "node": "IfResponseOk2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CrearSPprompt": {
+        "main": [
+          [
+            {
+              "node": "Switch",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Convert to File": {
+        "main": [
+          [
+            {
+              "node": "Send a photo message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "str": {
+        "main": [
+          [
+            {
+              "node": "Convert to File",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SetNBgen": {
+        "main": [
+          [
+            {
+              "node": "IfDebug",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Stop and Error1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a text message3": {
+        "main": [
+          [
+            {
+              "node": "str",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a photo message": {
+        "main": [
+          [
+            {
+              "node": "NextSteps",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "Send a chat action4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetModelUrl": {
+        "main": [
+          [
+            {
+              "node": "Set GetGalleryForFace+MsgId2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SetFeatureGaleryRecieved": {
+        "main": [
+          [
+            {
+              "node": "SP_ModelPrompter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "NextSteps": {
+        "main": [
+          [
+            {
+              "node": "GetModelUrl",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetLastDescr": {
+        "main": [
+          [
+            {
+              "node": "LastDescr",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "LastDescr": {
+        "main": [
+          [
+            {
+              "node": "SetFeatureGaleryRecieved",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "subUPdescr": {
+        "main": [
+          [
+            {
+              "node": "call AIPreparePrompt",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_ModelPrompter": {
+        "main": [
+          [
+            {
+              "node": "IfDebug1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "DebugMsg": {
+        "main": [
+          [
+            {
+              "node": "If>4000",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a text message8": {
+        "main": [
+          [
+            {
+              "node": "Send a text message3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SendParam1part": {
+        "main": [
+          [
+            {
+              "node": "SendParam2part",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SendParam2part": {
+        "main": [
+          [
+            {
+              "node": "If>8000",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfDebug": {
+        "main": [
+          [
+            {
+              "node": "DebugMsg",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Send a text message3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If>4000": {
+        "main": [
+          [
+            {
+              "node": "SendParam1part",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Send a text message8",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If>8000": {
+        "main": [
+          [
+            {
+              "node": "SendParam2part1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Send a text message3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SendParam2part1": {
+        "main": [
+          [
+            {
+              "node": "Send a text message3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfDebug1": {
+        "main": [
+          [
+            {
+              "node": "GetPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetPrompt1": {
+        "main": [
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_recievedPrompt1": {
+        "main": [
+          [
+            {
+              "node": "subMkPlnTxt-SP",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generate an image": {
+        "main": [
+          [
+            {
+              "node": "Send a photo message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Switch": {
+        "main": [
+          [
+            {
+              "node": "SetNBgen",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Generate an image",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Call 'subTR_NB_Fal'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subTR_NB_Fal'": {
+        "main": [
+          [
+            {
+              "node": "NextSteps1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "NextSteps1": {
+        "main": [
+          [
+            {
+              "node": "Set GetGalleryForFace+MsgId",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "DLS  ",
+    "name": "Version 4b4c9894",
+    "description": "aspect changed 3:4",
+    "autosaved": true,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-03-22T13:38:36.918Z",
+        "id": 1626,
+        "workflowId": "MJ56MiweXUyRxLMn",
+        "versionId": "4b4c9894-7428-4793-9e3b-dc35d035aca2",
+        "event": "activated",
+        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    ]
+  },
+  "activeVersionId": "4b4c9894-7428-4793-9e3b-dc35d035aca2",
+  "connections": {
+    "IfResponseOk2": {
+      "main": [
+        [
+          {
+            "node": "CrearSPprompt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetDescr": {
+      "main": [
+        [
+          {
+            "node": "GetLastDescr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a chat action4": {
+      "main": [
+        [
+          {
+            "node": "GetDescr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "subMkPlnTxt-SP": {
+      "main": [
+        [
+          {
+            "node": "subUPdescr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "call AIPreparePrompt": {
+      "main": [
+        [
+          {
+            "node": "IfResponseOk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CrearSPprompt": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Send a photo message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "str": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SetNBgen": {
+      "main": [
+        [
+          {
+            "node": "IfDebug",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message3": {
+      "main": [
+        [
+          {
+            "node": "str",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a photo message": {
+      "main": [
+        [
+          {
+            "node": "NextSteps",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Send a chat action4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetModelUrl": {
+      "main": [
+        [
+          {
+            "node": "Set GetGalleryForFace+MsgId2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SetFeatureGaleryRecieved": {
+      "main": [
+        [
+          {
+            "node": "SP_ModelPrompter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NextSteps": {
+      "main": [
+        [
+          {
+            "node": "GetModelUrl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetLastDescr": {
+      "main": [
+        [
+          {
+            "node": "LastDescr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LastDescr": {
+      "main": [
+        [
+          {
+            "node": "SetFeatureGaleryRecieved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "subUPdescr": {
+      "main": [
+        [
+          {
+            "node": "call AIPreparePrompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_ModelPrompter": {
+      "main": [
+        [
+          {
+            "node": "IfDebug1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DebugMsg": {
+      "main": [
+        [
+          {
+            "node": "If>4000",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message8": {
+      "main": [
+        [
+          {
+            "node": "Send a text message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SendParam1part": {
+      "main": [
+        [
+          {
+            "node": "SendParam2part",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SendParam2part": {
+      "main": [
+        [
+          {
+            "node": "If>8000",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfDebug": {
+      "main": [
+        [
+          {
+            "node": "DebugMsg",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If>4000": {
+      "main": [
+        [
+          {
+            "node": "SendParam1part",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If>8000": {
+      "main": [
+        [
+          {
+            "node": "SendParam2part1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SendParam2part1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfDebug1": {
+      "main": [
+        [
+          {
+            "node": "GetPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetPrompt1": {
+      "main": [
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_recievedPrompt1": {
+      "main": [
+        [
+          {
+            "node": "subMkPlnTxt-SP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate an image": {
+      "main": [
+        [
+          {
+            "node": "Send a photo message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "SetNBgen",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate an image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call 'subTR_NB_Fal'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subTR_NB_Fal'": {
+      "main": [
+        [
+          {
+            "node": "NextSteps1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NextSteps1": {
+      "main": [
+        [
+          {
+            "node": "Set GetGalleryForFace+MsgId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-02T17:32:26.143Z",
+  "description": null,
+  "id": "MJ56MiweXUyRxLMn",
+  "isArchived": false,
+  "meta": null,
+  "name": "subTR_CM_GenImg",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+            },
+            {
+              "keyValue": "={{ $('Start').item.json.objMainId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -4816,
+        592
+      ],
+      "id": "c6e4238f-210d-433f-8dbe-9b5591879eef",
+      "name": "GetDescr"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.recievedPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -3040,
+        608
+      ],
+      "id": "68b35d40-9dd1-41fe-a906-d499bbbd9a12",
+      "name": "subMkPlnTxt-SP"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+              "leftValue": "={{$json.data === empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -2288,
+        608
+      ],
+      "id": "c9502951-0ccd-4a5d-80dc-23dc4a084ecf",
+      "name": "IfResponseOk2"
+    },
+    {
+      "parameters": {
+        "operation": "sendChatAction",
+        "chatId": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -5008,
+        592
+      ],
+      "id": "69d526df-144c-4eea-83c9-f7465859cf78",
+      "name": "Send a chat action4",
+      "webhookId": "d9b28dce-5a43-45b7-ae61-7a0113460e73",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "MCKUe6c7lEWRrPCq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+          "cachedResultName": "subTR_API_AI_Selector"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "modelName": "={{ $('Start').item.json.modelName }}",
+            "apiName": "={{ $('Start').item.json.api }}",
+            "systemPrompt": "={{ $('subMkPlnTxt-SP').item.json.plainText }}",
+            "chat_id": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+            "userPrompt": "={{ $json.plainText }}",
+            "objectMainId": 0,
+            "botTocken": "={{ $('Start').item.json.botTocken }}",
+            "debugMode": "={{ $('Start').item.json.debugMode }}",
+            "urlList_bool": false
+          },
+          "matchingColumns": [
+            "modelName",
+            "objectDescr",
+            "plainText"
+          ],
+          "schema": [
+            {
+              "id": "modelName",
+              "displayName": "modelName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "userPrompt",
+              "displayName": "userPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "imgUrls",
+              "displayName": "imgUrls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjName",
+              "displayName": "ObjName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjNameLocal",
+              "displayName": "ObjNameLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "botTocken",
+              "displayName": "botTocken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urlList_bool",
+              "displayName": "urlList_bool",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -2512,
+        608
+      ],
+      "name": "call AIPreparePrompt",
+      "id": "61affb09-84e7-4ab2-8241-8043e59aa4d1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $('call AIPreparePrompt').item.json.data }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -2064,
+        512
+      ],
+      "id": "993a7760-7b3b-4b03-8df2-a21fae8c81c2",
+      "name": "CrearSPprompt"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.laozhang.ai/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"model\": \"gemini-3-pro-image-preview\",\n    \"responseModalities\": [\"IMAGE\"],\n    \"stream\": false,\n \n    \"resolution\": \"2K\",\n    \"output_format\": \".png\",\n    \"aspect_ratio\": \"1:1\",\n    \"temperature\": 0,\n\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": [\n                {\n                    \"type\": \"text\",\n                    \"text\": \"{{ $('CrearSPprompt').item.json.plainText }}\"\n                }\n                   \n            ]\n           \n        }\n    ]    \n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 100000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -1568,
+        512
+      ],
+      "id": "3e7daaca-f30d-432d-b46d-713bbc132909",
+      "name": "SetNBgen",
+      "executeOnce": false,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "l0RE3N1j86lmu3ck",
+          "name": "LaoZhang API"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "operation": "toBinary",
+        "sourceProperty": "choices",
+        "options": {
+          "mimeType": ""
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        912,
+        544
+      ],
+      "id": "afe00a02-78cd-4969-919f-4473590d6816",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "sendPhoto",
+        "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+        "binaryData": true,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1152,
+        720
+      ],
+      "id": "61a0b47d-e5e9-4771-89d1-04c1459010fc",
+      "name": "Send a photo message",
+      "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "23d8f101-b8b7-4eb2-992d-2bed28cc7da5",
+              "name": "choices",
+              "value": "={{ $('SetNBgen').item.json.choices[0].message.content.split(',')[1].replaceAll(')','')}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        688,
+        544
+      ],
+      "id": "5685f3d1-333b-4a27-ad1c-4d5c6ae957fb",
+      "name": "str"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+        "text": "=Генерация прошла успешно. Загружаем изображение... ",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        464,
+        544
+      ],
+      "id": "67091db9-ec65-45cf-a4ef-2d74da6d2804",
+      "name": "Send a text message3",
+      "webhookId": "d15fcd15-1189-434f-9861-c1fd95f04108",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('call AIPreparePrompt').item.json.chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('call AIPreparePrompt').item.json.chat_id }}"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createmodel"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "FeatureGalleryRecieved"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $('NextSteps').item.json.result.message_id }}",
+            "imgsCount": 0,
+            "status": "ModelGenerated",
+            "generatedModelUrl": "={{\"https://api.telegram.org/file/bot\" + $('call AIPreparePrompt').item.json.botTocken + \"/\" + $('GetModelUrl').item.json.result.file_path }}",
+            "generatedModelPrompt": "={{ $('CrearSPprompt').item.json.plainText }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1920,
+        928
+      ],
+      "id": "9f1297a7-1252-4037-8aab-5fec9b68f5b2",
+      "name": "Set GetGalleryForFace+MsgId2",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "callback_query_message_chat_id",
+              "type": "any"
+            },
+            {
+              "name": "objMainId",
+              "type": "any"
+            },
+            {
+              "name": "modelName",
+              "type": "any"
+            },
+            {
+              "name": "api",
+              "type": "any"
+            },
+            {
+              "name": "result_message_id",
+              "type": "any"
+            },
+            {
+              "name": "botTocken"
+            },
+            {
+              "name": "debugMode"
+            },
+            {
+              "name": "apiNameNB"
+            }
+          ]
+        }
+      },
+      "id": "3a246eb0-09b6-4c61-9c62-da43bffcb61e",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -5200,
+        592
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Send a photo message').item.json.result.photo.last().file_id }}",
+        "download": false
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1696,
+        928
+      ],
+      "id": "c3c65321-b70d-40ec-81ce-db1c58211b49",
+      "name": "GetModelUrl",
+      "webhookId": "8af5dd91-d43b-4ed1-8483-d29da458d626",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+            },
+            {
+              "keyValue": "={{ $('Start').item.json.objMainId }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "FeatureGalleryRecieved",
+            "replyToMessageIdGallery": 0,
+            "imgsCount": 0,
+            "generatedModelPrompt": "={{ $json.objectDescr }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -4160,
+        592
+      ],
+      "id": "09740d85-8567-4852-9416-e2624da07a28",
+      "name": "SetFeatureGaleryRecieved"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+        "text": "={{\"Пожалуйста, сохраните это изображение, если оно вас устраивает: его можно использовать для создания фотосессий.\\n 🤖 Что бы хотелось сделать с этим вариантом дальше?\"}}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Сделать еще версию",
+                    "additionalFields": {
+                      "callback_data": "onceMoreGen"
+                    }
+                  },
+                  {
+                    "text": "Пробное фото с этой моделью",
+                    "additionalFields": {
+                      "callback_data": "modelPhotoTest"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1440,
+        928
+      ],
+      "id": "2ac143fa-9cd0-4092-a2de-684cbdf4a9ad",
+      "name": "NextSteps",
+      "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "objectMainId",
+              "keyValue": "={{ $('Start').item.json.objMainId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -4640,
+        592
+      ],
+      "id": "2df03cb2-2053-415e-92d8-126b8410bb0b",
+      "name": "GetLastDescr",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -4432,
+        592
+      ],
+      "id": "ad710236-e579-46da-a083-f04064650b82",
+      "name": "LastDescr",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $('LastDescr').item.json.objectDescr ?? $('GetDescr').item.json.faceDescr }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -2768,
+        608
+      ],
+      "id": "d88002bf-4ed6-496f-bb83-57472f70f682",
+      "name": "subUPdescr"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+              "name": "Descr",
+              "value": "\"SYSTEM PROMPT: Model-Prompter v3.6 (Handle and Verifications). Role: I am a generator of luxury model portfolio beauty portrait prompts.\n\nMy task is to transform a structured physical description of a person into a single detailed image-generation prompt that produces a super photorealistic, clean, professional head-and-shoulders beauty portrait in a high-end fashion photography style similar to agency portfolio covers or model digitals.\nThe generated prompt must strictly follow the rules below.\n\n1. Subject Analysis\n\nI carefully analyze the provided physical description and preserve all defining physical characteristics.\nThis includes: ethnicity, age range, face shape and facial proportions, skin tone and skin texture, freckles, pores and natural skin markers, hair color, density, length and styling, eyebrow structure, eye shape and eye color, nose structure, cheekbones and facial contours, lips and mouth features, jawline and chin, visible ears.\nI translate anatomical descriptions into natural, visually precise language suitable for hyper-photorealistic image generation.\nI must not invent new physical features that are not present in the description.\nAll defining facial characteristics must remain consistent with the source description.\n\n2. Photography Style\n\nThe portrait must resemble a super photorealistic high-end fashion agency portfolio beauty portrait.\nThe subject must maintain direct eye contact with the camera. The gaze should be clearly directed toward the lens, creating a strong visual connection with the viewer.\nThe image must look like a real professional studio photograph, not CGI or illustration.\nThe subject should appear almost front-facing with a subtle natural head turn.\nAllowed pose variation includes the head turned slightly left or right (~5–15°), while the eyes remain directed toward the camera. Shoulders should remain mostly frontal with slight natural rotation up to ~10–15°.\nThe shoulder rotation must remain very subtle, similar to relaxed fashion portfolio portraits, and must never become a strong three-quarter body pose.\nThe head must never appear perfectly straight or rigidly symmetrical, but the gaze must remain clearly aligned with the camera.\nThe pose must remain natural and editorial, similar to a relaxed model during a studio photoshoot.\nRendering Requirements: Super photorealistic skin; natural pores and micro skin texture; realistic hair strands; physically plausible lighting; natural color rendering.\nThe aesthetic must resemble modern modeling agency portfolio photography.\n\nFacial Expression Rules: Subject must have a natural relaxed facial expression with life and personality, while maintaining eye contact with the camera.\nAllowed micro-expressions: slightly relaxed lips, faint natural smile, soft attentive gaze, subtle asymmetry in facial muscles.\n\nThe expression must feel alive, organic, and human, not rigid, frozen, or mannequin-like.\nMinor natural asymmetry in head tilt, shoulders, and facial expression is encouraged to avoid a static studio pose while maintaining clear engagement with the camera.\n\n3. Framing and Composition\n\nThe image must follow strict portrait composition: head-and-shoulders framing, camera positioned at eye level, subject centered horizontally, shoulders clearly visible, bare shoulders with no visible clothing.\nThe presentation must resemble luxury beauty or skincare campaign portraits and remain tasteful and non-sexualized.\nSpacing Rules: The entire head must be fully visible; the hairline and full hair volume must remain inside the frame; comfortable negative space must exist above the head; the face should occupy approximately 60–70% of the vertical image height; shoulders should remain visible without tight cropping; no cropping through hair, forehead, or chin; composition must feel balanced, calm, and editorial.\n\n4. Lighting\n\nLighting Rules: Use soft professional studio lighting optimized for hyper-photorealistic skin rendering. Characteristics: soft diffused key light primarily from the left side; left side of the face slightly brighter; right side receives gentle fill light; very soft shadows defining cheekbones and jawline; no strong or high-contrast shadows; no dramatic lighting; natural skin rendering with visible pores and fine skin texture; subtle catchlights in the eyes; evenly balanced exposure; neutral color grading. Lighting must resemble real professional beauty studio photography.\n\n5. Background\n\nUse a smooth light gray studio background.\nThe background must be light gray, smooth, unobtrusive, evenly lit. \nRestrictions: no texture, no stone surfaces, no gradients, no patterns, no visual distractions.\n\nThe background must remain minimal and neutral.\n\n6. Styling\n\nThe portrait must emphasize natural beauty and facial structure.\nStyling Rules: Minimal or natural makeup; natural skin rendering; no visible clothing; bare shoulders similar to professional beauty campaigns; hair styled naturally according to the provided description.\n\n7. Unique Handle Generation\n\nGenerate a unique social-media handle for the model. Requirements: must start with @; one word only; lowercase letters; no numbers or symbols; derived from the model’s appearance (eye color, hair, facial features, mood, aesthetic). First generate 5–7 descriptive root words inspired by the model’s appearance (color, texture, mood, element, material, atmosphere, or poetic traits). Then randomly select two of these roots and merge them into a single word to form the handle. Avoid commonly reused roots such as luna, flora, vera, aqua, amber, silver, fern. Prefer uncommon descriptive words related to the specific model. Define the final value as MODEL_HANDLE. Example style (do not repeat): @ivorydrift, @sableglow, @ceruleveil, @opalcurrent, @ashenbloom.\n\n8. Short Description Generation\n\nI generate a short descriptive sentence of approximately 20 words summarizing the person including age, ethnicity, face shape, eye color, and hairstyle.\nThe sentence should read naturally and concisely, like a short portfolio description.\nThe sentence must not contain any information not related to person's appearance.\n\n9. Typography Overlay\n\nThe generated prompt must include a minimal editorial typography overlay placed on the image.\nThe typography overlay must appear in the generated prompt exactly as written below, word-for-word, without any modification, rewriting, shortening, or formatting changes.\nThe text block must be inserted verbatim (mandatory).\n\nTYPOGRAPHY OVERLAY (STRICT TEXT-ONLY RENDERING)\n\nThe text is a clean typographic overlay added in post-production.\nIt is not part of the photographed scene and must not interact with lighting.\nOnly plain text characters are allowed.\n\nABSOLUTE GRAPHIC RESTRICTIONS\n\nNo graphic elements are allowed.\nSpecifically forbidden elements include lines, borders, frames, brackets, corner marks, boxes, separators, icons, UI elements, decorative shapes, and design accents.\nThe overlay must contain ONLY the three lines of text specified below.\n\nTEXT RENDERING RULES\n\nThe text must be rendered as flat vector typography.\nAll characters must be solid pure white (#FFFFFF).\n\nAbsolutely no visual effects allowed. Prohibited: drop shadow, cast shadow, halo, glow, outline, stroke, bevel, emboss, gradient, blur, transparency, lighting interaction.\nThe text must appear perfectly flat and clean with sharp edges.\nThe model must not add shadows or contrast helpers even if the background is light.\n\nLAYOUT POSITION (ANCHOR-LOCKED)\n\nTypography overlay must use a fixed anchor in the bottom-left region. \nPrimary anchor: bottom-left corner of the text block positioned at 10% of image width from the left edge and 10% of image height from the bottom edge; this point acts as the layout anchor for the entire text block. \nAlignment rules: all text lines left-aligned; left edges of all lines vertically aligned; text block expands upward and to the right from the anchor point.\nBounding constraint: The entire text block must remain within the bottom-left quadrant of the frame and must never overlap the subject's face.\nAll text lines are left-aligned on the same vertical axis.\n\nTEXT TO RENDER (VISIBLE TEXT)\n\nOnly the following two lines must appear in the image.\n\nLine 1\n\nGenerated MODEL_HANDLE\n\nLine 2\n\nGenerated ~20-word description summarizing age, ethnicity, face shape, eye color, and hairstyle.\n\nLITERAL TEXT LOCK\n\nOnly the literal characters from the TEXT lines above may appear in the rendered image.\nFont parameters, style descriptions, and layout instructions are metadata only.\nMetadata must influence styling but must never appear as visible characters.\nThe renderer must ignore any font or size descriptions when producing visible text.\nOnly the two TEXT lines may be visible in the final typography layer.\nThe renderer must treat all typography specification lines as non-renderable metadata.\n\nTYPOGRAPHY SPECIFICATIONS (STYLING INSTRUCTIONS — NOT VISIBLE TEXT)\n\nAll text must use the same font and base size.\n\nFont family: Inter  \nFont size: 20 px  \nColor: pure white (#FFFFFF)\n\nLine 1 (MODEL_HANDLE)\n\nFont weight: Bold\n\nLine 2 (Description)\n\nFont weight: Regular\n\n\nTYPOGRAPHY APPLICATION RULE\n\nLine 1 must use the Bold weight.\nLine 2 must use the Regular weight.\nBoth lines must use the same font family, size, and color defined above.\n\nTEXT LAYOUT SPECIFICATION\n\nVertical spacing between the two lines must remain consistent.\nLine spacing (baseline-to-baseline distance): Line 1 → Line 2 : 14 px\n\nIMPORTANT RENDERING RULE\n\nThe image must only display the three text lines from the TEXT TO RENDER section.\nThe following words must never appear in the rendered image because they are styling instructions: Font, Size, px, Color, Inter, Bold, Regular.\nThese are metadata instructions only, not renderable text.\n\nTEXT RENDERING PHYSICS LOCK\n\nThe typography is rendered as pure digital vector glyphs with emissive color.\nThe text does not exist as a physical object in the photographed environment.\nThe text does not interact with lighting, shadows, or reflections.\nThe text behaves like UI overlay graphics placed above the image layer.\n\nEMISSION RULE\n\nEach character emits flat pure white (#FFFFFF).\nThe text is not shaded and does not receive lighting.\nThere is no simulated depth or extrusion.\n\nEDGE RENDERING RULE\n\nCharacter edges must be perfectly sharp. Forbidden artifacts: halo, glow, fringe, feathering, bloom, edge blur, contrast halos.\nThe alpha edge must be perfectly clean.\n\nNO CONTRAST COMPENSATION RULE\n\nThe model must not add readability helpers.\nEven if the background is bright, the text must remain pure white without shadow, glow, or outline.\n\nABSOLUTE TEXT EFFECT BAN\n\nThe following visual effects are strictly forbidden: drop shadow, cast shadow, ambient shadow, halo, glow, outline, stroke, bevel, emboss, gradient, blur, transparency, bloom, lighting interaction.\n\nFINAL CONSTRAINT\n\nThe overlay must contain exactly three text elements and nothing else.\nNo additional graphics, marks, or visual effects are permitted.\nThe rendered text must not contain quotation marks.\n\nPOSE AND FRAMING VALIDATION\n\nBefore returning the final image-generation prompt perform an internal validation of pose, gaze, and portrait framing. Verify the portrait description includes direct eye contact with the camera, a slight head turn (~5–15°), subtle shoulder rotation avoiding a perfectly frontal symmetrical pose, and a natural micro-expression (e.g., relaxed lips, faint smile, soft attentive gaze). Also verify framing balance: comfortable negative space above the head, face occupying ~60–70% of the vertical image height, and shoulders clearly visible without tight cropping. If the description results in perfect symmetry, lack of eye contact, an over-zoomed face, the head touching the top edge, or cropped shoulders, the prompt is invalid and must be regenerated until all conditions are satisfied. This validation occurs internally and must not appear in the final output.\n\nOUTPUT INTEGRITY VALIDATION\n\nBefore returning the final image-generation prompt, perform an internal validation check.\n\nVerify the generated prompt contains the complete Typography Overlay specification including all typography specification lines, the entire TEXT RENDERING PHYSICS LOCK section, the entire EMISSION RULE section, the entire EDGE RENDERING RULE section, the entire NO CONTRAST COMPENSATION RULE section, and the entire ABSOLUTE TEXT EFFECT BAN section.\n\nIf any of these sections are missing, shortened, altered, or omitted,\nthe prompt must be considered invalid.\nIf the prompt is invalid, regenerate the entire image-generation prompt from the beginning\nuntil all required sections are present and complete.\n\nThis validation step must occur internally and must not appear in the final output.\n\nAdditionally verify that Line 1 styling is applied to Line 1 text, Line 2 styling is applied to Line 2 text, Line 3 styling is applied to Line 3 text, and that line spacing rules are present.\n\n10. Output Prompt Structure\n\nThe final generated prompt must always follow this exact structure:\n\n1 — portrait description\n2 — camera & lighting\n3 — background\n4 — typography overlay rules\n\n11. Output Format\n\nI output only one final image-generation prompt.\nI do not explain the process.\nI do not include commentary.\nOnly the final structured prompt is produced.\"",
+              "type": "string"
+            },
+            {
+              "id": "1b2dcb78-90bf-4ef0-b716-7bc80e779032",
+              "name": "promptName",
+              "value": "Model-Prompter",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3840,
+        592
+      ],
+      "id": "db068ee0-dc5e-4398-a6f8-045eb904a01c",
+      "name": "SP_ModelPrompter"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 192,
+        "width": 192
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3904,
+        544
+      ],
+      "typeVersion": 1,
+      "id": "c6b13b97-530d-40f3-867a-75eb600c3766",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{\"⚠️\" + $('call AIPreparePrompt').item.json.msg }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -2080,
+        704
+      ],
+      "id": "65de5b41-ed1b-47c2-b1e1-da4127a1eb14",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "errorMessage": "⚠️ Ошибка генерации."
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -1184,
+        736
+      ],
+      "id": "f00b4616-8e98-40e3-9e97-f6a9c47a26a1",
+      "name": "Stop and Error1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "426f7bb3-d212-4d21-9f74-2682c61d9dde",
+              "name": "debugMsg",
+              "value": "={{\"*model*: gemini-3-pro-image-preview\"  + \"\\n\\n\" +  \"*sytemPrompt*: '\"+  $('CrearSPprompt').item.json.plainText  + \"' \\n\\n\"  + \"*userPrompt*: \"  + \"\\n\\n\" +  \"*responseModalities*: ['IMAGE']\" + \"\\n\"  + \"*temperature*: 0,\" + \"\\n\"  + \n\"*stream*: false,\" + \"\\n\"  + \n\"*aspect_ratio*: 1:1,\" + \"\\n\"  + \n\"*resolution*: 2K,\" + \"\\n\"  + \"*output_format* :'png'\"  \n}}\n\n \n  \n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -992,
+        240
+      ],
+      "id": "32ee9d60-67e8-4f2b-836a-c68f233e9ca9",
+      "name": "DebugMsg"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+        "text": "={{ $('DebugMsg').item.json.debugMsg }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -288,
+        336
+      ],
+      "id": "92ba3c91-0beb-4baf-99b3-f00b3895556b",
+      "name": "Send a text message8",
+      "webhookId": "8b1910d1-cda2-4d91-a401-86928c95a9ab",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+        "text": "={{ $('DebugMsg').item.json.debugMsg.substring(0,4000) }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        64
+      ],
+      "id": "1480a309-e245-43c9-82b9-011d76c1f105",
+      "name": "SendParam1part",
+      "webhookId": "8b1910d1-cda2-4d91-a401-86928c95a9ab",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+        "text": "={{ $('DebugMsg').item.json.debugMsg.substring(4000,8000) }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -448,
+        80
+      ],
+      "id": "ccc8a1f8-f9dc-4d08-aaea-8a8eada8ef88",
+      "name": "SendParam2part",
+      "webhookId": "8b1910d1-cda2-4d91-a401-86928c95a9ab",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c0de765e-567c-4916-984a-5e4d15aa13bb",
+              "leftValue": "={{ $('call AIPreparePrompt').item.json.debugMode }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1264,
+        480
+      ],
+      "id": "74919e5d-80a9-4193-a98e-39f50cdd1dd3",
+      "name": "IfDebug"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "cab538c3-5d16-4717-8392-8cea80e6ff3a",
+              "leftValue": "={{ $json.debugMsg.length>4000 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -784,
+        240
+      ],
+      "id": "fe743127-aa6f-4ad6-9071-3f026bf4ea9c",
+      "name": "If>4000"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "cab538c3-5d16-4717-8392-8cea80e6ff3a",
+              "leftValue": "={{ $json.debugMsg.length>8000 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -256,
+        64
+      ],
+      "id": "a9b06a1b-1e53-4b6b-9a22-236ce649ba88",
+      "name": "If>8000"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+        "text": "={{ $('DebugMsg').item.json.debugMsg.substring(8000) }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2542b7a8-575e-4dbe-9530-581d0fceba03",
+      "name": "SendParam2part1",
+      "webhookId": "8b1910d1-cda2-4d91-a401-86928c95a9ab",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-3-pro-image-preview",
+          "mode": "list",
+          "cachedResultName": "models/gemini-3-pro-image-preview (Nano Banana Pro)"
+        },
+        "prompt": "={{ $('CrearSPprompt').item.json.plainText }}",
+        "options": {
+          "sampleCount": 1,
+          "binaryPropertyOutput": "data"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -1104,
+        976
+      ],
+      "id": "1edd68a7-e7a6-4c10-bbfc-54e014ee3d5b",
+      "name": "Generate an image",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "7uq26pW3rjLVZ4Re",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+              "leftValue": "={{ $('Start').item.json.debugMode }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -3648,
+        592
+      ],
+      "id": "681746d3-3447-42c2-a41d-13ff5287f8a0",
+      "name": "IfDebug1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+              "name": "recievedPrompt",
+              "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_ModelPrompter').item.json.Descr\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3264,
+        608
+      ],
+      "id": "73ee6c63-f4c4-4319-ba57-51507b71112f",
+      "name": "SP_recievedPrompt1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+          "mode": "list",
+          "cachedResultName": "N8N prompts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "PromptName",
+              "lookupValue": "={{ $('SP_ModelPrompter').item.json.promptName }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3440,
+        432
+      ],
+      "id": "25617ac7-d541-4d46-9e85-2efe62649aca",
+      "name": "GetPrompt1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x0BIkYcbd4ffwTqr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{$('Start').item.json.apiNameNB.toLowerCase()  }}",
+                    "rightValue": "laozhang",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "13b7a774-7a01-4ecb-9a14-da2f3b5891b7"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "laozhang"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "ed735cd5-2d59-49dc-a384-d3be2f8dc49b",
+                    "leftValue": "={{ $('Start').item.json.apiNameNB.toLowerCase()  }}",
+                    "rightValue": "google",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "google"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "0de8e230-9eca-42a7-91e8-1f445140209f",
+                    "leftValue": "={{ $('Start').item.json.apiNameNB.toLowerCase() }}",
+                    "rightValue": "fal",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "fal"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -1840,
+        688
+      ],
+      "id": "884e7921-6edf-4a22-a57c-0619db0e9e23",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "9A6kp0SAPV2FCdMQ",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/9A6kp0SAPV2FCdMQ",
+          "cachedResultName": "subTR_NB_Fal"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt": "={{ $('CrearSPprompt').item.json.plainText }}",
+            "urls": "=",
+            "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+            "debugMode": "={{ $('Start').item.json.debugMode }}",
+            "apiName": "={{ $('call AIPreparePrompt').item.json.apiName }}",
+            "apiNameNB": "={{ $('Start').item.json.apiNameNB }}",
+            "aspectRatioNoCommas": "3:4"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urls",
+              "displayName": "urls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chatId",
+              "displayName": "chatId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "apiNameNB",
+              "displayName": "apiNameNB",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "aspectRatioNoCommas",
+              "displayName": "aspectRatioNoCommas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -1344,
+        1264
+      ],
+      "id": "2ba061fe-3c0e-45d1-aefb-ed6bb0662391",
+      "name": "Call 'subTR_NB_Fal'"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('call AIPreparePrompt').item.json.chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('call AIPreparePrompt').item.json.chat_id }}"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createmodel"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "FeatureGalleryRecieved"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $('NextSteps1').item.json.result.message_id }}",
+            "imgsCount": 0,
+            "status": "ModelGenerated",
+            "generatedModelUrl": "={{ $('Call \\'subTR_NB_Fal\\'').item.json.result }}",
+            "generatedModelPrompt": "={{ $('CrearSPprompt').item.json.plainText }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -640,
+        1264
+      ],
+      "id": "73893cc5-e3ff-490a-93e4-fc05e92ba805",
+      "name": "Set GetGalleryForFace+MsgId",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('call AIPreparePrompt').item.json.chat_id }}",
+        "text": "={{\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Вы также можете сделать пробное фото модели и завершить работу.\"\n}}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать еще",
+                    "additionalFields": {
+                      "callback_data": "onceMoreGen"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Сделать пробное фото",
+                    "additionalFields": {
+                      "callback_data": "modelPhotoTest"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -992,
+        1264
+      ],
+      "id": "b0e67962-07e2-488c-8bc5-af3c2f05c46e",
+      "name": "NextSteps1",
+      "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Start": [
+      {
+        "json": {
+          "callback_query_message_chat_id": 1723701965,
+          "objMainId": 207,
+          "modelName": "gemini-3-flash",
+          "api": "google",
+          "result_message_id": 11799,
+          "botTocken": "8500532222:AAHn-miVxN48HoJNpedLE6wz5WQ0poDaYXU",
+          "debugMode": "false",
+          "apiNameNB": "fal"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "repo_name": "trendcore_n8n",
+  "repo_owner": "ds634",
+  "repo_path": "/repos/ds634/trendcore_n8n/contents/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "Db9RTL99yUCO77oO",
+    "callerPolicy": "workflowsFromSameOwner",
+    "saveExecutionProgress": true
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-02T17:32:26.144Z",
+      "createdAt": "2026-03-02T17:32:26.144Z",
+      "role": "workflow:owner",
+      "workflowId": "MJ56MiweXUyRxLMn",
+      "projectId": "M9bTlSGaaAbsZxvs",
+      "project": {
+        "updatedAt": "2026-03-02T14:12:07.095Z",
+        "createdAt": "2026-03-02T14:12:01.275Z",
+        "id": "M9bTlSGaaAbsZxvs",
+        "name": "DLS   <ds@trendcore.ai>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-02T14:25:49.831Z",
+      "createdAt": "2026-03-02T14:25:49.831Z",
+      "id": "6ZyTvRGaNVzskE04",
+      "name": "TG_PROD"
+    },
+    {
+      "updatedAt": "2026-03-02T14:28:21.873Z",
+      "createdAt": "2026-03-02T14:28:21.873Z",
+      "id": "oBs1jX4oMfSQf0pJ",
+      "name": "SP_ModelPrompter"
+    },
+    {
+      "updatedAt": "2026-03-02T14:26:06.738Z",
+      "createdAt": "2026-03-02T14:26:06.738Z",
+      "id": "tzvi3HGYBgqT00vr",
+      "name": "CM"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-22T13:48:34.300Z",
+  "versionCounter": 244,
+  "versionId": "3d029c3c-58e6-4f44-8cb2-3c7ce9df2def",
+  "wf_name": "subTR_CM_GenImg"
+}
