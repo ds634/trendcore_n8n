@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-24T21:06:05.000Z",
-    "createdAt": "2026-03-24T20:25:09.140Z",
-    "versionId": "82920cef-3f19-48dd-9ac0-000db2127e68",
+    "updatedAt": "2026-03-24T21:08:20.000Z",
+    "createdAt": "2026-03-24T21:08:17.180Z",
+    "versionId": "4db2b9e3-6323-4165-8c2d-992d5d20e879",
     "workflowId": "JrfEgCM2R7q7xfnb",
     "nodes": [
       {
@@ -152,7 +152,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          1056,
+          1264,
           3184
         ],
         "id": "2ca4ed30-4e3a-4e5d-bd75-de6e90c67a30",
@@ -201,7 +201,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          -336,
+          -128,
           4496
         ],
         "id": "aa53fe4c-f7a4-46f4-af10-51c570fc4801",
@@ -443,7 +443,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          480,
+          688,
           4272
         ],
         "id": "e81ca1ed-13ee-410c-bc92-50eeeb178c91",
@@ -588,7 +588,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          1888,
+          2096,
           3280
         ],
         "id": "cdd1ab3c-aa23-4fa8-a62e-d51109195825",
@@ -633,7 +633,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          688,
+          896,
           3648
         ],
         "id": "6538091a-cbc6-409a-a8c7-c1810728735b",
@@ -650,7 +650,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1056,
+          1264,
           3376
         ],
         "id": "cd1b0e0c-fc47-43b9-82eb-cdce2e9f6001",
@@ -674,7 +674,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1648,
+          1856,
           3280
         ],
         "id": "f67227e1-78e4-4407-afff-5a7363ffd085",
@@ -722,7 +722,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2224,
+          2432,
           4272
         ],
         "id": "33a3a2e0-a3ff-4292-9d7d-e21362100030",
@@ -885,7 +885,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          4096,
+          4304,
           3952
         ],
         "id": "f0be6919-717b-4311-a16f-e5b51c4a589d",
@@ -933,7 +933,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          1504,
+          1712,
           4368
         ],
         "id": "7ab8d11b-6f91-4a50-9c93-ae34f093e597",
@@ -950,7 +950,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2000,
+          2208,
           4272
         ],
         "id": "15570458-4a4a-4b53-99cc-d35c6017cf3b",
@@ -1071,7 +1071,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          1328,
+          1536,
           4032
         ],
         "id": "6e497332-5f80-4f4f-8154-5b02c1eaa93a",
@@ -1085,7 +1085,7 @@
         "type": "n8n-nodes-base.limit",
         "typeVersion": 1,
         "position": [
-          832,
+          1040,
           3184
         ],
         "id": "f7e5f676-da53-43b3-adc0-ac01d9dffdc6",
@@ -1101,7 +1101,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1136,
+          1344,
           3840
         ],
         "id": "79fd35c8-238b-494e-940f-0c3000e652b2",
@@ -1126,7 +1126,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3616,
+          3824,
           3312
         ],
         "id": "c4dd31bd-c19a-4fb2-ad9f-ec02344448e0",
@@ -1156,7 +1156,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          2688,
+          2896,
           3952
         ],
         "id": "a524063b-df08-4837-aa6a-8be5fc2fd058",
@@ -1189,7 +1189,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3600,
+          3808,
           3664
         ],
         "id": "be1de76d-1c3c-4c1c-996c-cc319f7469ef",
@@ -1206,7 +1206,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3856,
+          4064,
           3632
         ],
         "id": "1a2b6ef2-f448-4110-8df7-09d7d1047c0d",
@@ -1231,7 +1231,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3872,
+          4080,
           3952
         ],
         "id": "72a629a3-eb75-4928-8e17-a2c8aa1f3e74",
@@ -1273,7 +1273,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3392,
+          3600,
           3808
         ],
         "id": "58617076-0496-44c7-b630-f540eebf682a",
@@ -1297,7 +1297,7 @@
         "name": "Set Bot Token",
         "type": "n8n-nodes-base.set",
         "position": [
-          -1680,
+          -1472,
           2992
         ],
         "typeVersion": 3.4
@@ -1316,7 +1316,7 @@
         "name": "Is CALLBACK?",
         "type": "n8n-nodes-base.if",
         "position": [
-          -1392,
+          -1184,
           2992
         ],
         "typeVersion": 1
@@ -1329,7 +1329,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2352,
+          2560,
           3952
         ],
         "id": "a6c056f6-78ab-42b3-b72f-d9742d8db7d5",
@@ -1393,7 +1393,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3,
         "position": [
-          2192,
+          2400,
           3952
         ],
         "id": "ebda3b2c-1220-4a1a-95bb-8daae61356f9",
@@ -1441,7 +1441,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          -128,
+          80,
           5632
         ],
         "id": "28bad94d-1ad8-4ac3-b728-283eec246b0a",
@@ -1477,7 +1477,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -1856,
+          -1648,
           2992
         ],
         "id": "aa9c5e42-1cbc-49cf-b4a1-1826548cbd6f",
@@ -1511,7 +1511,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          928,
+          1136,
           3680
         ],
         "id": "1489ea61-be1a-42da-9f13-4b9173acf9e6",
@@ -1526,7 +1526,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2208,
+          2416,
           4544
         ],
         "id": "853cb0f8-f7ce-4ac2-8bea-c3e829b8205e",
@@ -1547,7 +1547,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1984,
+          2192,
           4544
         ],
         "id": "bfa680ae-a3ee-47c6-b362-daa46cc92bf6",
@@ -1680,7 +1680,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          320,
+          528,
           5632
         ],
         "id": "a9304f12-d683-49a8-9d74-f7bfb679d135",
@@ -1747,7 +1747,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          112,
+          320,
           4528
         ],
         "id": "978e1129-4df2-4a7d-bede-58e25252ac49",
@@ -1761,7 +1761,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -320,
+          -112,
           5552
         ],
         "typeVersion": 1,
@@ -1907,7 +1907,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          1024,
+          1232,
           5632
         ],
         "id": "8904dc1d-c661-44bb-aa6a-83d26b36f480",
@@ -1925,7 +1925,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          768,
+          976,
           5632
         ],
         "id": "c1fa80ce-1e30-47e6-9f07-7b54dfccf683",
@@ -2078,7 +2078,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          6032,
+          6240,
           5872
         ],
         "id": "ca365f1a-d5b5-44f7-a6d2-24a34599785e",
@@ -2123,7 +2123,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          2864,
+          3072,
           6160
         ],
         "id": "a99ae647-c93c-418f-ae3a-82589e866eb3",
@@ -2140,7 +2140,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          5584,
+          5792,
           5680
         ],
         "id": "f9021e00-0379-4823-9319-7eb8a0a70d44",
@@ -2164,7 +2164,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          5840,
+          6048,
           5840
         ],
         "id": "8763106c-fd27-41ce-a0d6-cefaf6ecb134",
@@ -2317,7 +2317,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          6624,
+          6832,
           6608
         ],
         "id": "1cd4d358-7148-4cba-a4bf-ec5482bb11dc",
@@ -2474,7 +2474,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          5904,
+          6112,
           6336
         ],
         "id": "f04c0cac-4b17-4fb8-b504-41f65197735c",
@@ -2509,7 +2509,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3056,
+          3264,
           6768
         ],
         "id": "22973a17-2657-447b-8595-f5ec1129109f",
@@ -2526,7 +2526,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          5808,
+          6016,
           6624
         ],
         "id": "a037e642-dbe7-4f34-ab62-62e00ce46259",
@@ -2647,7 +2647,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          3536,
+          3744,
           6480
         ],
         "id": "b6046993-99ff-4543-a04f-52f6a72d25e4",
@@ -2665,7 +2665,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          5584,
+          5792,
           5872
         ],
         "id": "574c09b7-dc9d-48b6-a83d-be94dcbea7af",
@@ -2695,7 +2695,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          4800,
+          5008,
           6256
         ],
         "id": "0fc7695a-eb66-402a-af72-2d76d4cfeaa6",
@@ -2728,7 +2728,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          5392,
+          5600,
           6160
         ],
         "id": "022e7171-9749-4621-b59e-7006b7aa0634",
@@ -2745,7 +2745,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          5696,
+          5904,
           6064
         ],
         "id": "50ec04f5-5ccd-44b0-b155-e6c1aed8aff0",
@@ -2799,7 +2799,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          6384,
+          6592,
           6320
         ],
         "id": "e407e379-2f60-449d-92fc-8e20f5fcf41c",
@@ -2841,7 +2841,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          5168,
+          5376,
           6256
         ],
         "id": "2749dbac-0f13-4c46-9b20-54572773dc75",
@@ -2855,7 +2855,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          4640,
+          4848,
           6272
         ],
         "id": "9fd73991-8645-40fe-9783-81a48fc92665",
@@ -2904,7 +2904,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3,
         "position": [
-          4480,
+          4688,
           6272
         ],
         "id": "5bc3ce89-abba-4bcd-a325-6ef67e048f54",
@@ -2938,7 +2938,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3008,
+          3216,
           6288
         ],
         "id": "d499b6d8-8bf7-418a-88a0-2fca005026fe",
@@ -2952,7 +2952,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3312,
+          3520,
           6864
         ],
         "id": "dd08c850-926e-4f43-86ce-39be94054709",
@@ -2973,7 +2973,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          2112,
+          2320,
           5632
         ],
         "typeVersion": 1,
@@ -2989,7 +2989,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3312,
+          3520,
           6352
         ],
         "id": "98334a79-1e69-4226-bba4-8ecd34830e87",
@@ -3012,7 +3012,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -880,
+          -672,
           3504
         ],
         "typeVersion": 1,
@@ -3154,7 +3154,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          2640,
+          2848,
           6336
         ],
         "id": "61554298-aaad-46f0-b16c-c720a0b943d7",
@@ -3183,7 +3183,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          3136,
+          3344,
           912
         ],
         "id": "6c34fd27-ce24-41ed-a7b2-0e8a6cb12cfc",
@@ -3220,7 +3220,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          2912,
+          3120,
           912
         ],
         "id": "522f0167-41d0-40b1-964f-dc7469a9724b",
@@ -3365,7 +3365,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          2448,
+          2656,
           4272
         ],
         "id": "5c7999f3-c08a-4039-be86-505094742933",
@@ -3406,7 +3406,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          1296,
+          1504,
           4368
         ],
         "id": "2cd5d102-fd09-44fe-afe3-df77292b9bfa",
@@ -3440,7 +3440,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3536,
+          3744,
           6864
         ],
         "id": "8bdd9f3e-f135-42bc-89e5-b4cd88db0400",
@@ -3457,7 +3457,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3776,
+          3984,
           6816
         ],
         "id": "d487f1cb-7ee6-4636-8591-ed3b1af6de1b",
@@ -3555,7 +3555,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          736,
+          944,
           1840
         ],
         "id": "64c93966-b74e-4c5a-887f-25e9b506d6e4",
@@ -3771,7 +3771,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          2336,
+          2544,
           1008
         ],
         "id": "9ee54b43-6e85-4504-9b93-f14b8b616d76",
@@ -3910,7 +3910,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          -592,
+          -384,
           4352
         ],
         "id": "4be07484-6729-412f-845c-1feb759c9e34",
@@ -3924,7 +3924,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          1632,
+          1840,
           704
         ],
         "typeVersion": 1,
@@ -3940,7 +3940,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          4016,
+          4224,
           6768
         ],
         "id": "78f7efdd-9e82-4223-a37d-b2844eb4e55f",
@@ -4068,7 +4068,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          4352,
+          4560,
           6784
         ],
         "name": "Call subTR_CreateModel_GetFeature",
@@ -4116,7 +4116,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          -336,
+          -128,
           2096
         ],
         "id": "7c0e0cd2-4185-41f1-b8e2-0dfb814953b7",
@@ -4277,7 +4277,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          4976,
+          5184,
           6256
         ],
         "name": "subAI_Model",
@@ -4442,7 +4442,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3,
         "position": [
-          2880,
+          3088,
           3952
         ],
         "id": "0024d5ca-8f63-4216-94f3-efe9246078aa",
@@ -4459,7 +4459,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          4320,
+          4528,
           3952
         ],
         "id": "f546cae9-a5ba-44de-bf38-8b3fc0e2d03e",
@@ -4612,7 +4612,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          4544,
+          4752,
           3952
         ],
         "id": "221bd1bb-f16b-461c-ad11-59e6ddd2a27a",
@@ -4629,7 +4629,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2688,
+          2896,
           1104
         ],
         "id": "e98850b2-9d5d-4680-95b9-c96dcb15dfd5",
@@ -4654,7 +4654,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2544,
+          2752,
           3952
         ],
         "id": "59f7e76f-afea-4d66-913e-f1a05bca3cbd",
@@ -4678,7 +4678,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2912,
+          3120,
           1104
         ],
         "id": "07a4b546-e941-429b-a93c-f19eab1e9c9b",
@@ -4699,7 +4699,7 @@
         "type": "n8n-nodes-base.stopAndError",
         "typeVersion": 1,
         "position": [
-          3616,
+          3824,
           3904
         ],
         "id": "4f3bcd2d-532e-44d2-8dde-f8b46ad1ee29",
@@ -4712,7 +4712,7 @@
         "type": "n8n-nodes-base.stopAndError",
         "typeVersion": 1,
         "position": [
-          1136,
+          1344,
           4496
         ],
         "id": "7343717e-9f4b-4b8f-a314-beb06fac1aad",
@@ -4725,7 +4725,7 @@
         "type": "n8n-nodes-base.stopAndError",
         "typeVersion": 1,
         "position": [
-          5472,
+          5680,
           6384
         ],
         "id": "dbb75d0d-2a93-4cc0-9591-b8bfeef36ec3",
@@ -4748,7 +4748,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          2144,
+          2352,
           1104
         ],
         "id": "ca4ac093-84c7-46cb-8519-30f47712b790",
@@ -4893,7 +4893,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          4384,
+          4592,
           3664
         ],
         "id": "5f92f611-5a3c-4756-a479-1dd891ff31a2",
@@ -4910,7 +4910,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          4112,
+          4320,
           3664
         ],
         "id": "e604ca2c-ea2b-4897-a638-7685437c2a84",
@@ -5004,7 +5004,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3,
         "position": [
-          3360,
+          3568,
           1488
         ],
         "id": "76f43254-7835-4f83-8593-926cda4b4ec7",
@@ -5021,7 +5021,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2688,
+          2896,
           1296
         ],
         "id": "73421be4-7ada-44b8-a673-bb9021bfba29",
@@ -5070,7 +5070,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          2912,
+          3120,
           1296
         ],
         "id": "6c173a41-564a-4aa7-9683-772118a433ba",
@@ -5087,7 +5087,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3136,
+          3344,
           1296
         ],
         "id": "e8c0733d-130d-4882-a5da-cf3ea8f23ec8",
@@ -5112,7 +5112,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2688,
+          2896,
           1488
         ],
         "id": "f63e1fb2-e327-4bc9-b300-2d6c98e4222d",
@@ -5161,7 +5161,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          2912,
+          3120,
           1488
         ],
         "id": "4c40e523-6423-4d8c-8c78-d6a16c40e906",
@@ -5178,7 +5178,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3136,
+          3344,
           1488
         ],
         "id": "52a41303-bc2e-4770-a892-575e9216c0d5",
@@ -5333,7 +5333,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          96,
+          304,
           5632
         ],
         "id": "68e01864-bb99-4401-b6c3-c0224ef2dd55",
@@ -5481,7 +5481,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          608,
+          816,
           3184
         ],
         "id": "45978be4-e732-4707-8bdb-4ee8aca892e5",
@@ -5505,7 +5505,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -2000,
+          -1792,
           2992
         ],
         "id": "46168c2a-11d4-40e6-a33f-e47a3226a2d0",
@@ -5538,7 +5538,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3056,
+          3264,
           3952
         ],
         "id": "1f77055b-5d50-4481-b407-62dc18db1853",
@@ -5555,7 +5555,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3216,
+          3424,
           3712
         ],
         "id": "ea77f956-b564-41e5-bdc0-1ede80c993e1",
@@ -5578,7 +5578,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -320,
+          -112,
           5872
         ],
         "typeVersion": 1,
@@ -5612,7 +5612,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          -192,
+          16,
           5968
         ],
         "id": "785b0241-d5e5-4bb5-8c85-b21996e62a01",
@@ -5696,7 +5696,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          5920,
+          6128,
           6064
         ],
         "id": "16936766-7ab0-4be8-9097-d3996c1f1cb9",
@@ -5849,7 +5849,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          6112,
+          6320,
           6064
         ],
         "id": "7e84ed0b-4e5a-4b3f-bd25-0ae8b0886fd5",
@@ -5968,7 +5968,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          3136,
+          3344,
           1104
         ],
         "name": "subTR_CreateModel_GenImg",
@@ -6087,7 +6087,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          3360,
+          3568,
           1296
         ],
         "name": "subTR_CreateModel_GenImg1",
@@ -6121,7 +6121,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          1600,
+          1808,
           3824
         ],
         "id": "74148b74-7bd2-4bac-bd48-076f16638ec6",
@@ -6144,7 +6144,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          1984,
+          2192,
           3888
         ],
         "id": "b521a44f-cc74-47e0-948e-dee15f6273c7",
@@ -6179,7 +6179,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          1808,
+          2016,
           3712
         ],
         "id": "71618ee0-d3fc-4048-8ed9-0465ca8b0479",
@@ -6214,7 +6214,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          1408,
+          1616,
           3824
         ],
         "id": "9cf024ac-adea-43c0-b2d3-0e26d06b38d1",
@@ -6248,7 +6248,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3792,
+          4000,
           6272
         ],
         "id": "d65bcade-6c8f-49f9-b5db-ea3293c690d6",
@@ -6271,7 +6271,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          4256,
+          4464,
           6272
         ],
         "id": "78c45abd-2aa5-46e7-b81a-b885e7a04309",
@@ -6306,7 +6306,7 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          4048,
+          4256,
           6112
         ],
         "id": "ff85472e-67d0-4497-8d5d-c75a553e0afb",
@@ -6341,7 +6341,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          3552,
+          3760,
           6288
         ],
         "id": "17f9c978-289f-4b40-b241-35a26650ab00",
@@ -6360,7 +6360,7 @@
         "name": "CreateMsgSelectItems",
         "type": "n8n-nodes-base.httpRequest",
         "position": [
-          544,
+          752,
           5632
         ],
         "typeVersion": 4.2
@@ -6376,7 +6376,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3152,
+          3360,
           6464
         ],
         "id": "57e45416-ebce-41ce-88c9-20078659cd20",
@@ -6401,7 +6401,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          6192,
+          6400,
           6320
         ],
         "id": "6d1c0fea-752e-4421-9fcb-aaa66030c87c",
@@ -6425,7 +6425,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2688,
+          2896,
           912
         ],
         "id": "c818ec76-40cb-432a-b7eb-006856cc8e53",
@@ -6576,7 +6576,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          3600,
+          3808,
           912
         ],
         "id": "43973f2c-3542-489e-947e-9eb1b758d667",
@@ -6597,7 +6597,7 @@
         "name": "CreateMsgSelectItems1",
         "type": "n8n-nodes-base.httpRequest",
         "position": [
-          1376,
+          1584,
           3264
         ],
         "typeVersion": 4.2
@@ -6611,7 +6611,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          4032,
+          4240,
           3872
         ],
         "typeVersion": 1,
@@ -6653,7 +6653,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          2688,
+          2896,
           720
         ],
         "name": "Call subTR_CM_CancelClbk",
@@ -6668,7 +6668,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2880,
+          3088,
           6592
         ],
         "id": "69ce8a6b-8cbb-4050-9fa0-2732375f783c",
@@ -6811,7 +6811,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          2848,
+          3056,
           4336
         ],
         "name": "GetObjGallery_CompleteLook",
@@ -6946,7 +6946,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          2848,
+          3056,
           4576
         ],
         "name": "Call GetObjGallery_NoCompleteLook",
@@ -6975,7 +6975,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          5696,
+          5904,
           6304
         ],
         "id": "5ddccb3e-deb3-42ba-87ab-10b2c6f26e32",
@@ -7041,7 +7041,7 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          2416,
+          2624,
           4544
         ],
         "id": "e473cce9-b64b-4f13-8c68-24a185b23c7c",
@@ -7118,7 +7118,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1760,
+          1968,
           4448
         ],
         "id": "053ebfb1-1799-4881-baa7-eb015799f15a",
@@ -7161,7 +7161,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          1456,
+          1664,
           4880
         ],
         "id": "eb37efc2-a070-41ea-8ba3-d8efffd5779f",
@@ -7178,7 +7178,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1840,
+          2048,
           4768
         ],
         "id": "00ec869b-3319-496e-bfb7-0b43f42b3dbc",
@@ -7203,7 +7203,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2080,
+          2288,
           4768
         ],
         "id": "6fc3877c-14f5-4c02-a443-52cad1c6acf3",
@@ -7309,7 +7309,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3,
         "position": [
-          1872,
+          2080,
           5024
         ],
         "id": "d58744e2-6e30-45d4-9511-b7c847784a9e",
@@ -7326,7 +7326,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2560,
+          2768,
           5104
         ],
         "id": "69c7cf30-8d2b-40f8-a893-a16a42ec3c2d",
@@ -7351,7 +7351,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2336,
+          2544,
           5088
         ],
         "id": "ef98ff57-fb57-4f8a-8ee0-170917a2f7da",
@@ -7394,7 +7394,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2784,
+          2992,
           5104
         ],
         "id": "25754f51-2693-475d-a3ef-71d533dc2d63",
@@ -7437,7 +7437,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          880,
+          1088,
           5296
         ],
         "id": "510764cb-ab15-42e4-978a-442e566f3f77",
@@ -7454,7 +7454,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1264,
+          1472,
           5184
         ],
         "id": "19173023-6ce2-48db-9183-d38437ab0d77",
@@ -7479,7 +7479,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1504,
+          1712,
           5184
         ],
         "id": "b1dfd55b-9b43-4c32-8923-1b69d8d58d85",
@@ -7610,7 +7610,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.3,
         "position": [
-          1424,
+          1632,
           5376
         ],
         "id": "63871a6a-79da-4117-b869-6102e29f49c6",
@@ -7645,7 +7645,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          16,
+          224,
           4288
         ],
         "id": "e1ef0407-bc03-42b1-990b-fe371262e726",
@@ -7667,7 +7667,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -48,
+          160,
           4192
         ],
         "typeVersion": 1,
@@ -7685,7 +7685,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1952,
+          2160,
           5264
         ],
         "id": "9fb81106-941e-4f72-ae85-5bbfe5847b0d",
@@ -7710,7 +7710,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1760,
+          1968,
           5264
         ],
         "id": "8c5b52bf-750b-499f-a265-64b288dd33f3",
@@ -7753,7 +7753,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2208,
+          2416,
           5392
         ],
         "id": "d4b7fb37-f81c-464d-a51e-563ebf5827aa",
@@ -7941,7 +7941,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          2160,
+          2368,
           1552
         ],
         "typeVersion": 1,
@@ -7961,7 +7961,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1056,
+          1264,
           5344
         ],
         "id": "c94fd2b4-822d-48ee-8ae2-dfc662a5a07a",
@@ -8003,7 +8003,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          2080,
+          2288,
           5024
         ],
         "id": "acb55778-d508-4d6e-9b7b-93b1b73af1ac",
@@ -8020,7 +8020,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2384,
+          2592,
           4864
         ],
         "id": "d0d8fe15-f377-471c-8fe3-5657cc5b28dc",
@@ -8045,7 +8045,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2656,
+          2864,
           4864
         ],
         "id": "da7bc8df-afce-49ee-bc19-e96702619045",
@@ -8237,7 +8237,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          3072,
+          3280,
           5104
         ],
         "id": "9e920e9c-f668-4c8e-91d2-fc7ffd09f6b5",
@@ -8380,7 +8380,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          2448,
+          2656,
           5392
         ],
         "id": "00e56041-c4f4-457c-9385-31dc3ca345a8",
@@ -8584,7 +8584,7 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          1472,
+          1680,
           1840
         ],
         "name": "Call subTR_CL_CallbacksProcessing",
@@ -8618,7 +8618,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          1584,
+          1792,
           5376
         ],
         "id": "cf8a0c33-6990-4103-8d73-d767722fa20b",
@@ -8652,7 +8652,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3360,
+          3568,
           912
         ],
         "id": "58055af7-2f2a-4f06-9499-8aab7b13c284",
@@ -8694,7 +8694,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3808,
+          4016,
           7008
         ],
         "id": "7e2df7cd-bc56-4038-a874-9a0b7c9ccc5a",
@@ -8844,7 +8844,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          4096,
+          4304,
           7008
         ],
         "id": "8d29eb15-83ec-452a-a984-4087ad6ff44b",
@@ -8991,7 +8991,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          1104,
+          1312,
           2128
         ],
         "id": "2cfc266d-ed57-4a39-b8c0-4dfa0cf1a0ed",
@@ -9009,7 +9009,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1344,
+          1552,
           2128
         ],
         "id": "0a9db7e7-4583-4309-ac22-e80e04695d82",
@@ -9034,7 +9034,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1568,
+          1776,
           2128
         ],
         "id": "0537ef01-4883-4e52-9058-0f2547486ac2",
@@ -9187,7 +9187,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          240,
+          448,
           4832
         ],
         "id": "d29d11aa-1c27-42dc-97e8-ded966626bcc",
@@ -9206,7 +9206,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          16,
+          224,
           4832
         ],
         "id": "21790e4e-0f11-4708-a0b1-e31c7a210971",
@@ -9231,7 +9231,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          464,
+          672,
           4832
         ],
         "id": "a64fbcc5-d104-43c8-b8af-120008949c57",
@@ -9272,7 +9272,7 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -176,
+          32,
           4496
         ],
         "id": "e1b22275-c03e-4c3e-88c4-7fd2a31ecc94",
@@ -9289,7 +9289,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1232,
+          1440,
           5360
         ],
         "id": "205c9a35-0fdf-42bf-9e28-f3c3beec9cc5",
@@ -9302,6 +9302,29 @@
             "name": "ChangeFace TG PROD"
           }
         }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "6cf803db-f817-4f21-affd-fe391d10406b",
+                "name": "TEST",
+                "value": "NODE",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2080,
+          2992
+        ],
+        "id": "1feef3ec-6bc4-42f6-a97e-4d97219d855d",
+        "name": "Edit Fields"
       }
     ],
     "connections": {
@@ -9309,7 +9332,7 @@
         "main": [
           [
             {
-              "node": "DebugMode",
+              "node": "Edit Fields",
               "type": "main",
               "index": 0
             }
@@ -10968,30 +10991,41 @@
             }
           ]
         ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "DebugMode",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "DLS  ",
-    "name": "Version 82920cef",
+    "name": "Version 4db2b9e3",
     "description": "",
     "autosaved": true,
     "workflowPublishHistory": [
       {
-        "createdAt": "2026-03-24T21:06:05.295Z",
-        "id": 1788,
+        "createdAt": "2026-03-24T21:08:20.058Z",
+        "id": 1790,
         "workflowId": "JrfEgCM2R7q7xfnb",
-        "versionId": "82920cef-3f19-48dd-9ac0-000db2127e68",
+        "versionId": "4db2b9e3-6323-4165-8c2d-992d5d20e879",
         "event": "activated",
         "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
       }
     ]
   },
-  "activeVersionId": "82920cef-3f19-48dd-9ac0-000db2127e68",
+  "activeVersionId": "4db2b9e3-6323-4165-8c2d-992d5d20e879",
   "connections": {
     "Telegram Trigger": {
       "main": [
         [
           {
-            "node": "DebugMode",
+            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -12650,6 +12684,17 @@
           }
         ]
       ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "DebugMode",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-03-02T16:18:24.430Z",
@@ -12807,7 +12852,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1056,
+        1264,
         3184
       ],
       "id": "2ca4ed30-4e3a-4e5d-bd75-de6e90c67a30",
@@ -12856,7 +12901,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        -336,
+        -128,
         4496
       ],
       "id": "aa53fe4c-f7a4-46f4-af10-51c570fc4801",
@@ -13098,7 +13143,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        480,
+        688,
         4272
       ],
       "id": "e81ca1ed-13ee-410c-bc92-50eeeb178c91",
@@ -13243,7 +13288,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1888,
+        2096,
         3280
       ],
       "id": "cdd1ab3c-aa23-4fa8-a62e-d51109195825",
@@ -13288,7 +13333,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        688,
+        896,
         3648
       ],
       "id": "6538091a-cbc6-409a-a8c7-c1810728735b",
@@ -13305,7 +13350,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1056,
+        1264,
         3376
       ],
       "id": "cd1b0e0c-fc47-43b9-82eb-cdce2e9f6001",
@@ -13329,7 +13374,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1648,
+        1856,
         3280
       ],
       "id": "f67227e1-78e4-4407-afff-5a7363ffd085",
@@ -13377,7 +13422,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2224,
+        2432,
         4272
       ],
       "id": "33a3a2e0-a3ff-4292-9d7d-e21362100030",
@@ -13540,7 +13585,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        4096,
+        4304,
         3952
       ],
       "id": "f0be6919-717b-4311-a16f-e5b51c4a589d",
@@ -13588,7 +13633,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1504,
+        1712,
         4368
       ],
       "id": "7ab8d11b-6f91-4a50-9c93-ae34f093e597",
@@ -13605,7 +13650,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2000,
+        2208,
         4272
       ],
       "id": "15570458-4a4a-4b53-99cc-d35c6017cf3b",
@@ -13726,7 +13771,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1328,
+        1536,
         4032
       ],
       "id": "6e497332-5f80-4f4f-8154-5b02c1eaa93a",
@@ -13740,7 +13785,7 @@
       "type": "n8n-nodes-base.limit",
       "typeVersion": 1,
       "position": [
-        832,
+        1040,
         3184
       ],
       "id": "f7e5f676-da53-43b3-adc0-ac01d9dffdc6",
@@ -13756,7 +13801,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1136,
+        1344,
         3840
       ],
       "id": "79fd35c8-238b-494e-940f-0c3000e652b2",
@@ -13781,7 +13826,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3616,
+        3824,
         3312
       ],
       "id": "c4dd31bd-c19a-4fb2-ad9f-ec02344448e0",
@@ -13811,7 +13856,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2688,
+        2896,
         3952
       ],
       "id": "a524063b-df08-4837-aa6a-8be5fc2fd058",
@@ -13844,7 +13889,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3600,
+        3808,
         3664
       ],
       "id": "be1de76d-1c3c-4c1c-996c-cc319f7469ef",
@@ -13861,7 +13906,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3856,
+        4064,
         3632
       ],
       "id": "1a2b6ef2-f448-4110-8df7-09d7d1047c0d",
@@ -13886,7 +13931,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3872,
+        4080,
         3952
       ],
       "id": "72a629a3-eb75-4928-8e17-a2c8aa1f3e74",
@@ -13928,7 +13973,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3392,
+        3600,
         3808
       ],
       "id": "58617076-0496-44c7-b630-f540eebf682a",
@@ -13952,7 +13997,7 @@
       "name": "Set Bot Token",
       "type": "n8n-nodes-base.set",
       "position": [
-        -1680,
+        -1472,
         2992
       ],
       "typeVersion": 3.4
@@ -13971,7 +14016,7 @@
       "name": "Is CALLBACK?",
       "type": "n8n-nodes-base.if",
       "position": [
-        -1392,
+        -1184,
         2992
       ],
       "typeVersion": 1
@@ -13984,7 +14029,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2352,
+        2560,
         3952
       ],
       "id": "a6c056f6-78ab-42b3-b72f-d9742d8db7d5",
@@ -14048,7 +14093,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        2192,
+        2400,
         3952
       ],
       "id": "ebda3b2c-1220-4a1a-95bb-8daae61356f9",
@@ -14096,7 +14141,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        -128,
+        80,
         5632
       ],
       "id": "28bad94d-1ad8-4ac3-b728-283eec246b0a",
@@ -14132,7 +14177,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1856,
+        -1648,
         2992
       ],
       "id": "aa9c5e42-1cbc-49cf-b4a1-1826548cbd6f",
@@ -14166,7 +14211,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        928,
+        1136,
         3680
       ],
       "id": "1489ea61-be1a-42da-9f13-4b9173acf9e6",
@@ -14181,7 +14226,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2208,
+        2416,
         4544
       ],
       "id": "853cb0f8-f7ce-4ac2-8bea-c3e829b8205e",
@@ -14202,7 +14247,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1984,
+        2192,
         4544
       ],
       "id": "bfa680ae-a3ee-47c6-b362-daa46cc92bf6",
@@ -14335,7 +14380,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        320,
+        528,
         5632
       ],
       "id": "a9304f12-d683-49a8-9d74-f7bfb679d135",
@@ -14402,7 +14447,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        112,
+        320,
         4528
       ],
       "id": "978e1129-4df2-4a7d-bede-58e25252ac49",
@@ -14416,7 +14461,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -320,
+        -112,
         5552
       ],
       "typeVersion": 1,
@@ -14562,7 +14607,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1024,
+        1232,
         5632
       ],
       "id": "8904dc1d-c661-44bb-aa6a-83d26b36f480",
@@ -14580,7 +14625,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        768,
+        976,
         5632
       ],
       "id": "c1fa80ce-1e30-47e6-9f07-7b54dfccf683",
@@ -14733,7 +14778,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        6032,
+        6240,
         5872
       ],
       "id": "ca365f1a-d5b5-44f7-a6d2-24a34599785e",
@@ -14778,7 +14823,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2864,
+        3072,
         6160
       ],
       "id": "a99ae647-c93c-418f-ae3a-82589e866eb3",
@@ -14795,7 +14840,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        5584,
+        5792,
         5680
       ],
       "id": "f9021e00-0379-4823-9319-7eb8a0a70d44",
@@ -14819,7 +14864,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        5840,
+        6048,
         5840
       ],
       "id": "8763106c-fd27-41ce-a0d6-cefaf6ecb134",
@@ -14972,7 +15017,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        6624,
+        6832,
         6608
       ],
       "id": "1cd4d358-7148-4cba-a4bf-ec5482bb11dc",
@@ -15129,7 +15174,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        5904,
+        6112,
         6336
       ],
       "id": "f04c0cac-4b17-4fb8-b504-41f65197735c",
@@ -15164,7 +15209,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3056,
+        3264,
         6768
       ],
       "id": "22973a17-2657-447b-8595-f5ec1129109f",
@@ -15181,7 +15226,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        5808,
+        6016,
         6624
       ],
       "id": "a037e642-dbe7-4f34-ab62-62e00ce46259",
@@ -15302,7 +15347,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        3536,
+        3744,
         6480
       ],
       "id": "b6046993-99ff-4543-a04f-52f6a72d25e4",
@@ -15320,7 +15365,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        5584,
+        5792,
         5872
       ],
       "id": "574c09b7-dc9d-48b6-a83d-be94dcbea7af",
@@ -15350,7 +15395,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4800,
+        5008,
         6256
       ],
       "id": "0fc7695a-eb66-402a-af72-2d76d4cfeaa6",
@@ -15383,7 +15428,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        5392,
+        5600,
         6160
       ],
       "id": "022e7171-9749-4621-b59e-7006b7aa0634",
@@ -15400,7 +15445,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        5696,
+        5904,
         6064
       ],
       "id": "50ec04f5-5ccd-44b0-b155-e6c1aed8aff0",
@@ -15454,7 +15499,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        6384,
+        6592,
         6320
       ],
       "id": "e407e379-2f60-449d-92fc-8e20f5fcf41c",
@@ -15496,7 +15541,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        5168,
+        5376,
         6256
       ],
       "id": "2749dbac-0f13-4c46-9b20-54572773dc75",
@@ -15510,7 +15555,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        4640,
+        4848,
         6272
       ],
       "id": "9fd73991-8645-40fe-9783-81a48fc92665",
@@ -15559,7 +15604,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        4480,
+        4688,
         6272
       ],
       "id": "5bc3ce89-abba-4bcd-a325-6ef67e048f54",
@@ -15593,7 +15638,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3008,
+        3216,
         6288
       ],
       "id": "d499b6d8-8bf7-418a-88a0-2fca005026fe",
@@ -15607,7 +15652,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3312,
+        3520,
         6864
       ],
       "id": "dd08c850-926e-4f43-86ce-39be94054709",
@@ -15628,7 +15673,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2112,
+        2320,
         5632
       ],
       "typeVersion": 1,
@@ -15644,7 +15689,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3312,
+        3520,
         6352
       ],
       "id": "98334a79-1e69-4226-bba4-8ecd34830e87",
@@ -15667,7 +15712,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -880,
+        -672,
         3504
       ],
       "typeVersion": 1,
@@ -15809,7 +15854,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        2640,
+        2848,
         6336
       ],
       "id": "61554298-aaad-46f0-b16c-c720a0b943d7",
@@ -15838,7 +15883,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3136,
+        3344,
         912
       ],
       "id": "6c34fd27-ce24-41ed-a7b2-0e8a6cb12cfc",
@@ -15875,7 +15920,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        2912,
+        3120,
         912
       ],
       "id": "522f0167-41d0-40b1-964f-dc7469a9724b",
@@ -16020,7 +16065,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        2448,
+        2656,
         4272
       ],
       "id": "5c7999f3-c08a-4039-be86-505094742933",
@@ -16061,7 +16106,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1296,
+        1504,
         4368
       ],
       "id": "2cd5d102-fd09-44fe-afe3-df77292b9bfa",
@@ -16095,7 +16140,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3536,
+        3744,
         6864
       ],
       "id": "8bdd9f3e-f135-42bc-89e5-b4cd88db0400",
@@ -16112,7 +16157,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3776,
+        3984,
         6816
       ],
       "id": "d487f1cb-7ee6-4636-8591-ed3b1af6de1b",
@@ -16210,7 +16255,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        736,
+        944,
         1840
       ],
       "id": "64c93966-b74e-4c5a-887f-25e9b506d6e4",
@@ -16426,7 +16471,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        2336,
+        2544,
         1008
       ],
       "id": "9ee54b43-6e85-4504-9b93-f14b8b616d76",
@@ -16565,7 +16610,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -592,
+        -384,
         4352
       ],
       "id": "4be07484-6729-412f-845c-1feb759c9e34",
@@ -16579,7 +16624,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1632,
+        1840,
         704
       ],
       "typeVersion": 1,
@@ -16595,7 +16640,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        4016,
+        4224,
         6768
       ],
       "id": "78f7efdd-9e82-4223-a37d-b2844eb4e55f",
@@ -16723,7 +16768,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        4352,
+        4560,
         6784
       ],
       "name": "Call subTR_CreateModel_GetFeature",
@@ -16771,7 +16816,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        -336,
+        -128,
         2096
       ],
       "id": "7c0e0cd2-4185-41f1-b8e2-0dfb814953b7",
@@ -16932,7 +16977,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        4976,
+        5184,
         6256
       ],
       "name": "subAI_Model",
@@ -17097,7 +17142,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        2880,
+        3088,
         3952
       ],
       "id": "0024d5ca-8f63-4216-94f3-efe9246078aa",
@@ -17114,7 +17159,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        4320,
+        4528,
         3952
       ],
       "id": "f546cae9-a5ba-44de-bf38-8b3fc0e2d03e",
@@ -17267,7 +17312,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        4544,
+        4752,
         3952
       ],
       "id": "221bd1bb-f16b-461c-ad11-59e6ddd2a27a",
@@ -17284,7 +17329,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2688,
+        2896,
         1104
       ],
       "id": "e98850b2-9d5d-4680-95b9-c96dcb15dfd5",
@@ -17309,7 +17354,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2544,
+        2752,
         3952
       ],
       "id": "59f7e76f-afea-4d66-913e-f1a05bca3cbd",
@@ -17333,7 +17378,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2912,
+        3120,
         1104
       ],
       "id": "07a4b546-e941-429b-a93c-f19eab1e9c9b",
@@ -17354,7 +17399,7 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        3616,
+        3824,
         3904
       ],
       "id": "4f3bcd2d-532e-44d2-8dde-f8b46ad1ee29",
@@ -17367,7 +17412,7 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        1136,
+        1344,
         4496
       ],
       "id": "7343717e-9f4b-4b8f-a314-beb06fac1aad",
@@ -17380,7 +17425,7 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        5472,
+        5680,
         6384
       ],
       "id": "dbb75d0d-2a93-4cc0-9591-b8bfeef36ec3",
@@ -17403,7 +17448,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2144,
+        2352,
         1104
       ],
       "id": "ca4ac093-84c7-46cb-8519-30f47712b790",
@@ -17548,7 +17593,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        4384,
+        4592,
         3664
       ],
       "id": "5f92f611-5a3c-4756-a479-1dd891ff31a2",
@@ -17565,7 +17610,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        4112,
+        4320,
         3664
       ],
       "id": "e604ca2c-ea2b-4897-a638-7685437c2a84",
@@ -17659,7 +17704,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        3360,
+        3568,
         1488
       ],
       "id": "76f43254-7835-4f83-8593-926cda4b4ec7",
@@ -17676,7 +17721,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2688,
+        2896,
         1296
       ],
       "id": "73421be4-7ada-44b8-a673-bb9021bfba29",
@@ -17725,7 +17770,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        2912,
+        3120,
         1296
       ],
       "id": "6c173a41-564a-4aa7-9683-772118a433ba",
@@ -17742,7 +17787,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3136,
+        3344,
         1296
       ],
       "id": "e8c0733d-130d-4882-a5da-cf3ea8f23ec8",
@@ -17767,7 +17812,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2688,
+        2896,
         1488
       ],
       "id": "f63e1fb2-e327-4bc9-b300-2d6c98e4222d",
@@ -17816,7 +17861,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        2912,
+        3120,
         1488
       ],
       "id": "4c40e523-6423-4d8c-8c78-d6a16c40e906",
@@ -17833,7 +17878,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3136,
+        3344,
         1488
       ],
       "id": "52a41303-bc2e-4770-a892-575e9216c0d5",
@@ -17988,7 +18033,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        96,
+        304,
         5632
       ],
       "id": "68e01864-bb99-4401-b6c3-c0224ef2dd55",
@@ -18136,7 +18181,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        608,
+        816,
         3184
       ],
       "id": "45978be4-e732-4707-8bdb-4ee8aca892e5",
@@ -18160,7 +18205,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2000,
+        -1792,
         2992
       ],
       "id": "46168c2a-11d4-40e6-a33f-e47a3226a2d0",
@@ -18193,7 +18238,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3056,
+        3264,
         3952
       ],
       "id": "1f77055b-5d50-4481-b407-62dc18db1853",
@@ -18210,7 +18255,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3216,
+        3424,
         3712
       ],
       "id": "ea77f956-b564-41e5-bdc0-1ede80c993e1",
@@ -18233,7 +18278,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -320,
+        -112,
         5872
       ],
       "typeVersion": 1,
@@ -18267,7 +18312,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        -192,
+        16,
         5968
       ],
       "id": "785b0241-d5e5-4bb5-8c85-b21996e62a01",
@@ -18351,7 +18396,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        5920,
+        6128,
         6064
       ],
       "id": "16936766-7ab0-4be8-9097-d3996c1f1cb9",
@@ -18504,7 +18549,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        6112,
+        6320,
         6064
       ],
       "id": "7e84ed0b-4e5a-4b3f-bd25-0ae8b0886fd5",
@@ -18623,7 +18668,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        3136,
+        3344,
         1104
       ],
       "name": "subTR_CreateModel_GenImg",
@@ -18742,7 +18787,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        3360,
+        3568,
         1296
       ],
       "name": "subTR_CreateModel_GenImg1",
@@ -18776,7 +18821,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1600,
+        1808,
         3824
       ],
       "id": "74148b74-7bd2-4bac-bd48-076f16638ec6",
@@ -18799,7 +18844,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1984,
+        2192,
         3888
       ],
       "id": "b521a44f-cc74-47e0-948e-dee15f6273c7",
@@ -18834,7 +18879,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        1808,
+        2016,
         3712
       ],
       "id": "71618ee0-d3fc-4048-8ed9-0465ca8b0479",
@@ -18869,7 +18914,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1408,
+        1616,
         3824
       ],
       "id": "9cf024ac-adea-43c0-b2d3-0e26d06b38d1",
@@ -18903,7 +18948,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3792,
+        4000,
         6272
       ],
       "id": "d65bcade-6c8f-49f9-b5db-ea3293c690d6",
@@ -18926,7 +18971,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        4256,
+        4464,
         6272
       ],
       "id": "78c45abd-2aa5-46e7-b81a-b885e7a04309",
@@ -18961,7 +19006,7 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        4048,
+        4256,
         6112
       ],
       "id": "ff85472e-67d0-4497-8d5d-c75a553e0afb",
@@ -18996,7 +19041,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3552,
+        3760,
         6288
       ],
       "id": "17f9c978-289f-4b40-b241-35a26650ab00",
@@ -19015,7 +19060,7 @@
       "name": "CreateMsgSelectItems",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        544,
+        752,
         5632
       ],
       "typeVersion": 4.2
@@ -19031,7 +19076,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3152,
+        3360,
         6464
       ],
       "id": "57e45416-ebce-41ce-88c9-20078659cd20",
@@ -19056,7 +19101,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        6192,
+        6400,
         6320
       ],
       "id": "6d1c0fea-752e-4421-9fcb-aaa66030c87c",
@@ -19080,7 +19125,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2688,
+        2896,
         912
       ],
       "id": "c818ec76-40cb-432a-b7eb-006856cc8e53",
@@ -19231,7 +19276,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        3600,
+        3808,
         912
       ],
       "id": "43973f2c-3542-489e-947e-9eb1b758d667",
@@ -19252,7 +19297,7 @@
       "name": "CreateMsgSelectItems1",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        1376,
+        1584,
         3264
       ],
       "typeVersion": 4.2
@@ -19266,7 +19311,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        4032,
+        4240,
         3872
       ],
       "typeVersion": 1,
@@ -19308,7 +19353,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2688,
+        2896,
         720
       ],
       "name": "Call subTR_CM_CancelClbk",
@@ -19323,7 +19368,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2880,
+        3088,
         6592
       ],
       "id": "69ce8a6b-8cbb-4050-9fa0-2732375f783c",
@@ -19466,7 +19511,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2848,
+        3056,
         4336
       ],
       "name": "GetObjGallery_CompleteLook",
@@ -19601,7 +19646,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        2848,
+        3056,
         4576
       ],
       "name": "Call GetObjGallery_NoCompleteLook",
@@ -19630,7 +19675,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        5696,
+        5904,
         6304
       ],
       "id": "5ddccb3e-deb3-42ba-87ab-10b2c6f26e32",
@@ -19696,7 +19741,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        2416,
+        2624,
         4544
       ],
       "id": "e473cce9-b64b-4f13-8c68-24a185b23c7c",
@@ -19773,7 +19818,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1760,
+        1968,
         4448
       ],
       "id": "053ebfb1-1799-4881-baa7-eb015799f15a",
@@ -19816,7 +19861,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1456,
+        1664,
         4880
       ],
       "id": "eb37efc2-a070-41ea-8ba3-d8efffd5779f",
@@ -19833,7 +19878,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1840,
+        2048,
         4768
       ],
       "id": "00ec869b-3319-496e-bfb7-0b43f42b3dbc",
@@ -19858,7 +19903,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2080,
+        2288,
         4768
       ],
       "id": "6fc3877c-14f5-4c02-a443-52cad1c6acf3",
@@ -19964,7 +20009,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        1872,
+        2080,
         5024
       ],
       "id": "d58744e2-6e30-45d4-9511-b7c847784a9e",
@@ -19981,7 +20026,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2560,
+        2768,
         5104
       ],
       "id": "69c7cf30-8d2b-40f8-a893-a16a42ec3c2d",
@@ -20006,7 +20051,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2336,
+        2544,
         5088
       ],
       "id": "ef98ff57-fb57-4f8a-8ee0-170917a2f7da",
@@ -20049,7 +20094,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2784,
+        2992,
         5104
       ],
       "id": "25754f51-2693-475d-a3ef-71d533dc2d63",
@@ -20092,7 +20137,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        880,
+        1088,
         5296
       ],
       "id": "510764cb-ab15-42e4-978a-442e566f3f77",
@@ -20109,7 +20154,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1264,
+        1472,
         5184
       ],
       "id": "19173023-6ce2-48db-9183-d38437ab0d77",
@@ -20134,7 +20179,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1504,
+        1712,
         5184
       ],
       "id": "b1dfd55b-9b43-4c32-8923-1b69d8d58d85",
@@ -20265,7 +20310,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        1424,
+        1632,
         5376
       ],
       "id": "63871a6a-79da-4117-b869-6102e29f49c6",
@@ -20300,7 +20345,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        16,
+        224,
         4288
       ],
       "id": "e1ef0407-bc03-42b1-990b-fe371262e726",
@@ -20322,7 +20367,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -48,
+        160,
         4192
       ],
       "typeVersion": 1,
@@ -20340,7 +20385,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1952,
+        2160,
         5264
       ],
       "id": "9fb81106-941e-4f72-ae85-5bbfe5847b0d",
@@ -20365,7 +20410,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1760,
+        1968,
         5264
       ],
       "id": "8c5b52bf-750b-499f-a265-64b288dd33f3",
@@ -20408,7 +20453,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2208,
+        2416,
         5392
       ],
       "id": "d4b7fb37-f81c-464d-a51e-563ebf5827aa",
@@ -20596,7 +20641,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2160,
+        2368,
         1552
       ],
       "typeVersion": 1,
@@ -20616,7 +20661,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1056,
+        1264,
         5344
       ],
       "id": "c94fd2b4-822d-48ee-8ae2-dfc662a5a07a",
@@ -20658,7 +20703,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2080,
+        2288,
         5024
       ],
       "id": "acb55778-d508-4d6e-9b7b-93b1b73af1ac",
@@ -20675,7 +20720,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2384,
+        2592,
         4864
       ],
       "id": "d0d8fe15-f377-471c-8fe3-5657cc5b28dc",
@@ -20700,7 +20745,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2656,
+        2864,
         4864
       ],
       "id": "da7bc8df-afce-49ee-bc19-e96702619045",
@@ -20892,7 +20937,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        3072,
+        3280,
         5104
       ],
       "id": "9e920e9c-f668-4c8e-91d2-fc7ffd09f6b5",
@@ -21035,7 +21080,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        2448,
+        2656,
         5392
       ],
       "id": "00e56041-c4f4-457c-9385-31dc3ca345a8",
@@ -21239,7 +21284,7 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1472,
+        1680,
         1840
       ],
       "name": "Call subTR_CL_CallbacksProcessing",
@@ -21273,7 +21318,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1584,
+        1792,
         5376
       ],
       "id": "cf8a0c33-6990-4103-8d73-d767722fa20b",
@@ -21307,7 +21352,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3360,
+        3568,
         912
       ],
       "id": "58055af7-2f2a-4f06-9499-8aab7b13c284",
@@ -21349,7 +21394,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3808,
+        4016,
         7008
       ],
       "id": "7e2df7cd-bc56-4038-a874-9a0b7c9ccc5a",
@@ -21499,7 +21544,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        4096,
+        4304,
         7008
       ],
       "id": "8d29eb15-83ec-452a-a984-4087ad6ff44b",
@@ -21646,7 +21691,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1104,
+        1312,
         2128
       ],
       "id": "2cfc266d-ed57-4a39-b8c0-4dfa0cf1a0ed",
@@ -21664,7 +21709,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1344,
+        1552,
         2128
       ],
       "id": "0a9db7e7-4583-4309-ac22-e80e04695d82",
@@ -21689,7 +21734,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1568,
+        1776,
         2128
       ],
       "id": "0537ef01-4883-4e52-9058-0f2547486ac2",
@@ -21842,7 +21887,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        240,
+        448,
         4832
       ],
       "id": "d29d11aa-1c27-42dc-97e8-ded966626bcc",
@@ -21861,7 +21906,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        16,
+        224,
         4832
       ],
       "id": "21790e4e-0f11-4708-a0b1-e31c7a210971",
@@ -21886,7 +21931,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        464,
+        672,
         4832
       ],
       "id": "a64fbcc5-d104-43c8-b8af-120008949c57",
@@ -21927,7 +21972,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -176,
+        32,
         4496
       ],
       "id": "e1b22275-c03e-4c3e-88c4-7fd2a31ecc94",
@@ -21944,7 +21989,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1232,
+        1440,
         5360
       ],
       "id": "205c9a35-0fdf-42bf-9e28-f3c3beec9cc5",
@@ -21957,6 +22002,29 @@
           "name": "ChangeFace TG PROD"
         }
       }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "6cf803db-f817-4f21-affd-fe391d10406b",
+              "name": "TEST",
+              "value": "NODE",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2080,
+        2992
+      ],
+      "id": "1feef3ec-6bc4-42f6-a97e-4d97219d855d",
+      "name": "Edit Fields"
     }
   ],
   "pinData": {
@@ -22044,8 +22112,8 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-03-24T20:25:09.137Z",
-  "versionCounter": 3069,
-  "versionId": "82920cef-3f19-48dd-9ac0-000db2127e68",
+  "updatedAt": "2026-03-24T21:08:17.177Z",
+  "versionCounter": 3075,
+  "versionId": "4db2b9e3-6323-4165-8c2d-992d5d20e879",
   "wf_name": "_Trendcore working version"
 }
