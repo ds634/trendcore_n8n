@@ -1,0 +1,4773 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-03-22T12:18:30.000Z",
+    "createdAt": "2026-03-22T12:17:52.703Z",
+    "versionId": "4d9b33fd-279c-4069-9b2a-ad623f1896ba",
+    "workflowId": "wiWVjK9If7AXfrMb",
+    "nodes": [
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{\"Что-то пошло не так: \" + $('IfResponseOk3').item.json.msg}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          48,
+          672
+        ],
+        "id": "383c4d48-240d-4829-9c01-cb73a4739042",
+        "name": "Send a text message1",
+        "webhookId": "c2768f85-f20e-4f82-96e0-41de3c69bd92",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=https://api.kie.ai/{{$('Start').item.json.modelName}}/v1/chat/completions",
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpBearerAuth",
+          "sendBody": true,
+          "specifyBody": "=json",
+          "bodyParameters": {
+            "parameters": [
+              {}
+            ]
+          },
+          "jsonBody": "={\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"{{ $('Start').item.json.message_caption }}\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"{{ $('UpsertUrl-Object-Status2').item.json.objUrl }}\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"system\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"{{ $('SP_plain').item.json.plainText }}\"\n        }\n      ]\n    }\n  ],\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"googleSearch\"\n      }\n    }\n  ],\n  \"stream\": false,\n  \"include_thoughts\": false,\n  \"reasoning_effort\": \"low\",\n  \"response_format\": {\n    \"type\": \"text\"\n  }\n}",
+          "options": {
+            "redirect": {
+              "redirect": {}
+            },
+            "timeout": 1000000
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.3,
+        "position": [
+          -1008,
+          96
+        ],
+        "id": "e1ac7625-054d-4d7a-baee-f171a78234d7",
+        "name": "AI_Model+Feature"
+      },
+      {
+        "parameters": {
+          "operation": "sendChatAction",
+          "chatId": "={{ $('Start').item.json.message_chat_id }}"
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -1072,
+          384
+        ],
+        "id": "35996858-9dcf-4bf6-ba08-5d5e1cd4582c",
+        "name": "Send a chat action5",
+        "webhookId": "d9b28dce-5a43-45b7-ae61-7a0113460e73",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+                "leftValue": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.data === empty }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -272,
+          384
+        ],
+        "id": "21f16e17-95a8-40c6-8908-5e8653387f8c",
+        "name": "IfResponseOk3"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createmodel"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetFeatureGallery"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "userId": "={{ $('Start').item.json.message_chat_id }}",
+              "dialogId": "={{ $('Start').item.json.message_chat_id }}",
+              "imgsCount": "={{ $('GetCurrentCount4').item.json.isNotEmpty()\n?$('GetCurrentCount4').item.json.imgsCount+1\n:1\n}}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "promptModel",
+                "displayName": "promptModel",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -48,
+          176
+        ],
+        "id": "441afd97-2dab-4d83-9043-c969e2c26fa2",
+        "name": "UpdateImgCount"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetFeatureGallery"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createmodel"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -3440,
+          368
+        ],
+        "id": "da19cc49-9033-4db0-8435-901a492b163b",
+        "name": "GetCurrentCount4",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "aa07ac43-d5ec-4875-980b-2bd546fe2c4e",
+                "name": "imgUrl",
+                "value": "={{ \"https://api.telegram.org/file/bot\" +$('Start').item.json.botToken + \"/\" + $('Start').item.json.result_file_path }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -3824,
+          368
+        ],
+        "id": "36c8979b-dbf5-429c-83f8-07daae18c206",
+        "name": "urlModel3"
+      },
+      {
+        "parameters": {
+          "operation": "upsert",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "FeatureGalleryRecieved"
+              },
+              {
+                "keyName": "objUrl",
+                "keyValue": "={{ \"https://api.telegram.org/file/bot\" + $('Start').item.json.botToken +\"/\"+ $('Start').item.json.result_file_path }}"
+              },
+              {
+                "keyName": "objectMainId",
+                "keyValue": "={{ $('Start').item.json.id }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "objUrl": "={{ \"https://api.telegram.org/file/bot\" + $('Start').item.json.botToken + \"/\"+$('Start').item.json.result_file_path }}",
+              "objNames": "={{ $('Start').item.json.message_caption }}",
+              "userId": "={{ $('Start').item.json.message_chat_id }}",
+              "dialogId": "={{ $('Start').item.json.message_chat_id }}",
+              "status": "FeatureGalleryRecieved",
+              "objectMainId": "={{ $('Start').item.json.id }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objNames",
+                "displayName": "objNames",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objUrl",
+                "displayName": "objUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objectDescr",
+                "displayName": "objectDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -3632,
+          368
+        ],
+        "id": "a9584209-0319-4af6-9d73-b6e7e168225a",
+        "name": "UpsertUrl-Object-Status2"
+      },
+      {
+        "parameters": {
+          "operation": "upsert",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}"
+              },
+              {
+                "keyName": "objectMainId",
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "FeatureGalleryRecieved"
+              },
+              {
+                "keyName": "objUrl",
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.imgUrls }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "userId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+              "dialogId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+              "objectMainId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}",
+              "status": "FeatureGalleryRecieved",
+              "objNames": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.ObjName }}",
+              "objUrl": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.imgUrls }}",
+              "objectDescr": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.data }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objNames",
+                "displayName": "objNames",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objUrl",
+                "displayName": "objUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objectDescr",
+                "displayName": "objectDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          544,
+          192
+        ],
+        "id": "fbb98d86-7fa7-42a1-8478-21710f69cf81",
+        "name": "UpsertFeatureNameDecr"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          800,
+          192
+        ],
+        "id": "3bad004f-fed1-48ac-8353-09b3ad17a066",
+        "name": "GetCurrentCount5"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+          "text": "={{\n\"Правки внесены!\" +\"\\n\\n\"+\n\n\"<b>Я готов создать фотомодель.</b>\" +\"\\n\\n\"+\n\n\"Вы также можете продолжить вносить правки\"+\"\\n\" + \"(осталось правок: \" + (3- $('GetCurrentCount5').item.json.imgsCount) +\").\"\n\n }}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Внести правки",
+                      "additionalFields": {
+                        "callback_data": "addFeature"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать модель",
+                      "additionalFields": {
+                        "callback_data": "generateModel"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1280,
+          144
+        ],
+        "id": "a777df74-7db8-4b82-941c-8f1a31f27bc7",
+        "name": "OP_final_model3",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "message_chat_id",
+                "type": "any"
+              },
+              {
+                "name": "message_caption",
+                "type": "any"
+              },
+              {
+                "name": "result_file_path",
+                "type": "any"
+              },
+              {
+                "name": "botToken",
+                "type": "any"
+              },
+              {
+                "name": "modelName",
+                "type": "any"
+              },
+              {
+                "name": "id",
+                "type": "any"
+              },
+              {
+                "name": "modelApi"
+              },
+              {
+                "name": "debugMode"
+              }
+            ]
+          }
+        },
+        "id": "dd39d920-e747-4eb0-9658-23003fd979bb",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          -4080,
+          384
+        ]
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "MCKUe6c7lEWRrPCq",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+            "cachedResultName": "subTR_API_AI_Selector"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "urlList_bool": false,
+              "chat_id": "={{ $('Start').item.json.message_chat_id }}",
+              "objectMainId": "={{ $('Start').item.json.id }}",
+              "modelName": "={{ $('Start').item.json.modelName }}",
+              "apiName": "={{ $('Start').item.json.modelApi }}",
+              "botTocken": "={{ $('Start').item.json.botToken }}",
+              "imgUrls": "={{ \"https://api.telegram.org/file/bot\" + $('Start').item.json.botToken + \"/\" + $('Start').item.json.result_file_path }}",
+              "ObjName": "={{ $('Start').item.json.message_caption }}",
+              "userPrompt": "={{ $('UP_plain').item.json.plainText }}",
+              "systemPrompt": "={{ $('SP_plain').item.json.plainText }}",
+              "debugMode": "={{ $('Start').item.json.debugMode }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "modelName",
+                "displayName": "modelName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "userPrompt",
+                "displayName": "userPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "imgUrls",
+                "displayName": "imgUrls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chat_id",
+                "displayName": "chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjName",
+                "displayName": "ObjName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjNameLocal",
+                "displayName": "ObjNameLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "botTocken",
+                "displayName": "botTocken",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urlList_bool",
+                "displayName": "urlList_bool",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "boolean",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -848,
+          384
+        ],
+        "id": "421f3fe7-0c32-407f-a22e-129c723cc08d",
+        "name": "Call 'subTR_API_AI_Selector'"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.data }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -672,
+          384
+        ],
+        "id": "952c26ca-2773-4b96-a13f-e2171f7e3efa",
+        "name": "Call 'subMkPlnTxt'"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "73b813d4-c0fe-4d83-9fb2-c9b594025fb9",
+                "leftValue": "={{ $json.imgsCount }}",
+                "rightValue": 3,
+                "operator": {
+                  "type": "number",
+                  "operation": "lt"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          1072,
+          192
+        ],
+        "id": "55693ede-645e-4ac2-a9c0-c3622267f0f7",
+        "name": "If<3iterations"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+          "text": "={{\"<b>Все правки внесены!</b>\" + \"\\n\\n\" +\n\n\"Я готов создать фотомодель.\" }}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать фотомодель",
+                      "additionalFields": {
+                        "callback_data": "generateModel"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1280,
+          336
+        ],
+        "id": "4014fa15-fca4-4453-a4c1-219c339ea045",
+        "name": "OP_final_model",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+                "name": "systemPromptImgFeature",
+                "value": "\"SYSTEM PROMPT: Model-Refiner v6 (Big update)\n\nI am a human craniofacial morphological blueprint refinement engine.\n\nMy role is to surgically replace only requested anatomical sections inside an existing Morphological Blueprint using structural data extracted from a provided source image, while preserving the Blueprint’s original framework, sentence architecture, anatomical order, and non-target content. I perform structural transplantation only. My result must remain a generation-ready intrinsic craniofacial blueprint and must preserve or increase structural density.\n\nI expect the user’s text input to follow this structure exactly:\n\n# Request\n\n[requested feature names]\n\n# Blueprint\n\n[existing blueprint]\n\nI parse input as follows:\n\n1. I read the content under “# Request” as the requested feature list.\n2. I read the content under “# Blueprint” as the base Morphological Blueprint to edit.\n3. I ignore the section labels themselves and process only their contents.\n4. I allow one or multiple request terms, separated by commas, line breaks, slashes, plus signs, ampersands, or combinations of them.\n5. I split multi-item requests into separate terms before canonical mapping.\n6. If the input does not contain both “# Request” and “# Blueprint” sections, or if either section is empty, I return exactly:\n   ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n\nBefore any extraction, I verify that the source image depicts a real biological human face. If the image is non-human, animal, mythical, artificial, robotic, CGI, animated, stylized, masked beyond anatomical recognition, mannequin, sculpture, doll, or AI-generated non-real morphology, I return exactly:\n⚠ Error. Ошибка - возможно, лицо плохо видно, или фотография плохого качества.\nI then stop immediately.\n\nI assume I receive:\n(1) the structured text input above\n(2) one source image containing the morphology to replicate\n\nI modify only the canonical categories named or implied inside “# Request”.\n\nCanonical categories:\nGender, Age range, Ethnicity, Face shape, Facial proportions, Skin, Forehead & hairline, Eyebrows, Eyes, Nose, Cheeks & cheekbones, Lips & philtrum, Jawline & chin, Facial hair, Ears, Scalp hair.\n\nCompact alias mapping:\nGender ← male, female, masculine, feminine, sex\nAge range ← age, apparent age, young, youthful, older, mature, middle-aged\nEthnicity ← ethnic background, ancestry, ethnic appearance\nFace shape ← face shape, oval, round, square, rectangular, oblong, heart-shaped, diamond\nFacial proportions ← proportions, facial proportions, face length, face width, facial thirds, vertical thirds, horizontal proportions, intercanthal proportion, lower-third proportion\nSkin ← skin, complexion, skin tone, skin texture, pores, pigmentation, freckles\nForehead & hairline ← forehead, hairline, frontal hairline, widow’s peak, temple recession, receding hairline\nEyebrows ← eyebrows, brows, brow shape, brow arch, brow density, brow thickness, brow tail\nEyes ← eyes, eye shape, eyelids, eye spacing, canthal tilt, lashes, under-eyes, epicanthic fold\nNose ← nose, nose bridge, nasal bridge, dorsum, nose tip, nostrils, alae, columella\nCheeks & cheekbones ← cheeks, cheekbones, malar area, zygomatic area, midface, buccal fullness\nLips & philtrum ← lips, mouth, upper lip, lower lip, cupid’s bow, vermilion, philtrum\nJawline & chin ← jawline, jaw, chin, mentum, mandibular line, jaw contour, jaw angle\nFacial hair ← facial hair, beard, moustache, mustache, stubble, goatee, sideburns, five o’clock shadow\nEars ← ears, ear size, ear projection, earlobes, lobes, helix\nScalp hair ← scalp hair, hair, haircut, hairstyle, bangs, fringe, curls, waves, straight hair, braid, ponytail, bun, part, undercut, bob, layers, hair length, hair texture, hair density\n\nMapping rules:\n\n1. If a requested term is a subregion, synonym, grooming term, hairstyle term, or facial-hair variant rather than a canonical category, I map it to the nearest valid canonical category.\n2. If multiple requested terms map to the same canonical category, I process that category once.\n3. Only mapped canonical categories may be replaced or inserted.\n4. If no valid canonical category remains after mapping, I return exactly:\n   ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n\nIdentity Lock:\nThe original Blueprint is the identity anchor. I must modify only the explicitly requested category or categories. All existing non-requested categories remain byte-level identical and must not be updated, inferred, harmonized, generalized, or drifted based on the source image.\n\nVisibility validation:\nI do not require every subfeature of a category to be perfectly visible.\nI trigger a visibility error only when the requested canonical category is genuinely not readable at a structurally useful level.\nI do not trigger a visibility error when the feature is clearly present and its primary morphology is materially readable, even if some secondary subfeatures are softened, partially obscured, cropped, blended with adjacent anatomy, affected by facial hair, affected by hairstyle, or limited by resolution.\nIf the requested category’s primary morphology is sufficiently visible, I proceed and describe only what is structurally supportable from the image.\n\nPrimary morphology thresholds by category:\nGender: global sexually dimorphic craniofacial structure\nAge range: overall age-linked facial morphology\nEthnicity: broad craniofacial patterning only when explicitly requested and structurally readable\nFace shape: global facial outline and skeletal silhouette\nFacial proportions: broad width-length and vertical-third relations\nSkin: overall cutaneous tone and visible surface texture\nForehead & hairline: forehead height, contour, and frontal or temporal hairline pattern\nEyebrows: brow thickness, density, arch, length, position\nEyes: aperture shape, spacing, lid form, canthal direction, projection pattern\nNose: bridge width, dorsum contour, projection, tip mass, base width\nCheeks & cheekbones: malar projection, midface volume, buccal contour\nLips & philtrum: lip volume, vermilion outline, philtrum length or form, oral width\nJawline & chin: mandibular breadth, chin projection, lower-face contour\nFacial hair: growth distribution, density, length, edge geometry, moustache-beard relationship\nEars: size, projection, lobe type, helix visibility when materially present\nScalp hair: overall cut, silhouette, length distribution, texture pattern, side or top contrast, density pattern\n\nSupportable Extraction Rule:\nWhen a requested category is materially readable, I must proceed and describe only the supported morphology rather than erroring. I must not require full subfeature completeness in order to replace a category.\n\nConservative Error Rule:\nI return the feature-visibility error only when the requested category is so poorly visible that no structurally useful replacement sentence can be produced without guesswork.\n\nDo-Not-Overtrigger Rule:\nFor clearly visible central facial categories such as Eyes, Nose, Lips & philtrum, Eyebrows, and Jawline & chin, I must prefer supportable partial extraction over erroring whenever primary morphology is readable.\n\nError threshold:\nIf any requested canonical feature fails the visibility threshold above, I return exactly:\n⚠ Error. Ошибка - возможно, запрашиваемую деталь плохо видно, или фотография плохого качества.\nI then stop immediately.\n\nExtraction rules:\n\n1. For each requested canonical category, I generate exactly one anatomically dense sentence.\n2. Each sentence should include as many of the following as are materially supportable from the image: skeletal framework, soft tissue volume, surface morphology, proportional relations, boundary geometry, density distribution where relevant, symmetry or asymmetry, and distinguishing markers.\n3. I use relative anatomical landmarks rather than speculative measurement claims.\n4. I use precise hue terminology when color is structurally relevant.\n5. I describe only intrinsic morphology.\n6. I do not use stylistic language, aesthetic judgment, camera-language, hedging, or commentary about visibility.\n7. I do not force unsupported subfeatures into the sentence.\n8. I prefer a dense but supportable description over overclaiming.\n9. I never use uncertainty phrases such as “appears,” “seems,” “likely,” or similar.\n10. I never use absence phrasing as filler.\n\nBlueprint replacement rules:\n\n1. I construct the final Blueprint strictly from the text contained in the “# Blueprint” section.\n2. Each canonical category must be represented by exactly one sentence in the final output.\n3. I preserve canonical sentence order.\n4. All existing non-requested sentences from the original Blueprint must remain byte-level identical.\n5. I do not paraphrase unrelated sections.\n6. I do not merge or split unrelated sentences.\n7. If a requested canonical category already exists, I replace that entire sentence.\n8. If a requested canonical category does not already exist, I insert exactly one new dense sentence at its correct canonical position.\n9. If multiple categories are requested, I process them independently while preserving all others.\n\nBlueprint priority rule:\nI describe intrinsic craniofacial morphology only. I never reference visibility, camera angle, lighting, obstruction, framing, source quality, section headers, or the existence of source material.\n\nOutput format is locked:\n\n1. 260–340 words total\n2. English only\n3. Continuous prose only\n4. Exactly one sentence per canonical category\n5. No headings, labels, commentary, or text before or after the Blueprint\n6. Strict canonical order:\n   Gender → Age range → Ethnicity → Face shape → Facial proportions → Skin → Forehead & hairline → Eyebrows → Eyes → Nose → Cheeks & cheekbones → Lips & philtrum → Jawline & chin → Facial hair → Ears → Scalp hair\n\nFinal validation:\nBefore responding, I verify all of the following:\n\n1. I used “# Request” only to determine which canonical categories to replace or insert.\n2. I used “# Blueprint” as the base text.\n3. Canonical order is correct.\n4. Output length is 260–340 words.\n5. Output is English only.\n6. Exactly one sentence exists for each canonical category in the final output.\n7. All existing non-requested sentences remained byte-level identical to the original Blueprint.\n8. Any missing requested category was inserted at the correct canonical position.\n9. I did not trigger an error merely because secondary subfeatures were ambiguous when primary morphology was sufficient.\n10. I did not return a visibility error for a requested category whose primary morphology was clearly readable at a structurally useful level.\n11. All existing non-requested categories remained byte-level identical and were not updated, inferred, harmonized, generalized, or drifted based on the source image.\n\nIf any rule fails, I regenerate internally until valid.\"",
+                "type": "string"
+              },
+              {
+                "id": "0d6a95d6-233d-448e-b28d-92ae6992c689",
+                "name": "systemPromptModelDescr",
+                "value": "={{ $('GetCurrentCount4').item.json.faceDescr }}",
+                "type": "string"
+              },
+              {
+                "id": "70ccc749-a57a-4c10-b585-6363ead0a506",
+                "name": "promptName",
+                "value": "Model-Refiner",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2320,
+          368
+        ],
+        "id": "0f44bcef-a177-43ec-97e9-d97ffc7a0c6c",
+        "name": "SP_ModelRefiner"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "037443f6-4f02-4014-9521-711cefbca918",
+                "leftValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.data }}",
+                "rightValue": "Error",
+                "operator": {
+                  "type": "string",
+                  "operation": "contains"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          160,
+          96
+        ],
+        "id": "36435dfc-395c-47c4-988d-a6904ae79d7f",
+        "name": "IfError"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+          "text": "={{ $('Call \\'subMkPlnTxt\\'').item.json.plainText }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          400,
+          0
+        ],
+        "id": "8d2c9779-6cac-407f-9318-657c79b24224",
+        "name": "OP_final_model4",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "errorMessage": "={{\"Что-то пошло не так: \" + $('IfResponseOk3').item.json.msg}}"
+        },
+        "type": "n8n-nodes-base.stopAndError",
+        "typeVersion": 1,
+        "position": [
+          192,
+          448
+        ],
+        "id": "17c3e986-3d19-4378-b6f2-73e1eb617a0c",
+        "name": "Stop and Error"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "60962d5d-2a8a-4b9a-8cbf-70f7d181b7ab",
+                "leftValue": "={{ $json.imgsCount }}",
+                "rightValue": 3,
+                "operator": {
+                  "type": "number",
+                  "operation": "lt"
+                }
+              },
+              {
+                "id": "c4d18a02-62b3-4043-9abd-fd7d589837ea",
+                "leftValue": "={{ $json.isEmpty() }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -2880,
+          384
+        ],
+        "id": "a77bfa69-21cd-402f-b8db-25fac5259d72",
+        "name": "If"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{\"Внесено максимальное количество изменений!\\nУчтены в модели только первые три.\" }}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать модель",
+                      "additionalFields": {
+                        "callback_data": "generateModel"
+                      }
+                    },
+                    {
+                      "text": "Прервать",
+                      "additionalFields": {
+                        "callback_data": "cancel"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -2688,
+          560
+        ],
+        "id": "79a424d5-00e1-472f-8b50-c5af8dc85854",
+        "name": "OP_final_model1",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+                "leftValue": "={{ $('Start').item.json.debugMode }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -2080,
+          368
+        ],
+        "id": "c5ad3103-8bdd-4505-a35f-c9c86cae57be",
+        "name": "IfDebug1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+                "name": "recievedPrompt",
+                "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_ModelRefiner').item.json.systemPromptImgFeature\n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1760,
+          384
+        ],
+        "id": "4479ebe2-47f7-4adf-b97a-adfaba46a95b",
+        "name": "SP_recievedPrompt1"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+            "mode": "list",
+            "cachedResultName": "N8N prompts",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Database",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "PromptName",
+                "lookupValue": "={{ $('SP_ModelRefiner').item.json.promptName }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -1872,
+          208
+        ],
+        "id": "54f17b1f-58fb-45a3-b94e-3b244d20886f",
+        "name": "GetPrompt1",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "x0BIkYcbd4ffwTqr",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          592,
+          0
+        ],
+        "id": "03f43406-1e29-46aa-af7d-70e9c8db66c7",
+        "name": "GetCurrentCount"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": 0,
+              "imgsCount": "={{ $json.imgsCount>0\n?$json.imgsCount-1\n:0}}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          832,
+          0
+        ],
+        "id": "0a6c9c06-1ff5-4715-acb2-bdcf258d1392",
+        "name": "count-1"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+          "text": "={{\n\"<b>Я готов создать фотомодель.</b>\" +\"\\n\\n\"+\n\n\"Вы также можете продолжить вносить правки\"+\"\\n\" + \"(осталось правок: \" + (3- $json.imgsCount) +\").\"\n\n }}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Внести правки",
+                      "additionalFields": {
+                        "callback_data": "addFeature"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать модель",
+                      "additionalFields": {
+                        "callback_data": "generateModel"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1168,
+          -64
+        ],
+        "id": "890ff583-7e8a-4dbe-9503-58740682c95f",
+        "name": "OP_final_model5",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "cd4ce484-afa3-4d2f-8100-2977a73ae421",
+                "name": "upPrompt",
+                "value": "={{\"# Request \" + $('UpsertUrl-Object-Status2').item.json.objNames +  \" # Blueprint \" +  $('GetCurrentCount4').item.json.faceDescr }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1440,
+          384
+        ],
+        "id": "6e378eb4-f9a7-4d9d-87a0-bd9400889511",
+        "name": "UP_prompt"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.upPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -1264,
+          384
+        ],
+        "id": "2cc3a3c4-e312-4dd9-a8e6-340b9180389d",
+        "name": "UP_plain"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.recievedPrompt}}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -1600,
+          384
+        ],
+        "id": "6d6951cc-b4b4-47e8-85c9-7eaf76496125",
+        "name": "SP_plain"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          1408,
+          -64
+        ],
+        "id": "41671c8e-94c4-4350-bbf6-633bd687beba",
+        "name": "UpdateImgid"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          1472,
+          144
+        ],
+        "id": "137cd3c3-4779-4651-a5b8-5eb58939e82b",
+        "name": "UpdateImgid1"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          1504,
+          336
+        ],
+        "id": "f6e14820-adad-49d1-94ae-6717d5a45c8f",
+        "name": "UpdateImgid2"
+      }
+    ],
+    "connections": {
+      "urlModel3": {
+        "main": [
+          [
+            {
+              "node": "UpsertUrl-Object-Status2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UpsertFeatureNameDecr": {
+        "main": [
+          [
+            {
+              "node": "GetCurrentCount5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetCurrentCount5": {
+        "main": [
+          [
+            {
+              "node": "If<3iterations",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a chat action5": {
+        "main": [
+          [
+            {
+              "node": "Call 'subTR_API_AI_Selector'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfResponseOk3": {
+        "main": [
+          [
+            {
+              "node": "UpdateImgCount",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Stop and Error",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UpdateImgCount": {
+        "main": [
+          [
+            {
+              "node": "IfError",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetCurrentCount4": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UpsertUrl-Object-Status2": {
+        "main": [
+          [
+            {
+              "node": "GetCurrentCount4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "urlModel3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subTR_API_AI_Selector'": {
+        "main": [
+          [
+            {
+              "node": "Call 'subMkPlnTxt'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subMkPlnTxt'": {
+        "main": [
+          [
+            {
+              "node": "IfResponseOk3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If<3iterations": {
+        "main": [
+          [
+            {
+              "node": "OP_final_model3",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "OP_final_model",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OP_final_model3": {
+        "main": [
+          [
+            {
+              "node": "UpdateImgid1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OP_final_model": {
+        "main": [
+          [
+            {
+              "node": "UpdateImgid2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_ModelRefiner": {
+        "main": [
+          [
+            {
+              "node": "IfDebug1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfError": {
+        "main": [
+          [
+            {
+              "node": "OP_final_model4",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "UpsertFeatureNameDecr",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "If": {
+        "main": [
+          [
+            {
+              "node": "SP_ModelRefiner",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "OP_final_model1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfDebug1": {
+        "main": [
+          [
+            {
+              "node": "GetPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetPrompt1": {
+        "main": [
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_recievedPrompt1": {
+        "main": [
+          [
+            {
+              "node": "SP_plain",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OP_final_model4": {
+        "main": [
+          [
+            {
+              "node": "GetCurrentCount",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetCurrentCount": {
+        "main": [
+          [
+            {
+              "node": "count-1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "count-1": {
+        "main": [
+          [
+            {
+              "node": "OP_final_model5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OP_final_model5": {
+        "main": [
+          [
+            {
+              "node": "UpdateImgid",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UP_prompt": {
+        "main": [
+          [
+            {
+              "node": "UP_plain",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UP_plain": {
+        "main": [
+          [
+            {
+              "node": "Send a chat action5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_plain": {
+        "main": [
+          [
+            {
+              "node": "UP_prompt",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "DLS  ",
+    "name": "Version 4d9b33fd",
+    "description": "Model descripyion removed from system prompt",
+    "autosaved": true,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-03-22T12:18:30.669Z",
+        "id": 1620,
+        "workflowId": "wiWVjK9If7AXfrMb",
+        "versionId": "4d9b33fd-279c-4069-9b2a-ad623f1896ba",
+        "event": "activated",
+        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    ]
+  },
+  "activeVersionId": "4d9b33fd-279c-4069-9b2a-ad623f1896ba",
+  "connections": {
+    "urlModel3": {
+      "main": [
+        [
+          {
+            "node": "UpsertUrl-Object-Status2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpsertFeatureNameDecr": {
+      "main": [
+        [
+          {
+            "node": "GetCurrentCount5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetCurrentCount5": {
+      "main": [
+        [
+          {
+            "node": "If<3iterations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a chat action5": {
+      "main": [
+        [
+          {
+            "node": "Call 'subTR_API_AI_Selector'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfResponseOk3": {
+      "main": [
+        [
+          {
+            "node": "UpdateImgCount",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateImgCount": {
+      "main": [
+        [
+          {
+            "node": "IfError",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetCurrentCount4": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpsertUrl-Object-Status2": {
+      "main": [
+        [
+          {
+            "node": "GetCurrentCount4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "urlModel3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subTR_API_AI_Selector'": {
+      "main": [
+        [
+          {
+            "node": "Call 'subMkPlnTxt'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subMkPlnTxt'": {
+      "main": [
+        [
+          {
+            "node": "IfResponseOk3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If<3iterations": {
+      "main": [
+        [
+          {
+            "node": "OP_final_model3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OP_final_model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OP_final_model3": {
+      "main": [
+        [
+          {
+            "node": "UpdateImgid1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OP_final_model": {
+      "main": [
+        [
+          {
+            "node": "UpdateImgid2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_ModelRefiner": {
+      "main": [
+        [
+          {
+            "node": "IfDebug1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfError": {
+      "main": [
+        [
+          {
+            "node": "OP_final_model4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "UpsertFeatureNameDecr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "SP_ModelRefiner",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OP_final_model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfDebug1": {
+      "main": [
+        [
+          {
+            "node": "GetPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetPrompt1": {
+      "main": [
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_recievedPrompt1": {
+      "main": [
+        [
+          {
+            "node": "SP_plain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OP_final_model4": {
+      "main": [
+        [
+          {
+            "node": "GetCurrentCount",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetCurrentCount": {
+      "main": [
+        [
+          {
+            "node": "count-1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "count-1": {
+      "main": [
+        [
+          {
+            "node": "OP_final_model5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OP_final_model5": {
+      "main": [
+        [
+          {
+            "node": "UpdateImgid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UP_prompt": {
+      "main": [
+        [
+          {
+            "node": "UP_plain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UP_plain": {
+      "main": [
+        [
+          {
+            "node": "Send a chat action5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_plain": {
+      "main": [
+        [
+          {
+            "node": "UP_prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-02T16:44:29.999Z",
+  "description": null,
+  "id": "wiWVjK9If7AXfrMb",
+  "isArchived": false,
+  "meta": null,
+  "name": "subTR_CM_GetFeature",
+  "nodes": [
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{\"Что-то пошло не так: \" + $('IfResponseOk3').item.json.msg}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        48,
+        672
+      ],
+      "id": "383c4d48-240d-4829-9c01-cb73a4739042",
+      "name": "Send a text message1",
+      "webhookId": "c2768f85-f20e-4f82-96e0-41de3c69bd92",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.kie.ai/{{$('Start').item.json.modelName}}/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBearerAuth",
+        "sendBody": true,
+        "specifyBody": "=json",
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "jsonBody": "={\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"{{ $('Start').item.json.message_caption }}\"\n        },\n        {\n          \"type\": \"image_url\",\n          \"image_url\": {\n            \"url\": \"{{ $('UpsertUrl-Object-Status2').item.json.objUrl }}\"\n          }\n        }\n      ]\n    },\n    {\n      \"role\": \"system\",\n      \"content\": [\n        {\n          \"type\": \"text\",\n          \"text\": \"{{ $('SP_plain').item.json.plainText }}\"\n        }\n      ]\n    }\n  ],\n  \"tools\": [\n    {\n      \"type\": \"function\",\n      \"function\": {\n        \"name\": \"googleSearch\"\n      }\n    }\n  ],\n  \"stream\": false,\n  \"include_thoughts\": false,\n  \"reasoning_effort\": \"low\",\n  \"response_format\": {\n    \"type\": \"text\"\n  }\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "timeout": 1000000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -1008,
+        96
+      ],
+      "id": "e1ac7625-054d-4d7a-baee-f171a78234d7",
+      "name": "AI_Model+Feature"
+    },
+    {
+      "parameters": {
+        "operation": "sendChatAction",
+        "chatId": "={{ $('Start').item.json.message_chat_id }}"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -1072,
+        384
+      ],
+      "id": "35996858-9dcf-4bf6-ba08-5d5e1cd4582c",
+      "name": "Send a chat action5",
+      "webhookId": "d9b28dce-5a43-45b7-ae61-7a0113460e73",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+              "leftValue": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.data === empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -272,
+        384
+      ],
+      "id": "21f16e17-95a8-40c6-8908-5e8653387f8c",
+      "name": "IfResponseOk3"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createmodel"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetFeatureGallery"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "userId": "={{ $('Start').item.json.message_chat_id }}",
+            "dialogId": "={{ $('Start').item.json.message_chat_id }}",
+            "imgsCount": "={{ $('GetCurrentCount4').item.json.isNotEmpty()\n?$('GetCurrentCount4').item.json.imgsCount+1\n:1\n}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "promptModel",
+              "displayName": "promptModel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -48,
+        176
+      ],
+      "id": "441afd97-2dab-4d83-9043-c969e2c26fa2",
+      "name": "UpdateImgCount"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetFeatureGallery"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createmodel"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -3440,
+        368
+      ],
+      "id": "da19cc49-9033-4db0-8435-901a492b163b",
+      "name": "GetCurrentCount4",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "aa07ac43-d5ec-4875-980b-2bd546fe2c4e",
+              "name": "imgUrl",
+              "value": "={{ \"https://api.telegram.org/file/bot\" +$('Start').item.json.botToken + \"/\" + $('Start').item.json.result_file_path }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3824,
+        368
+      ],
+      "id": "36c8979b-dbf5-429c-83f8-07daae18c206",
+      "name": "urlModel3"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "FeatureGalleryRecieved"
+            },
+            {
+              "keyName": "objUrl",
+              "keyValue": "={{ \"https://api.telegram.org/file/bot\" + $('Start').item.json.botToken +\"/\"+ $('Start').item.json.result_file_path }}"
+            },
+            {
+              "keyName": "objectMainId",
+              "keyValue": "={{ $('Start').item.json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "objUrl": "={{ \"https://api.telegram.org/file/bot\" + $('Start').item.json.botToken + \"/\"+$('Start').item.json.result_file_path }}",
+            "objNames": "={{ $('Start').item.json.message_caption }}",
+            "userId": "={{ $('Start').item.json.message_chat_id }}",
+            "dialogId": "={{ $('Start').item.json.message_chat_id }}",
+            "status": "FeatureGalleryRecieved",
+            "objectMainId": "={{ $('Start').item.json.id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objNames",
+              "displayName": "objNames",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objUrl",
+              "displayName": "objUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objectDescr",
+              "displayName": "objectDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -3632,
+        368
+      ],
+      "id": "a9584209-0319-4af6-9d73-b6e7e168225a",
+      "name": "UpsertUrl-Object-Status2"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}"
+            },
+            {
+              "keyName": "objectMainId",
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "FeatureGalleryRecieved"
+            },
+            {
+              "keyName": "objUrl",
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.imgUrls }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "userId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+            "dialogId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+            "objectMainId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}",
+            "status": "FeatureGalleryRecieved",
+            "objNames": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.ObjName }}",
+            "objUrl": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.imgUrls }}",
+            "objectDescr": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.data }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objNames",
+              "displayName": "objNames",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objUrl",
+              "displayName": "objUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objectDescr",
+              "displayName": "objectDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        544,
+        192
+      ],
+      "id": "fbb98d86-7fa7-42a1-8478-21710f69cf81",
+      "name": "UpsertFeatureNameDecr"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        800,
+        192
+      ],
+      "id": "3bad004f-fed1-48ac-8353-09b3ad17a066",
+      "name": "GetCurrentCount5"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+        "text": "={{\n\"Правки внесены!\" +\"\\n\\n\"+\n\n\"<b>Я готов создать фотомодель.</b>\" +\"\\n\\n\"+\n\n\"Вы также можете продолжить вносить правки\"+\"\\n\" + \"(осталось правок: \" + (3- $('GetCurrentCount5').item.json.imgsCount) +\").\"\n\n }}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Внести правки",
+                    "additionalFields": {
+                      "callback_data": "addFeature"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать модель",
+                    "additionalFields": {
+                      "callback_data": "generateModel"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1280,
+        144
+      ],
+      "id": "a777df74-7db8-4b82-941c-8f1a31f27bc7",
+      "name": "OP_final_model3",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "message_chat_id",
+              "type": "any"
+            },
+            {
+              "name": "message_caption",
+              "type": "any"
+            },
+            {
+              "name": "result_file_path",
+              "type": "any"
+            },
+            {
+              "name": "botToken",
+              "type": "any"
+            },
+            {
+              "name": "modelName",
+              "type": "any"
+            },
+            {
+              "name": "id",
+              "type": "any"
+            },
+            {
+              "name": "modelApi"
+            },
+            {
+              "name": "debugMode"
+            }
+          ]
+        }
+      },
+      "id": "dd39d920-e747-4eb0-9658-23003fd979bb",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -4080,
+        384
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "MCKUe6c7lEWRrPCq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+          "cachedResultName": "subTR_API_AI_Selector"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "urlList_bool": false,
+            "chat_id": "={{ $('Start').item.json.message_chat_id }}",
+            "objectMainId": "={{ $('Start').item.json.id }}",
+            "modelName": "={{ $('Start').item.json.modelName }}",
+            "apiName": "={{ $('Start').item.json.modelApi }}",
+            "botTocken": "={{ $('Start').item.json.botToken }}",
+            "imgUrls": "={{ \"https://api.telegram.org/file/bot\" + $('Start').item.json.botToken + \"/\" + $('Start').item.json.result_file_path }}",
+            "ObjName": "={{ $('Start').item.json.message_caption }}",
+            "userPrompt": "={{ $('UP_plain').item.json.plainText }}",
+            "systemPrompt": "={{ $('SP_plain').item.json.plainText }}",
+            "debugMode": "={{ $('Start').item.json.debugMode }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "modelName",
+              "displayName": "modelName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "userPrompt",
+              "displayName": "userPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "imgUrls",
+              "displayName": "imgUrls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjName",
+              "displayName": "ObjName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjNameLocal",
+              "displayName": "ObjNameLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "botTocken",
+              "displayName": "botTocken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urlList_bool",
+              "displayName": "urlList_bool",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -848,
+        384
+      ],
+      "id": "421f3fe7-0c32-407f-a22e-129c723cc08d",
+      "name": "Call 'subTR_API_AI_Selector'"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.data }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -672,
+        384
+      ],
+      "id": "952c26ca-2773-4b96-a13f-e2171f7e3efa",
+      "name": "Call 'subMkPlnTxt'"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "73b813d4-c0fe-4d83-9fb2-c9b594025fb9",
+              "leftValue": "={{ $json.imgsCount }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1072,
+        192
+      ],
+      "id": "55693ede-645e-4ac2-a9c0-c3622267f0f7",
+      "name": "If<3iterations"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+        "text": "={{\"<b>Все правки внесены!</b>\" + \"\\n\\n\" +\n\n\"Я готов создать фотомодель.\" }}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать фотомодель",
+                    "additionalFields": {
+                      "callback_data": "generateModel"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1280,
+        336
+      ],
+      "id": "4014fa15-fca4-4453-a4c1-219c339ea045",
+      "name": "OP_final_model",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+              "name": "systemPromptImgFeature",
+              "value": "\"SYSTEM PROMPT: Model-Refiner v6 (Big update)\n\nI am a human craniofacial morphological blueprint refinement engine.\n\nMy role is to surgically replace only requested anatomical sections inside an existing Morphological Blueprint using structural data extracted from a provided source image, while preserving the Blueprint’s original framework, sentence architecture, anatomical order, and non-target content. I perform structural transplantation only. My result must remain a generation-ready intrinsic craniofacial blueprint and must preserve or increase structural density.\n\nI expect the user’s text input to follow this structure exactly:\n\n# Request\n\n[requested feature names]\n\n# Blueprint\n\n[existing blueprint]\n\nI parse input as follows:\n\n1. I read the content under “# Request” as the requested feature list.\n2. I read the content under “# Blueprint” as the base Morphological Blueprint to edit.\n3. I ignore the section labels themselves and process only their contents.\n4. I allow one or multiple request terms, separated by commas, line breaks, slashes, plus signs, ampersands, or combinations of them.\n5. I split multi-item requests into separate terms before canonical mapping.\n6. If the input does not contain both “# Request” and “# Blueprint” sections, or if either section is empty, I return exactly:\n   ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n\nBefore any extraction, I verify that the source image depicts a real biological human face. If the image is non-human, animal, mythical, artificial, robotic, CGI, animated, stylized, masked beyond anatomical recognition, mannequin, sculpture, doll, or AI-generated non-real morphology, I return exactly:\n⚠ Error. Ошибка - возможно, лицо плохо видно, или фотография плохого качества.\nI then stop immediately.\n\nI assume I receive:\n(1) the structured text input above\n(2) one source image containing the morphology to replicate\n\nI modify only the canonical categories named or implied inside “# Request”.\n\nCanonical categories:\nGender, Age range, Ethnicity, Face shape, Facial proportions, Skin, Forehead & hairline, Eyebrows, Eyes, Nose, Cheeks & cheekbones, Lips & philtrum, Jawline & chin, Facial hair, Ears, Scalp hair.\n\nCompact alias mapping:\nGender ← male, female, masculine, feminine, sex\nAge range ← age, apparent age, young, youthful, older, mature, middle-aged\nEthnicity ← ethnic background, ancestry, ethnic appearance\nFace shape ← face shape, oval, round, square, rectangular, oblong, heart-shaped, diamond\nFacial proportions ← proportions, facial proportions, face length, face width, facial thirds, vertical thirds, horizontal proportions, intercanthal proportion, lower-third proportion\nSkin ← skin, complexion, skin tone, skin texture, pores, pigmentation, freckles\nForehead & hairline ← forehead, hairline, frontal hairline, widow’s peak, temple recession, receding hairline\nEyebrows ← eyebrows, brows, brow shape, brow arch, brow density, brow thickness, brow tail\nEyes ← eyes, eye shape, eyelids, eye spacing, canthal tilt, lashes, under-eyes, epicanthic fold\nNose ← nose, nose bridge, nasal bridge, dorsum, nose tip, nostrils, alae, columella\nCheeks & cheekbones ← cheeks, cheekbones, malar area, zygomatic area, midface, buccal fullness\nLips & philtrum ← lips, mouth, upper lip, lower lip, cupid’s bow, vermilion, philtrum\nJawline & chin ← jawline, jaw, chin, mentum, mandibular line, jaw contour, jaw angle\nFacial hair ← facial hair, beard, moustache, mustache, stubble, goatee, sideburns, five o’clock shadow\nEars ← ears, ear size, ear projection, earlobes, lobes, helix\nScalp hair ← scalp hair, hair, haircut, hairstyle, bangs, fringe, curls, waves, straight hair, braid, ponytail, bun, part, undercut, bob, layers, hair length, hair texture, hair density\n\nMapping rules:\n\n1. If a requested term is a subregion, synonym, grooming term, hairstyle term, or facial-hair variant rather than a canonical category, I map it to the nearest valid canonical category.\n2. If multiple requested terms map to the same canonical category, I process that category once.\n3. Only mapped canonical categories may be replaced or inserted.\n4. If no valid canonical category remains after mapping, I return exactly:\n   ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n\nIdentity Lock:\nThe original Blueprint is the identity anchor. I must modify only the explicitly requested category or categories. All existing non-requested categories remain byte-level identical and must not be updated, inferred, harmonized, generalized, or drifted based on the source image.\n\nVisibility validation:\nI do not require every subfeature of a category to be perfectly visible.\nI trigger a visibility error only when the requested canonical category is genuinely not readable at a structurally useful level.\nI do not trigger a visibility error when the feature is clearly present and its primary morphology is materially readable, even if some secondary subfeatures are softened, partially obscured, cropped, blended with adjacent anatomy, affected by facial hair, affected by hairstyle, or limited by resolution.\nIf the requested category’s primary morphology is sufficiently visible, I proceed and describe only what is structurally supportable from the image.\n\nPrimary morphology thresholds by category:\nGender: global sexually dimorphic craniofacial structure\nAge range: overall age-linked facial morphology\nEthnicity: broad craniofacial patterning only when explicitly requested and structurally readable\nFace shape: global facial outline and skeletal silhouette\nFacial proportions: broad width-length and vertical-third relations\nSkin: overall cutaneous tone and visible surface texture\nForehead & hairline: forehead height, contour, and frontal or temporal hairline pattern\nEyebrows: brow thickness, density, arch, length, position\nEyes: aperture shape, spacing, lid form, canthal direction, projection pattern\nNose: bridge width, dorsum contour, projection, tip mass, base width\nCheeks & cheekbones: malar projection, midface volume, buccal contour\nLips & philtrum: lip volume, vermilion outline, philtrum length or form, oral width\nJawline & chin: mandibular breadth, chin projection, lower-face contour\nFacial hair: growth distribution, density, length, edge geometry, moustache-beard relationship\nEars: size, projection, lobe type, helix visibility when materially present\nScalp hair: overall cut, silhouette, length distribution, texture pattern, side or top contrast, density pattern\n\nSupportable Extraction Rule:\nWhen a requested category is materially readable, I must proceed and describe only the supported morphology rather than erroring. I must not require full subfeature completeness in order to replace a category.\n\nConservative Error Rule:\nI return the feature-visibility error only when the requested category is so poorly visible that no structurally useful replacement sentence can be produced without guesswork.\n\nDo-Not-Overtrigger Rule:\nFor clearly visible central facial categories such as Eyes, Nose, Lips & philtrum, Eyebrows, and Jawline & chin, I must prefer supportable partial extraction over erroring whenever primary morphology is readable.\n\nError threshold:\nIf any requested canonical feature fails the visibility threshold above, I return exactly:\n⚠ Error. Ошибка - возможно, запрашиваемую деталь плохо видно, или фотография плохого качества.\nI then stop immediately.\n\nExtraction rules:\n\n1. For each requested canonical category, I generate exactly one anatomically dense sentence.\n2. Each sentence should include as many of the following as are materially supportable from the image: skeletal framework, soft tissue volume, surface morphology, proportional relations, boundary geometry, density distribution where relevant, symmetry or asymmetry, and distinguishing markers.\n3. I use relative anatomical landmarks rather than speculative measurement claims.\n4. I use precise hue terminology when color is structurally relevant.\n5. I describe only intrinsic morphology.\n6. I do not use stylistic language, aesthetic judgment, camera-language, hedging, or commentary about visibility.\n7. I do not force unsupported subfeatures into the sentence.\n8. I prefer a dense but supportable description over overclaiming.\n9. I never use uncertainty phrases such as “appears,” “seems,” “likely,” or similar.\n10. I never use absence phrasing as filler.\n\nBlueprint replacement rules:\n\n1. I construct the final Blueprint strictly from the text contained in the “# Blueprint” section.\n2. Each canonical category must be represented by exactly one sentence in the final output.\n3. I preserve canonical sentence order.\n4. All existing non-requested sentences from the original Blueprint must remain byte-level identical.\n5. I do not paraphrase unrelated sections.\n6. I do not merge or split unrelated sentences.\n7. If a requested canonical category already exists, I replace that entire sentence.\n8. If a requested canonical category does not already exist, I insert exactly one new dense sentence at its correct canonical position.\n9. If multiple categories are requested, I process them independently while preserving all others.\n\nBlueprint priority rule:\nI describe intrinsic craniofacial morphology only. I never reference visibility, camera angle, lighting, obstruction, framing, source quality, section headers, or the existence of source material.\n\nOutput format is locked:\n\n1. 260–340 words total\n2. English only\n3. Continuous prose only\n4. Exactly one sentence per canonical category\n5. No headings, labels, commentary, or text before or after the Blueprint\n6. Strict canonical order:\n   Gender → Age range → Ethnicity → Face shape → Facial proportions → Skin → Forehead & hairline → Eyebrows → Eyes → Nose → Cheeks & cheekbones → Lips & philtrum → Jawline & chin → Facial hair → Ears → Scalp hair\n\nFinal validation:\nBefore responding, I verify all of the following:\n\n1. I used “# Request” only to determine which canonical categories to replace or insert.\n2. I used “# Blueprint” as the base text.\n3. Canonical order is correct.\n4. Output length is 260–340 words.\n5. Output is English only.\n6. Exactly one sentence exists for each canonical category in the final output.\n7. All existing non-requested sentences remained byte-level identical to the original Blueprint.\n8. Any missing requested category was inserted at the correct canonical position.\n9. I did not trigger an error merely because secondary subfeatures were ambiguous when primary morphology was sufficient.\n10. I did not return a visibility error for a requested category whose primary morphology was clearly readable at a structurally useful level.\n11. All existing non-requested categories remained byte-level identical and were not updated, inferred, harmonized, generalized, or drifted based on the source image.\n\nIf any rule fails, I regenerate internally until valid.\"",
+              "type": "string"
+            },
+            {
+              "id": "0d6a95d6-233d-448e-b28d-92ae6992c689",
+              "name": "systemPromptModelDescr",
+              "value": "={{ $('GetCurrentCount4').item.json.faceDescr }}",
+              "type": "string"
+            },
+            {
+              "id": "70ccc749-a57a-4c10-b585-6363ead0a506",
+              "name": "promptName",
+              "value": "Model-Refiner",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2320,
+        368
+      ],
+      "id": "0f44bcef-a177-43ec-97e9-d97ffc7a0c6c",
+      "name": "SP_ModelRefiner"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "037443f6-4f02-4014-9521-711cefbca918",
+              "leftValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.data }}",
+              "rightValue": "Error",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        160,
+        96
+      ],
+      "id": "36435dfc-395c-47c4-988d-a6904ae79d7f",
+      "name": "IfError"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+        "text": "={{ $('Call \\'subMkPlnTxt\\'').item.json.plainText }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        400,
+        0
+      ],
+      "id": "8d2c9779-6cac-407f-9318-657c79b24224",
+      "name": "OP_final_model4",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{\"Что-то пошло не так: \" + $('IfResponseOk3').item.json.msg}}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        192,
+        448
+      ],
+      "id": "17c3e986-3d19-4378-b6f2-73e1eb617a0c",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "60962d5d-2a8a-4b9a-8cbf-70f7d181b7ab",
+              "leftValue": "={{ $json.imgsCount }}",
+              "rightValue": 3,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            },
+            {
+              "id": "c4d18a02-62b3-4043-9abd-fd7d589837ea",
+              "leftValue": "={{ $json.isEmpty() }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -2880,
+        384
+      ],
+      "id": "a77bfa69-21cd-402f-b8db-25fac5259d72",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{\"Внесено максимальное количество изменений!\\nУчтены в модели только первые три.\" }}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать модель",
+                    "additionalFields": {
+                      "callback_data": "generateModel"
+                    }
+                  },
+                  {
+                    "text": "Прервать",
+                    "additionalFields": {
+                      "callback_data": "cancel"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2688,
+        560
+      ],
+      "id": "79a424d5-00e1-472f-8b50-c5af8dc85854",
+      "name": "OP_final_model1",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+              "leftValue": "={{ $('Start').item.json.debugMode }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -2080,
+        368
+      ],
+      "id": "c5ad3103-8bdd-4505-a35f-c9c86cae57be",
+      "name": "IfDebug1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+              "name": "recievedPrompt",
+              "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_ModelRefiner').item.json.systemPromptImgFeature\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1760,
+        384
+      ],
+      "id": "4479ebe2-47f7-4adf-b97a-adfaba46a95b",
+      "name": "SP_recievedPrompt1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+          "mode": "list",
+          "cachedResultName": "N8N prompts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "PromptName",
+              "lookupValue": "={{ $('SP_ModelRefiner').item.json.promptName }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1872,
+        208
+      ],
+      "id": "54f17b1f-58fb-45a3-b94e-3b244d20886f",
+      "name": "GetPrompt1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x0BIkYcbd4ffwTqr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        592,
+        0
+      ],
+      "id": "03f43406-1e29-46aa-af7d-70e9c8db66c7",
+      "name": "GetCurrentCount"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": 0,
+            "imgsCount": "={{ $json.imgsCount>0\n?$json.imgsCount-1\n:0}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        832,
+        0
+      ],
+      "id": "0a6c9c06-1ff5-4715-acb2-bdcf258d1392",
+      "name": "count-1"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.chat_id }}",
+        "text": "={{\n\"<b>Я готов создать фотомодель.</b>\" +\"\\n\\n\"+\n\n\"Вы также можете продолжить вносить правки\"+\"\\n\" + \"(осталось правок: \" + (3- $json.imgsCount) +\").\"\n\n }}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Внести правки",
+                    "additionalFields": {
+                      "callback_data": "addFeature"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать модель",
+                    "additionalFields": {
+                      "callback_data": "generateModel"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1168,
+        -64
+      ],
+      "id": "890ff583-7e8a-4dbe-9503-58740682c95f",
+      "name": "OP_final_model5",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd4ce484-afa3-4d2f-8100-2977a73ae421",
+              "name": "upPrompt",
+              "value": "={{\"# Request \" + $('UpsertUrl-Object-Status2').item.json.objNames +  \" # Blueprint \" +  $('GetCurrentCount4').item.json.faceDescr }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1440,
+        384
+      ],
+      "id": "6e378eb4-f9a7-4d9d-87a0-bd9400889511",
+      "name": "UP_prompt"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.upPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -1264,
+        384
+      ],
+      "id": "2cc3a3c4-e312-4dd9-a8e6-340b9180389d",
+      "name": "UP_plain"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.recievedPrompt}}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -1600,
+        384
+      ],
+      "id": "6d6951cc-b4b4-47e8-85c9-7eaf76496125",
+      "name": "SP_plain"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1408,
+        -64
+      ],
+      "id": "41671c8e-94c4-4350-bbf6-633bd687beba",
+      "name": "UpdateImgid"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1472,
+        144
+      ],
+      "id": "137cd3c3-4779-4651-a5b8-5eb58939e82b",
+      "name": "UpdateImgid1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.objectMainId }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1504,
+        336
+      ],
+      "id": "f6e14820-adad-49d1-94ae-6717d5a45c8f",
+      "name": "UpdateImgid2"
+    }
+  ],
+  "pinData": {
+    "Start": [
+      {
+        "json": {
+          "message_chat_id": 1723701965,
+          "message_caption": "нос",
+          "result_file_path": "photos/file_681.jpg",
+          "botToken": "8500532222:AAHn-miVxN48HoJNpedLE6wz5WQ0poDaYXU",
+          "modelName": "gemini-2.5-flash",
+          "id": 189,
+          "modelApi": "kie",
+          "debugMode": "false"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "repo_name": "trendcore_n8n",
+  "repo_owner": "ds634",
+  "repo_path": "/repos/ds634/trendcore_n8n/contents/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "Db9RTL99yUCO77oO",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-02T16:44:30.001Z",
+      "createdAt": "2026-03-02T16:44:30.001Z",
+      "role": "workflow:owner",
+      "workflowId": "wiWVjK9If7AXfrMb",
+      "projectId": "M9bTlSGaaAbsZxvs",
+      "project": {
+        "updatedAt": "2026-03-02T14:12:07.095Z",
+        "createdAt": "2026-03-02T14:12:01.275Z",
+        "id": "M9bTlSGaaAbsZxvs",
+        "name": "DLS   <ds@trendcore.ai>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-02T14:25:49.831Z",
+      "createdAt": "2026-03-02T14:25:49.831Z",
+      "id": "6ZyTvRGaNVzskE04",
+      "name": "TG_PROD"
+    },
+    {
+      "updatedAt": "2026-03-02T14:26:37.547Z",
+      "createdAt": "2026-03-02T14:26:37.547Z",
+      "id": "GMjsmRwAA3LPhUiT",
+      "name": "SP_ModelRefiner"
+    },
+    {
+      "updatedAt": "2026-03-02T14:26:06.738Z",
+      "createdAt": "2026-03-02T14:26:06.738Z",
+      "id": "tzvi3HGYBgqT00vr",
+      "name": "CM"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-22T12:17:52.701Z",
+  "versionCounter": 365,
+  "versionId": "4d9b33fd-279c-4069-9b2a-ad623f1896ba",
+  "wf_name": "subTR_CM_GetFeature"
+}
