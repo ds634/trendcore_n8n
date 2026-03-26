@@ -8981,21 +8981,20 @@
     "Start": [
       {
         "json": {
-          "chat_id": 1723701965,
-          "replyMarkup": "{\"inline_keyboard\":[[{\"text\":\"1. Неоновый пульс\",\"callback_data\":\"Scen_1. Neon Pulse\"}],[{\"text\":\"2. Кедр и камень\",\"callback_data\":\"Scen_2. Cedar and Stone\"}],[{\"text\":\"3. Бетонная геометрия\",\"callback_data\":\"Scen_3. Concrete Geometry\"}],[{\"text\":\"4. Свет автоматов\",\"callback_data\":\"Scen_4. The Vending Glow\"}],[{\"text\":\"5. Утренний туман\",\"callback_data\":\"Scen_5. Morning Mist\"}],[{\"text\":\"Завершить работу\",\"callback_data\":\"PhotosetRecieved\"}]]}",
-          "callback_data": "Scen_5. Morning Mist",
-          "message_text": "Выберите сценарий:",
-          "replyToMessageIdGallery": 13912,
-          "imgsCount": 0,
-          "MainId": 296,
-          "botToken": "8500532222:AAHn-miVxN48HoJNpedLE6wz5WQ0poDaYXU",
+          "chat_id": 133518123,
+          "replyMarkup": "{\"inline_keyboard\":[[{\"text\":\"Добавить предметы\",\"callback_data\":\"addObject\"}],[{\"text\":\"Завершить образ\",\"callback_data\":\"done\"}]]}",
+          "callback_data": "done",
+          "message_text": "Предметы добавлены.\n\nВы можете добавить еще 4 изображений предметов гардероба, по одному за раз.",
+          "replyToMessageIdGallery": 15911,
+          "imgsCount": 3,
+          "MainId": 412,
+          "botToken": "8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM",
           "modelName": "gemini-3-flash",
           "api": "google",
           "apiNB": "fal",
           "debug": "true",
-          "callbackMessageId": "13912",
-          "ScenarioSelected": "4. Midnight Vending",
-          "message_id": "13912"
+          "callbackMessageId": "15911",
+          "message_id": "15911"
         },
         "pairedItem": {
           "item": 0
@@ -9055,8 +9054,8 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-22T22:02:13.830Z",
-  "versionCounter": 779,
+  "updatedAt": "2026-03-25T17:58:16.462Z",
+  "versionCounter": 781,
   "versionId": "92355c7e-b625-4a06-b562-7b9659373b66",
   "wf_name": "subTR_CL_CallbacksProcessing"
 }
