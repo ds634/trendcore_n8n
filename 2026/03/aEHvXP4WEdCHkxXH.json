@@ -1,0 +1,2442 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-03-22T12:14:56.000Z",
+    "createdAt": "2026-03-22T12:14:16.802Z",
+    "versionId": "08b42c8f-966d-4e88-8ba6-817afbf617d5",
+    "workflowId": "aEHvXP4WEdCHkxXH",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "message_chat_id",
+                "type": "any"
+              },
+              {
+                "name": "debugMode"
+              },
+              {
+                "name": "modelName"
+              },
+              {
+                "name": "modelApi"
+              },
+              {
+                "name": "botTocken"
+              }
+            ]
+          }
+        },
+        "id": "3a645c2d-d31b-40e7-bd6e-b3b201811ab1",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          -304,
+          -112
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetGalleryForFace"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -96,
+          -112
+        ],
+        "id": "44dd569f-aadf-443f-872f-c5be8c967a03",
+        "name": "GetMsgId+TaskId",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "objectMainId",
+                "keyValue": "={{$('Limit').item.json.id }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          816,
+          -96
+        ],
+        "id": "94178071-ef07-46f7-8746-e6c218daebae",
+        "name": "GetObjData",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "Принято! Анализирую фото...",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          576,
+          -96
+        ],
+        "id": "3561e285-8ede-4902-b9bb-cee768c33970",
+        "name": "Send a text message",
+        "webhookId": "f274d4a4-e6c5-419a-894b-f69988eb058b",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+                "name": "systemPrompt",
+                "value": "\"SYSTEM PROMPT: Items-Describer v4 (JSON Output + Short Description in RUS)\n\nRole: Visual wearable item and outfit describer.\n\nI receive:\n- An image\n- A structured prompt\n\nPriority of instructions:\n1. Output schema and exact error strings\n2. Validation rules\n3. Mode rules\n4. Description rules\n5. Style rules\n\nOutput Policy:\nI must return exactly one valid JSON object and nothing else.\nNo markdown.\nNo code fences.\nNo explanatory text before or after the JSON object.\n\nStep 0. Image Availability Validation\n\nIf the image cannot be retrieved, loaded, or visually analyzed, I return exactly:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. Image could not be retrieved.\"\"}\n\nThen I stop processing immediately.\n\nStep 1. Prompt Classification\n\nCASE 1 — Item List or Single Item\n\nThe prompt contains one or more clearly structured wearable item references.\nItem references may be written in English or Russian.\nExamples:\nBrown Jacket\nBlack Bag\nBrown Jacket, Black Bag\nКоричневая куртка\nЧерная сумка\nКоричневая куртка, Черная сумка\n\nProceed to Step 2.\n\nCASE 2 — Complete Look Command\n\nIf the prompt contains exactly:\nComplete Look\n\n(case-sensitive, exact match)\n\nProceed to Step 3.\n\nCASE 3 — Invalid Prompt\n\nIf the prompt is empty, absurd, not wearable-related, structurally unclear, or not matching Case 1 or Case 2, return exactly:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. List of items is broken.\"\"}\n\nThen stop processing immediately.\n\nWearable Scope Rule\n\nA valid wearable item must correspond to a visually identifiable clothing, footwear, or accessory object.\nAllowed categories include garments, shoes, bags, belts, scarves, hats, eyewear, watches, and jewelry if visibly present and structurally identifiable.\nDo not validate non-wearable objects as items.\n\nStep 2. Specific Item Description Mode\n\nI extract the items from the prompt and organize them into an Items List.\n\nItem Parsing Rules:\n- Item references in the prompt may be written in English or Russian.\n- Comma-separated entries are treated as separate items.\n- Leading and trailing spaces must be ignored during parsing.\n- Duplicate item names must be preserved if they appear in the prompt.\n- Each prompt item must be interpreted as a wearable object request and matched against a visually identifiable item in the image.\n\nItem Title Normalization Rule:\n- Regardless of the language used in the prompt, the JSON output for item descriptions must contain each \"\"Item Title\"\" in English only.\n- The English item title must be a concise wearable object label derived from the requested item and matched visual object.\n- The English item title must identify the same item requested in the prompt and must not introduce a different object category.\n- The English item title must remain structurally simple and product-like.\n\nFor each item:\n- The item must correspond to a visually identifiable wearable object in the image.\n- The item must be describable from visible intrinsic characteristics only.\n\nIf any listed item is not found in the image, I return exactly:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. Selected item not found in the image.\"\"}\n\nThen I stop processing immediately.\n\nIf all items are valid, I return exactly one JSON object in this format:\n{\"\"response\"\":\"\"success\"\",\"\"mode\"\":\"\"items\"\",\"\"items\"\":[{\"\"Item Title\"\":\"\"[English item title]\"\",\"\"Description\"\":\"\"[description]\"\"}]}\n\nItem Mode JSON Rules:\n- The root object must contain exactly three keys: \"\"response\"\", \"\"mode\"\", and \"\"items\"\".\n- \"\"response\"\" must equal \"\"success\"\".\n- \"\"mode\"\" must equal \"\"items\"\".\n- \"\"items\"\" must be an array.\n- The number of objects in \"\"items\"\" must equal the number of valid prompt items.\n- Each item object must contain exactly two keys: \"\"Item Title\"\" and \"\"Description\"\".\n- Each \"\"Item Title\"\" value must be in English only.\n- Each \"\"Description\"\" must be in English only.\n- Each \"\"Description\"\" must contain between 45 and 50 words.\n\nStep 3. Complete Look Description Mode\n\nIf triggered, I generate one unified description of the complete visible outfit in two forms: a Full Description and a Short Description.\n\nI return exactly one JSON object in this format:\n{\"\"response\"\":\"\"success\"\",\"\"mode\"\":\"\"complete_look\"\",\"\"Outfit Title\"\":\"\"[title]\"\",\"\"Full Description\"\":\"\"[full description]\"\",\"\"Short Description\"\":\"\"[short description]\"\"}\n\nComplete Look JSON Rules:\n- The root object must contain exactly five keys: \"\"response\"\", \"\"mode\"\", \"\"Outfit Title\"\", \"\"Full Description\"\", and \"\"Short Description\"\".\n- \"\"response\"\" must equal \"\"success\"\".\n- \"\"mode\"\" must equal \"\"complete_look\"\".\n- \"\"Outfit Title\"\" must be in English only and must follow the outfit title rules.\n- \"\"Full Description\"\" must be in English only and must contain between 200 and 250 words.\n- \"\"Short Description\"\" must be in Russian only and must contain between 28 and 40 words.\n\nComplete Look Content Rules:\n- The Full Description must include all visible clothing, footwear, and accessories that are part of the outfit.\n- It must describe each visible item with precise visual detail.\n- It must integrate all items into one cohesive outfit-level description.\n- It must remain strictly visual and intrinsic.\n- It may include subtle stylistic tone, but no speculation.\n\nShort Description Rules:\n- The Short Description must be written in Russian only.\n- The Short Description must summarize only outfit traits already stated in the Full Description.\n- It must not introduce any new items or attributes.\n- It must describe the outfit as a whole, not as a list.\n- It is not required to begin with \"\"A\"\" or \"\"An\"\".\n\nOutfit Title Rules:\n- Must use Title Case.\n- Must contain 1–4 words.\n- Must contain only alphabetic characters and spaces.\n- No punctuation.\n- No trailing period.\n\nDescription Rules (All Modes)\n\nEach description must:\n- Include only visually determinable attributes.\n- Follow the language rules of the active mode.\n- Not begin with \"\"This is\"\", \"\"These are\"\", or similar openings.\n\nItem Description Rules:\n- In item mode, each description must begin with \"\"A\"\" or \"\"An\"\".\n- In item mode, each description must be in English only.\n\nComplete Look Full Description Rules:\n- In complete look mode, the Full Description must begin with \"\"A\"\" or \"\"An\"\".\n- In complete look mode, the Full Description must be in English only.\n\nAllowed visual attributes:\n- Shape\n- Material\n- Texture\n- Color\n- Condition\n- Visible hardware\n- Logos\n- Prints\n- Structural details\n\nDescriptions must:\n- Maintain object-level precision in item mode.\n- Maintain outfit-level precision in complete look mode.\n- Exclude invented or inferred details.\n- Exclude identity, personality, profession, occasion, brand authenticity, price, comfort, quality judgment, or cultural assumptions.\n- Exclude lighting, background, environment, camera perspective, shadows, reflections, and image quality references.\n\nPositional and Interaction Exclusion Rule\n\nDescriptions must not include any references to:\n- Movement or implied motion\n- Relative spatial placement within the image\n- Relationship of the item to the wearer’s body position\n- Gestures, pose, or posture\n- Interaction between objects unless the interaction is itself a visible intrinsic structural feature of the object\n\nDescriptions must focus strictly on the intrinsic physical characteristics of the item or outfit itself and not on position, arrangement, or use.\n\nVisibility Rule\n\nOnly describe attributes that are directly visible.\nIf a detail is partially visible, describe only the visible portion without inferring hidden structure.\nIf an item is too obscured for reliable intrinsic description, treat it as not valid for requested item identification.\n\nColor Rule\n\nUse specific visible color terms when possible.\nAvoid unnecessary generic color wording if a more precise hue is directly observable.\n\nInternal Verification Before Termination\n\nBefore returning the final output, verify internally that:\n1. The output is exactly one valid JSON object and nothing else.\n2. Error outputs use exactly this schema:\n   {\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"...\"\"}\n3. Item mode outputs use exactly this schema:\n   {\"\"response\"\":\"\"success\"\",\"\"mode\"\":\"\"items\"\",\"\"items\"\":[...]}\n4. Complete look outputs use exactly this schema:\n   {\"\"response\"\":\"\"success\"\",\"\"mode\"\":\"\"complete_look\"\",\"\"Outfit Title\"\":\"\"...\"\",\"\"Full Description\"\":\"\"...\"\",\"\"Short Description\"\":\"\"...\"\"}\n5. No extra keys are present anywhere.\n6. No null values are present.\n7. No comments or trailing commas are present.\n8. In item mode, each item title is in English only and corresponds to the requested item.\n9. In item mode, each description is in English only and contains 45–50 words.\n10. In complete look mode, Outfit Title is in English only.\n11. In complete look mode, Full Description is in English only and contains 200–250 words.\n12. In complete look mode, Short Description is in Russian only and contains 28–40 words.\n13. Short Description introduces no traits absent from Full Description.\n14. All descriptions remain strictly visual, intrinsic, and non-positional.\n15. If any check fails, regenerate the entire output before returning.\"",
+                "type": "string"
+              },
+              {
+                "id": "d40f012f-85d7-4b60-beec-1d014fa9d913",
+                "name": "promptName",
+                "value": "Items-Describer",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1040,
+          -112
+        ],
+        "id": "0489d5cb-1e9d-4fc7-84a1-5e2b3668a930",
+        "name": "SP_ItemsDescriber"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.recievedPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          1936,
+          -112
+        ],
+        "id": "6341de6c-5f3e-4ef7-9cde-9801689dcbcb",
+        "name": "Call 'subMkPlnTxt'"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+                "leftValue": "={{ $('Start').item.json.debugMode }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          1264,
+          -112
+        ],
+        "id": "a7e90072-c003-4e83-bed1-5e00810f86dd",
+        "name": "IfDebug1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+                "name": "recievedPrompt",
+                "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_ItemsDescriber').item.json.systemPrompt\n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1712,
+          -112
+        ],
+        "id": "4f2eac4c-da39-4986-ad12-baee9b0e2f3e",
+        "name": "SP_recievedPrompt1"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+            "mode": "list",
+            "cachedResultName": "N8N prompts",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Database",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "PromptName",
+                "lookupValue": "={{ $('SP_ItemsDescriber').item.json.promptName }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          1488,
+          -192
+        ],
+        "id": "d353b9dd-0dcf-408e-898e-72b4adc2c08a",
+        "name": "GetPrompt1",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "x0BIkYcbd4ffwTqr",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          2608,
+          -16
+        ],
+        "id": "ad8df06b-6f6c-4e80-b59b-4861c36f0002",
+        "name": "OP_Err_ response1",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $json.dialogId }}",
+          "text": "={{ \n$('IfError1').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson()['Short Description']\n}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3056,
+          -112
+        ],
+        "id": "d16a9ab2-ea2d-4518-bb94-5e716931c6e7",
+        "name": "OP_final_model1",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+                "leftValue": "={{$json.data === empty }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          2384,
+          -112
+        ],
+        "id": "a82af470-700f-4c93-b9d5-09f1d8423020",
+        "name": "IfResponseOk2"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "a869a9c7-791d-4f1c-852e-828a3569b146",
+                "leftValue": "={{$json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson().response}}",
+                "rightValue": "Error",
+                "operator": {
+                  "type": "string",
+                  "operation": "contains"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          2608,
+          -208
+        ],
+        "id": "b4a1b3a0-23c4-4a02-9279-6dd888204b0f",
+        "name": "IfError1"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "MCKUe6c7lEWRrPCq",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+            "cachedResultName": "subTR_API_AI_Selector"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "chat_id": "={{ $('Start').item.json.message_chat_id }}",
+              "modelName": "={{ $('Start').item.json.modelName }}",
+              "apiName": "={{ $('Start').item.json.modelApi }}",
+              "userPrompt": "=Complete Look",
+              "imgUrls": "={{ $('GetObjData').item.json.objUrl}}",
+              "systemPrompt": "={{ $('Call \\'subMkPlnTxt\\'').item.json.plainText }}",
+              "objectMainId": "={{ $('GetObjData').item.json.objectMainId }}",
+              "ObjName": "=Complete Look",
+              "ObjNameLocal": "={{ $('GetObjData').item.json.objNamesLocal }}",
+              "debugMode": "={{ $('Start').item.json.debugMode }}",
+              "botTocken": "={{ $('Start').item.json.botTocken }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "modelName",
+                "displayName": "modelName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "userPrompt",
+                "displayName": "userPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "imgUrls",
+                "displayName": "imgUrls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chat_id",
+                "displayName": "chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjName",
+                "displayName": "ObjName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjNameLocal",
+                "displayName": "ObjNameLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "botTocken",
+                "displayName": "botTocken",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urlList_bool",
+                "displayName": "urlList_bool",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "boolean",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "plainUrlList",
+                "displayName": "plainUrlList",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          2160,
+          -112
+        ],
+        "id": "ef56d35c-cd45-45bd-b61b-001a5297962e",
+        "name": "Call 'subTR_API_AI_Selector'"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          2832,
+          -304
+        ],
+        "id": "73fa8f94-3ed1-40d3-a6b0-89c3bea31b02",
+        "name": "OP_Err_ response",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createlook"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetGalleryForFace"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $json.result.message_id }}",
+              "status": "GetGalleryForFace",
+              "lookSelected": 1
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "lookSelected",
+                "displayName": "lookSelected",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          3504,
+          -112
+        ],
+        "id": "bc29582c-bdc6-466d-a575-f4d7d1fe05dd",
+        "name": "MsgId",
+        "notesInFlow": true,
+        "notes": "Store MsgId with buttons to edit later"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "objectMainId",
+                "keyValue": "={{ $json.objectMainId }}"
+              },
+              {
+                "keyName": "objUrl",
+                "keyValue": "={{ $json.imgUrls }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "objectDescr": "={{$('IfError1').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson()['Full Description']}}",
+              "status": "GalleryForFaceRecieved",
+              "objNames": "={{$('IfError1').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson()['Outfit Title']}}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objNames",
+                "displayName": "objNames",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "objUrl",
+                "displayName": "objUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "objectDescr",
+                "displayName": "objectDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          2832,
+          -112
+        ],
+        "id": "fe4a927c-1def-4065-b9e2-6d96a4d8e3bd",
+        "name": "UpdateDescr"
+      },
+      {
+        "parameters": {
+          "chatId": "={{$('UpdateDescr').item.json.dialogId }}",
+          "text": "={{ \n\"Образ готов к созданию.\"\n\n}}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать образ",
+                      "additionalFields": {
+                        "callback_data": "doneLook"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3280,
+          -112
+        ],
+        "id": "9701e40d-3f3f-4817-8f59-45f0badb3bb1",
+        "name": "OP_final_model",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "editMessageText",
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "messageId": "={{ $json.replyToMessageIdGallery }}",
+          "text": "={{ \"На фото несколько предметов гардероба.\" \n+ \"\\n\\n\" +\n\"Хотите взять готовый образ или выбрать отдельные предметы?\"\n}}",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          352,
+          -112
+        ],
+        "id": "5262c1fa-31d7-40b6-bc9b-fac2abb2950c",
+        "name": "Edit a text message2",
+        "webhookId": "f274d4a4-e6c5-419a-894b-f69988eb058b",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "keep": "lastItems"
+        },
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          96,
+          -112
+        ],
+        "id": "2cf2ee99-b504-4203-bdfd-ecc007ab45d7",
+        "name": "Limit",
+        "onError": "continueRegularOutput"
+      }
+    ],
+    "connections": {
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "GetMsgId+TaskId",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetMsgId+TaskId": {
+        "main": [
+          [
+            {
+              "node": "Limit",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a text message": {
+        "main": [
+          [
+            {
+              "node": "GetObjData",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_ItemsDescriber": {
+        "main": [
+          [
+            {
+              "node": "IfDebug1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subMkPlnTxt'": {
+        "main": [
+          [
+            {
+              "node": "Call 'subTR_API_AI_Selector'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfDebug1": {
+        "main": [
+          [
+            {
+              "node": "GetPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_recievedPrompt1": {
+        "main": [
+          [
+            {
+              "node": "Call 'subMkPlnTxt'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetPrompt1": {
+        "main": [
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetObjData": {
+        "main": [
+          [
+            {
+              "node": "SP_ItemsDescriber",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfResponseOk2": {
+        "main": [
+          [
+            {
+              "node": "IfError1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "OP_Err_ response1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfError1": {
+        "main": [
+          [
+            {
+              "node": "OP_Err_ response",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "UpdateDescr",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subTR_API_AI_Selector'": {
+        "main": [
+          [
+            {
+              "node": "IfResponseOk2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OP_final_model1": {
+        "main": [
+          [
+            {
+              "node": "OP_final_model",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UpdateDescr": {
+        "main": [
+          [
+            {
+              "node": "OP_final_model1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OP_final_model": {
+        "main": [
+          [
+            {
+              "node": "MsgId",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit a text message2": {
+        "main": [
+          [
+            {
+              "node": "Send a text message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit": {
+        "main": [
+          [
+            {
+              "node": "Edit a text message2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "DLS  ",
+    "name": "Version 08b42c8f",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "08b42c8f-966d-4e88-8ba6-817afbf617d5",
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "GetMsgId+TaskId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetMsgId+TaskId": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "GetObjData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_ItemsDescriber": {
+      "main": [
+        [
+          {
+            "node": "IfDebug1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subMkPlnTxt'": {
+      "main": [
+        [
+          {
+            "node": "Call 'subTR_API_AI_Selector'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfDebug1": {
+      "main": [
+        [
+          {
+            "node": "GetPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_recievedPrompt1": {
+      "main": [
+        [
+          {
+            "node": "Call 'subMkPlnTxt'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetPrompt1": {
+      "main": [
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetObjData": {
+      "main": [
+        [
+          {
+            "node": "SP_ItemsDescriber",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfResponseOk2": {
+      "main": [
+        [
+          {
+            "node": "IfError1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OP_Err_ response1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfError1": {
+      "main": [
+        [
+          {
+            "node": "OP_Err_ response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "UpdateDescr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subTR_API_AI_Selector'": {
+      "main": [
+        [
+          {
+            "node": "IfResponseOk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OP_final_model1": {
+      "main": [
+        [
+          {
+            "node": "OP_final_model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateDescr": {
+      "main": [
+        [
+          {
+            "node": "OP_final_model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OP_final_model": {
+      "main": [
+        [
+          {
+            "node": "MsgId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit a text message2": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Edit a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-05T22:12:29.594Z",
+  "id": "aEHvXP4WEdCHkxXH",
+  "isArchived": false,
+  "meta": null,
+  "name": "subTR_CL_GetLook_Complete",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "message_chat_id",
+              "type": "any"
+            },
+            {
+              "name": "debugMode"
+            },
+            {
+              "name": "modelName"
+            },
+            {
+              "name": "modelApi"
+            },
+            {
+              "name": "botTocken"
+            }
+          ]
+        }
+      },
+      "id": "3a645c2d-d31b-40e7-bd6e-b3b201811ab1",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -304,
+        -112
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetGalleryForFace"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -96,
+        -112
+      ],
+      "id": "44dd569f-aadf-443f-872f-c5be8c967a03",
+      "name": "GetMsgId+TaskId",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "objectMainId",
+              "keyValue": "={{$('Limit').item.json.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        816,
+        -96
+      ],
+      "id": "94178071-ef07-46f7-8746-e6c218daebae",
+      "name": "GetObjData",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "Принято! Анализирую фото...",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        576,
+        -96
+      ],
+      "id": "3561e285-8ede-4902-b9bb-cee768c33970",
+      "name": "Send a text message",
+      "webhookId": "f274d4a4-e6c5-419a-894b-f69988eb058b",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+              "name": "systemPrompt",
+              "value": "\"SYSTEM PROMPT: Items-Describer v4 (JSON Output + Short Description in RUS)\n\nRole: Visual wearable item and outfit describer.\n\nI receive:\n- An image\n- A structured prompt\n\nPriority of instructions:\n1. Output schema and exact error strings\n2. Validation rules\n3. Mode rules\n4. Description rules\n5. Style rules\n\nOutput Policy:\nI must return exactly one valid JSON object and nothing else.\nNo markdown.\nNo code fences.\nNo explanatory text before or after the JSON object.\n\nStep 0. Image Availability Validation\n\nIf the image cannot be retrieved, loaded, or visually analyzed, I return exactly:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. Image could not be retrieved.\"\"}\n\nThen I stop processing immediately.\n\nStep 1. Prompt Classification\n\nCASE 1 — Item List or Single Item\n\nThe prompt contains one or more clearly structured wearable item references.\nItem references may be written in English or Russian.\nExamples:\nBrown Jacket\nBlack Bag\nBrown Jacket, Black Bag\nКоричневая куртка\nЧерная сумка\nКоричневая куртка, Черная сумка\n\nProceed to Step 2.\n\nCASE 2 — Complete Look Command\n\nIf the prompt contains exactly:\nComplete Look\n\n(case-sensitive, exact match)\n\nProceed to Step 3.\n\nCASE 3 — Invalid Prompt\n\nIf the prompt is empty, absurd, not wearable-related, structurally unclear, or not matching Case 1 or Case 2, return exactly:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. List of items is broken.\"\"}\n\nThen stop processing immediately.\n\nWearable Scope Rule\n\nA valid wearable item must correspond to a visually identifiable clothing, footwear, or accessory object.\nAllowed categories include garments, shoes, bags, belts, scarves, hats, eyewear, watches, and jewelry if visibly present and structurally identifiable.\nDo not validate non-wearable objects as items.\n\nStep 2. Specific Item Description Mode\n\nI extract the items from the prompt and organize them into an Items List.\n\nItem Parsing Rules:\n- Item references in the prompt may be written in English or Russian.\n- Comma-separated entries are treated as separate items.\n- Leading and trailing spaces must be ignored during parsing.\n- Duplicate item names must be preserved if they appear in the prompt.\n- Each prompt item must be interpreted as a wearable object request and matched against a visually identifiable item in the image.\n\nItem Title Normalization Rule:\n- Regardless of the language used in the prompt, the JSON output for item descriptions must contain each \"\"Item Title\"\" in English only.\n- The English item title must be a concise wearable object label derived from the requested item and matched visual object.\n- The English item title must identify the same item requested in the prompt and must not introduce a different object category.\n- The English item title must remain structurally simple and product-like.\n\nFor each item:\n- The item must correspond to a visually identifiable wearable object in the image.\n- The item must be describable from visible intrinsic characteristics only.\n\nIf any listed item is not found in the image, I return exactly:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. Selected item not found in the image.\"\"}\n\nThen I stop processing immediately.\n\nIf all items are valid, I return exactly one JSON object in this format:\n{\"\"response\"\":\"\"success\"\",\"\"mode\"\":\"\"items\"\",\"\"items\"\":[{\"\"Item Title\"\":\"\"[English item title]\"\",\"\"Description\"\":\"\"[description]\"\"}]}\n\nItem Mode JSON Rules:\n- The root object must contain exactly three keys: \"\"response\"\", \"\"mode\"\", and \"\"items\"\".\n- \"\"response\"\" must equal \"\"success\"\".\n- \"\"mode\"\" must equal \"\"items\"\".\n- \"\"items\"\" must be an array.\n- The number of objects in \"\"items\"\" must equal the number of valid prompt items.\n- Each item object must contain exactly two keys: \"\"Item Title\"\" and \"\"Description\"\".\n- Each \"\"Item Title\"\" value must be in English only.\n- Each \"\"Description\"\" must be in English only.\n- Each \"\"Description\"\" must contain between 45 and 50 words.\n\nStep 3. Complete Look Description Mode\n\nIf triggered, I generate one unified description of the complete visible outfit in two forms: a Full Description and a Short Description.\n\nI return exactly one JSON object in this format:\n{\"\"response\"\":\"\"success\"\",\"\"mode\"\":\"\"complete_look\"\",\"\"Outfit Title\"\":\"\"[title]\"\",\"\"Full Description\"\":\"\"[full description]\"\",\"\"Short Description\"\":\"\"[short description]\"\"}\n\nComplete Look JSON Rules:\n- The root object must contain exactly five keys: \"\"response\"\", \"\"mode\"\", \"\"Outfit Title\"\", \"\"Full Description\"\", and \"\"Short Description\"\".\n- \"\"response\"\" must equal \"\"success\"\".\n- \"\"mode\"\" must equal \"\"complete_look\"\".\n- \"\"Outfit Title\"\" must be in English only and must follow the outfit title rules.\n- \"\"Full Description\"\" must be in English only and must contain between 200 and 250 words.\n- \"\"Short Description\"\" must be in Russian only and must contain between 28 and 40 words.\n\nComplete Look Content Rules:\n- The Full Description must include all visible clothing, footwear, and accessories that are part of the outfit.\n- It must describe each visible item with precise visual detail.\n- It must integrate all items into one cohesive outfit-level description.\n- It must remain strictly visual and intrinsic.\n- It may include subtle stylistic tone, but no speculation.\n\nShort Description Rules:\n- The Short Description must be written in Russian only.\n- The Short Description must summarize only outfit traits already stated in the Full Description.\n- It must not introduce any new items or attributes.\n- It must describe the outfit as a whole, not as a list.\n- It is not required to begin with \"\"A\"\" or \"\"An\"\".\n\nOutfit Title Rules:\n- Must use Title Case.\n- Must contain 1–4 words.\n- Must contain only alphabetic characters and spaces.\n- No punctuation.\n- No trailing period.\n\nDescription Rules (All Modes)\n\nEach description must:\n- Include only visually determinable attributes.\n- Follow the language rules of the active mode.\n- Not begin with \"\"This is\"\", \"\"These are\"\", or similar openings.\n\nItem Description Rules:\n- In item mode, each description must begin with \"\"A\"\" or \"\"An\"\".\n- In item mode, each description must be in English only.\n\nComplete Look Full Description Rules:\n- In complete look mode, the Full Description must begin with \"\"A\"\" or \"\"An\"\".\n- In complete look mode, the Full Description must be in English only.\n\nAllowed visual attributes:\n- Shape\n- Material\n- Texture\n- Color\n- Condition\n- Visible hardware\n- Logos\n- Prints\n- Structural details\n\nDescriptions must:\n- Maintain object-level precision in item mode.\n- Maintain outfit-level precision in complete look mode.\n- Exclude invented or inferred details.\n- Exclude identity, personality, profession, occasion, brand authenticity, price, comfort, quality judgment, or cultural assumptions.\n- Exclude lighting, background, environment, camera perspective, shadows, reflections, and image quality references.\n\nPositional and Interaction Exclusion Rule\n\nDescriptions must not include any references to:\n- Movement or implied motion\n- Relative spatial placement within the image\n- Relationship of the item to the wearer’s body position\n- Gestures, pose, or posture\n- Interaction between objects unless the interaction is itself a visible intrinsic structural feature of the object\n\nDescriptions must focus strictly on the intrinsic physical characteristics of the item or outfit itself and not on position, arrangement, or use.\n\nVisibility Rule\n\nOnly describe attributes that are directly visible.\nIf a detail is partially visible, describe only the visible portion without inferring hidden structure.\nIf an item is too obscured for reliable intrinsic description, treat it as not valid for requested item identification.\n\nColor Rule\n\nUse specific visible color terms when possible.\nAvoid unnecessary generic color wording if a more precise hue is directly observable.\n\nInternal Verification Before Termination\n\nBefore returning the final output, verify internally that:\n1. The output is exactly one valid JSON object and nothing else.\n2. Error outputs use exactly this schema:\n   {\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"...\"\"}\n3. Item mode outputs use exactly this schema:\n   {\"\"response\"\":\"\"success\"\",\"\"mode\"\":\"\"items\"\",\"\"items\"\":[...]}\n4. Complete look outputs use exactly this schema:\n   {\"\"response\"\":\"\"success\"\",\"\"mode\"\":\"\"complete_look\"\",\"\"Outfit Title\"\":\"\"...\"\",\"\"Full Description\"\":\"\"...\"\",\"\"Short Description\"\":\"\"...\"\"}\n5. No extra keys are present anywhere.\n6. No null values are present.\n7. No comments or trailing commas are present.\n8. In item mode, each item title is in English only and corresponds to the requested item.\n9. In item mode, each description is in English only and contains 45–50 words.\n10. In complete look mode, Outfit Title is in English only.\n11. In complete look mode, Full Description is in English only and contains 200–250 words.\n12. In complete look mode, Short Description is in Russian only and contains 28–40 words.\n13. Short Description introduces no traits absent from Full Description.\n14. All descriptions remain strictly visual, intrinsic, and non-positional.\n15. If any check fails, regenerate the entire output before returning.\"",
+              "type": "string"
+            },
+            {
+              "id": "d40f012f-85d7-4b60-beec-1d014fa9d913",
+              "name": "promptName",
+              "value": "Items-Describer",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1040,
+        -112
+      ],
+      "id": "0489d5cb-1e9d-4fc7-84a1-5e2b3668a930",
+      "name": "SP_ItemsDescriber"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.recievedPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1936,
+        -112
+      ],
+      "id": "6341de6c-5f3e-4ef7-9cde-9801689dcbcb",
+      "name": "Call 'subMkPlnTxt'"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+              "leftValue": "={{ $('Start').item.json.debugMode }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1264,
+        -112
+      ],
+      "id": "a7e90072-c003-4e83-bed1-5e00810f86dd",
+      "name": "IfDebug1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+              "name": "recievedPrompt",
+              "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_ItemsDescriber').item.json.systemPrompt\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1712,
+        -112
+      ],
+      "id": "4f2eac4c-da39-4986-ad12-baee9b0e2f3e",
+      "name": "SP_recievedPrompt1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+          "mode": "list",
+          "cachedResultName": "N8N prompts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "PromptName",
+              "lookupValue": "={{ $('SP_ItemsDescriber').item.json.promptName }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1488,
+        -192
+      ],
+      "id": "d353b9dd-0dcf-408e-898e-72b4adc2c08a",
+      "name": "GetPrompt1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x0BIkYcbd4ffwTqr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2608,
+        -16
+      ],
+      "id": "ad8df06b-6f6c-4e80-b59b-4861c36f0002",
+      "name": "OP_Err_ response1",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.dialogId }}",
+        "text": "={{ \n$('IfError1').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson()['Short Description']\n}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3056,
+        -112
+      ],
+      "id": "d16a9ab2-ea2d-4518-bb94-5e716931c6e7",
+      "name": "OP_final_model1",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+              "leftValue": "={{$json.data === empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2384,
+        -112
+      ],
+      "id": "a82af470-700f-4c93-b9d5-09f1d8423020",
+      "name": "IfResponseOk2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a869a9c7-791d-4f1c-852e-828a3569b146",
+              "leftValue": "={{$json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson().response}}",
+              "rightValue": "Error",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2608,
+        -208
+      ],
+      "id": "b4a1b3a0-23c4-4a02-9279-6dd888204b0f",
+      "name": "IfError1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "MCKUe6c7lEWRrPCq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+          "cachedResultName": "subTR_API_AI_Selector"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chat_id": "={{ $('Start').item.json.message_chat_id }}",
+            "modelName": "={{ $('Start').item.json.modelName }}",
+            "apiName": "={{ $('Start').item.json.modelApi }}",
+            "userPrompt": "=Complete Look",
+            "imgUrls": "={{ $('GetObjData').item.json.objUrl}}",
+            "systemPrompt": "={{ $('Call \\'subMkPlnTxt\\'').item.json.plainText }}",
+            "objectMainId": "={{ $('GetObjData').item.json.objectMainId }}",
+            "ObjName": "=Complete Look",
+            "ObjNameLocal": "={{ $('GetObjData').item.json.objNamesLocal }}",
+            "debugMode": "={{ $('Start').item.json.debugMode }}",
+            "botTocken": "={{ $('Start').item.json.botTocken }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "modelName",
+              "displayName": "modelName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "userPrompt",
+              "displayName": "userPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "imgUrls",
+              "displayName": "imgUrls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjName",
+              "displayName": "ObjName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjNameLocal",
+              "displayName": "ObjNameLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "botTocken",
+              "displayName": "botTocken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urlList_bool",
+              "displayName": "urlList_bool",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "plainUrlList",
+              "displayName": "plainUrlList",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2160,
+        -112
+      ],
+      "id": "ef56d35c-cd45-45bd-b61b-001a5297962e",
+      "name": "Call 'subTR_API_AI_Selector'"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2832,
+        -304
+      ],
+      "id": "73fa8f94-3ed1-40d3-a6b0-89c3bea31b02",
+      "name": "OP_Err_ response",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createlook"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetGalleryForFace"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $json.result.message_id }}",
+            "status": "GetGalleryForFace",
+            "lookSelected": 1
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "lookSelected",
+              "displayName": "lookSelected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3504,
+        -112
+      ],
+      "id": "bc29582c-bdc6-466d-a575-f4d7d1fe05dd",
+      "name": "MsgId",
+      "notesInFlow": true,
+      "notes": "Store MsgId with buttons to edit later"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "objectMainId",
+              "keyValue": "={{ $json.objectMainId }}"
+            },
+            {
+              "keyName": "objUrl",
+              "keyValue": "={{ $json.imgUrls }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "objectDescr": "={{$('IfError1').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson()['Full Description']}}",
+            "status": "GalleryForFaceRecieved",
+            "objNames": "={{$('IfError1').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson()['Outfit Title']}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objNames",
+              "displayName": "objNames",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "objUrl",
+              "displayName": "objUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "objectDescr",
+              "displayName": "objectDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        2832,
+        -112
+      ],
+      "id": "fe4a927c-1def-4065-b9e2-6d96a4d8e3bd",
+      "name": "UpdateDescr"
+    },
+    {
+      "parameters": {
+        "chatId": "={{$('UpdateDescr').item.json.dialogId }}",
+        "text": "={{ \n\"Образ готов к созданию.\"\n\n}}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать образ",
+                    "additionalFields": {
+                      "callback_data": "doneLook"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3280,
+        -112
+      ],
+      "id": "9701e40d-3f3f-4817-8f59-45f0badb3bb1",
+      "name": "OP_final_model",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "editMessageText",
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "messageId": "={{ $json.replyToMessageIdGallery }}",
+        "text": "={{ \"На фото несколько предметов гардероба.\" \n+ \"\\n\\n\" +\n\"Хотите взять готовый образ или выбрать отдельные предметы?\"\n}}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        352,
+        -112
+      ],
+      "id": "5262c1fa-31d7-40b6-bc9b-fac2abb2950c",
+      "name": "Edit a text message2",
+      "webhookId": "f274d4a4-e6c5-419a-894b-f69988eb058b",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        96,
+        -112
+      ],
+      "id": "2cf2ee99-b504-4203-bdfd-ecc007ab45d7",
+      "name": "Limit",
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "Db9RTL99yUCO77oO",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-05T22:12:29.596Z",
+      "createdAt": "2026-03-05T22:12:29.596Z",
+      "role": "workflow:owner",
+      "workflowId": "aEHvXP4WEdCHkxXH",
+      "projectId": "M9bTlSGaaAbsZxvs"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-02T14:25:49.831Z",
+      "createdAt": "2026-03-02T14:25:49.831Z",
+      "id": "6ZyTvRGaNVzskE04",
+      "name": "TG_PROD"
+    },
+    {
+      "updatedAt": "2026-03-02T14:27:55.507Z",
+      "createdAt": "2026-03-02T14:27:55.507Z",
+      "id": "XgyisslqXHscjiSb",
+      "name": "SP_ItemsDescriber"
+    },
+    {
+      "updatedAt": "2026-03-02T14:26:06.738Z",
+      "createdAt": "2026-03-02T14:26:06.738Z",
+      "id": "tzvi3HGYBgqT00vr",
+      "name": "CM"
+    },
+    {
+      "updatedAt": "2026-03-02T14:25:49.805Z",
+      "createdAt": "2026-03-02T14:25:49.805Z",
+      "id": "uZYZiWAvyVAXbBbR",
+      "name": "CL"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-22T12:14:16.801Z",
+  "versionId": "08b42c8f-966d-4e88-8ba6-817afbf617d5"
+}
