@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-24T16:17:42.000Z",
-    "createdAt": "2026-03-24T16:08:14.210Z",
-    "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
+    "updatedAt": "2026-03-25T20:12:12.000Z",
+    "createdAt": "2026-03-25T20:10:57.914Z",
+    "versionId": "e4299dd0-e23a-4cd4-b5c3-03e71c0fbd28",
     "workflowId": "MCKUe6c7lEWRrPCq",
     "nodes": [
       {
@@ -63,7 +63,7 @@
         "name": "Start",
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "position": [
-          -5488,
+          -5712,
           880
         ]
       },
@@ -1442,7 +1442,7 @@
         "parameters": {
           "aggregate": "aggregateAllItemData",
           "options": {
-            "includeBinaries": false
+            "includeBinaries": true
           }
         },
         "type": "n8n-nodes-base.aggregate",
@@ -1885,6 +1885,26 @@
         ],
         "id": "13a86672-3970-48c9-8193-673f4cc99052",
         "name": "ChangeMIME"
+      },
+      {
+        "parameters": {
+          "dataToSave": {
+            "values": [
+              {
+                "key": "TG_UserID",
+                "value": "={{ $('Start').item.json.chat_id }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.executionData",
+        "typeVersion": 1.1,
+        "position": [
+          -5520,
+          880
+        ],
+        "id": "eb78fb06-a55d-498e-a816-3e4e1ffa5be2",
+        "name": "Execution Data"
       }
     ],
     "connections": {
@@ -1892,7 +1912,7 @@
         "main": [
           [
             {
-              "node": "UserPrompt_Default",
+              "node": "Execution Data",
               "type": "main",
               "index": 0
             }
@@ -2467,94 +2487,41 @@
             }
           ]
         ]
+      },
+      "Execution Data": {
+        "main": [
+          [
+            {
+              "node": "UserPrompt_Default",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "DLS  ",
-    "name": "Version dae896f0",
-    "description": "safety = block none",
+    "name": "Version e4299dd0",
+    "description": "",
     "autosaved": true,
     "workflowPublishHistory": [
       {
-        "createdAt": "2026-03-24T16:09:31.485Z",
-        "id": 1756,
+        "createdAt": "2026-03-25T20:12:12.163Z",
+        "id": 1813,
         "workflowId": "MCKUe6c7lEWRrPCq",
-        "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
+        "versionId": "e4299dd0-e23a-4cd4-b5c3-03e71c0fbd28",
         "event": "activated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:15:11.453Z",
-        "id": 1758,
-        "workflowId": "MCKUe6c7lEWRrPCq",
-        "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
-        "event": "activated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:17:14.510Z",
-        "id": 1760,
-        "workflowId": "MCKUe6c7lEWRrPCq",
-        "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
-        "event": "activated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:17:20.284Z",
-        "id": 1762,
-        "workflowId": "MCKUe6c7lEWRrPCq",
-        "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
-        "event": "activated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:17:42.413Z",
-        "id": 1764,
-        "workflowId": "MCKUe6c7lEWRrPCq",
-        "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
-        "event": "activated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:15:07.438Z",
-        "id": 1757,
-        "workflowId": "MCKUe6c7lEWRrPCq",
-        "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
-        "event": "deactivated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:17:14.386Z",
-        "id": 1759,
-        "workflowId": "MCKUe6c7lEWRrPCq",
-        "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
-        "event": "deactivated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:17:18.237Z",
-        "id": 1761,
-        "workflowId": "MCKUe6c7lEWRrPCq",
-        "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
-        "event": "deactivated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:17:39.730Z",
-        "id": 1763,
-        "workflowId": "MCKUe6c7lEWRrPCq",
-        "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
-        "event": "deactivated",
         "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
       }
     ]
   },
-  "activeVersionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
+  "activeVersionId": "e4299dd0-e23a-4cd4-b5c3-03e71c0fbd28",
   "connections": {
     "Start": {
       "main": [
         [
           {
-            "node": "UserPrompt_Default",
+            "node": "Execution Data",
             "type": "main",
             "index": 0
           }
@@ -3129,6 +3096,17 @@
           }
         ]
       ]
+    },
+    "Execution Data": {
+      "main": [
+        [
+          {
+            "node": "UserPrompt_Default",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-03-02T17:25:30.707Z",
@@ -3197,7 +3175,7 @@
       "name": "Start",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
-        -5488,
+        -5712,
         880
       ]
     },
@@ -4576,7 +4554,7 @@
       "parameters": {
         "aggregate": "aggregateAllItemData",
         "options": {
-          "includeBinaries": false
+          "includeBinaries": true
         }
       },
       "type": "n8n-nodes-base.aggregate",
@@ -5019,6 +4997,26 @@
       ],
       "id": "13a86672-3970-48c9-8193-673f4cc99052",
       "name": "ChangeMIME"
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "TG_UserID",
+              "value": "={{ $('Start').item.json.chat_id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -5520,
+        880
+      ],
+      "id": "eb78fb06-a55d-498e-a816-3e4e1ffa5be2",
+      "name": "Execution Data"
     }
   ],
   "pinData": {
@@ -5027,17 +5025,17 @@
         "json": {
           "modelName": "gemini-3-flash",
           "apiName": "google",
-          "userPrompt": "# Request прическа # Blueprint This adult male in his late 40s or early 50s presents a strong, defined craniofacial structure characterized by a completely shaved head. The skin is a light-medium tone with warm undertones and visible natural texture, including fine expression lines on the forehead. The face shape is oval with a well-defined, slightly squared jawline and a firm, prominent chin. The forehead is high, smooth, and fully exposed, merging into the clean-shaven scalp. Eyebrows are dark, dense, and moderately thick with a natural arch, creating a high-contrast relationship with the skin. The eyes are deep-set and dark brown with visible upper lid show and fine lines at the outer corners. The nose is straight and well-proportioned with a defined bridge and a slightly rounded, firm tip. The midface is structured with subtle cheekbone definition that transitions smoothly into the lower face. The lips are of moderate fullness with a clear vermilion border and a neutral, straight mouth line. A short, groomed salt-and-pepper stubble beard covers the lower face, with a higher concentration of gray hair along the jawline. The facial hair is denser on the chin and upper lip, while appearing lighter and more silvered on the cheeks. The ears are moderately sized, well-defined, and sit flush against the sides of the head. The overall facial read is one of mature, disciplined structure with high contrast between the dark features and the light-medium skin. This combination of a clean-shaven head and a textured, graying beard creates a distinctive and stable identity anchor.",
-          "systemPrompt": "SYSTEM PROMPT: Model-Refiner v21-flash-min (Gemini 3 Flash Stable) I refine only the requested anatomical category or categories inside an existing Blueprint using one source image, while preserving the same person’s visual identity, facial typology, and age-specific facial read as closely as possible. Core rule: The base Blueprint is an identity anchor. I do not redesign the person. I do not improve the whole Blueprint. I make the minimum necessary rewrite so the Blueprint describes the same person with the requested visible change integrated coherently. Input: I receive: 1. one source image 2. one text input containing two sections: # Request and # Blueprint Parsing: - Read the content after # Request and before # Blueprint as the requested feature list. - Read the content after # Blueprint as the base Blueprint. - Accept multiline and one-line input. - Ignore the section labels themselves. - Request terms may be separated by commas, line breaks, slashes, plus signs, ampersands, or combinations of them. - Trim spaces from both extracted sections. - If either # Request or # Blueprint is missing, or either extracted section is empty, return exactly: ⚠ Error. Ошибка - возможно, запрос составлен неверно. Priority: 1. Exact error handling 2. Request mapping 3. Image validity and requested-category visibility 4. Identity preservation 5. Typology preservation 6. Age preservation 7. Minimal correct rewrite 8. Stop immediately 9. Final output formatting Canonical categories: 1. Gender 2. Age range 3. Face shape 4. Facial proportions 5. Skin 6. Forehead and hairline 7. Eyebrows 8. Eyes 9. Nose 10. Cheeks and cheekbones 11. Lips and philtrum 12. Jawline and chin 13. Facial hair 14. Ears 15. Scalp hair Alias mapping: Map request terms to the nearest canonical category. English examples: - male, female, masculine, feminine, sex -> Gender - age, apparent age, youthful, older, mature -> Age range - oval, round, square, oblong, heart-shaped -> Face shape - proportions, facial thirds, lower-third proportion -> Facial proportions - complexion, skin tone, freckles, pigmentation -> Skin - forehead, hairline, widow’s peak, temple recession -> Forehead and hairline - brows, eyebrows, brow arch, brow density -> Eyebrows - eyes, eye shape, eyelids, canthal tilt, under-eyes -> Eyes - nose, nasal bridge, dorsum, nostrils, tip -> Nose - cheeks, cheekbones, malar area, midface -> Cheeks and cheekbones - lips, mouth, cupid’s bow, philtrum -> Lips and philtrum - jaw, jawline, chin, mentum, mandibular line -> Jawline and chin - beard, moustache, mustache, stubble, sideburns -> Facial hair - ears, earlobes, helix, ear projection -> Ears - hair, haircut, hairstyle, curls, waves, fringe, bangs, part, hair length, hair texture -> Scalp hair Russian examples: - пол -> Gender - возраст -> Age range - форма лица -> Face shape - пропорции лица -> Facial proportions - кожа, тон кожи, веснушки -> Skin - лоб, линия роста волос -> Forehead and hairline - брови -> Eyebrows - глаза -> Eyes - нос -> Nose - щеки, скулы -> Cheeks and cheekbones - губы, фильтрум -> Lips and philtrum - челюсть, линия челюсти, подбородок -> Jawline and chin - борода, усы, щетина -> Facial hair - уши -> Ears - волосы, прическа, челка, кудри, волны, пробор -> Scalp hair Request rules: - If multiple request terms map to the same category, process that category once. - If no valid category remains, return exactly: ⚠ Error. Ошибка - возможно, запрос составлен неверно. - If more than 3 canonical categories are requested, continue only if each requested category can be clearly localized in the Blueprint. Otherwise return exactly: ⚠ Error. Ошибка - возможно, запрос составлен неверно. Image gate: Proceed only if the image shows one real human face with enough visible anatomy for the requested refinement. Reject if: - the subject is non-human - the face is artificial or heavily stylized - the face is masked or obstructed beyond useful reading - the image is too poor for the requested category - more than one face is present and the target is not unambiguous If rejected, return exactly: ⚠ Error. Ошибка - возможно, лицо плохо видно, или фотография плохого качества. Visibility rule: For each requested category, proceed only if its main morphology is readable at a useful structural level. Useful structural level means visible form, contour, volume, projection, density, texture, hue, symmetry, boundary geometry, undertone, contrast, or distribution pattern without guessing. If any requested category is not readable, return exactly: ⚠ Error. Ошибка - возможно, запрашиваемую деталь плохо видно, или фотография плохого качества. Blueprint localization rule: The Blueprint must be clear enough to localize each requested category. Do not reject for minor structural imperfection. Reject only if the requested category cannot be localized reliably. If localization fails, return exactly: ⚠ Error. Ошибка - возможно, запрос составлен неверно. Identity lock: Preserve the same overall facial type, structural impression, pigmentation pattern, undertone pattern, contrast pattern, and person-level visual identity everywhere outside the refined area. Do not broaden, beautify, generalize, normalize, feminize, masculinize, age-shift, or redesign the person. Typology lock: Preserve the same visible facial typology through structure, proportions, contrast pattern, upper-face read, midface read, lower-face taper, and face-framing geometry. Do not allow drift into a different broad facial type. Do not use ethnicity labels. Age lock: Preserve the same apparent age class and age-specific facial read unless Age range is explicitly requested. Makeup exclusion rule: Do not add, preserve, strengthen, or introduce makeup as a facial trait. Do not describe eyeliner, eyeshadow, mascara, lash enhancement, lipstick, lip liner, gloss, contouring, blush, highlighter, or other cosmetic products or cosmetic effects. Tiny-mark suppression rule: As a default, omit tiny facial marks. Do not search for, prioritize, or rely on small dots, spots, specks, faint freckles, or tiny isolated markings as identity anchors. A small natural mark may be included or preserved only if: - it is already present in the base Blueprint or clearly visible in the source image - it is visually large enough to stand out at the actual image resolution - it is unmistakable and not plausibly explained by shadow, compression, blur, noise, hair overlap, lip contour, nostril shading, or cosmetic residue - omitting it would materially misdescribe the face If any doubt remains, omit it or leave it unchanged if the requested category does not require touching it. Gender-anchor rule: Do not introduce or strengthen a gender anchor unless Gender is explicitly requested or the existing Blueprint already contains a clearly supported gender presentation statement that is not being edited. Ordinary vs appearance-changing categories: Use two behaviors only. Ordinary categories: - Gender - Age range - Face shape - Facial proportions - Nose - Cheeks and cheekbones - Ears Appearance-changing categories: - Skin - Forehead and hairline - Eyebrows - Eyes - Lips and philtrum - Jawline and chin - Facial hair - Scalp hair Local rewrite rule: If the requested category is ordinary, replace only the localized sentence span. If one sentence mixes the requested category with adjacent content, edit only the relevant part of that sentence as narrowly as possible. Appearance-integration rule: If the requested category is appearance-changing, rewrite the smallest coherent affected block, not just one isolated sentence. The smallest coherent affected block may include: - the requested category sentence - one mixed or adjacent sentence that directly carries the same visual feature - one final synthesis or overall-impression sentence if it would otherwise contradict or weaken the refined feature Do not rewrite beyond that smallest coherent affected block. Wrong-family rule: If the base Blueprint describes the wrong morphology family for the requested category, fully replace that localized sentence with the correct family from the source image. This still counts as a local rewrite or minimal affected-block rewrite, not a global rewrite. Partial-visibility rule: If the requested category is only partly readable, refine only the clearly visible subfeatures. Do not force a full-category rewrite when only part of the category is readable. Residual-contradiction cleanup rule: If the requested feature has been changed to a different visible family, remove or rewrite leftover wording inside the same affected block that still implies the old family. Do not search outside the affected block for unrelated cleanup. Target-summary rule: If a final synthesis or overall-impression sentence is touched, it must not weaken, genericize, beautify, soften, or partially undo the refined requested feature. Hair rule: For Scalp hair, describe hairstyle by structural behavior first: - length distribution - root volume or flatness - directional pull - forehead exposure mechanism - strand grouping or separation - side and neck fall - overall silhouette If the hair is long, shoulder-length, or longer, explicitly state when it occupies visible space around the sides of the head, neck, or shoulders. If the hair exposes the forehead, specify how: - lifted dry volume - clean dry sweep - tight pull-back - wet flattened backward lay - heavy strands drawn back under their own weight If Scalp hair is changed to a long hairstyle family, remove conflicting short-hair logic inside the affected block, such as: - short sides - tapered temples - cropped side behavior - top-heavy short styling - neat short swept-back logic Do not reduce a structurally distinctive hairstyle to generic labels such as wavy, slicked back, or shoulder-length if those labels would weaken likeness. Facial-hair rule: For Facial hair, preserve true facial-hair distribution and density pattern. Do not let facial-hair edits falsely redefine jaw or chin bone structure unless a mixed sentence makes one minimal correction necessary. Sentence rules: - English only, regardless of the request language - use only supported intrinsic morphology - use structure, proportion, contour, projection, volume, density, texture, hue, symmetry, boundary geometry, undertone, contrast, distribution, and exposure mechanism where relevant - prefer discriminative visible traits over generic filler - no stylistic language - no aesthetic judgment - no camera language - no commentary about visibility - no ancestry, ethnicity, nationality, race, culture, religion, or phenotype labels - no uncertainty phrases such as appears, seems, likely, or probably - do not invent unsupported traits - do not describe any trait primarily created by cosmetics rather than anatomy - do not rely on tiny isolated marks for distinctiveness Execution order: 1. Parse # Request and # Blueprint 2. Map request terms to canonical categories 3. Validate image 4. Check requested-category visibility 5. Localize the requested category 6. Decide: ordinary category or appearance-changing category 7. Rewrite only the localized span or the smallest coherent affected block 8. Preserve identity, typology, age, and non-target anchors 9. Stop immediately once the requested feature is coherent 10. Return the final refined Blueprint Fast-stop rule: Do not search for perfect global harmony. Do not continue refining after the requested feature and its direct visual effects are coherent. When in doubt between a narrow sufficient edit and a broader smoother rewrite, choose the narrow sufficient edit and stop. Final check: - every requested category was refined or an exact error was returned earlier - only the localized span or the smallest coherent affected block was changed - all untouched content remains unchanged - the same overall person-level visual identity is preserved - the same overall facial typology is preserved - the same apparent age class and age-specific facial read are preserved - no unsupported tiny facial mark was introduced or strengthened - no unnecessary gender anchor was introduced - no cosmetics or makeup were introduced or strengthened - no final synthesis sentence weakened the refined requested category - no residual wording inside the affected block still implies the replaced morphology family - output is English only for non-error output - output contains only the final refined Blueprint or one exact error string Output rules: - output only the final refined Blueprint or one exact error string - English only for non-error output - continuous prose only - no headings, labels, commentary, or extra text before or after the output",
-          "imgUrls": "https://api.telegram.org/file/bot8500532222:AAHn-miVxN48HoJNpedLE6wz5WQ0poDaYXU/photos/file_878.jpg",
+          "userPrompt": "## Model appearance\nA young adult woman with an oval face, high forehead, and prominent cheekbones. Her warm, light-brown skin features golden undertones and a few small moles on the neck, complemented by almond-shaped dark brown eyes and thin, arched brows. She has a slender nose, full symmetrical lips, and a defined, tapered jawline leading to a rounded chin. Her dark brown, tightly coiled hair is pulled back into a high ponytail, revealing a clean hairline. She possesses a long, slender neck and delicate shoulders on a slim build.\n\n##Look\nBeige Jacket - A beige architectural jacket featuring an extremely oversized, boxy silhouette with extreme dropped shoulders and voluminous sleeves. The garment is constructed from a stiff, matte material that maintains a sculptural shape, cinched tightly at the waist by a wide self-tie belt to create deep, structured folds. An asymmetrical front closure with silver-tone snap buttons sits beneath a wide pointed collar and a geometric storm flap on the right chest. Large, prominent cargo pockets with rectangular flaps are positioned at the hips, contributing to the irregular, flared hemline.\nBlue Jeans - A pair of relaxed, straight-leg jeans in a medium blue wash with a low-to-mid rise waist. The silhouette features a generous cut through the legs that creates soft stacking at the ankles. They are detailed with a classic five-pocket construction, a metal button closure, and subtle whiskering across the hips. The textured denim displays a stone-washed finish with lighter fading along the thighs.\nBrown Shoes - A pair of dark brown flat shoes featuring a soft, matte suede-like texture and a minimalist silhouette. The design includes a rounded toe box and a low-cut, curved vamp that exposes the top of the foot. The construction is sleek and unstructured, with a thin, flexible sole that sits flush against the ground. The deep chocolate brown color is uniform across the entire upper, providing a grounded contrast to the lighter denim hem resting above them.\nWhite Shirt - An oversized, long-sleeved button-down shirt in a crisp white hue. It features a relaxed, boxy silhouette with extreme dropped shoulders and wide sleeves ending in structured cuffs. The garment is fully buttoned, leading to a contrasting black pointed collar heavily embellished with white pearls and silver-tone studs. The straight hem falls to the mid-thigh, characterized by deep side slits that create a distinct panel separation.",
+          "systemPrompt": "<system_identity> Pose-Prompter v32 (Assembled Look Fixes). Role: Assemble a precise fashion prompt for Nano Banana Pro by fusing a structured model appearance description, a list of outfit elements, and attached reference images. Objective: Build a single, visually coherent, and highly faithful description of the full outfit worn by the specified model. Enforce strict geometric and proportional anchoring to prevent downstream diffusion models from normalizing complex, oversized, or multi-layered garments. Output ONLY the final ready-to-use generation prompt. </system_identity> <input_processing> You will receive user input containing 'Model Appearance' (or similar headers), 'Look' (outfit elements/accessories), and attached reference images. 1. Extract and lock the exact 'Model Appearance' traits. Do not alter, omit, or overwrite any explicitly stated physical features. 2. Analyze attached images as the primary visual source for garment shape, volume, fit, proportion, texture, panel logic, and hardware. 3. Resolve text/image discrepancies by favoring the most structurally faithful and visually obvious traits, provided they do not break the user's core intent. 4. Determine how the items organically layer, fit, and interact on the body. Accessories must be placed functionally and logically without unnecessarily obstructing clothing details. </input_processing> <fidelity_rules> - DO NOT output intermediate analysis, explanations, or conversational filler. - DO NOT describe items as isolated catalog objects; they must be actively worn correctly and naturally by the model. - DO NOT simplify, normalize, or flatten distinctive garments into standard, generic, or symmetrical archetypes. - DO NOT invent missing garments, add unrequested accessories, or change colors/materials without justification. - DO NOT add background props, furniture, environments, or lifestyle/editorial scenes. Maintain a strict studio catalog context. - ANTI-NORMALIZATION PROTOCOL FOR HERO ITEMS: If a garment has distinct structural signals (asymmetry, extreme volume, gathered drape, irregular hems), you must enter strict Anti-Normalization Mode: 1. PRIOR BUSTING: DO NOT use generic garment archetypes (e.g., 'trench coat', 'blazer') or standard tailoring terms. Use terms like 'architectural jacket', 'sculptural piece', or 'voluminous outerwear'. 2. MULTI-LAYER MAPPING: Describe complex upper-body constructions layer-by-layer using raw geometry. 3. EXTREME PROPORTION ANCHORING: Anchor oversized fits using anatomical markers (e.g., 'extreme dropped shoulders falling down the upper arms') and material rigidity. 4. OUTERWEAR DOMINANCE (CONFLICT RESOLUTION): When assembling multiple items, the structural state of the outermost/most complex garment is SACRED. You MUST NOT open, unbutton, or untie a complex outer layer just to make inner layers (like a shirt) visible. If a jacket is described as cinched and tied, it MUST remain cinched and tied in the final prompt. Inner layers should only be visible where they naturally peek out (collar, cuffs, hem). </fidelity_rules> <output_formatting> Your sole output must be EXACTLY ONE continuous text string. Do not use markdown blocks, bullet points, or lists. You must assemble the final prompt using exactly this formula: [MANDATORY_PREFIX] + [UNIFIED_DESCRIPTION] + [MANDATORY_SUFFIX] <mandatory_prefix> You MUST begin the prompt exactly and verbatim with this text (including the trailing space): Photorealistic full-body fashion catalog photo on a pure white seamless background, head-to-toe, centered, subject ~85% of frame height. </mandatory_prefix> <unified_description> Immediately following the prefix, write a dense, concrete, highly visual description merging the exact Model Appearance with the worn Look. - Write as one continuous, fluent fashion-generation prompt. - Clearly communicate how layers are arranged, how fabrics look, garment proportions, and how garment structure behaves using the Anti-Normalization Protocol. - Ensure the description flows seamlessly from the model's physical traits into the cohesive head-to-toe outfit. </unified_description> <mandatory_suffix> You MUST end the prompt exactly and verbatim with this text (including the leading space): Model standing in a relaxed 3/4 stance angled approximately 30° toward camera-right. Weight distributed slightly onto the back leg, with the front leg subtly forward and knees softly relaxed. Torso aligned with hips; shoulders natural and level. Head turned toward the camera so both eyes are fully visible, looking directly into the camera with a natural smile. Right arm relaxed naturally along the torso. Left arm extended downward in a neutral relaxed position beside the thigh. Arms slightly separated from torso to preserve garment visibility. Outer layers hanging open naturally without collapsing over underlying garments. Feet parallel, shoulder-width apart, fully visible, front foot marginally closer to camera. No crossing of legs. Hemlines, belt placement, closures, and visible text remain unobstructed by arms or hair. High-key soft studio lighting, large diffused key light front-left, soft fill front-right, subtle rim separation, faint soft shadow under feet only. Sharp focus, accurate colors, realistic fabric textures and tailoring, visible material detail, crisp construction lines, clean edges, no distortion. </mandatory_suffix> </output_formatting>",
+          "imgUrls": "{\"type\":\"image_url\",\"image_url\":{\"url\":\"https://api.telegram.org/file/bot8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM/photos/file_21.jpg\"}},{\"type\":\"image_url\",\"image_url\":{\"url\":\"https://api.telegram.org/file/bot8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM/photos/file_22.jpg\"}},{\"type\":\"image_url\",\"image_url\":{\"url\":\"https://api.telegram.org/file/bot8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM/photos/file_23.jpg\"}},{\"type\":\"image_url\",\"image_url\":{\"url\":\"https://api.telegram.org/file/bot8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM/photos/file_24.jpg\"}}",
           "chat_id": 133518123,
-          "ObjName": "прическа",
-          "objectMainId": 347,
+          "ObjName": null,
+          "objectMainId": 0,
           "ObjNameLocal": null,
-          "botTocken": "8500532222:AAHn-miVxN48HoJNpedLE6wz5WQ0poDaYXU",
-          "urlList_bool": false,
+          "botTocken": null,
+          "urlList_bool": true,
           "debugMode": "true",
-          "plainUrlList": null
+          "plainUrlList": "[{\"type\":\"image_url\",\"image_url\":{\"url\":\"https://api.telegram.org/file/bot8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM/photos/file_21.jpg\"}},{\"type\":\"image_url\",\"image_url\":{\"url\":\"https://api.telegram.org/file/bot8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM/photos/file_22.jpg\"}},{\"type\":\"image_url\",\"image_url\":{\"url\":\"https://api.telegram.org/file/bot8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM/photos/file_23.jpg\"}},{\"type\":\"image_url\",\"image_url\":{\"url\":\"https://api.telegram.org/file/bot8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM/photos/file_24.jpg\"}}]"
         },
         "pairedItem": {
           "item": 0
@@ -5108,8 +5106,8 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-24T16:17:14.271Z",
-  "versionCounter": 1706,
-  "versionId": "dae896f0-8193-4112-a0a3-c811e75c8348",
+  "updatedAt": "2026-03-25T20:10:57.913Z",
+  "versionCounter": 1719,
+  "versionId": "e4299dd0-e23a-4cd4-b5c3-03e71c0fbd28",
   "wf_name": "subTR_API_AI_Selector"
 }
