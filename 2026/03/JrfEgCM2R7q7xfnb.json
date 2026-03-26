@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-24T21:08:20.000Z",
-    "createdAt": "2026-03-24T21:08:17.180Z",
-    "versionId": "4db2b9e3-6323-4165-8c2d-992d5d20e879",
+    "updatedAt": "2026-03-25T21:15:11.000Z",
+    "createdAt": "2026-03-25T20:18:59.730Z",
+    "versionId": "75a33bdc-df98-4e0d-91bd-c418ee65e2ed",
     "workflowId": "JrfEgCM2R7q7xfnb",
     "nodes": [
       {
@@ -19,8 +19,8 @@
         "type": "n8n-nodes-base.telegramTrigger",
         "typeVersion": 1.2,
         "position": [
-          -2288,
-          2992
+          -3024,
+          3008
         ],
         "id": "afc07df0-a9a0-49d9-9251-023682cd85ba",
         "name": "Telegram Trigger",
@@ -1096,7 +1096,7 @@
         "parameters": {
           "resource": "file",
           "fileId": "={{ $('Telegram Trigger').item.json.message.photo?.length > 0 \n  ? $('Telegram Trigger').item.json.message.photo.slice(-1)[0].file_id \n  : $('Telegram Trigger').item.json.message.document?.file_id }}",
-          "download": false
+          "additionalFields": {}
         },
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
@@ -9320,11 +9320,179 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -2080,
+          -2000,
           2992
         ],
         "id": "1feef3ec-6bc4-42f6-a97e-4d97219d855d",
         "name": "Edit Fields"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "QSv7aVHUCVTpB23N",
+            "mode": "list",
+            "cachedResultName": "TrendcoreTgUsers",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/QSv7aVHUCVTpB23N"
+          },
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "tgUserId",
+                "keyValue": "={{$('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id\n\n}}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -2816,
+          3008
+        ],
+        "id": "75961dc6-94fd-43d6-ad62-e82ba92479d4",
+        "name": "GetUser",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "eb1608da-7876-4daa-9a31-db06183768cc",
+                "leftValue": "={{ $json.tgUserId }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              },
+              {
+                "id": "098526ce-6763-4466-a260-12750c73ed4c",
+                "leftValue": "={{ $json.status }}",
+                "rightValue": "Active",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -2608,
+          3008
+        ],
+        "id": "3f0f131c-77c2-4c5f-a9b1-b70994369a7d",
+        "name": "IfUserExistsAndActive"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "a96aa2ed-907b-4db7-ae41-6dc5f102157e",
+                "leftValue": "={{ $('GetUser').item.json.tgUserId }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "string",
+                  "operation": "exists",
+                  "singleValue": true
+                }
+              },
+              {
+                "id": "493ba327-ffb9-42a7-8733-2306f69d38f2",
+                "leftValue": "={{ $('GetUser').item.json.status }}",
+                "rightValue": "Active",
+                "operator": {
+                  "type": "string",
+                  "operation": "notEquals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -2448,
+          3344
+        ],
+        "id": "e5607233-e32a-4602-8c15-b2b13a217487",
+        "name": "IfUserNotActive"
+      },
+      {
+        "parameters": {
+          "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+          "text": "={{\"Пользователь заблокирован!\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -2096,
+          3280
+        ],
+        "id": "1d961b60-989e-481d-a356-427ea06b62af",
+        "name": "BlockedUser",
+        "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+        "executeOnce": false,
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id\n}}",
+          "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\" + \"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -2096,
+          3584
+        ],
+        "id": "dedd1ef0-1e06-4d0b-b8b4-788960e91130",
+        "name": "NoUser",
+        "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+        "executeOnce": false,
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
       }
     ],
     "connections": {
@@ -9332,7 +9500,7 @@
         "main": [
           [
             {
-              "node": "Edit Fields",
+              "node": "GetUser",
               "type": "main",
               "index": 0
             }
@@ -11002,30 +11170,77 @@
             }
           ]
         ]
+      },
+      "GetUser": {
+        "main": [
+          [
+            {
+              "node": "IfUserExistsAndActive",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfUserExistsAndActive": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "IfUserNotActive",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfUserNotActive": {
+        "main": [
+          [
+            {
+              "node": "BlockedUser",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "NoUser",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "DLS  ",
-    "name": "Version 4db2b9e3",
+    "name": "Version 75a33bdc",
     "description": "",
     "autosaved": true,
     "workflowPublishHistory": [
       {
-        "createdAt": "2026-03-24T21:08:20.058Z",
-        "id": 1790,
+        "createdAt": "2026-03-25T21:15:11.713Z",
+        "id": 1817,
         "workflowId": "JrfEgCM2R7q7xfnb",
-        "versionId": "4db2b9e3-6323-4165-8c2d-992d5d20e879",
+        "versionId": "75a33bdc-df98-4e0d-91bd-c418ee65e2ed",
         "event": "activated",
         "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
       }
     ]
   },
-  "activeVersionId": "4db2b9e3-6323-4165-8c2d-992d5d20e879",
+  "activeVersionId": "75a33bdc-df98-4e0d-91bd-c418ee65e2ed",
   "connections": {
     "Telegram Trigger": {
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "GetUser",
             "type": "main",
             "index": 0
           }
@@ -12695,6 +12910,53 @@
           }
         ]
       ]
+    },
+    "GetUser": {
+      "main": [
+        [
+          {
+            "node": "IfUserExistsAndActive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfUserExistsAndActive": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IfUserNotActive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfUserNotActive": {
+      "main": [
+        [
+          {
+            "node": "BlockedUser",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NoUser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-03-02T16:18:24.430Z",
@@ -12719,8 +12981,8 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        -2288,
-        2992
+        -3024,
+        3008
       ],
       "id": "afc07df0-a9a0-49d9-9251-023682cd85ba",
       "name": "Telegram Trigger",
@@ -13796,7 +14058,7 @@
       "parameters": {
         "resource": "file",
         "fileId": "={{ $('Telegram Trigger').item.json.message.photo?.length > 0 \n  ? $('Telegram Trigger').item.json.message.photo.slice(-1)[0].file_id \n  : $('Telegram Trigger').item.json.message.document?.file_id }}",
-        "download": false
+        "additionalFields": {}
       },
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -22020,37 +22282,232 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2080,
+        -2000,
         2992
       ],
       "id": "1feef3ec-6bc4-42f6-a97e-4d97219d855d",
       "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "QSv7aVHUCVTpB23N",
+          "mode": "list",
+          "cachedResultName": "TrendcoreTgUsers",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/QSv7aVHUCVTpB23N"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "tgUserId",
+              "keyValue": "={{$('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id\n\n}}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -2816,
+        3008
+      ],
+      "id": "75961dc6-94fd-43d6-ad62-e82ba92479d4",
+      "name": "GetUser",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "eb1608da-7876-4daa-9a31-db06183768cc",
+              "leftValue": "={{ $json.tgUserId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "098526ce-6763-4466-a260-12750c73ed4c",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "Active",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -2608,
+        3008
+      ],
+      "id": "3f0f131c-77c2-4c5f-a9b1-b70994369a7d",
+      "name": "IfUserExistsAndActive"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a96aa2ed-907b-4db7-ae41-6dc5f102157e",
+              "leftValue": "={{ $('GetUser').item.json.tgUserId }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "493ba327-ffb9-42a7-8733-2306f69d38f2",
+              "leftValue": "={{ $('GetUser').item.json.status }}",
+              "rightValue": "Active",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -2448,
+        3344
+      ],
+      "id": "e5607233-e32a-4602-8c15-b2b13a217487",
+      "name": "IfUserNotActive"
+    },
+    {
+      "parameters": {
+        "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+        "text": "={{\"Пользователь заблокирован!\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2096,
+        3280
+      ],
+      "id": "1d961b60-989e-481d-a356-427ea06b62af",
+      "name": "BlockedUser",
+      "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+      "executeOnce": false,
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id\n}}",
+        "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\" + \"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2096,
+        3584
+      ],
+      "id": "dedd1ef0-1e06-4d0b-b8b4-788960e91130",
+      "name": "NoUser",
+      "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+      "executeOnce": false,
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
     }
   ],
   "pinData": {
     "Telegram Trigger": [
       {
         "json": {
-          "update_id": 243881768,
-          "message": {
-            "message_id": 13874,
+          "update_id": 243882418,
+          "callback_query": {
+            "id": "573455974430194655",
             "from": {
-              "id": 1723701965,
+              "id": 133518123,
               "is_bot": false,
-              "first_name": "Дмитрий",
-              "last_name": "Самойлов",
-              "username": "DmitrySamoylov",
-              "language_code": "ru"
+              "first_name": "Alex",
+              "last_name": "Laptev",
+              "username": "alexlaptev",
+              "language_code": "en"
             },
-            "chat": {
-              "id": 1723701965,
-              "first_name": "Дмитрий",
-              "last_name": "Самойлов",
-              "username": "DmitrySamoylov",
-              "type": "private"
+            "message": {
+              "message_id": 15945,
+              "from": {
+                "id": 8500532222,
+                "is_bot": true,
+                "first_name": "Fashion Pro",
+                "username": "TrendcoreAI_bot"
+              },
+              "chat": {
+                "id": 133518123,
+                "first_name": "Alex",
+                "last_name": "Laptev",
+                "username": "alexlaptev",
+                "type": "private"
+              },
+              "date": 1774466498,
+              "text": "На фото несколько предметов гардероба.\n\nХотите взять готовый образ или выбрать отдельные предметы?",
+              "reply_markup": {
+                "inline_keyboard": [
+                  [
+                    {
+                      "text": "Взять образ",
+                      "callback_data": "getLook"
+                    }
+                  ],
+                  [
+                    {
+                      "text": "Выбрать предметы",
+                      "callback_data": "getObjects"
+                    }
+                  ]
+                ]
+              }
             },
-            "date": 1774215652,
-            "text": "япония"
+            "chat_instance": "6921507583133464855",
+            "data": "getObjects"
           }
         },
         "pairedItem": {
@@ -22112,8 +22569,8 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-03-24T21:08:17.177Z",
-  "versionCounter": 3075,
-  "versionId": "4db2b9e3-6323-4165-8c2d-992d5d20e879",
+  "updatedAt": "2026-03-25T20:18:59.727Z",
+  "versionCounter": 3204,
+  "versionId": "75a33bdc-df98-4e0d-91bd-c418ee65e2ed",
   "wf_name": "_Trendcore working version"
 }
