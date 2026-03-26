@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-24T16:23:16.000Z",
-    "createdAt": "2026-03-24T16:23:10.387Z",
-    "versionId": "5dff0025-9eb4-459a-a596-b4d851c7f63f",
+    "updatedAt": "2026-03-25T18:10:24.000Z",
+    "createdAt": "2026-03-25T18:10:22.172Z",
+    "versionId": "766ece89-5aaa-42d1-99d9-f52ba10e7039",
     "workflowId": "9A6kp0SAPV2FCdMQ",
     "nodes": [
       {
@@ -254,7 +254,8 @@
           -48
         ],
         "id": "7566291f-d708-4c71-9c68-3b8a7b6d1071",
-        "name": "HTTP Request1"
+        "name": "HTTP Request1",
+        "retryOnFail": true
       },
       {
         "parameters": {
@@ -303,7 +304,7 @@
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "typeVersion": 1.1,
         "position": [
-          -2224,
+          -2528,
           272
         ],
         "id": "fdd709ac-d725-43cf-9914-c935140e2ed5",
@@ -312,7 +313,7 @@
       {
         "parameters": {
           "chatId": "={{ $('Start').item.json.chatId }}",
-          "text": "={{ $('SetNBgen_Fal_getResult').item.json.error?.message\n?$('SetNBgen_Fal_getResult').item.json.error.message\n:\"Ошибка генерации\"\n}}",
+          "text": "={{ $('SetNBgen_Fal_getResult').item.json?.error?.message\n?$('SetNBgen_Fal_getResult').item.json.error.message\n:\"Ошибка генерации\"\n}}",
           "additionalFields": {
             "appendAttribution": false
           }
@@ -566,6 +567,26 @@
             "name": "Google Sheets account"
           }
         }
+      },
+      {
+        "parameters": {
+          "dataToSave": {
+            "values": [
+              {
+                "key": "TG_UserID",
+                "value": "={{ $('Start').item.json.chatId }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.executionData",
+        "typeVersion": 1.1,
+        "position": [
+          -2256,
+          272
+        ],
+        "id": "f5c83ecd-e85a-4d33-a176-02eeab765046",
+        "name": "Execution Data"
       }
     ],
     "connections": {
@@ -681,7 +702,7 @@
         "main": [
           [
             {
-              "node": "If",
+              "node": "Execution Data",
               "type": "main",
               "index": 0
             }
@@ -763,40 +784,35 @@
             }
           ]
         ]
+      },
+      "Execution Data": {
+        "main": [
+          [
+            {
+              "node": "If",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "DLS  ",
-    "name": "Version 5dff0025",
+    "name": "Version 766ece89",
     "description": "",
     "autosaved": true,
     "workflowPublishHistory": [
       {
-        "createdAt": "2026-03-24T16:23:16.856Z",
-        "id": 1768,
+        "createdAt": "2026-03-25T18:10:24.537Z",
+        "id": 1796,
         "workflowId": "9A6kp0SAPV2FCdMQ",
-        "versionId": "5dff0025-9eb4-459a-a596-b4d851c7f63f",
+        "versionId": "766ece89-5aaa-42d1-99d9-f52ba10e7039",
         "event": "activated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:23:29.540Z",
-        "id": 1770,
-        "workflowId": "9A6kp0SAPV2FCdMQ",
-        "versionId": "5dff0025-9eb4-459a-a596-b4d851c7f63f",
-        "event": "activated",
-        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
-      },
-      {
-        "createdAt": "2026-03-24T16:23:29.458Z",
-        "id": 1769,
-        "workflowId": "9A6kp0SAPV2FCdMQ",
-        "versionId": "5dff0025-9eb4-459a-a596-b4d851c7f63f",
-        "event": "deactivated",
         "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
       }
     ]
   },
-  "activeVersionId": "5dff0025-9eb4-459a-a596-b4d851c7f63f",
+  "activeVersionId": "766ece89-5aaa-42d1-99d9-f52ba10e7039",
   "connections": {
     "Wait": {
       "main": [
@@ -910,7 +926,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Execution Data",
             "type": "main",
             "index": 0
           }
@@ -987,6 +1003,17 @@
         [
           {
             "node": "UrlNotEmpty",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution Data": {
+      "main": [
+        [
+          {
+            "node": "If",
             "type": "main",
             "index": 0
           }
@@ -1251,7 +1278,8 @@
         -48
       ],
       "id": "7566291f-d708-4c71-9c68-3b8a7b6d1071",
-      "name": "HTTP Request1"
+      "name": "HTTP Request1",
+      "retryOnFail": true
     },
     {
       "parameters": {
@@ -1300,7 +1328,7 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -2224,
+        -2528,
         272
       ],
       "id": "fdd709ac-d725-43cf-9914-c935140e2ed5",
@@ -1309,7 +1337,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Start').item.json.chatId }}",
-        "text": "={{ $('SetNBgen_Fal_getResult').item.json.error?.message\n?$('SetNBgen_Fal_getResult').item.json.error.message\n:\"Ошибка генерации\"\n}}",
+        "text": "={{ $('SetNBgen_Fal_getResult').item.json?.error?.message\n?$('SetNBgen_Fal_getResult').item.json.error.message\n:\"Ошибка генерации\"\n}}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -1563,48 +1591,35 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "dataToSave": {
+          "values": [
+            {
+              "key": "TG_UserID",
+              "value": "={{ $('Start').item.json.chatId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        -2256,
+        272
+      ],
+      "id": "f5c83ecd-e85a-4d33-a176-02eeab765046",
+      "name": "Execution Data"
     }
   ],
   "pinData": {
-    "HTTP Request1": [
-      {
-        "json": {
-          "images": [
-            {
-              "url": "https://v3b.fal.media/files/b/0a933cc6/LdqyjLBmP00_90f5-hPji_shEMwmOK.png",
-              "content_type": "image/png",
-              "file_name": "LdqyjLBmP00_90f5-hPji_shEMwmOK.png",
-              "file_size": null,
-              "width": null,
-              "height": null
-            }
-          ],
-          "description": "**Visualizing a Setting**\n\nI'm currently focused on the tea house setting. I'm exploring the interior, emphasizing the shoji screens, tatami mats, and cedar wood. The goal is a tranquil, light-filled atmosphere.\n\n\n\n**Mapping the Scene Details**\n\nI'm now carefully addressing the model's appearance and wardrobe. I'm taking extra care with the complex clothing description, which includes an asymmetrical skirt and patterned tights, to translate it effectively. Ensuring the model's age and features are consistent with the description is also a key concern.\n\n\n\n**Analyzing Image Accuracy**\n\nI'm currently focused on how well the generated image aligns with the provided description. I'm verifying specific elements such as the model's attire, pose, and the overall setting. I'm making sure that the details, including the color palette and the type of items, are all matching the specifications.\n\n\n\n**Reviewing Prompt Adherence**\n\nI've examined the generated image against the initial description. My focus is on the precision of the model's depiction, including her clothing and pose. I'm confirming that the setting and the objects are represented according to the prompt's instructions.\n\n\n"
-        },
-        "binary": {
-          "data": {
-            "mimeType": "image/png",
-            "fileType": "image",
-            "fileExtension": "png",
-            "data": "filesystem-v2",
-            "directory": "https://v3b.fal.media/files/b/0a933cc6/LdqyjLBmP00_90f5-hPji_shEMwmOK.png",
-            "fileName": "LdqyjLBmP00_90f5-hPji_shEMwmOK.png",
-            "id": "filesystem-v2:workflows/9A6kp0SAPV2FCdMQ/executions/11482/binary_data/fb6fc63f-e07a-4554-80c7-d7552cac4350",
-            "fileSize": "6.5 MB",
-            "bytes": 6495500
-          }
-        },
-        "pairedItem": {
-          "item": 0
-        }
-      }
-    ],
     "Start": [
       {
         "json": {
-          "systemPrompt": "## Nano Banana Pro — High Fidelity Prompt **Type:** Fashion Editorial Photography --- ### Scene & Creative Narrative The scene is set within the serene, hushed interior of a minimalist Japanese tea house, where the architectural precision of traditional design meets the bold maximalism of modern fashion. The model is positioned as a focal point, framed by the translucent, geometric grid of a shoji screen that filters the daylight into a soft, milky glow. The environment is defined by the rhythmic textures of woven tatami mats and the clean lines of cedar wood. The mood is one of quiet transition—a contemplative pause where the clashing patterns of the attire are harmonized by the stillness of the space. The atmosphere is airy and refined, emphasizing a sophisticated contrast between the organic warmth of the straw flooring and the sharp, vibrant pop of the yellow leather accessory. --- ### Model Description A woman in her late 40s with an oval face and prominent, high cheekbones. Her skin is fair with neutral undertones and subtle fine lines. She has almond-shaped, light green eyes framed by thin, naturally arched eyebrows. Her nose is straight and narrow with a refined tip, and her lips are medium-full with a clear cupid's bow. She has a defined, slightly angular jawline and a rounded chin. Her hair is dense, shoulder-length, and dark brown with warm mahogany tones, featuring tight, springy curls and curly bangs. Her neck is slender, leading to a visible collarbone and lean shoulder structure. --- ### Outfit Breakdown #### Oversized sweatshirt This top has bold horizontal pink and white stripes, a wide, flat collar, and a partial front placket, with elasticized pink cuffs at the ends of the long sleeves. #### Black and white micro-patterned shirt A black and white micro-patterned shirt is visible at the neckline. #### Midi-length skirt Crafted from a brown, black, and white houndstooth fabric. This skirt is characterized by a large, draped ruffle that runs vertically down the front, creating an asymmetrical silhouette. #### Opaque tights Opaque tights in a muted olive green shade. #### Pointed-toe ankle boots Featuring a black and white geometric pattern, finished with small kitten heels and metallic gold-tone accents at the tips. #### Bright yellow, structured leather handbag The bag has a rectangular shape, two rounded top handles, and a thin shoulder strap, with the brand name printed in black across the lower front. #### Large, sculptural earrings Large, sculptural earrings that hang near the jawline, though their specific details are partially obscured by hair. --- ### Pose, Movement & Expression The model adopts a poised, editorial stance with a subtle weight shift onto her back leg to accentuate the asymmetrical drape of the houndstooth ruffle. Her torso is angled slightly away from the lens, while her head turns back toward the camera with a self-possessed and contemplative expression. One hand is relaxed at her side, while the other lightly holds the top handles of the yellow handbag, grounding the accessory against the neutral background. Her gaze is direct but soft, engaging with the viewer through the diffused light. The posture is elongated and intentional, capturing a sense of graceful movement frozen in time. --- ### Camera & Optics A professional 50mm prime lens is used to achieve a natural, editorial perspective that preserves the model's proportions and the spatial logic of the tea house. The aperture is set to f/4.0, ensuring the intricate patterns of the sweatshirt, skirt, and boots remain sharp and legible while providing a gentle fall-off that softens the shoji screen in the background. The camera is positioned at eye level to maintain a sense of poised realism. Focus is locked precisely on the model’s eyes and the refined tip of her nose, with secondary clarity on the garment textures. --- ### Lighting Design The lighting is dominated by soft, highly diffused natural light emanating from behind the shoji screen, creating a high-key editorial glow. This directional but gentle light source wraps around the model, emphasizing the fair undertones of her skin and the sculptural quality of her mahogany curls. Subtle, low-contrast shadows define the folds of the oversized sweatshirt and the vertical ruffle of the skirt, providing depth without obscuring the patterns. The light interacts with the yellow leather of the handbag to create a soft, satin-like highlight, ensuring the color pop remains sophisticated. --- ### Composition & Editorial Styling Logic The composition is a three-quarter environmental portrait that utilizes the vertical and horizontal lines of the shoji screen as a secondary frame. The model is placed slightly off-center to create a dynamic editorial energy. The lower third of the frame captures the interaction between the geometric boots and the texture of the tatami mats, ensuring the footwear is fully visible and grounded. The bright yellow handbag is positioned to break the neutral palette of the room, acting as a visual anchor. The styling logic prioritizes the clashing of stripes, houndstooth, and geometric prints, using the minimalist environment to prevent the patterns from feeling cluttered. --- ### Rendering Priorities 1. Model identity, facial integrity, and light green eye clarity. 2. The structural silhouette of the oversized sweatshirt and the asymmetrical skirt ruffle. 3. Faithful rendering of the clashing patterns (stripes, houndstooth, and geometric boot print). 4. The vibrant, saturated yellow of the structured leather handbag. 5. The soft, diffused quality of light through the shoji screen. 6. The tactile texture of the tatami mats and the mahogany curls of the hair. --- ### Image Quality & Rendering Constraints - Ultra-high realism with professional editorial color grading - Accurate anatomy and natural body proportions - Natural skin texture with realistic pores and tonal transitions - Faithful material rendering, fabric behavior, and garment structure - Realistic interaction between clothing, body, light, and environment - Sharp, publication-ready finish with no distortion",
-          "urls": "[\"https://api.telegram.org/file/bot8500532222:AAHn-miVxN48HoJNpedLE6wz5WQ0poDaYXU/photos/file_844.jpg\",\"https://v3b.fal.media/files/b/0a933b8a/BpoJRmUMrjEKuZPEjoUDK_jOFQq3LM.png\"]",
-          "chatId": "1723701965",
+          "systemPrompt": "## Nano Banana Pro — High Fidelity Prompt **Type:** Fashion Editorial Photography --- ### Scene & Creative Narrative The setting is a stark, brutalist concrete scenic overlook perched high above the hazy, sprawling grid of Los Angeles. The atmosphere is defined by a quiet, cinematic solitude under the soft, diffused glow of a winter afternoon. The raw, grey texture of the massive concrete walls provides a cold, geometric contrast to the organic, chaotic volume of the fashion. In the distance, the city is a desaturated, atmospheric blur of pastel tones and smog-filtered light, creating a sense of immense scale and urban isolation. --- ### Model Description A young adult female with an oval face shape and soft, rounded bone structure featuring a warm, medium-brown skin tone. Her almond-shaped dark brown eyes are set beneath arched, naturally dense dark eyebrows, complemented by a straight nose with a rounded tip and full, symmetrical lips. A softly defined jawline tapers into a rounded chin, framed by shoulder-length dreadlocks in a mix of dark brown and honey-blonde tones. She possesses a slender neck and smooth, rounded shoulders on a lean build. --- ### Outfit Breakdown #### Monumental, floor-length sculptural coat in optic white A monumental, floor-length sculptural coat in optic white serves as the centerpiece, defined by its extreme, cloud-like volume and dense, ruffled texture. The garment features immense, rounded shoulders that extend far beyond the natural frame, creating a wide, architectural silhouette that tapers slightly toward the hem. Its surface is entirely covered in countless layers of fine, shredded or ruffled fabric, giving it a highly tactile and chaotic yet structured appearance. The coat remains open at the front, revealing a starkly contrasting base layer consisting of a matte black high-neck top that fits closely to the body. The hem of the coat drags slightly on the ground, emphasizing its grand scale and weightless visual quality. The sleeves are integrated into the massive body of the garment, appearing as part of the overall spherical volume rather than distinct appendages. This creates a singular, unified shape that dominates the visual field. #### Matte black high-neck top A matte black high-neck top that fits closely to the body. #### Opaque black leggings Opaque black leggings provide a sleek, compressed counterpoint to the massive proportions of the outerwear. These leggings transition seamlessly into sharp, pointed-toe black boots, forming a continuous, elongated line from the waist to the ground. #### Sharp, pointed-toe black boots Sharp, pointed-toe black boots, forming a continuous, elongated line from the waist to the ground. #### Oversized, thick-framed black sunglasses Oversized, thick-framed black sunglasses that wrap around the face, echoing the monochromatic and avant-garde aesthetic. --- ### Pose, Movement & Expression The model is captured in a dynamic, asymmetric lean against a rough-hewn concrete wall. Her weight is shifted onto one hip, creating a subtle S-curve in her spine as she turns her torso toward the lens. This movement causes the heavy, ruffled layers of the coat to compress on one side and expand on the other, showcasing the garment's physical weight and density. Her head is slightly tilted, with a calm, stoic expression visible behind the dark lenses. One hand is tucked partially into the voluminous folds of the coat, while the other remains relaxed. The pose is intentional and editorial, avoiding any stiff or centered catalog-style positioning. --- ### Camera & Optics A wide architectural crop using a 35mm prime lens to capture the relationship between the model and the brutalist environment. The camera is positioned at a medium-low angle to exaggerate the monumental scale of the coat's shoulders against the horizon. Aperture is set to f/4.0 to maintain sharp detail on the shredded fabric textures while allowing the Los Angeles skyline to fall into a soft, atmospheric bokeh. --- ### Lighting Design Natural, directional winter light coming from a low angle, creating soft but defined shadows within the ruffles of the white coat. The concrete wall acts as a massive natural reflector, providing a neutral environmental bounce that fills the shadows on the model's skin and the matte black top. The lighting is designed to emphasize the high-contrast monochromatic palette and the tactile surface of the shredded fabric. --- ### Composition & Editorial Styling Logic The composition follows a wide-angle editorial logic, placing the model off-center to allow the leading lines of the brutalist architecture to pull the viewer's eye toward the hazy city sprawl. The immense, rounded shoulders of the coat are framed against the open sky to emphasize their silhouette. The visual tension is built on the contrast between the chaotic, airy texture of the white coat and the sharp, minimalist black foundation of the leggings and boots. --- ### Rendering Priorities 1. The intricate, shredded texture and architectural volume of the optic white coat. 2. The high-contrast transition between the white ruffles and the matte black base layers. 3. The realistic rendering of the honey-blonde dreadlocks catching the winter light. 4. The tactile, porous surface of the brutalist concrete environment. --- ### Image Quality & Rendering Constraints Ultra-high realism with professional editorial color grading. Accurate anatomy and natural body proportions. Natural skin texture with realistic pores and tonal transitions. Faithful material rendering, fabric behavior, and garment structure. Realistic interaction between clothing, body, light, and environment. Sharp, publication-ready finish with no distortion.",
+          "urls": "[\"https://api.telegram.org/file/bot8500532222:AAE7QQqHcVeAQaCLVe424kcfkKzUCEGLKHM/photos/file_14.jpg\",\"https://v3b.fal.media/files/b/0a93970e/v9PqaqO_x93UxS9AJU7iU_NGY5oLFv.png\"]",
+          "chatId": "133518123",
           "debugMode": "true",
           "apiName": "google",
           "apiNameNB": "fal",
@@ -1667,8 +1682,8 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-24T16:23:29.372Z",
-  "versionCounter": 673,
-  "versionId": "5dff0025-9eb4-459a-a596-b4d851c7f63f",
+  "updatedAt": "2026-03-25T18:10:22.171Z",
+  "versionCounter": 720,
+  "versionId": "766ece89-5aaa-42d1-99d9-f52ba10e7039",
   "wf_name": "subTR_NB_Fal"
 }
