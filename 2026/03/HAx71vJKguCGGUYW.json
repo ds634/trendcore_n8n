@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-23T13:39:43.000Z",
-    "createdAt": "2026-03-22T22:57:30.643Z",
-    "versionId": "d33394d3-4c3a-4d2a-a7fa-9022889e5de3",
+    "updatedAt": "2026-03-25T20:03:52.000Z",
+    "createdAt": "2026-03-25T20:03:19.266Z",
+    "versionId": "b4ac13cc-c2a1-468e-92a5-e090ea6afdf4",
     "workflowId": "HAx71vJKguCGGUYW",
     "nodes": [
       {
@@ -1182,7 +1182,7 @@
               "objectMainId": 0,
               "urlList_bool": true,
               "debugMode": "={{ $('Start').item.json.debugMode }}",
-              "plainUrlList": "={{ $json.data[1].image_url.toJsonString() }}"
+              "plainUrlList": "={{ $('Aggregate2').item.json.data[1].image_url.toJsonString() }}"
             },
             "matchingColumns": [],
             "schema": [
@@ -2301,7 +2301,7 @@
               "imgsCount": 0,
               "lookSelected": 0,
               "replyToMessageIdGallery": 0,
-              "concatDescr": "={{ $json.data[0].UPfinal.toJsonString().replaceAll(\"[\",\"\").replaceAll(\"]\",\"\") }}"
+              "concatDescr": "={{ $json.data[0].UPfinal.toJsonString().replaceAll('[\"',\"\").replaceAll('\"]' ,\"\") }}"
             },
             "matchingColumns": [],
             "schema": [
@@ -3277,21 +3277,21 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version d33394d3",
+    "name": "Version b4ac13cc",
     "description": "",
-    "autosaved": false,
+    "autosaved": true,
     "workflowPublishHistory": [
       {
-        "createdAt": "2026-03-23T13:39:43.701Z",
-        "id": 1750,
+        "createdAt": "2026-03-25T20:03:52.140Z",
+        "id": 1811,
         "workflowId": "HAx71vJKguCGGUYW",
-        "versionId": "d33394d3-4c3a-4d2a-a7fa-9022889e5de3",
+        "versionId": "b4ac13cc-c2a1-468e-92a5-e090ea6afdf4",
         "event": "activated",
         "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
       }
     ]
   },
-  "activeVersionId": "d33394d3-4c3a-4d2a-a7fa-9022889e5de3",
+  "activeVersionId": "b4ac13cc-c2a1-468e-92a5-e090ea6afdf4",
   "connections": {
     "SetGalleryForFaceRecievedStatus1": {
       "main": [
@@ -5264,7 +5264,7 @@
             "objectMainId": 0,
             "urlList_bool": true,
             "debugMode": "={{ $('Start').item.json.debugMode }}",
-            "plainUrlList": "={{ $json.data[1].image_url.toJsonString() }}"
+            "plainUrlList": "={{ $('Aggregate2').item.json.data[1].image_url.toJsonString() }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -6383,7 +6383,7 @@
             "imgsCount": 0,
             "lookSelected": 0,
             "replyToMessageIdGallery": 0,
-            "concatDescr": "={{ $json.data[0].UPfinal.toJsonString().replaceAll(\"[\",\"\").replaceAll(\"]\",\"\") }}"
+            "concatDescr": "={{ $json.data[0].UPfinal.toJsonString().replaceAll('[\"',\"\").replaceAll('\"]' ,\"\") }}"
           },
           "matchingColumns": [],
           "schema": [
@@ -6575,7 +6575,7 @@
     "Start": [
       {
         "json": {
-          "message_chat_id": 133518123,
+          "message_chat_id": "133518123",
           "model": "gemini-3-flash",
           "modelApi": "google",
           "debugMode": "true",
@@ -6647,8 +6647,8 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-22T23:05:05.995Z",
-  "versionCounter": 817,
-  "versionId": "d33394d3-4c3a-4d2a-a7fa-9022889e5de3",
+  "updatedAt": "2026-03-25T20:03:19.265Z",
+  "versionCounter": 835,
+  "versionId": "b4ac13cc-c2a1-468e-92a5-e090ea6afdf4",
   "wf_name": "subTR_CL_Done_Pose"
 }
