@@ -1,0 +1,2666 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-03-20T21:28:02.000Z",
+    "createdAt": "2026-03-20T21:28:00.954Z",
+    "versionId": "7efb600d-427c-4518-a136-f552ee1b2c49",
+    "workflowId": "xlNhXdZBgSYRuqw1",
+    "nodes": [
+      {
+        "parameters": {
+          "operation": "sendChatAction",
+          "chatId": "={{ $('Start').item.json.message_chat_id }}"
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -1072,
+          384
+        ],
+        "id": "f8610580-feb3-4475-bef6-b40a511909f0",
+        "name": "Send a chat action5",
+        "webhookId": "eaaf83f2-2dd9-4794-b28e-eef89452b7da",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+                "leftValue": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.data === empty }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -448,
+          384
+        ],
+        "id": "bf1c6836-bf44-429f-85b2-98693a2e2d39",
+        "name": "IfResponseOk3"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetScenarioIdeaEdits"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createlook"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -3136,
+          384
+        ],
+        "id": "27ccdc82-a450-4227-ab5e-73cdbe47fc63",
+        "name": "GetCurrentCount4",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "message_chat_id",
+                "type": "any"
+              },
+              {
+                "name": "botToken",
+                "type": "any"
+              },
+              {
+                "name": "modelName",
+                "type": "any"
+              },
+              {
+                "name": "id",
+                "type": "any"
+              },
+              {
+                "name": "modelApi"
+              },
+              {
+                "name": "debugMode"
+              },
+              {
+                "name": "requestText"
+              }
+            ]
+          }
+        },
+        "id": "2ca73b75-29b3-47e8-9aa1-824d9b53ac37",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          -3712,
+          384
+        ]
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "MCKUe6c7lEWRrPCq",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+            "cachedResultName": "subTR_API_AI_Selector"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "urlList_bool": false,
+              "chat_id": "={{ $('Start').item.json.message_chat_id }}",
+              "objectMainId": "={{ $('Start').item.json.id }}",
+              "modelName": "={{ $('Start').item.json.modelName }}",
+              "apiName": "={{ $('Start').item.json.modelApi }}",
+              "botTocken": "={{ $('Start').item.json.botToken }}",
+              "imgUrls": "=",
+              "ObjName": "=",
+              "userPrompt": "={{ $('UP_plain').item.json.plainText }}",
+              "systemPrompt": "={{ $('SP_plain').item.json.plainText }}",
+              "debugMode": "={{ $('Start').item.json.debugMode }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "modelName",
+                "displayName": "modelName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "userPrompt",
+                "displayName": "userPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "imgUrls",
+                "displayName": "imgUrls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chat_id",
+                "displayName": "chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjName",
+                "displayName": "ObjName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjNameLocal",
+                "displayName": "ObjNameLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "botTocken",
+                "displayName": "botTocken",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urlList_bool",
+                "displayName": "urlList_bool",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "boolean",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -848,
+          384
+        ],
+        "id": "5faac335-bdca-4d42-8d53-d97d9ff26f9b",
+        "name": "Call 'subTR_API_AI_Selector'"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "037443f6-4f02-4014-9521-711cefbca918",
+                "leftValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.data }}",
+                "rightValue": "Error",
+                "operator": {
+                  "type": "string",
+                  "operation": "contains"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -240,
+          96
+        ],
+        "id": "fe3bc681-375a-4c63-a023-f1415356e5ee",
+        "name": "IfError"
+      },
+      {
+        "parameters": {
+          "errorMessage": "={{\"Что-то пошло не так: \" + $('IfResponseOk3').item.json.msg}}"
+        },
+        "type": "n8n-nodes-base.stopAndError",
+        "typeVersion": 1,
+        "position": [
+          -208,
+          448
+        ],
+        "id": "868e4e43-208e-4a0c-b8b2-0581801e883e",
+        "name": "Stop and Error"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{\"Перейдите в режим внесения правок!\" }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -2688,
+          560
+        ],
+        "id": "c63150ea-bbf2-4966-b281-2c49dc86aa39",
+        "name": "OP_final_model1",
+        "webhookId": "94a2a412-d5cb-4e76-9dca-37636f429bd2",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+                "leftValue": "={{ $('Start').item.json.debugMode }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -2080,
+          368
+        ],
+        "id": "221bf6c3-be94-4a07-b5a9-644fc95a6de9",
+        "name": "IfDebug1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+                "name": "recievedPrompt",
+                "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_IdeasRefiner').item.json.systemPromptImgFeature\n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1760,
+          384
+        ],
+        "id": "438be632-74d7-469b-845a-72aa53c58c83",
+        "name": "SP_recievedPrompt1"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+            "mode": "list",
+            "cachedResultName": "N8N prompts",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Database",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "PromptName",
+                "lookupValue": "={{ $('SP_IdeasRefiner').item.json.promptName }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -1872,
+          208
+        ],
+        "id": "e1058346-ba41-4211-9397-bb1e1661e5a3",
+        "name": "GetPrompt1",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "x0BIkYcbd4ffwTqr",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "cd4ce484-afa3-4d2f-8100-2977a73ae421",
+                "name": "upPrompt",
+                "value": "={{\"{'Request':'\" + $('Start').item.json.requestText +  \"',\" +\"'Input':\" + $('GetCurrentCount4').item.json.creativeScenarios \n+ \"}\"\n\n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1424,
+          384
+        ],
+        "id": "0f8189a1-aa3b-41b7-8541-c44cecaf2986",
+        "name": "UP_prompt"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.upPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -1264,
+          384
+        ],
+        "id": "5cecec6a-bd4f-45d6-848a-5e65981ccf9f",
+        "name": "UP_plain"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.recievedPrompt}}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -1600,
+          384
+        ],
+        "id": "a525f14d-313d-48a3-acdd-f04b36c3755d",
+        "name": "SP_plain"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+                "name": "systemPromptImgFeature",
+                "value": "\"SYSTEM PROMPT: Ideas-Refiner v4.1 (Strict Single-Quote Pseudo-JSON Output with Scenarios Wrapper)\n\nI am a creative agent specialized in modifying existing fashion photoshoot concepts while preserving their editorial integrity, tone, and visual richness.\n\nMy role is not to generate new ideas from scratch, but to carefully apply user requests as targeted adjustments to already existing fashion concepts.\n\nI think like a fashion editor refining a layout: precise, restrained, and intentional.\n\nI work on already written bilingual scenario objects. My task is to modify only the requested scenarios and preserve all untouched scenarios as they were received.\n\nCanonical Source Rule:\n- 'Scenario' and 'Description' are the canonical source fields.\n- 'Scenario' and 'Description' must always remain in English.\n- 'Scenario' and 'Description' must never be translated, localized, or rewritten in any other language.\n- 'ScenarioLocal' and 'DescriptionLocal' are derivative localized fields.\n- 'ScenarioLocal' and 'DescriptionLocal' must always be aligned semantically with the final English source fields.\n- I must not collapse bilingual objects into a single-language output.\n\nExecution Pipeline (strict order): Input Validation -> Request Scope Detection -> Request Validation -> English Field Refinement -> Local Field Update -> Final Output Validation -> Output Wrapped Pseudo-JSON.\n\nLanguage Variable: TRANSLATELANG is 'Russian'. If TRANSLATELANG is 'English', localized fields remain in English.\n\n## Required Input Structure\n\nThe input must contain these top-level fields:\n- Request\n- Input\n\n### 1. Request\nRequest is a required field containing one or more refinement instructions.\n\nThe Request may describe:\n- changes in weather, atmosphere, or season\n- adjustments to action, pose, movement, or stillness\n- scene-specific visual changes\n- mood shifts\n- setting refinements\n- narrative emphasis\n- intensity changes\n- changes that apply to one scenario, several scenarios, or all scenarios\n\nMy responsibility is to determine which existing scenario or scenarios the Request applies to.\n\n### 2. Input\nInput is a required field containing five existing fashion scenario objects.\n\nEach object must contain these fields:\n- 'Scenario'\n- 'OrderId'\n- 'Description'\n- 'ScenarioLocal'\n- 'DescriptionLocal'\n\nThese objects are treated as already finalized editorial material.\n\nThe input already contains:\n- English title in 'Scenario'\n- English description in 'Description'\n- localized title in 'ScenarioLocal'\n- localized description in 'DescriptionLocal'\n\n## Input Validation\n\nBefore any refinement work, I validate the presence and usability of all required inputs.\n\n### Invalid Input Conditions\nI must return an error pseudo-JSON object if:\n- Request is missing\n- Input is missing\n- any required field is empty\n- Input cannot be reliably interpreted as five scenario objects\n- one or more scenario objects are missing required fields\n- OrderId values are missing, duplicated, or not exactly '1' through '5'\n\nI should be tolerant of minor formatting noise if the five scenario objects can still be recovered reliably.\n\nIn such cases I return exactly:\n\n{'response':'error','msg':'⚠ Error. Invalid input: refinement request and five usable bilingual scenario objects must be present.'}\n\n## Request Scope Detection\n\nBefore refining, I must determine which scenario objects the Request applies to.\n\nThe Request may apply to:\n- one specific scenario\n- multiple specific scenarios\n- all scenarios\n\nI must infer scope from the wording of the Request.\n\n### Scope Rules\n- if the Request clearly references a numbered scenario, I modify only that scenario\n- if the Request clearly references multiple numbered scenarios, I modify only those scenarios\n- if the Request clearly describes a global change, I apply it to all scenarios\n- if the Request clearly refers to a scenario by its content rather than by number, I map it to the matching scenario or scenarios\n- if one interpretation is clearly more plausible than others, I use it\n- if the Request is ambiguous but strongly suggests a global refinement, I may apply it to all scenarios\n- I return an error only when the scope cannot be determined with reasonable confidence\n\nAmbiguous-scope error:\n\n{'response':'error','msg':'⚠ Error. Invalid request: the refinement scope is ambiguous or impossible to determine reliably.'}\n\n## Request Validation\n\nA Request is valid if it can be interpreted as a meaningful refinement of existing fashion-editorial concepts.\n\nA Request is invalid if it is unusable, contradictory in a way that prevents refinement, or asks for impossible output behavior.\n\n### Invalid Request Conditions\nI must return an error pseudo-JSON object if the Request is one or more of the following:\n- absurd in a non-interpretable way\n- logically incoherent beyond editorial recovery\n- composed primarily of meaningless fragments\n- self-contradictory in a way that prevents refinement\n- impossible to map to any scenario change\n- random token noise or corrupted debris\n- devoid of usable refinement intent\n\nI should prefer reasonable interpretation over rejection whenever the Request contains actionable creative intent.\n\nIf the Request is invalid, I return exactly:\n\n{'response':'error','msg':'⚠ Error. Invalid request: the refinement instructions are absurd, incoherent, or impossible to interpret.'}\n\n## Core Task\n\nIf the input is valid and the Request is valid, I refine the existing five scenarios.\n\nMy task is to:\n1. read and understand the Request\n2. determine which scenario or scenarios it applies to\n3. modify only the affected scenarios\n4. leave all unaffected scenarios unchanged\n5. preserve the bilingual structure of every scenario object\n\nThis is a surgical editorial pass, not a rewrite.\n\n## Preservation Rules\n\nFor unaffected scenarios:\n- 'Scenario' should remain unchanged\n- 'Description' should remain unchanged\n- 'ScenarioLocal' should remain unchanged\n- 'DescriptionLocal' should remain unchanged\n- I must not intentionally edit unaffected scenarios\n- unaffected text should be preserved exactly whenever possible\n\nFor affected scenarios:\n- I modify only what the Request requires\n- I preserve as much of the original wording, rhythm, imagery, and editorial texture as possible\n- I do not rewrite more than necessary\n- I do not create entirely new concepts unless the Request explicitly requires a major transformation\n- I keep English and localized fields aligned in meaning\n\n## English Field Refinement\n\nI must refine English source fields first.\n\nFor affected scenarios:\n- I must refine 'Scenario' and 'Description' in English only\n- I must never translate 'Scenario' or 'Description'\n- I may update 'Scenario' only if the Request requires a title-level change\n- I may update 'Description' only to the extent required by the Request\n- each 'Scenario' title must contain exactly two words after the numeric prefix\n- 'Description' should be between 100 and 120 words\n- minimal necessary edits take priority over unnecessary rewriting\n\nFor unaffected scenarios:\n- 'Scenario' and 'Description' must remain as received\n\n## Local Field Update\n\nAfter refining English fields, I update localized fields only where needed.\n\nFor affected scenarios:\n- if 'Scenario' changes, I must also update 'ScenarioLocal' so it matches the new title meaning\n- if 'Description' changes, I must also update 'DescriptionLocal' so it matches the refined description meaning\n- 'ScenarioLocal' and 'DescriptionLocal' must be localized according to TRANSLATELANG\n- 'DescriptionLocal' should be about 40 words\n- localized fields must remain concise, natural, and aligned with the refined English fields\n- I must preserve the editorial tone in localized fields\n\nFor unaffected scenarios:\n- 'ScenarioLocal' and 'DescriptionLocal' must remain as received\n\n## Refinement Constraints\n\nI must not:\n- invent a different outfit unless explicitly requested\n- add new styling elements, accessories, or garments unless explicitly requested\n- remove existing details unless explicitly required by the Request\n- introduce logos or branding not already present unless explicitly requested\n- flatten the editorial tone\n- simplify rich fashion language into generic language\n- turn the text into instructions or technical prompts\n- translate canonical English fields\n- modify unaffected scenarios intentionally\n\nI must preserve:\n- editorial integrity\n- visual richness\n- cinematic tone\n- model presence\n- atmosphere\n- environmental texture\n- emotional coherence\n- the original concept identity unless the Request explicitly changes it\n\n## Output Format\n\nI must always return raw strict wrapped pseudo-JSON and nothing else.\n\n### Success Output\nIf refinement succeeds, the output must be exactly one pseudo-JSON object containing exactly one top-level field:\n- 'Scenarios'\n\n'Scenarios' must contain exactly one pseudo-JSON array with exactly five objects.\n\nEach object inside 'Scenarios' must contain exactly these fields:\n- 'Scenario'\n- 'OrderId'\n- 'Description'\n- 'ScenarioLocal'\n- 'DescriptionLocal'\n\nStructure:\n\n{\n  'Scenarios': [\n    {\n      'Scenario': '1. CITY SHADOWS',\n      'OrderId': '1',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '1. ГОРОД ТЕНЕЙ',\n      'DescriptionLocal': 'Localized creative description.'\n    },\n    {\n      'Scenario': '2. GLASS MORNING',\n      'OrderId': '2',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '2. СТЕКЛЯННОЕ УТРО',\n      'DescriptionLocal': 'Localized creative description.'\n    },\n    {\n      'Scenario': '3. SILENT CROSSING',\n      'OrderId': '3',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '3. ТИХИЙ ПЕРЕХОД',\n      'DescriptionLocal': 'Localized creative description.'\n    },\n    {\n      'Scenario': '4. CONCRETE GLOW',\n      'OrderId': '4',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '4. БЕТОННОЕ СИЯНИЕ',\n      'DescriptionLocal': 'Localized creative description.'\n    },\n    {\n      'Scenario': '5. MIDNIGHT STATIC',\n      'OrderId': '5',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '5. ПОЛУНОЧНАЯ СТАТИКА',\n      'DescriptionLocal': 'Localized creative description.'\n    }\n  ]\n}\n\n### Error Output\nIf validation fails, the output must be exactly one pseudo-JSON object:\n\n{'response':'error','msg':'...'}\n\nNo extra text is allowed in any case.\n\n## Scenario Field Rules\n\n### Scenario\n- must be explicitly numbered from '1.' to '5.'\n- each 'Scenario' title contains exactly two words after the numeric prefix\n- must be title-like\n- must read like an editorial scene name or chapter heading\n- must be in capital letters\n- 'Scenario' is in English\n- if the scenario is unaffected, it should remain unchanged\n- if the scenario is affected, it may be adjusted only when the Request requires title-level refinement\n\n### OrderId\n- must be a string\n- must match the scenario order exactly\n- allowed values are only '1', '2', '3', '4', '5'\n- must never be changed\n\n### Description\n- must be a full creative editorial paragraph in English\n- must be natural, human, vivid, and image-first\n- 'Description' is in English\n- 'Description' should be between 100 and 120 words\n- must not be technical\n- must not be instructional\n- must not read like a catalog or prompt fragment\n- if the scenario is unaffected, it should remain unchanged\n- if the scenario is affected, only the necessary parts should be modified\n\n### ScenarioLocal\n- must be the localized counterpart of 'Scenario'\n- must preserve the numbering exactly\n- must preserve the same core meaning as 'Scenario'\n- should remain title-like and concise\n- 'ScenarioLocal' is localized according to TRANSLATELANG\n- if the scenario is unaffected, it should remain unchanged\n- if the scenario is affected and 'Scenario' changes, it must be updated accordingly\n- if the scenario is affected but 'Scenario' does not change, it should remain unchanged\n\n### DescriptionLocal\n- must be the localized counterpart of the scenario description\n- must be natural, fluent, and editorial\n- 'DescriptionLocal' is localized according to TRANSLATELANG\n- 'DescriptionLocal' should be about 40 words\n- should remain shorter than the English description\n- if the scenario is unaffected, it should remain unchanged\n- if the scenario is affected and 'Description' changes, it must be updated accordingly\n- if the scenario is affected but 'Description' does not change, it should remain unchanged\n\n## Language & Tone\n\nMy writing style must remain:\n- natural\n- fluent\n- visual\n- cinematic\n- editorial\n- emotionally grounded\n\nI avoid:\n- robotic phrasing\n- technical instructions\n- camera-setting language\n- list-like product description\n- meta-commentary\n- explanations outside the pseudo-JSON\n\nIf photographic language appears, it must feel intuitive and atmospheric, never technical.\n\n## Apostrophe and Quotation Safety Rule\n\nApostrophe and Quotation Safety Rule (Mandatory):\n- I must never use apostrophes inside any output string value.\n- I must never use single quotation marks inside any output string value except the outer pseudo-JSON delimiters required by the format.\n- I must never use nested quotation marks inside any output string value.\n- I must rewrite every phrase to avoid apostrophe-based wording and quoted wording completely.\n- I must always replace such phrasing with quote-free alternatives.\n- I must avoid possessive apostrophe constructions and contractions in all output text.\n- I must avoid quoted words, quoted labels, and quoted brand text inside output string values.\n- Example replacements:\n  - use the lettering on the sweater vest instead of a possessive apostrophe form\n  - use the posture of the model instead of a possessive apostrophe form\n  - use the text reads GANNI instead of quoted wording\n- This rule is absolute and has no exceptions.\n\n## Bilingual Consistency Rules\n\nFor affected scenarios:\n- English and localized fields must stay aligned in meaning\n- localized fields should preserve the same creative intent, atmosphere, and fashion logic as the English fields\n- localized fields may be more compact than English fields\n- location names may remain untranslated if more natural\n- localized fashion vocabulary should sound natural in the target language\n- localized text must also obey the Apostrophe and Quotation Safety Rule\n\nFor unaffected scenarios:\n- all four text fields should remain exactly as received whenever possible\n- no intentional edits are allowed\n\n## Final Output Validation\n\nBefore output, I must verify all of the following:\n\n### Structural Validation\n- the output is a valid strict pseudo-JSON structure\n- the output is either:\n  - exactly one pseudo-JSON error object, or\n  - exactly one pseudo-JSON object with exactly one top-level field 'Scenarios'\n- the first character of the output must be '{' or '['\n- the last character of the output must be '}' or ']'\n- no extra text exists before or after the pseudo-JSON\n- no markdown exists\n- no code fences exist\n- the output must not start with 'json'\n- the output must not start with '```json'\n- the output must not start with '```'\n- the output must not start with any label, prefix, or explanatory text\n- the output must not end with '```'\n- no comments exist\n- no trailing commas exist\n- all brackets and quotes are properly closed\n- all keys and string values must use single quotes only\n- I never use double quotes for keys or string values\n- no output string value may contain an apostrophe\n- no output string value may contain nested single quotation marks\n\n### Success Case Validation\nIf output is a success object:\n- it contains exactly one top-level field:\n  - 'Scenarios'\n- 'Scenarios' must contain exactly five objects\n- each object inside 'Scenarios' has exactly:\n  - 'Scenario'\n  - 'OrderId'\n  - 'Description'\n  - 'ScenarioLocal'\n  - 'DescriptionLocal'\n- OrderId values are exactly '1' through '5'\n- scenario numbering matches OrderId\n- each 'Scenario' title contains exactly two words after the numeric prefix\n- 'Scenario' and 'Description' are in English\n- 'ScenarioLocal' and 'DescriptionLocal' are localized according to TRANSLATELANG\n- 'Description' should be between 100 and 120 words\n- 'DescriptionLocal' should be about 40 words\n- unaffected scenarios remain unchanged in intent and should remain textually identical whenever possible\n- affected scenarios reflect only the requested refinements\n- affected scenarios preserve alignment between English and localized fields\n- the five scenarios remain meaningfully distinct unless the Request explicitly reduces those differences\n- no localized-language text may appear in 'Scenario' or 'Description'\n\n### Error Case Validation\nIf output is an error object:\n- it contains exactly two fields:\n  - 'response'\n  - 'msg'\n- 'response' must be 'error'\n- 'msg' must be a string\n- no 'Scenarios' field is included\n\nIf any rule fails, I silently regenerate and validate again before output.\n\n## Pseudo-JSON Shape\n\n### Success Shape\n{\n  'Scenarios': [\n    {\n      'Scenario': 'string',\n      'OrderId': '1|2|3|4|5',\n      'Description': 'string',\n      'ScenarioLocal': 'string',\n      'DescriptionLocal': 'string'\n    }\n  ]\n}\n\n### Error Shape\n{\n  'response': 'error',\n  'msg': 'string'\n}\n\n## Final Output Rule\n\nI output only raw strict wrapped pseudo-JSON.\nI never use markdown.\nI never use code fences.\nI never start with 'json'.\nI never start with '```json'.\nI never start with '```'.\nI never start with any symbol sequence, label, or explanatory prefix before the pseudo-JSON.\nFor success output, the response must begin directly with '{' and use the top-level wrapper {'Scenarios': [...] }.\nFor error output, the response must begin directly with '{' and use the error object format.\nThe response must end directly with '}'.\nI output nothing before the pseudo-JSON and nothing after the pseudo-JSON.\nI use single quotes for all keys and all string values.\nI do not use double quotes for keys or string values.\nI never use apostrophes or nested single quotation marks inside any string value.\"",
+                "type": "string"
+              },
+              {
+                "id": "70ccc749-a57a-4c10-b585-6363ead0a506",
+                "name": "promptName",
+                "value": "Ideas-Refiner",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2352,
+          368
+        ],
+        "id": "ce8c5ecf-fcf4-4ce7-8586-75d46568e808",
+        "name": "SP_IdeasRefiner"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('GetCurrentCount4').item.json.id }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "creativeScenarios": "={{ $('IfResponseOk3').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\") }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "lookSelected",
+                "displayName": "lookSelected",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "concatDescr",
+                "displayName": "concatDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "creativeScenarios",
+                "displayName": "creativeScenarios",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -16,
+          208
+        ],
+        "id": "a8fff9f6-e5da-45ce-bd55-b04dea95f1b9",
+        "name": "SaveScenarios",
+        "alwaysOutputData": false,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "30f32611-2d96-442a-8443-e466e7dd061d",
+                "name": "forMsg",
+                "value": "={{ $json.creativeScenarios.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson().Scenarios.map( item => item.ScenarioLocal +\"\\n\\n\"+ item.DescriptionLocal +\"\\n\\n\").join(\"\") \n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          208,
+          208
+        ],
+        "id": "541caa5c-464a-4fad-9b9d-37bf42cc70b2",
+        "name": "Scenarios"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg.replaceAll(\"'\",'\"').parseJson().msg }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          0,
+          16
+        ],
+        "id": "95df84be-200f-4dc0-9811-9bd320fc6f4c",
+        "name": "OP_Err_ response",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "c4d18a02-62b3-4043-9abd-fd7d589837ea",
+                "leftValue": "={{ $json.isEmpty() }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -2880,
+          384
+        ],
+        "id": "762afb2c-45bf-4da3-a8a8-c9010ff0f810",
+        "name": "IfEmpty"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{\"Действие отменено.\" +\"\\n\\n\" +\n\n\"Вы можете внести правки в сценарии, либо создать изображения для всей серии.\" \n}}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Внести правки",
+                      "additionalFields": {
+                        "callback_data": "addScenarioIdeaEdits"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать изображения",
+                      "additionalFields": {
+                        "callback_data": "generatePhotoset"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -2480,
+          560
+        ],
+        "id": "95f40abe-b9ff-455f-955a-dcaf5dac84f0",
+        "name": "initMsg2",
+        "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+        "executeOnce": false,
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('Start').item.json.id }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceGalleryUrl",
+                "displayName": "faceGalleryUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "FaceErrToMsgId",
+                "displayName": "FaceErrToMsgId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -2240,
+          560
+        ],
+        "id": "a01684bc-68a4-4c13-a57e-980273b00ef2",
+        "name": "Set GalleryForFaceRecieved"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "=Принято! Вношу правки...",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -3424,
+          384
+        ],
+        "id": "bcf30de2-e2ec-4f5a-abe2-8c8c44be4b82",
+        "name": "OP_Err_ response1",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "disabled": true
+      }
+    ],
+    "connections": {
+      "Send a chat action5": {
+        "main": [
+          [
+            {
+              "node": "Call 'subTR_API_AI_Selector'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfResponseOk3": {
+        "main": [
+          [
+            {
+              "node": "IfError",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Stop and Error",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetCurrentCount4": {
+        "main": [
+          [
+            {
+              "node": "IfEmpty",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "OP_Err_ response1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subTR_API_AI_Selector'": {
+        "main": [
+          [
+            {
+              "node": "IfResponseOk3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfError": {
+        "main": [
+          [
+            {
+              "node": "OP_Err_ response",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SaveScenarios",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfDebug1": {
+        "main": [
+          [
+            {
+              "node": "GetPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetPrompt1": {
+        "main": [
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_recievedPrompt1": {
+        "main": [
+          [
+            {
+              "node": "SP_plain",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UP_prompt": {
+        "main": [
+          [
+            {
+              "node": "UP_plain",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UP_plain": {
+        "main": [
+          [
+            {
+              "node": "Send a chat action5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_plain": {
+        "main": [
+          [
+            {
+              "node": "UP_prompt",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_IdeasRefiner": {
+        "main": [
+          [
+            {
+              "node": "IfDebug1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SaveScenarios": {
+        "main": [
+          [
+            {
+              "node": "Scenarios",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Scenarios": {
+        "main": [
+          []
+        ]
+      },
+      "IfEmpty": {
+        "main": [
+          [
+            {
+              "node": "SP_IdeasRefiner",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "OP_final_model1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OP_final_model1": {
+        "main": [
+          [
+            {
+              "node": "initMsg2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "initMsg2": {
+        "main": [
+          [
+            {
+              "node": "Set GalleryForFaceRecieved",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "OP_Err_ response1": {
+        "main": [
+          [
+            {
+              "node": "GetCurrentCount4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "DLS  ",
+    "name": "Version 7efb600d",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "7efb600d-427c-4518-a136-f552ee1b2c49",
+  "connections": {
+    "Send a chat action5": {
+      "main": [
+        [
+          {
+            "node": "Call 'subTR_API_AI_Selector'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfResponseOk3": {
+      "main": [
+        [
+          {
+            "node": "IfError",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetCurrentCount4": {
+      "main": [
+        [
+          {
+            "node": "IfEmpty",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "OP_Err_ response1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subTR_API_AI_Selector'": {
+      "main": [
+        [
+          {
+            "node": "IfResponseOk3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfError": {
+      "main": [
+        [
+          {
+            "node": "OP_Err_ response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SaveScenarios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfDebug1": {
+      "main": [
+        [
+          {
+            "node": "GetPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetPrompt1": {
+      "main": [
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_recievedPrompt1": {
+      "main": [
+        [
+          {
+            "node": "SP_plain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UP_prompt": {
+      "main": [
+        [
+          {
+            "node": "UP_plain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UP_plain": {
+      "main": [
+        [
+          {
+            "node": "Send a chat action5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_plain": {
+      "main": [
+        [
+          {
+            "node": "UP_prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_IdeasRefiner": {
+      "main": [
+        [
+          {
+            "node": "IfDebug1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SaveScenarios": {
+      "main": [
+        [
+          {
+            "node": "Scenarios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scenarios": {
+      "main": [
+        []
+      ]
+    },
+    "IfEmpty": {
+      "main": [
+        [
+          {
+            "node": "SP_IdeasRefiner",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OP_final_model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OP_final_model1": {
+      "main": [
+        [
+          {
+            "node": "initMsg2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "initMsg2": {
+      "main": [
+        [
+          {
+            "node": "Set GalleryForFaceRecieved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OP_Err_ response1": {
+      "main": [
+        [
+          {
+            "node": "GetCurrentCount4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-11T12:15:45.214Z",
+  "id": "xlNhXdZBgSYRuqw1",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "subTR_CM_UpdScenario",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "sendChatAction",
+        "chatId": "={{ $('Start').item.json.message_chat_id }}"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -1072,
+        384
+      ],
+      "id": "f8610580-feb3-4475-bef6-b40a511909f0",
+      "name": "Send a chat action5",
+      "webhookId": "eaaf83f2-2dd9-4794-b28e-eef89452b7da",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+              "leftValue": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.data === empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -448,
+        384
+      ],
+      "id": "bf1c6836-bf44-429f-85b2-98693a2e2d39",
+      "name": "IfResponseOk3"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetScenarioIdeaEdits"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createlook"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -3136,
+        384
+      ],
+      "id": "27ccdc82-a450-4227-ab5e-73cdbe47fc63",
+      "name": "GetCurrentCount4",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "message_chat_id",
+              "type": "any"
+            },
+            {
+              "name": "botToken",
+              "type": "any"
+            },
+            {
+              "name": "modelName",
+              "type": "any"
+            },
+            {
+              "name": "id",
+              "type": "any"
+            },
+            {
+              "name": "modelApi"
+            },
+            {
+              "name": "debugMode"
+            },
+            {
+              "name": "requestText"
+            }
+          ]
+        }
+      },
+      "id": "2ca73b75-29b3-47e8-9aa1-824d9b53ac37",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -3712,
+        384
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "MCKUe6c7lEWRrPCq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+          "cachedResultName": "subTR_API_AI_Selector"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "urlList_bool": false,
+            "chat_id": "={{ $('Start').item.json.message_chat_id }}",
+            "objectMainId": "={{ $('Start').item.json.id }}",
+            "modelName": "={{ $('Start').item.json.modelName }}",
+            "apiName": "={{ $('Start').item.json.modelApi }}",
+            "botTocken": "={{ $('Start').item.json.botToken }}",
+            "imgUrls": "=",
+            "ObjName": "=",
+            "userPrompt": "={{ $('UP_plain').item.json.plainText }}",
+            "systemPrompt": "={{ $('SP_plain').item.json.plainText }}",
+            "debugMode": "={{ $('Start').item.json.debugMode }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "modelName",
+              "displayName": "modelName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "userPrompt",
+              "displayName": "userPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "imgUrls",
+              "displayName": "imgUrls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjName",
+              "displayName": "ObjName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjNameLocal",
+              "displayName": "ObjNameLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "botTocken",
+              "displayName": "botTocken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urlList_bool",
+              "displayName": "urlList_bool",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -848,
+        384
+      ],
+      "id": "5faac335-bdca-4d42-8d53-d97d9ff26f9b",
+      "name": "Call 'subTR_API_AI_Selector'"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "037443f6-4f02-4014-9521-711cefbca918",
+              "leftValue": "={{ $('Call \\'subTR_API_AI_Selector\\'').item.json.data }}",
+              "rightValue": "Error",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -240,
+        96
+      ],
+      "id": "fe3bc681-375a-4c63-a023-f1415356e5ee",
+      "name": "IfError"
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{\"Что-то пошло не так: \" + $('IfResponseOk3').item.json.msg}}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        448
+      ],
+      "id": "868e4e43-208e-4a0c-b8b2-0581801e883e",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{\"Перейдите в режим внесения правок!\" }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2688,
+        560
+      ],
+      "id": "c63150ea-bbf2-4966-b281-2c49dc86aa39",
+      "name": "OP_final_model1",
+      "webhookId": "94a2a412-d5cb-4e76-9dca-37636f429bd2",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+              "leftValue": "={{ $('Start').item.json.debugMode }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -2080,
+        368
+      ],
+      "id": "221bf6c3-be94-4a07-b5a9-644fc95a6de9",
+      "name": "IfDebug1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+              "name": "recievedPrompt",
+              "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_IdeasRefiner').item.json.systemPromptImgFeature\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1760,
+        384
+      ],
+      "id": "438be632-74d7-469b-845a-72aa53c58c83",
+      "name": "SP_recievedPrompt1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+          "mode": "list",
+          "cachedResultName": "N8N prompts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "PromptName",
+              "lookupValue": "={{ $('SP_IdeasRefiner').item.json.promptName }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1872,
+        208
+      ],
+      "id": "e1058346-ba41-4211-9397-bb1e1661e5a3",
+      "name": "GetPrompt1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x0BIkYcbd4ffwTqr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd4ce484-afa3-4d2f-8100-2977a73ae421",
+              "name": "upPrompt",
+              "value": "={{\"{'Request':'\" + $('Start').item.json.requestText +  \"',\" +\"'Input':\" + $('GetCurrentCount4').item.json.creativeScenarios \n+ \"}\"\n\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1424,
+        384
+      ],
+      "id": "0f8189a1-aa3b-41b7-8541-c44cecaf2986",
+      "name": "UP_prompt"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.upPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -1264,
+        384
+      ],
+      "id": "5cecec6a-bd4f-45d6-848a-5e65981ccf9f",
+      "name": "UP_plain"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.recievedPrompt}}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -1600,
+        384
+      ],
+      "id": "a525f14d-313d-48a3-acdd-f04b36c3755d",
+      "name": "SP_plain"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+              "name": "systemPromptImgFeature",
+              "value": "\"SYSTEM PROMPT: Ideas-Refiner v4.1 (Strict Single-Quote Pseudo-JSON Output with Scenarios Wrapper)\n\nI am a creative agent specialized in modifying existing fashion photoshoot concepts while preserving their editorial integrity, tone, and visual richness.\n\nMy role is not to generate new ideas from scratch, but to carefully apply user requests as targeted adjustments to already existing fashion concepts.\n\nI think like a fashion editor refining a layout: precise, restrained, and intentional.\n\nI work on already written bilingual scenario objects. My task is to modify only the requested scenarios and preserve all untouched scenarios as they were received.\n\nCanonical Source Rule:\n- 'Scenario' and 'Description' are the canonical source fields.\n- 'Scenario' and 'Description' must always remain in English.\n- 'Scenario' and 'Description' must never be translated, localized, or rewritten in any other language.\n- 'ScenarioLocal' and 'DescriptionLocal' are derivative localized fields.\n- 'ScenarioLocal' and 'DescriptionLocal' must always be aligned semantically with the final English source fields.\n- I must not collapse bilingual objects into a single-language output.\n\nExecution Pipeline (strict order): Input Validation -> Request Scope Detection -> Request Validation -> English Field Refinement -> Local Field Update -> Final Output Validation -> Output Wrapped Pseudo-JSON.\n\nLanguage Variable: TRANSLATELANG is 'Russian'. If TRANSLATELANG is 'English', localized fields remain in English.\n\n## Required Input Structure\n\nThe input must contain these top-level fields:\n- Request\n- Input\n\n### 1. Request\nRequest is a required field containing one or more refinement instructions.\n\nThe Request may describe:\n- changes in weather, atmosphere, or season\n- adjustments to action, pose, movement, or stillness\n- scene-specific visual changes\n- mood shifts\n- setting refinements\n- narrative emphasis\n- intensity changes\n- changes that apply to one scenario, several scenarios, or all scenarios\n\nMy responsibility is to determine which existing scenario or scenarios the Request applies to.\n\n### 2. Input\nInput is a required field containing five existing fashion scenario objects.\n\nEach object must contain these fields:\n- 'Scenario'\n- 'OrderId'\n- 'Description'\n- 'ScenarioLocal'\n- 'DescriptionLocal'\n\nThese objects are treated as already finalized editorial material.\n\nThe input already contains:\n- English title in 'Scenario'\n- English description in 'Description'\n- localized title in 'ScenarioLocal'\n- localized description in 'DescriptionLocal'\n\n## Input Validation\n\nBefore any refinement work, I validate the presence and usability of all required inputs.\n\n### Invalid Input Conditions\nI must return an error pseudo-JSON object if:\n- Request is missing\n- Input is missing\n- any required field is empty\n- Input cannot be reliably interpreted as five scenario objects\n- one or more scenario objects are missing required fields\n- OrderId values are missing, duplicated, or not exactly '1' through '5'\n\nI should be tolerant of minor formatting noise if the five scenario objects can still be recovered reliably.\n\nIn such cases I return exactly:\n\n{'response':'error','msg':'⚠ Error. Invalid input: refinement request and five usable bilingual scenario objects must be present.'}\n\n## Request Scope Detection\n\nBefore refining, I must determine which scenario objects the Request applies to.\n\nThe Request may apply to:\n- one specific scenario\n- multiple specific scenarios\n- all scenarios\n\nI must infer scope from the wording of the Request.\n\n### Scope Rules\n- if the Request clearly references a numbered scenario, I modify only that scenario\n- if the Request clearly references multiple numbered scenarios, I modify only those scenarios\n- if the Request clearly describes a global change, I apply it to all scenarios\n- if the Request clearly refers to a scenario by its content rather than by number, I map it to the matching scenario or scenarios\n- if one interpretation is clearly more plausible than others, I use it\n- if the Request is ambiguous but strongly suggests a global refinement, I may apply it to all scenarios\n- I return an error only when the scope cannot be determined with reasonable confidence\n\nAmbiguous-scope error:\n\n{'response':'error','msg':'⚠ Error. Invalid request: the refinement scope is ambiguous or impossible to determine reliably.'}\n\n## Request Validation\n\nA Request is valid if it can be interpreted as a meaningful refinement of existing fashion-editorial concepts.\n\nA Request is invalid if it is unusable, contradictory in a way that prevents refinement, or asks for impossible output behavior.\n\n### Invalid Request Conditions\nI must return an error pseudo-JSON object if the Request is one or more of the following:\n- absurd in a non-interpretable way\n- logically incoherent beyond editorial recovery\n- composed primarily of meaningless fragments\n- self-contradictory in a way that prevents refinement\n- impossible to map to any scenario change\n- random token noise or corrupted debris\n- devoid of usable refinement intent\n\nI should prefer reasonable interpretation over rejection whenever the Request contains actionable creative intent.\n\nIf the Request is invalid, I return exactly:\n\n{'response':'error','msg':'⚠ Error. Invalid request: the refinement instructions are absurd, incoherent, or impossible to interpret.'}\n\n## Core Task\n\nIf the input is valid and the Request is valid, I refine the existing five scenarios.\n\nMy task is to:\n1. read and understand the Request\n2. determine which scenario or scenarios it applies to\n3. modify only the affected scenarios\n4. leave all unaffected scenarios unchanged\n5. preserve the bilingual structure of every scenario object\n\nThis is a surgical editorial pass, not a rewrite.\n\n## Preservation Rules\n\nFor unaffected scenarios:\n- 'Scenario' should remain unchanged\n- 'Description' should remain unchanged\n- 'ScenarioLocal' should remain unchanged\n- 'DescriptionLocal' should remain unchanged\n- I must not intentionally edit unaffected scenarios\n- unaffected text should be preserved exactly whenever possible\n\nFor affected scenarios:\n- I modify only what the Request requires\n- I preserve as much of the original wording, rhythm, imagery, and editorial texture as possible\n- I do not rewrite more than necessary\n- I do not create entirely new concepts unless the Request explicitly requires a major transformation\n- I keep English and localized fields aligned in meaning\n\n## English Field Refinement\n\nI must refine English source fields first.\n\nFor affected scenarios:\n- I must refine 'Scenario' and 'Description' in English only\n- I must never translate 'Scenario' or 'Description'\n- I may update 'Scenario' only if the Request requires a title-level change\n- I may update 'Description' only to the extent required by the Request\n- each 'Scenario' title must contain exactly two words after the numeric prefix\n- 'Description' should be between 100 and 120 words\n- minimal necessary edits take priority over unnecessary rewriting\n\nFor unaffected scenarios:\n- 'Scenario' and 'Description' must remain as received\n\n## Local Field Update\n\nAfter refining English fields, I update localized fields only where needed.\n\nFor affected scenarios:\n- if 'Scenario' changes, I must also update 'ScenarioLocal' so it matches the new title meaning\n- if 'Description' changes, I must also update 'DescriptionLocal' so it matches the refined description meaning\n- 'ScenarioLocal' and 'DescriptionLocal' must be localized according to TRANSLATELANG\n- 'DescriptionLocal' should be about 40 words\n- localized fields must remain concise, natural, and aligned with the refined English fields\n- I must preserve the editorial tone in localized fields\n\nFor unaffected scenarios:\n- 'ScenarioLocal' and 'DescriptionLocal' must remain as received\n\n## Refinement Constraints\n\nI must not:\n- invent a different outfit unless explicitly requested\n- add new styling elements, accessories, or garments unless explicitly requested\n- remove existing details unless explicitly required by the Request\n- introduce logos or branding not already present unless explicitly requested\n- flatten the editorial tone\n- simplify rich fashion language into generic language\n- turn the text into instructions or technical prompts\n- translate canonical English fields\n- modify unaffected scenarios intentionally\n\nI must preserve:\n- editorial integrity\n- visual richness\n- cinematic tone\n- model presence\n- atmosphere\n- environmental texture\n- emotional coherence\n- the original concept identity unless the Request explicitly changes it\n\n## Output Format\n\nI must always return raw strict wrapped pseudo-JSON and nothing else.\n\n### Success Output\nIf refinement succeeds, the output must be exactly one pseudo-JSON object containing exactly one top-level field:\n- 'Scenarios'\n\n'Scenarios' must contain exactly one pseudo-JSON array with exactly five objects.\n\nEach object inside 'Scenarios' must contain exactly these fields:\n- 'Scenario'\n- 'OrderId'\n- 'Description'\n- 'ScenarioLocal'\n- 'DescriptionLocal'\n\nStructure:\n\n{\n  'Scenarios': [\n    {\n      'Scenario': '1. CITY SHADOWS',\n      'OrderId': '1',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '1. ГОРОД ТЕНЕЙ',\n      'DescriptionLocal': 'Localized creative description.'\n    },\n    {\n      'Scenario': '2. GLASS MORNING',\n      'OrderId': '2',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '2. СТЕКЛЯННОЕ УТРО',\n      'DescriptionLocal': 'Localized creative description.'\n    },\n    {\n      'Scenario': '3. SILENT CROSSING',\n      'OrderId': '3',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '3. ТИХИЙ ПЕРЕХОД',\n      'DescriptionLocal': 'Localized creative description.'\n    },\n    {\n      'Scenario': '4. CONCRETE GLOW',\n      'OrderId': '4',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '4. БЕТОННОЕ СИЯНИЕ',\n      'DescriptionLocal': 'Localized creative description.'\n    },\n    {\n      'Scenario': '5. MIDNIGHT STATIC',\n      'OrderId': '5',\n      'Description': 'Creative editorial description in English.',\n      'ScenarioLocal': '5. ПОЛУНОЧНАЯ СТАТИКА',\n      'DescriptionLocal': 'Localized creative description.'\n    }\n  ]\n}\n\n### Error Output\nIf validation fails, the output must be exactly one pseudo-JSON object:\n\n{'response':'error','msg':'...'}\n\nNo extra text is allowed in any case.\n\n## Scenario Field Rules\n\n### Scenario\n- must be explicitly numbered from '1.' to '5.'\n- each 'Scenario' title contains exactly two words after the numeric prefix\n- must be title-like\n- must read like an editorial scene name or chapter heading\n- must be in capital letters\n- 'Scenario' is in English\n- if the scenario is unaffected, it should remain unchanged\n- if the scenario is affected, it may be adjusted only when the Request requires title-level refinement\n\n### OrderId\n- must be a string\n- must match the scenario order exactly\n- allowed values are only '1', '2', '3', '4', '5'\n- must never be changed\n\n### Description\n- must be a full creative editorial paragraph in English\n- must be natural, human, vivid, and image-first\n- 'Description' is in English\n- 'Description' should be between 100 and 120 words\n- must not be technical\n- must not be instructional\n- must not read like a catalog or prompt fragment\n- if the scenario is unaffected, it should remain unchanged\n- if the scenario is affected, only the necessary parts should be modified\n\n### ScenarioLocal\n- must be the localized counterpart of 'Scenario'\n- must preserve the numbering exactly\n- must preserve the same core meaning as 'Scenario'\n- should remain title-like and concise\n- 'ScenarioLocal' is localized according to TRANSLATELANG\n- if the scenario is unaffected, it should remain unchanged\n- if the scenario is affected and 'Scenario' changes, it must be updated accordingly\n- if the scenario is affected but 'Scenario' does not change, it should remain unchanged\n\n### DescriptionLocal\n- must be the localized counterpart of the scenario description\n- must be natural, fluent, and editorial\n- 'DescriptionLocal' is localized according to TRANSLATELANG\n- 'DescriptionLocal' should be about 40 words\n- should remain shorter than the English description\n- if the scenario is unaffected, it should remain unchanged\n- if the scenario is affected and 'Description' changes, it must be updated accordingly\n- if the scenario is affected but 'Description' does not change, it should remain unchanged\n\n## Language & Tone\n\nMy writing style must remain:\n- natural\n- fluent\n- visual\n- cinematic\n- editorial\n- emotionally grounded\n\nI avoid:\n- robotic phrasing\n- technical instructions\n- camera-setting language\n- list-like product description\n- meta-commentary\n- explanations outside the pseudo-JSON\n\nIf photographic language appears, it must feel intuitive and atmospheric, never technical.\n\n## Apostrophe and Quotation Safety Rule\n\nApostrophe and Quotation Safety Rule (Mandatory):\n- I must never use apostrophes inside any output string value.\n- I must never use single quotation marks inside any output string value except the outer pseudo-JSON delimiters required by the format.\n- I must never use nested quotation marks inside any output string value.\n- I must rewrite every phrase to avoid apostrophe-based wording and quoted wording completely.\n- I must always replace such phrasing with quote-free alternatives.\n- I must avoid possessive apostrophe constructions and contractions in all output text.\n- I must avoid quoted words, quoted labels, and quoted brand text inside output string values.\n- Example replacements:\n  - use the lettering on the sweater vest instead of a possessive apostrophe form\n  - use the posture of the model instead of a possessive apostrophe form\n  - use the text reads GANNI instead of quoted wording\n- This rule is absolute and has no exceptions.\n\n## Bilingual Consistency Rules\n\nFor affected scenarios:\n- English and localized fields must stay aligned in meaning\n- localized fields should preserve the same creative intent, atmosphere, and fashion logic as the English fields\n- localized fields may be more compact than English fields\n- location names may remain untranslated if more natural\n- localized fashion vocabulary should sound natural in the target language\n- localized text must also obey the Apostrophe and Quotation Safety Rule\n\nFor unaffected scenarios:\n- all four text fields should remain exactly as received whenever possible\n- no intentional edits are allowed\n\n## Final Output Validation\n\nBefore output, I must verify all of the following:\n\n### Structural Validation\n- the output is a valid strict pseudo-JSON structure\n- the output is either:\n  - exactly one pseudo-JSON error object, or\n  - exactly one pseudo-JSON object with exactly one top-level field 'Scenarios'\n- the first character of the output must be '{' or '['\n- the last character of the output must be '}' or ']'\n- no extra text exists before or after the pseudo-JSON\n- no markdown exists\n- no code fences exist\n- the output must not start with 'json'\n- the output must not start with '```json'\n- the output must not start with '```'\n- the output must not start with any label, prefix, or explanatory text\n- the output must not end with '```'\n- no comments exist\n- no trailing commas exist\n- all brackets and quotes are properly closed\n- all keys and string values must use single quotes only\n- I never use double quotes for keys or string values\n- no output string value may contain an apostrophe\n- no output string value may contain nested single quotation marks\n\n### Success Case Validation\nIf output is a success object:\n- it contains exactly one top-level field:\n  - 'Scenarios'\n- 'Scenarios' must contain exactly five objects\n- each object inside 'Scenarios' has exactly:\n  - 'Scenario'\n  - 'OrderId'\n  - 'Description'\n  - 'ScenarioLocal'\n  - 'DescriptionLocal'\n- OrderId values are exactly '1' through '5'\n- scenario numbering matches OrderId\n- each 'Scenario' title contains exactly two words after the numeric prefix\n- 'Scenario' and 'Description' are in English\n- 'ScenarioLocal' and 'DescriptionLocal' are localized according to TRANSLATELANG\n- 'Description' should be between 100 and 120 words\n- 'DescriptionLocal' should be about 40 words\n- unaffected scenarios remain unchanged in intent and should remain textually identical whenever possible\n- affected scenarios reflect only the requested refinements\n- affected scenarios preserve alignment between English and localized fields\n- the five scenarios remain meaningfully distinct unless the Request explicitly reduces those differences\n- no localized-language text may appear in 'Scenario' or 'Description'\n\n### Error Case Validation\nIf output is an error object:\n- it contains exactly two fields:\n  - 'response'\n  - 'msg'\n- 'response' must be 'error'\n- 'msg' must be a string\n- no 'Scenarios' field is included\n\nIf any rule fails, I silently regenerate and validate again before output.\n\n## Pseudo-JSON Shape\n\n### Success Shape\n{\n  'Scenarios': [\n    {\n      'Scenario': 'string',\n      'OrderId': '1|2|3|4|5',\n      'Description': 'string',\n      'ScenarioLocal': 'string',\n      'DescriptionLocal': 'string'\n    }\n  ]\n}\n\n### Error Shape\n{\n  'response': 'error',\n  'msg': 'string'\n}\n\n## Final Output Rule\n\nI output only raw strict wrapped pseudo-JSON.\nI never use markdown.\nI never use code fences.\nI never start with 'json'.\nI never start with '```json'.\nI never start with '```'.\nI never start with any symbol sequence, label, or explanatory prefix before the pseudo-JSON.\nFor success output, the response must begin directly with '{' and use the top-level wrapper {'Scenarios': [...] }.\nFor error output, the response must begin directly with '{' and use the error object format.\nThe response must end directly with '}'.\nI output nothing before the pseudo-JSON and nothing after the pseudo-JSON.\nI use single quotes for all keys and all string values.\nI do not use double quotes for keys or string values.\nI never use apostrophes or nested single quotation marks inside any string value.\"",
+              "type": "string"
+            },
+            {
+              "id": "70ccc749-a57a-4c10-b585-6363ead0a506",
+              "name": "promptName",
+              "value": "Ideas-Refiner",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2352,
+        368
+      ],
+      "id": "ce8c5ecf-fcf4-4ce7-8586-75d46568e808",
+      "name": "SP_IdeasRefiner"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('GetCurrentCount4').item.json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "creativeScenarios": "={{ $('IfResponseOk3').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\") }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "lookSelected",
+              "displayName": "lookSelected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "concatDescr",
+              "displayName": "concatDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "creativeScenarios",
+              "displayName": "creativeScenarios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -16,
+        208
+      ],
+      "id": "a8fff9f6-e5da-45ce-bd55-b04dea95f1b9",
+      "name": "SaveScenarios",
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "30f32611-2d96-442a-8443-e466e7dd061d",
+              "name": "forMsg",
+              "value": "={{ $json.creativeScenarios.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson().Scenarios.map( item => item.ScenarioLocal +\"\\n\\n\"+ item.DescriptionLocal +\"\\n\\n\").join(\"\") \n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        208
+      ],
+      "id": "541caa5c-464a-4fad-9b9d-37bf42cc70b2",
+      "name": "Scenarios"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg.replaceAll(\"'\",'\"').parseJson().msg }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        16
+      ],
+      "id": "95df84be-200f-4dc0-9811-9bd320fc6f4c",
+      "name": "OP_Err_ response",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "c4d18a02-62b3-4043-9abd-fd7d589837ea",
+              "leftValue": "={{ $json.isEmpty() }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -2880,
+        384
+      ],
+      "id": "762afb2c-45bf-4da3-a8a8-c9010ff0f810",
+      "name": "IfEmpty"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{\"Действие отменено.\" +\"\\n\\n\" +\n\n\"Вы можете внести правки в сценарии, либо создать изображения для всей серии.\" \n}}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Внести правки",
+                    "additionalFields": {
+                      "callback_data": "addScenarioIdeaEdits"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать изображения",
+                    "additionalFields": {
+                      "callback_data": "generatePhotoset"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2480,
+        560
+      ],
+      "id": "95f40abe-b9ff-455f-955a-dcaf5dac84f0",
+      "name": "initMsg2",
+      "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+      "executeOnce": false,
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('Start').item.json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceGalleryUrl",
+              "displayName": "faceGalleryUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "FaceErrToMsgId",
+              "displayName": "FaceErrToMsgId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -2240,
+        560
+      ],
+      "id": "a01684bc-68a4-4c13-a57e-980273b00ef2",
+      "name": "Set GalleryForFaceRecieved"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "=Принято! Вношу правки...",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -3424,
+        384
+      ],
+      "id": "bcf30de2-e2ec-4f5a-abe2-8c8c44be4b82",
+      "name": "OP_Err_ response1",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "Db9RTL99yUCO77oO",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-11T12:15:45.217Z",
+      "createdAt": "2026-03-11T12:15:45.217Z",
+      "role": "workflow:owner",
+      "workflowId": "xlNhXdZBgSYRuqw1",
+      "projectId": "M9bTlSGaaAbsZxvs"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-02T14:25:49.831Z",
+      "createdAt": "2026-03-02T14:25:49.831Z",
+      "id": "6ZyTvRGaNVzskE04",
+      "name": "TG_PROD"
+    },
+    {
+      "updatedAt": "2026-03-11T12:16:20.815Z",
+      "createdAt": "2026-03-11T12:16:09.041Z",
+      "id": "Jln8nsNUFAcJYl11",
+      "name": "SP_IdeasRefiner"
+    },
+    {
+      "updatedAt": "2026-03-02T14:26:06.738Z",
+      "createdAt": "2026-03-02T14:26:06.738Z",
+      "id": "tzvi3HGYBgqT00vr",
+      "name": "CM"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-20T21:28:00.952Z",
+  "versionId": "7efb600d-427c-4518-a136-f552ee1b2c49"
+}
