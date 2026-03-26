@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-26T10:55:02.000Z",
-    "createdAt": "2026-03-26T10:53:20.696Z",
-    "versionId": "26b158ed-6c97-49de-b334-7e8ca3ef3641",
+    "updatedAt": "2026-03-26T11:18:10.000Z",
+    "createdAt": "2026-03-26T11:15:55.982Z",
+    "versionId": "94eb9a00-49af-4e75-bd76-6feb005bd040",
     "workflowId": "9A6kp0SAPV2FCdMQ",
     "nodes": [
       {
@@ -13,8 +13,8 @@
         "type": "n8n-nodes-base.wait",
         "typeVersion": 1.1,
         "position": [
-          -256,
-          208
+          -480,
+          512
         ],
         "id": "a5ea0342-2c73-46ff-af26-47b67bfefb11",
         "name": "Wait",
@@ -25,15 +25,8 @@
         "parameters": {
           "method": "POST",
           "url": "https://queue.fal.run/fal-ai/gemini-3-pro-image-preview/edit",
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Key e24637c7-0055-4be4-970c-e6680a631cfc:56330a0a1865f76fb53e032fdc5e913b"
-              }
-            ]
-          },
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
           "sendBody": true,
           "specifyBody": "json",
           "jsonBody": "={\n  \"prompt\": \"{{ $json.SystemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $json.FileUrls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
@@ -44,12 +37,18 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          -1200,
-          224
+          -1824,
+          336
         ],
         "id": "72f8d653-adc4-43d4-b83c-cc52c808a177",
         "name": "SetNBgen_Fal",
         "executeOnce": false,
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "Mvt42bec1qeOFmzD",
+            "name": "FAL AI Key"
+          }
+        },
         "onError": "continueErrorOutput"
       },
       {
@@ -64,8 +63,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          -832,
-          208
+          -1408,
+          384
         ],
         "id": "963a48ac-c0a3-4cdf-88c7-d3a2aab0bc0e",
         "name": "SetNBgen_Fal_status",
@@ -187,8 +186,8 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          -560,
-          176
+          -1168,
+          192
         ],
         "id": "8ede45a2-f8cc-4464-add0-7b282c01821d",
         "name": "CheckStatus"
@@ -205,8 +204,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          -304,
-          32
+          -624,
+          96
         ],
         "id": "a54c0f61-3c98-4b2a-acec-dc4776d062bf",
         "name": "SetNBgen_Fal_getResult",
@@ -229,8 +228,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          368,
-          -48
+          -176,
+          48
         ],
         "id": "ccd56cda-de10-4cf5-9c9e-dcd93de31344",
         "name": "Send a photo message1",
@@ -250,8 +249,8 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.4,
         "position": [
-          128,
-          -48
+          -400,
+          48
         ],
         "id": "7566291f-d708-4c71-9c68-3b8a7b6d1071",
         "name": "HTTP Request1",
@@ -264,8 +263,8 @@
         "type": "n8n-nodes-base.stopAndError",
         "typeVersion": 1,
         "position": [
-          -400,
-          544
+          -912,
+          1008
         ],
         "id": "245b63ec-e8b1-4c3d-aef6-ef3c231bac18",
         "name": "Stop and Error2"
@@ -304,8 +303,8 @@
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "typeVersion": 1.1,
         "position": [
-          -2528,
-          272
+          -2704,
+          416
         ],
         "id": "fdd709ac-d725-43cf-9914-c935140e2ed5",
         "name": "Start"
@@ -321,7 +320,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          208,
+          -320,
           288
         ],
         "id": "d3b7fd1e-e30e-45e1-8e30-d4ef6baf3e4c",
@@ -363,8 +362,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -1504,
-          288
+          -2032,
+          416
         ],
         "id": "1e03f961-0f0f-466a-b5be-78a1e49c8cc5",
         "name": "UrlNotEmpty"
@@ -373,15 +372,8 @@
         "parameters": {
           "method": "POST",
           "url": "https://queue.fal.run/fal-ai/gemini-3-pro-image-preview",
-          "sendHeaders": true,
-          "headerParameters": {
-            "parameters": [
-              {
-                "name": "Authorization",
-                "value": "Key e24637c7-0055-4be4-970c-e6680a631cfc:56330a0a1865f76fb53e032fdc5e913b"
-              }
-            ]
-          },
+          "authentication": "genericCredentialType",
+          "genericAuthType": "httpHeaderAuth",
           "sendBody": true,
           "specifyBody": "json",
           "jsonBody": "={\n  \"prompt\": \"{{ $json.SystemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n \n  \"resolution\": \"1K\"\n}\n",
@@ -392,12 +384,18 @@
         "type": "n8n-nodes-base.httpRequest",
         "typeVersion": 4.3,
         "position": [
-          -1200,
-          432
+          -1808,
+          560
         ],
         "id": "3c6b2069-f9be-487d-849d-6bd12d45be43",
         "name": "SetNBgen_FalNoImage",
         "executeOnce": false,
+        "credentials": {
+          "httpHeaderAuth": {
+            "id": "Mvt42bec1qeOFmzD",
+            "name": "FAL AI Key"
+          }
+        },
         "onError": "continueErrorOutput"
       },
       {
@@ -417,8 +415,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          912,
-          -48
+          48,
+          48
         ],
         "id": "a2b5eb3b-b6c8-497c-a941-e017314c6d43",
         "name": "Edit Fields"
@@ -450,8 +448,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -2000,
-          272
+          -2480,
+          416
         ],
         "id": "91df48db-dd33-45b9-b838-be03b456d799",
         "name": "If"
@@ -556,8 +554,8 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -1776,
-          128
+          -2256,
+          336
         ],
         "id": "0b906304-5084-4165-89c8-eb2dca211342",
         "name": "Append row in sheet4",
@@ -582,8 +580,8 @@
         "type": "n8n-nodes-base.executionData",
         "typeVersion": 1.1,
         "position": [
-          1152,
-          -32
+          272,
+          48
         ],
         "id": "9faddd1d-82e3-4809-9726-761943740808",
         "name": "Execution Data"
@@ -798,21 +796,21 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 26b158ed",
+    "name": "Version 94eb9a00",
     "description": "",
     "autosaved": true,
     "workflowPublishHistory": [
       {
-        "createdAt": "2026-03-26T10:55:02.301Z",
-        "id": 1821,
+        "createdAt": "2026-03-26T11:18:10.524Z",
+        "id": 1823,
         "workflowId": "9A6kp0SAPV2FCdMQ",
-        "versionId": "26b158ed-6c97-49de-b334-7e8ca3ef3641",
+        "versionId": "94eb9a00-49af-4e75-bd76-6feb005bd040",
         "event": "activated",
         "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
       }
     ]
   },
-  "activeVersionId": "26b158ed-6c97-49de-b334-7e8ca3ef3641",
+  "activeVersionId": "94eb9a00-49af-4e75-bd76-6feb005bd040",
   "connections": {
     "Wait": {
       "main": [
@@ -1037,8 +1035,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -256,
-        208
+        -480,
+        512
       ],
       "id": "a5ea0342-2c73-46ff-af26-47b67bfefb11",
       "name": "Wait",
@@ -1049,15 +1047,8 @@
       "parameters": {
         "method": "POST",
         "url": "https://queue.fal.run/fal-ai/gemini-3-pro-image-preview/edit",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Key e24637c7-0055-4be4-970c-e6680a631cfc:56330a0a1865f76fb53e032fdc5e913b"
-            }
-          ]
-        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"prompt\": \"{{ $json.SystemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $json.FileUrls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
@@ -1068,12 +1059,18 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -1200,
-        224
+        -1824,
+        336
       ],
       "id": "72f8d653-adc4-43d4-b83c-cc52c808a177",
       "name": "SetNBgen_Fal",
       "executeOnce": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Mvt42bec1qeOFmzD",
+          "name": "FAL AI Key"
+        }
+      },
       "onError": "continueErrorOutput"
     },
     {
@@ -1088,8 +1085,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -832,
-        208
+        -1408,
+        384
       ],
       "id": "963a48ac-c0a3-4cdf-88c7-d3a2aab0bc0e",
       "name": "SetNBgen_Fal_status",
@@ -1211,8 +1208,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -560,
-        176
+        -1168,
+        192
       ],
       "id": "8ede45a2-f8cc-4464-add0-7b282c01821d",
       "name": "CheckStatus"
@@ -1229,8 +1226,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -304,
-        32
+        -624,
+        96
       ],
       "id": "a54c0f61-3c98-4b2a-acec-dc4776d062bf",
       "name": "SetNBgen_Fal_getResult",
@@ -1253,8 +1250,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        368,
-        -48
+        -176,
+        48
       ],
       "id": "ccd56cda-de10-4cf5-9c9e-dcd93de31344",
       "name": "Send a photo message1",
@@ -1274,8 +1271,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        128,
-        -48
+        -400,
+        48
       ],
       "id": "7566291f-d708-4c71-9c68-3b8a7b6d1071",
       "name": "HTTP Request1",
@@ -1288,8 +1285,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        -400,
-        544
+        -912,
+        1008
       ],
       "id": "245b63ec-e8b1-4c3d-aef6-ef3c231bac18",
       "name": "Stop and Error2"
@@ -1328,8 +1325,8 @@
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "typeVersion": 1.1,
       "position": [
-        -2528,
-        272
+        -2704,
+        416
       ],
       "id": "fdd709ac-d725-43cf-9914-c935140e2ed5",
       "name": "Start"
@@ -1345,7 +1342,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        208,
+        -320,
         288
       ],
       "id": "d3b7fd1e-e30e-45e1-8e30-d4ef6baf3e4c",
@@ -1387,8 +1384,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -1504,
-        288
+        -2032,
+        416
       ],
       "id": "1e03f961-0f0f-466a-b5be-78a1e49c8cc5",
       "name": "UrlNotEmpty"
@@ -1397,15 +1394,8 @@
       "parameters": {
         "method": "POST",
         "url": "https://queue.fal.run/fal-ai/gemini-3-pro-image-preview",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Key e24637c7-0055-4be4-970c-e6680a631cfc:56330a0a1865f76fb53e032fdc5e913b"
-            }
-          ]
-        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={\n  \"prompt\": \"{{ $json.SystemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n \n  \"resolution\": \"1K\"\n}\n",
@@ -1416,12 +1406,18 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -1200,
-        432
+        -1808,
+        560
       ],
       "id": "3c6b2069-f9be-487d-849d-6bd12d45be43",
       "name": "SetNBgen_FalNoImage",
       "executeOnce": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "Mvt42bec1qeOFmzD",
+          "name": "FAL AI Key"
+        }
+      },
       "onError": "continueErrorOutput"
     },
     {
@@ -1441,8 +1437,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        912,
-        -48
+        48,
+        48
       ],
       "id": "a2b5eb3b-b6c8-497c-a941-e017314c6d43",
       "name": "Edit Fields"
@@ -1474,8 +1470,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -2000,
-        272
+        -2480,
+        416
       ],
       "id": "91df48db-dd33-45b9-b838-be03b456d799",
       "name": "If"
@@ -1580,8 +1576,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -1776,
-        128
+        -2256,
+        336
       ],
       "id": "0b906304-5084-4165-89c8-eb2dca211342",
       "name": "Append row in sheet4",
@@ -1606,8 +1602,8 @@
       "type": "n8n-nodes-base.executionData",
       "typeVersion": 1.1,
       "position": [
-        1152,
-        -32
+        272,
+        48
       ],
       "id": "9faddd1d-82e3-4809-9726-761943740808",
       "name": "Execution Data"
@@ -1682,8 +1678,8 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-26T10:53:20.695Z",
-  "versionCounter": 726,
-  "versionId": "26b158ed-6c97-49de-b334-7e8ca3ef3641",
+  "updatedAt": "2026-03-26T11:15:55.981Z",
+  "versionCounter": 755,
+  "versionId": "94eb9a00-49af-4e75-bd76-6feb005bd040",
   "wf_name": "subTR_NB_Fal"
 }
