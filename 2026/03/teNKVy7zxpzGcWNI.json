@@ -1,0 +1,969 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-03-24T17:56:06.000Z",
+    "createdAt": "2026-03-24T17:55:58.703Z",
+    "versionId": "b7118963-e675-4ed1-8c5e-037d079331e9",
+    "workflowId": "teNKVy7zxpzGcWNI",
+    "nodes": [
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+                "leftValue": "={{$json.data === empty }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          848,
+          688
+        ],
+        "id": "5e7e8101-7ca4-4948-8c68-ad3c7f4b6bbf",
+        "name": "IfResponseOk2"
+      },
+      {
+        "parameters": {
+          "errorMessage": "={{\"⚠️\" + $('call PhotosetPrompter').item.json.msg }}"
+        },
+        "type": "n8n-nodes-base.stopAndError",
+        "typeVersion": 1,
+        "position": [
+          1312,
+          848
+        ],
+        "id": "11fc6760-e66a-4d3f-bac8-01ab2a2e4e50",
+        "name": "Stop and Error"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.data }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          1200,
+          592
+        ],
+        "id": "03d709d1-1059-4409-8bdf-028e5cc54a50",
+        "name": "Call 'subMkPlnTxt'"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "eb69b7b9-5e34-4c63-8269-e0e04d786ed8",
+                "name": "concatPrompt",
+                "value": "={{\"# Creative Idea \" + $('Start').item.json.description + \"# Model & Look \" + $('Start').item.json.concatDescr}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          240,
+          688
+        ],
+        "id": "0c594a74-f1ec-49c7-a3a3-ad0a85355c38",
+        "name": "UP_PhotosetPrompter"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "MCKUe6c7lEWRrPCq",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+            "cachedResultName": "subTR_API_AI_Selector"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "modelName": "={{ $('Start').item.json.modelName }}",
+              "apiName": "={{ $('Start').item.json.api }}",
+              "systemPrompt": "={{ $('Start').item.json.plainText }}",
+              "chat_id": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+              "userPrompt": "={{ $json.plainText }}",
+              "botTocken": "={{ $('Start').item.json.botTocken }}",
+              "debugMode": "={{ $('Start').item.json.debugMode }}",
+              "urlList_bool": false,
+              "imgUrls": "={{ $('Start').item.json.scenarioImgUrl }}"
+            },
+            "matchingColumns": [
+              "modelName",
+              "objectDescr",
+              "plainText"
+            ],
+            "schema": [
+              {
+                "id": "modelName",
+                "displayName": "modelName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "userPrompt",
+                "displayName": "userPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "imgUrls",
+                "displayName": "imgUrls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chat_id",
+                "displayName": "chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjName",
+                "displayName": "ObjName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": true
+              },
+              {
+                "id": "ObjNameLocal",
+                "displayName": "ObjNameLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "botTocken",
+                "displayName": "botTocken",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urlList_bool",
+                "displayName": "urlList_bool",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "boolean",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "plainUrlList",
+                "displayName": "plainUrlList",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          656,
+          688
+        ],
+        "name": "call PhotosetPrompter",
+        "id": "3967a874-7de7-43af-94e5-f6fb504888b5"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.concatPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          432,
+          688
+        ],
+        "id": "f26ebe0a-bbea-42a4-a579-8ac55166d23e",
+        "name": "procPhotosetPrompter1"
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "concatDescr",
+                "type": "any"
+              },
+              {
+                "name": "description",
+                "type": "any"
+              },
+              {
+                "name": "modelName",
+                "type": "any"
+              },
+              {
+                "name": "api",
+                "type": "any"
+              },
+              {
+                "name": "plainText",
+                "type": "any"
+              },
+              {
+                "name": "callback_query_message_chat_id",
+                "type": "any"
+              },
+              {
+                "name": "botTocken",
+                "type": "any"
+              },
+              {
+                "name": "debugMode",
+                "type": "any"
+              },
+              {
+                "name": "scenarioImgUrl",
+                "type": "any"
+              }
+            ]
+          }
+        },
+        "id": "920fbd72-08f6-4d3b-b52a-c3fd0091bbfd",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          32,
+          688
+        ]
+      }
+    ],
+    "connections": {
+      "IfResponseOk2": {
+        "main": [
+          [
+            {
+              "node": "Call 'subMkPlnTxt'",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Stop and Error",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UP_PhotosetPrompter": {
+        "main": [
+          [
+            {
+              "node": "procPhotosetPrompter1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "call PhotosetPrompter": {
+        "main": [
+          [
+            {
+              "node": "IfResponseOk2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "procPhotosetPrompter1": {
+        "main": [
+          [
+            {
+              "node": "call PhotosetPrompter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "UP_PhotosetPrompter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "DLS  ",
+    "name": "Version b7118963",
+    "description": "",
+    "autosaved": true,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-03-24T17:56:06.824Z",
+        "id": 1775,
+        "workflowId": "teNKVy7zxpzGcWNI",
+        "versionId": "b7118963-e675-4ed1-8c5e-037d079331e9",
+        "event": "activated",
+        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    ]
+  },
+  "activeVersionId": "b7118963-e675-4ed1-8c5e-037d079331e9",
+  "connections": {
+    "IfResponseOk2": {
+      "main": [
+        [
+          {
+            "node": "Call 'subMkPlnTxt'",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UP_PhotosetPrompter": {
+      "main": [
+        [
+          {
+            "node": "procPhotosetPrompter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "call PhotosetPrompter": {
+      "main": [
+        [
+          {
+            "node": "IfResponseOk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "procPhotosetPrompter1": {
+      "main": [
+        [
+          {
+            "node": "call PhotosetPrompter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "UP_PhotosetPrompter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-22T16:47:12.543Z",
+  "description": null,
+  "id": "teNKVy7zxpzGcWNI",
+  "isArchived": false,
+  "meta": null,
+  "name": "sub_TR_CL_Photoset_CreateImgs",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+              "leftValue": "={{$json.data === empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        848,
+        688
+      ],
+      "id": "5e7e8101-7ca4-4948-8c68-ad3c7f4b6bbf",
+      "name": "IfResponseOk2"
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{\"⚠️\" + $('call PhotosetPrompter').item.json.msg }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1312,
+        848
+      ],
+      "id": "11fc6760-e66a-4d3f-bac8-01ab2a2e4e50",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.data }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1200,
+        592
+      ],
+      "id": "03d709d1-1059-4409-8bdf-028e5cc54a50",
+      "name": "Call 'subMkPlnTxt'"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eb69b7b9-5e34-4c63-8269-e0e04d786ed8",
+              "name": "concatPrompt",
+              "value": "={{\"# Creative Idea \" + $('Start').item.json.description + \"# Model & Look \" + $('Start').item.json.concatDescr}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        688
+      ],
+      "id": "0c594a74-f1ec-49c7-a3a3-ad0a85355c38",
+      "name": "UP_PhotosetPrompter"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "MCKUe6c7lEWRrPCq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+          "cachedResultName": "subTR_API_AI_Selector"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "modelName": "={{ $('Start').item.json.modelName }}",
+            "apiName": "={{ $('Start').item.json.api }}",
+            "systemPrompt": "={{ $('Start').item.json.plainText }}",
+            "chat_id": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+            "userPrompt": "={{ $json.plainText }}",
+            "botTocken": "={{ $('Start').item.json.botTocken }}",
+            "debugMode": "={{ $('Start').item.json.debugMode }}",
+            "urlList_bool": false,
+            "imgUrls": "={{ $('Start').item.json.scenarioImgUrl }}"
+          },
+          "matchingColumns": [
+            "modelName",
+            "objectDescr",
+            "plainText"
+          ],
+          "schema": [
+            {
+              "id": "modelName",
+              "displayName": "modelName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "userPrompt",
+              "displayName": "userPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "imgUrls",
+              "displayName": "imgUrls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjName",
+              "displayName": "ObjName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": true
+            },
+            {
+              "id": "ObjNameLocal",
+              "displayName": "ObjNameLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "botTocken",
+              "displayName": "botTocken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urlList_bool",
+              "displayName": "urlList_bool",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "plainUrlList",
+              "displayName": "plainUrlList",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        656,
+        688
+      ],
+      "name": "call PhotosetPrompter",
+      "id": "3967a874-7de7-43af-94e5-f6fb504888b5"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.concatPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        432,
+        688
+      ],
+      "id": "f26ebe0a-bbea-42a4-a579-8ac55166d23e",
+      "name": "procPhotosetPrompter1"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "concatDescr",
+              "type": "any"
+            },
+            {
+              "name": "description",
+              "type": "any"
+            },
+            {
+              "name": "modelName",
+              "type": "any"
+            },
+            {
+              "name": "api",
+              "type": "any"
+            },
+            {
+              "name": "plainText",
+              "type": "any"
+            },
+            {
+              "name": "callback_query_message_chat_id",
+              "type": "any"
+            },
+            {
+              "name": "botTocken",
+              "type": "any"
+            },
+            {
+              "name": "debugMode",
+              "type": "any"
+            },
+            {
+              "name": "scenarioImgUrl",
+              "type": "any"
+            }
+          ]
+        }
+      },
+      "id": "920fbd72-08f6-4d3b-b52a-c3fd0091bbfd",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        32,
+        688
+      ]
+    }
+  ],
+  "pinData": {},
+  "repo_name": "trendcore_n8n",
+  "repo_owner": "ds634",
+  "repo_path": "/repos/ds634/trendcore_n8n/contents/",
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-22T16:47:12.547Z",
+      "createdAt": "2026-03-22T16:47:12.547Z",
+      "role": "workflow:owner",
+      "workflowId": "teNKVy7zxpzGcWNI",
+      "projectId": "M9bTlSGaaAbsZxvs",
+      "project": {
+        "updatedAt": "2026-03-02T14:12:07.095Z",
+        "createdAt": "2026-03-02T14:12:01.275Z",
+        "id": "M9bTlSGaaAbsZxvs",
+        "name": "DLS   <ds@trendcore.ai>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-02T14:25:49.831Z",
+      "createdAt": "2026-03-02T14:25:49.831Z",
+      "id": "6ZyTvRGaNVzskE04",
+      "name": "TG_PROD"
+    },
+    {
+      "updatedAt": "2026-03-14T09:06:27.877Z",
+      "createdAt": "2026-03-14T09:06:27.877Z",
+      "id": "B0nTQCdXh5647SkJ",
+      "name": "SP_PhotosetPrompter"
+    },
+    {
+      "updatedAt": "2026-03-02T14:25:49.805Z",
+      "createdAt": "2026-03-02T14:25:49.805Z",
+      "id": "uZYZiWAvyVAXbBbR",
+      "name": "CL"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-24T17:55:58.702Z",
+  "versionCounter": 12,
+  "versionId": "b7118963-e675-4ed1-8c5e-037d079331e9",
+  "wf_name": "sub_TR_CL_Photoset_CreateImgs"
+}
