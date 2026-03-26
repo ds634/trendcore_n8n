@@ -1,0 +1,2212 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-03-20T12:01:12.000Z",
+    "createdAt": "2026-03-20T12:01:06.566Z",
+    "versionId": "4bc7e770-5a63-4a35-9104-bcfc8701ad27",
+    "workflowId": "XgI9UTyMIVyVUKrv",
+    "nodes": [
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetScenarioIdea"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          224,
+          352
+        ],
+        "id": "bb84326c-1257-4246-b3e0-b9b99ec1a02e",
+        "name": "GetMsgId+TaskId",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "Формирую креативные сценарии...",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          672,
+          352
+        ],
+        "id": "fc343fbf-e53f-48e3-a042-438e416a908d",
+        "name": "Send a text message",
+        "webhookId": "f274d4a4-e6c5-419a-894b-f69988eb058b",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+                "leftValue": "={{ $('Start').item.json.debugMode }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          1664,
+          352
+        ],
+        "id": "b02f4305-671f-4b28-aeb5-c1e900ffd0e9",
+        "name": "IfDebug1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+                "name": "recievedPrompt",
+                "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_FashionCreative').item.json.systemPrompt\n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          2112,
+          352
+        ],
+        "id": "9dfbb91b-9f78-42a9-be15-841fa6e34e7d",
+        "name": "SP_recievedPrompt1"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+            "mode": "list",
+            "cachedResultName": "N8N prompts",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Database",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "PromptName",
+                "lookupValue": "={{ $('SP_FashionCreative').item.json.promptName }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          1904,
+          224
+        ],
+        "id": "7a32bc8f-f327-44bd-8d74-f730f6eb7aab",
+        "name": "GetPrompt1",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "x0BIkYcbd4ffwTqr",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3008,
+          448
+        ],
+        "id": "e17ded09-ccbe-45cd-9bfb-986cf0949cb6",
+        "name": "OP_Err_ response1",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+                "leftValue": "={{$json.data === empty }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          2784,
+          352
+        ],
+        "id": "3dec2afc-ef46-4742-90a2-055a841b196b",
+        "name": "IfResponseOk2"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "a869a9c7-791d-4f1c-852e-828a3569b146",
+                "leftValue": "={{$json.data}}",
+                "rightValue": "Error",
+                "operator": {
+                  "type": "string",
+                  "operation": "contains"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          3008,
+          256
+        ],
+        "id": "0ff95db7-253e-4dbb-a4fc-4213100de1d9",
+        "name": "IfError1"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "MCKUe6c7lEWRrPCq",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+            "cachedResultName": "subTR_API_AI_Selector"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "chat_id": "={{ $('Start').item.json.message_chat_id }}",
+              "modelName": "={{ $('Start').item.json.modelName }}",
+              "apiName": "={{ $('Start').item.json.apiName }}",
+              "userPrompt": "={{ \"# Request \" + $('Start').item.json.creativeRequest + \" # Input \" + $('procUP').item.json.plainText.removeMarkdown()\n}}",
+              "imgUrls": "=",
+              "systemPrompt": "={{ $json.plainText }}",
+              "objectMainId": "=",
+              "ObjName": "=Complete Look",
+              "ObjNameLocal": "=",
+              "debugMode": "={{ $('Start').item.json.debugMode }}",
+              "botTocken": "={{ $('Start').item.json.botTocken }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "modelName",
+                "displayName": "modelName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "userPrompt",
+                "displayName": "userPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "imgUrls",
+                "displayName": "imgUrls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chat_id",
+                "displayName": "chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjName",
+                "displayName": "ObjName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjNameLocal",
+                "displayName": "ObjNameLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "botTocken",
+                "displayName": "botTocken",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urlList_bool",
+                "displayName": "urlList_bool",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "boolean",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "plainUrlList",
+                "displayName": "plainUrlList",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          2560,
+          352
+        ],
+        "id": "1bbae626-a90c-4a95-81c9-c7bd749e8b9f",
+        "name": "Call 'subTR_API_AI_Selector'"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg.replaceAll(\"'\",'\"').parseJson().msg }}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3232,
+          160
+        ],
+        "id": "2a6541fe-5eb2-43db-b27e-f69c3cca8109",
+        "name": "OP_Err_ response",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "keep": "lastItems"
+        },
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          448,
+          352
+        ],
+        "id": "25a1ce7e-088e-40c0-a429-9c3c34504a13",
+        "name": "Limit",
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "message_chat_id"
+              },
+              {
+                "name": "botTocken"
+              },
+              {
+                "name": "debugMode"
+              },
+              {
+                "name": "modelName"
+              },
+              {
+                "name": "apiName"
+              },
+              {
+                "name": "creativeRequest"
+              }
+            ]
+          }
+        },
+        "id": "c055762a-8fe7-4141-a639-df2372f30060",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          0,
+          352
+        ]
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+                "name": "systemPrompt",
+                "value": "\"SYSTEM PROMPT: Fashion-Creative v5.0 (Hardened Output Lock)\n\nI am a creative fashion editorial concept generator.\nI transform structured inputs into vivid, atmospheric fashion photoshoot scenarios that feel visual, human, cinematic, and emotionally grounded.\n\nI think like a fashion editor and creative director, not like a technical prompt writer.\n\nInternal working language is English.\nLocalization happens only after all English scenarios are completed.\n\nTRANSLATELANG = Russian.\nIf TRANSLATELANG = English, localized fields remain in English.\n\nPRIORITY ORDER\n\n1. Output contract\n2. Input validation\n3. Request validation\n4. Faithfulness to Input\n5. Creative quality\n6. Localization\n7. Style\n\nCORE OUTPUT RULE\nI output exactly one complete pseudo-JSON object and nothing else.\nI never output partial objects.\nI never restart the object once generation begins.\nI never print multiple versions.\nI never insert a new object, array, or wrapper inside any string value.\nI never regenerate inside the visible output.\nIf I detect any failure during drafting, I discard the draft internally and output only one fresh final object.\n\nALLOWED OUTPUT FORMS\n\nError form 1:\n{'response':'error','msg':'⚠ Error. Invalid input: required fields Request and Input must be present and usable.'}\n\nError form 2:\n{'response':'error','msg':'⚠ Error. Invalid request: the creative direction is absurd, incoherent, or impossible to interpret.'}\n\nSuccess form:\n{'Scenarios':[{'Scenario':'...','OrderId':'1','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'},{'Scenario':'...','OrderId':'2','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'},{'Scenario':'...','OrderId':'3','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'},{'Scenario':'...','OrderId':'4','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'},{'Scenario':'...','OrderId':'5','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'}]}\n\nI never output any other top-level shape.\n\nREQUIRED INPUT STRUCTURE\nInput payload must contain exactly these usable top-level fields:\n\n* Request\n* Input\n\nRequest = creative direction.\nInput = model appearance plus full outfit description.\n\nI must preserve Input faithfully.\nI must preserve:\n\n* model appearance\n* all outfit elements\n* materials\n* accessories\n* visible condition details\n\nI must not:\n\n* change appearance\n* replace outfit items\n* invent missing outfit pieces\n* add branding or logos unless explicitly provided\n\nINPUT VALIDATION\nIf Request is missing, Input is missing, any required field is empty, or the payload is too broken to interpret reliably, I return exactly:\n{'response':'error','msg':'⚠ Error. Invalid input: required fields Request and Input must be present and usable.'}\n\nREQUEST VALIDATION\nA Request is valid if it can be interpreted as a usable fashion editorial direction, including unusual, surreal, poetic, abstract, symbolic, contradictory, or experimental directions.\n\nA Request is invalid only if it is unusable, including:\n\n* meaningless fragments\n* corrupted prompt debris\n* random token noise\n* non-interpretable absurdity\n* self-contradiction that destroys all scene logic\n* no usable visual, emotional, spatial, stylistic, or narrative signal\n\nIf Request is invalid, I return exactly:\n{'response':'error','msg':'⚠ Error. Invalid request: the creative direction is absurd, incoherent, or impossible to interpret.'}\n\nCORE TASK\nIf validation passes, I generate exactly five distinct editorial photoshoot scenarios.\n\nEach scenario must be:\n\n* a complete visual moment\n* clearly distinct from the others\n* faithful to the provided appearance and outfit\n* atmospheric, editorial, and embodied\n* non-technical\n* non-instructional\n\nI may vary:\n\n* time of day\n* micro-setting\n* emotional charge\n* movement versus stillness\n* weather texture\n* interior versus exterior logic\n* visual tension\n* narrative framing\n\nI must never violate the provided Input.\n\nGENERATION PIPELINE\nI follow this order internally:\n\n1. Validate Request and Input\n2. Interpret creative direction\n3. Generate all 5 scenario concepts in English\n4. Generate all 5 English descriptions\n5. Generate all 5 localized titles\n6. Generate all 5 localized shortened descriptions\n7. Build the full final pseudo-JSON object once\n8. Validate the full object internally\n9. Output only the final object\n\nATOMIC BUILD RULE\nI do not stream structure while still thinking.\nI do not begin the final wrapper before all five scenario objects are complete.\nI prepare all fields internally first.\nOnly then do I emit the final pseudo-JSON once, from the opening { to the closing }.\n\nSUCCESS OBJECT RULES\nThe success output must contain exactly one top-level key:\n'Scenarios'\n\n'Scenarios' must contain exactly five objects and no more.\n\nEach object must contain exactly these five keys and no others:\n\n* 'Scenario'\n* 'OrderId'\n* 'Description'\n* 'ScenarioLocal'\n* 'DescriptionLocal'\n\nORDER RULE\nThe five objects must appear in strict order:\nOrderId '1', '2', '3', '4', '5'\n\nScenario numbering must match OrderId exactly.\n\nSCENARIO TITLE RULES\n'Scenario' must:\n\n* begin with 1. through 5.\n* contain exactly two title words after the numeric prefix\n* be in English\n* be fully capitalized\n* read like an editorial chapter heading\n* avoid punctuation other than the required period after the number\n\nIf the Request includes a one-word location, I may include it naturally within the two-word limit.\nIf the location has multiple words, I may reflect its essence rather than naming it directly.\n\nDESCRIPTION RULES\n'Description' must:\n\n* be in English\n* be one paragraph\n* be natural, vivid, visual, and editorial\n* be about 95 to 115 words\n* feel image-first and cinematic\n* remain non-technical\n* remain non-instructional\n* avoid catalog style\n* avoid prompt-fragment style\n\nLOCALIZATION RULES\nIf TRANSLATELANG = English:\n\n* 'ScenarioLocal' = 'Scenario'\n* 'DescriptionLocal' = a shortened English version of 'Description' of about 35 to 45 words\n\nIf TRANSLATELANG is not English:\n\n* 'Scenario' remains English\n* 'Description' remains English\n* 'ScenarioLocal' = localized version of 'Scenario'\n* 'DescriptionLocal' = localized shortened version of 'Description' of about 35 to 45 words\n\n'ScenarioLocal' must preserve numbering exactly.\n'ScenarioLocal' should preserve the same two-word headline feel as naturally as possible.\n'DescriptionLocal' must preserve the same scene logic, mood, and visual identity in compressed form.\n\nSTYLE RULES\nMy writing must remain:\n\n* fluent\n* visual\n* cinematic\n* editorial\n* emotionally grounded\n* human\n\nI avoid:\n\n* robotic phrasing\n* technical camera language\n* instruction language\n* meta-commentary\n* explanations outside the pseudo-JSON\n\nAPOSTROPHE AND QUOTATION SAFETY\nThis rule is absolute.\n\nInside all output string values:\n\n* I never use apostrophes\n* I never use single quotation marks\n* I never use double quotation marks\n* I never use contractions\n* I never use possessive apostrophe forms\n* I never use nested quotes\n* I always rewrite phrases to remain quote-free\n\nOnly pseudo-JSON delimiters may use single quotes.\n\nSTRUCTURE LOCK\nI never place:\n\n* '{'\n* '}'\n* '['\n* ']'\n  inside any string value.\n\nI never place pseudo-JSON syntax inside any field text.\nI never repeat the top-level wrapper.\nI never nest 'Scenarios' inside 'Scenarios'.\nI never begin a second object after the first top-level object has started.\nI never duplicate scenario sets.\nI never output a backup version, corrected version, or alternate version.\n\nDISTINCTNESS RULE\nAll five scenarios must differ meaningfully in at least several of:\n\n* setting\n* rhythm\n* narrative angle\n* emotional charge\n* environmental interaction\n* movement logic\n* light atmosphere\n* spatial framing\n\nFAITHFULNESS RULE\nAll scenario content must remain faithful to the provided appearance and outfit.\nI do not mutate the garment list.\nI do not add new fashion items.\nI do not remove provided items.\nI do not alter core appearance traits.\n\nFINAL VALIDATION\nBefore output, I verify internally:\n\nSTRUCTURE\n\n* output is exactly one pseudo-JSON object\n* output begins with {\n* output ends with }\n* no text exists before or after the object\n* no markdown\n* no code fences\n* no comments\n* no trailing commas\n* all keys use single quotes\n* all string values use single quotes\n* no double quotes for keys or values\n* only one top-level key in success case: 'Scenarios'\n* no nested top-level wrapper inside any field\n* no braces or brackets appear inside any string value\n\nSUCCESS CASE\n\n* 'Scenarios' exists\n* 'Scenarios' contains exactly five objects\n* each object contains exactly five keys\n* OrderId values are exactly '1' to '5'\n* scenario numbering matches OrderId\n* every 'Scenario' has exactly two words after the numeric prefix\n* every 'Description' is English\n* every 'ScenarioLocal' and 'DescriptionLocal' follow TRANSLATELANG\n* descriptions are within target length range\n* localized descriptions are compressed\n* all five scenarios are distinct\n* all five scenarios remain faithful to Input\n\nERROR CASE\n\n* exactly two keys: 'response' and 'msg'\n* 'response' = 'error'\n* no 'Scenarios' field is present\n\nFAILSAFE RULE\nIf I cannot produce a fully valid success object in one complete pass, I output the relevant error object only.\nI do not output malformed success data.\nI do not output partial success data.\n\nFINAL RULE\nI output only raw wrapped pseudo-JSON.\nNothing before it.\nNothing after it.\n\"",
+                "type": "string"
+              },
+              {
+                "id": "d40f012f-85d7-4b60-beec-1d014fa9d913",
+                "name": "promptName",
+                "value": "Fashion-Creative",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          1440,
+          352
+        ],
+        "id": "68c75683-afe6-49bb-9272-21740b4efd61",
+        "name": "SP_FashionCreative"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+                "name": "userPrompt",
+                "value": "={{ $('GetMsgId+TaskId').item.json.concatDescr }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          896,
+          352
+        ],
+        "id": "c50ccbc6-33cb-4eb2-aa66-963763a52dbb",
+        "name": "UP_FashionCreative"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyValue": "={{ $('GetMsgId+TaskId').item.json.id }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "creativeScenarios": "={{ $('IfResponseOk2').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\") }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "lookSelected",
+                "displayName": "lookSelected",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "concatDescr",
+                "displayName": "concatDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "creativeScenarios",
+                "displayName": "creativeScenarios",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          3232,
+          352
+        ],
+        "id": "e4f32ea9-488f-4f62-a0e4-0f00c5d4a21b",
+        "name": "SaveScenarios",
+        "alwaysOutputData": false,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "30f32611-2d96-442a-8443-e466e7dd061d",
+                "name": "forMsg",
+                "value": "={{ $json.creativeScenarios.parseJson().Scenarios.map( item => item.ScenarioLocal +\"\\n\\n\"+ item.DescriptionLocal +\"\\n\\n\").join(\"\") }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          3456,
+          352
+        ],
+        "id": "fc782283-747a-493b-86a2-57feb0fb9cf8",
+        "name": "Scenarios"
+      },
+      {
+        "parameters": {
+          "jsCode": "const text = $input.first().json.forMsg.join('');\n\nif (text.length > 4096) {\n  return [{ json: { message: text.substring(0, 4000) + '... (truncated)', tooLong: true } }];\n}\n\nreturn [{ json: { message: text, tooLong: false } }];"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          3728,
+          352
+        ],
+        "id": "5d5b49a4-6dd2-4095-b057-e12a5748e89c",
+        "name": "Code in JavaScript",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "a7c4266b-fcdb-4ab1-838d-dbee86ea575a",
+                "name": "errResponse",
+                "value": "Error",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          3440,
+          160
+        ],
+        "id": "a1f946be-f091-463a-a8cb-f906aaff570c",
+        "name": "Return"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.userPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          1184,
+          352
+        ],
+        "id": "bca13e75-008a-4b5f-a244-cbf1d091e18b",
+        "name": "procUP"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{$json.recievedPrompt}}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          2336,
+          352
+        ],
+        "id": "ed368ff1-a143-42a1-8d5f-02a234414160",
+        "name": "procSP"
+      }
+    ],
+    "connections": {
+      "GetMsgId+TaskId": {
+        "main": [
+          [
+            {
+              "node": "Limit",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a text message": {
+        "main": [
+          [
+            {
+              "node": "UP_FashionCreative",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfDebug1": {
+        "main": [
+          [
+            {
+              "node": "GetPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_recievedPrompt1": {
+        "main": [
+          [
+            {
+              "node": "procSP",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetPrompt1": {
+        "main": [
+          [
+            {
+              "node": "SP_recievedPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfResponseOk2": {
+        "main": [
+          [
+            {
+              "node": "IfError1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "OP_Err_ response1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfError1": {
+        "main": [
+          [
+            {
+              "node": "OP_Err_ response",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SaveScenarios",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subTR_API_AI_Selector'": {
+        "main": [
+          [
+            {
+              "node": "IfResponseOk2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit": {
+        "main": [
+          [
+            {
+              "node": "Send a text message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "GetMsgId+TaskId",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_FashionCreative": {
+        "main": [
+          [
+            {
+              "node": "IfDebug1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UP_FashionCreative": {
+        "main": [
+          [
+            {
+              "node": "procUP",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SaveScenarios": {
+        "main": [
+          [
+            {
+              "node": "Scenarios",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Scenarios": {
+        "main": [
+          [
+            {
+              "node": "Code in JavaScript",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Code in JavaScript": {
+        "main": [
+          []
+        ]
+      },
+      "OP_Err_ response": {
+        "main": [
+          [
+            {
+              "node": "Return",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "procUP": {
+        "main": [
+          [
+            {
+              "node": "SP_FashionCreative",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "procSP": {
+        "main": [
+          [
+            {
+              "node": "Call 'subTR_API_AI_Selector'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "DLS  ",
+    "name": "Version 4bc7e770",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "4bc7e770-5a63-4a35-9104-bcfc8701ad27",
+  "connections": {
+    "GetMsgId+TaskId": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "UP_FashionCreative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfDebug1": {
+      "main": [
+        [
+          {
+            "node": "GetPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_recievedPrompt1": {
+      "main": [
+        [
+          {
+            "node": "procSP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetPrompt1": {
+      "main": [
+        [
+          {
+            "node": "SP_recievedPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfResponseOk2": {
+      "main": [
+        [
+          {
+            "node": "IfError1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "OP_Err_ response1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfError1": {
+      "main": [
+        [
+          {
+            "node": "OP_Err_ response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SaveScenarios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subTR_API_AI_Selector'": {
+      "main": [
+        [
+          {
+            "node": "IfResponseOk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "GetMsgId+TaskId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_FashionCreative": {
+      "main": [
+        [
+          {
+            "node": "IfDebug1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UP_FashionCreative": {
+      "main": [
+        [
+          {
+            "node": "procUP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SaveScenarios": {
+      "main": [
+        [
+          {
+            "node": "Scenarios",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scenarios": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        []
+      ]
+    },
+    "OP_Err_ response": {
+      "main": [
+        [
+          {
+            "node": "Return",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "procUP": {
+      "main": [
+        [
+          {
+            "node": "SP_FashionCreative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "procSP": {
+      "main": [
+        [
+          {
+            "node": "Call 'subTR_API_AI_Selector'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-10T20:22:40.809Z",
+  "id": "XgI9UTyMIVyVUKrv",
+  "isArchived": false,
+  "meta": null,
+  "name": "subTR_CL_CreateScenarios",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetScenarioIdea"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        224,
+        352
+      ],
+      "id": "bb84326c-1257-4246-b3e0-b9b99ec1a02e",
+      "name": "GetMsgId+TaskId",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "Формирую креативные сценарии...",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        672,
+        352
+      ],
+      "id": "fc343fbf-e53f-48e3-a042-438e416a908d",
+      "name": "Send a text message",
+      "webhookId": "f274d4a4-e6c5-419a-894b-f69988eb058b",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+              "leftValue": "={{ $('Start').item.json.debugMode }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1664,
+        352
+      ],
+      "id": "b02f4305-671f-4b28-aeb5-c1e900ffd0e9",
+      "name": "IfDebug1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+              "name": "recievedPrompt",
+              "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_FashionCreative').item.json.systemPrompt\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2112,
+        352
+      ],
+      "id": "9dfbb91b-9f78-42a9-be15-841fa6e34e7d",
+      "name": "SP_recievedPrompt1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+          "mode": "list",
+          "cachedResultName": "N8N prompts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "PromptName",
+              "lookupValue": "={{ $('SP_FashionCreative').item.json.promptName }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1904,
+        224
+      ],
+      "id": "7a32bc8f-f327-44bd-8d74-f730f6eb7aab",
+      "name": "GetPrompt1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x0BIkYcbd4ffwTqr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3008,
+        448
+      ],
+      "id": "e17ded09-ccbe-45cd-9bfb-986cf0949cb6",
+      "name": "OP_Err_ response1",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+              "leftValue": "={{$json.data === empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2784,
+        352
+      ],
+      "id": "3dec2afc-ef46-4742-90a2-055a841b196b",
+      "name": "IfResponseOk2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a869a9c7-791d-4f1c-852e-828a3569b146",
+              "leftValue": "={{$json.data}}",
+              "rightValue": "Error",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        3008,
+        256
+      ],
+      "id": "0ff95db7-253e-4dbb-a4fc-4213100de1d9",
+      "name": "IfError1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "MCKUe6c7lEWRrPCq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+          "cachedResultName": "subTR_API_AI_Selector"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "chat_id": "={{ $('Start').item.json.message_chat_id }}",
+            "modelName": "={{ $('Start').item.json.modelName }}",
+            "apiName": "={{ $('Start').item.json.apiName }}",
+            "userPrompt": "={{ \"# Request \" + $('Start').item.json.creativeRequest + \" # Input \" + $('procUP').item.json.plainText.removeMarkdown()\n}}",
+            "imgUrls": "=",
+            "systemPrompt": "={{ $json.plainText }}",
+            "objectMainId": "=",
+            "ObjName": "=Complete Look",
+            "ObjNameLocal": "=",
+            "debugMode": "={{ $('Start').item.json.debugMode }}",
+            "botTocken": "={{ $('Start').item.json.botTocken }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "modelName",
+              "displayName": "modelName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "userPrompt",
+              "displayName": "userPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "imgUrls",
+              "displayName": "imgUrls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjName",
+              "displayName": "ObjName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjNameLocal",
+              "displayName": "ObjNameLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "botTocken",
+              "displayName": "botTocken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urlList_bool",
+              "displayName": "urlList_bool",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "plainUrlList",
+              "displayName": "plainUrlList",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2560,
+        352
+      ],
+      "id": "1bbae626-a90c-4a95-81c9-c7bd749e8b9f",
+      "name": "Call 'subTR_API_AI_Selector'"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg.replaceAll(\"'\",'\"').parseJson().msg }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3232,
+        160
+      ],
+      "id": "2a6541fe-5eb2-43db-b27e-f69c3cca8109",
+      "name": "OP_Err_ response",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        448,
+        352
+      ],
+      "id": "25a1ce7e-088e-40c0-a429-9c3c34504a13",
+      "name": "Limit",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "message_chat_id"
+            },
+            {
+              "name": "botTocken"
+            },
+            {
+              "name": "debugMode"
+            },
+            {
+              "name": "modelName"
+            },
+            {
+              "name": "apiName"
+            },
+            {
+              "name": "creativeRequest"
+            }
+          ]
+        }
+      },
+      "id": "c055762a-8fe7-4141-a639-df2372f30060",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        0,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+              "name": "systemPrompt",
+              "value": "\"SYSTEM PROMPT: Fashion-Creative v5.0 (Hardened Output Lock)\n\nI am a creative fashion editorial concept generator.\nI transform structured inputs into vivid, atmospheric fashion photoshoot scenarios that feel visual, human, cinematic, and emotionally grounded.\n\nI think like a fashion editor and creative director, not like a technical prompt writer.\n\nInternal working language is English.\nLocalization happens only after all English scenarios are completed.\n\nTRANSLATELANG = Russian.\nIf TRANSLATELANG = English, localized fields remain in English.\n\nPRIORITY ORDER\n\n1. Output contract\n2. Input validation\n3. Request validation\n4. Faithfulness to Input\n5. Creative quality\n6. Localization\n7. Style\n\nCORE OUTPUT RULE\nI output exactly one complete pseudo-JSON object and nothing else.\nI never output partial objects.\nI never restart the object once generation begins.\nI never print multiple versions.\nI never insert a new object, array, or wrapper inside any string value.\nI never regenerate inside the visible output.\nIf I detect any failure during drafting, I discard the draft internally and output only one fresh final object.\n\nALLOWED OUTPUT FORMS\n\nError form 1:\n{'response':'error','msg':'⚠ Error. Invalid input: required fields Request and Input must be present and usable.'}\n\nError form 2:\n{'response':'error','msg':'⚠ Error. Invalid request: the creative direction is absurd, incoherent, or impossible to interpret.'}\n\nSuccess form:\n{'Scenarios':[{'Scenario':'...','OrderId':'1','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'},{'Scenario':'...','OrderId':'2','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'},{'Scenario':'...','OrderId':'3','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'},{'Scenario':'...','OrderId':'4','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'},{'Scenario':'...','OrderId':'5','Description':'...','ScenarioLocal':'...','DescriptionLocal':'...'}]}\n\nI never output any other top-level shape.\n\nREQUIRED INPUT STRUCTURE\nInput payload must contain exactly these usable top-level fields:\n\n* Request\n* Input\n\nRequest = creative direction.\nInput = model appearance plus full outfit description.\n\nI must preserve Input faithfully.\nI must preserve:\n\n* model appearance\n* all outfit elements\n* materials\n* accessories\n* visible condition details\n\nI must not:\n\n* change appearance\n* replace outfit items\n* invent missing outfit pieces\n* add branding or logos unless explicitly provided\n\nINPUT VALIDATION\nIf Request is missing, Input is missing, any required field is empty, or the payload is too broken to interpret reliably, I return exactly:\n{'response':'error','msg':'⚠ Error. Invalid input: required fields Request and Input must be present and usable.'}\n\nREQUEST VALIDATION\nA Request is valid if it can be interpreted as a usable fashion editorial direction, including unusual, surreal, poetic, abstract, symbolic, contradictory, or experimental directions.\n\nA Request is invalid only if it is unusable, including:\n\n* meaningless fragments\n* corrupted prompt debris\n* random token noise\n* non-interpretable absurdity\n* self-contradiction that destroys all scene logic\n* no usable visual, emotional, spatial, stylistic, or narrative signal\n\nIf Request is invalid, I return exactly:\n{'response':'error','msg':'⚠ Error. Invalid request: the creative direction is absurd, incoherent, or impossible to interpret.'}\n\nCORE TASK\nIf validation passes, I generate exactly five distinct editorial photoshoot scenarios.\n\nEach scenario must be:\n\n* a complete visual moment\n* clearly distinct from the others\n* faithful to the provided appearance and outfit\n* atmospheric, editorial, and embodied\n* non-technical\n* non-instructional\n\nI may vary:\n\n* time of day\n* micro-setting\n* emotional charge\n* movement versus stillness\n* weather texture\n* interior versus exterior logic\n* visual tension\n* narrative framing\n\nI must never violate the provided Input.\n\nGENERATION PIPELINE\nI follow this order internally:\n\n1. Validate Request and Input\n2. Interpret creative direction\n3. Generate all 5 scenario concepts in English\n4. Generate all 5 English descriptions\n5. Generate all 5 localized titles\n6. Generate all 5 localized shortened descriptions\n7. Build the full final pseudo-JSON object once\n8. Validate the full object internally\n9. Output only the final object\n\nATOMIC BUILD RULE\nI do not stream structure while still thinking.\nI do not begin the final wrapper before all five scenario objects are complete.\nI prepare all fields internally first.\nOnly then do I emit the final pseudo-JSON once, from the opening { to the closing }.\n\nSUCCESS OBJECT RULES\nThe success output must contain exactly one top-level key:\n'Scenarios'\n\n'Scenarios' must contain exactly five objects and no more.\n\nEach object must contain exactly these five keys and no others:\n\n* 'Scenario'\n* 'OrderId'\n* 'Description'\n* 'ScenarioLocal'\n* 'DescriptionLocal'\n\nORDER RULE\nThe five objects must appear in strict order:\nOrderId '1', '2', '3', '4', '5'\n\nScenario numbering must match OrderId exactly.\n\nSCENARIO TITLE RULES\n'Scenario' must:\n\n* begin with 1. through 5.\n* contain exactly two title words after the numeric prefix\n* be in English\n* be fully capitalized\n* read like an editorial chapter heading\n* avoid punctuation other than the required period after the number\n\nIf the Request includes a one-word location, I may include it naturally within the two-word limit.\nIf the location has multiple words, I may reflect its essence rather than naming it directly.\n\nDESCRIPTION RULES\n'Description' must:\n\n* be in English\n* be one paragraph\n* be natural, vivid, visual, and editorial\n* be about 95 to 115 words\n* feel image-first and cinematic\n* remain non-technical\n* remain non-instructional\n* avoid catalog style\n* avoid prompt-fragment style\n\nLOCALIZATION RULES\nIf TRANSLATELANG = English:\n\n* 'ScenarioLocal' = 'Scenario'\n* 'DescriptionLocal' = a shortened English version of 'Description' of about 35 to 45 words\n\nIf TRANSLATELANG is not English:\n\n* 'Scenario' remains English\n* 'Description' remains English\n* 'ScenarioLocal' = localized version of 'Scenario'\n* 'DescriptionLocal' = localized shortened version of 'Description' of about 35 to 45 words\n\n'ScenarioLocal' must preserve numbering exactly.\n'ScenarioLocal' should preserve the same two-word headline feel as naturally as possible.\n'DescriptionLocal' must preserve the same scene logic, mood, and visual identity in compressed form.\n\nSTYLE RULES\nMy writing must remain:\n\n* fluent\n* visual\n* cinematic\n* editorial\n* emotionally grounded\n* human\n\nI avoid:\n\n* robotic phrasing\n* technical camera language\n* instruction language\n* meta-commentary\n* explanations outside the pseudo-JSON\n\nAPOSTROPHE AND QUOTATION SAFETY\nThis rule is absolute.\n\nInside all output string values:\n\n* I never use apostrophes\n* I never use single quotation marks\n* I never use double quotation marks\n* I never use contractions\n* I never use possessive apostrophe forms\n* I never use nested quotes\n* I always rewrite phrases to remain quote-free\n\nOnly pseudo-JSON delimiters may use single quotes.\n\nSTRUCTURE LOCK\nI never place:\n\n* '{'\n* '}'\n* '['\n* ']'\n  inside any string value.\n\nI never place pseudo-JSON syntax inside any field text.\nI never repeat the top-level wrapper.\nI never nest 'Scenarios' inside 'Scenarios'.\nI never begin a second object after the first top-level object has started.\nI never duplicate scenario sets.\nI never output a backup version, corrected version, or alternate version.\n\nDISTINCTNESS RULE\nAll five scenarios must differ meaningfully in at least several of:\n\n* setting\n* rhythm\n* narrative angle\n* emotional charge\n* environmental interaction\n* movement logic\n* light atmosphere\n* spatial framing\n\nFAITHFULNESS RULE\nAll scenario content must remain faithful to the provided appearance and outfit.\nI do not mutate the garment list.\nI do not add new fashion items.\nI do not remove provided items.\nI do not alter core appearance traits.\n\nFINAL VALIDATION\nBefore output, I verify internally:\n\nSTRUCTURE\n\n* output is exactly one pseudo-JSON object\n* output begins with {\n* output ends with }\n* no text exists before or after the object\n* no markdown\n* no code fences\n* no comments\n* no trailing commas\n* all keys use single quotes\n* all string values use single quotes\n* no double quotes for keys or values\n* only one top-level key in success case: 'Scenarios'\n* no nested top-level wrapper inside any field\n* no braces or brackets appear inside any string value\n\nSUCCESS CASE\n\n* 'Scenarios' exists\n* 'Scenarios' contains exactly five objects\n* each object contains exactly five keys\n* OrderId values are exactly '1' to '5'\n* scenario numbering matches OrderId\n* every 'Scenario' has exactly two words after the numeric prefix\n* every 'Description' is English\n* every 'ScenarioLocal' and 'DescriptionLocal' follow TRANSLATELANG\n* descriptions are within target length range\n* localized descriptions are compressed\n* all five scenarios are distinct\n* all five scenarios remain faithful to Input\n\nERROR CASE\n\n* exactly two keys: 'response' and 'msg'\n* 'response' = 'error'\n* no 'Scenarios' field is present\n\nFAILSAFE RULE\nIf I cannot produce a fully valid success object in one complete pass, I output the relevant error object only.\nI do not output malformed success data.\nI do not output partial success data.\n\nFINAL RULE\nI output only raw wrapped pseudo-JSON.\nNothing before it.\nNothing after it.\n\"",
+              "type": "string"
+            },
+            {
+              "id": "d40f012f-85d7-4b60-beec-1d014fa9d913",
+              "name": "promptName",
+              "value": "Fashion-Creative",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1440,
+        352
+      ],
+      "id": "68c75683-afe6-49bb-9272-21740b4efd61",
+      "name": "SP_FashionCreative"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+              "name": "userPrompt",
+              "value": "={{ $('GetMsgId+TaskId').item.json.concatDescr }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        896,
+        352
+      ],
+      "id": "c50ccbc6-33cb-4eb2-aa66-963763a52dbb",
+      "name": "UP_FashionCreative"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "={{ $('GetMsgId+TaskId').item.json.id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "creativeScenarios": "={{ $('IfResponseOk2').item.json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\") }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "lookSelected",
+              "displayName": "lookSelected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "concatDescr",
+              "displayName": "concatDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "creativeScenarios",
+              "displayName": "creativeScenarios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3232,
+        352
+      ],
+      "id": "e4f32ea9-488f-4f62-a0e4-0f00c5d4a21b",
+      "name": "SaveScenarios",
+      "alwaysOutputData": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "30f32611-2d96-442a-8443-e466e7dd061d",
+              "name": "forMsg",
+              "value": "={{ $json.creativeScenarios.parseJson().Scenarios.map( item => item.ScenarioLocal +\"\\n\\n\"+ item.DescriptionLocal +\"\\n\\n\").join(\"\") }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3456,
+        352
+      ],
+      "id": "fc782283-747a-493b-86a2-57feb0fb9cf8",
+      "name": "Scenarios"
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $input.first().json.forMsg.join('');\n\nif (text.length > 4096) {\n  return [{ json: { message: text.substring(0, 4000) + '... (truncated)', tooLong: true } }];\n}\n\nreturn [{ json: { message: text, tooLong: false } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        3728,
+        352
+      ],
+      "id": "5d5b49a4-6dd2-4095-b057-e12a5748e89c",
+      "name": "Code in JavaScript",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a7c4266b-fcdb-4ab1-838d-dbee86ea575a",
+              "name": "errResponse",
+              "value": "Error",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3440,
+        160
+      ],
+      "id": "a1f946be-f091-463a-a8cb-f906aaff570c",
+      "name": "Return"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.userPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1184,
+        352
+      ],
+      "id": "bca13e75-008a-4b5f-a244-cbf1d091e18b",
+      "name": "procUP"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{$json.recievedPrompt}}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2336,
+        352
+      ],
+      "id": "ed368ff1-a143-42a1-8d5f-02a234414160",
+      "name": "procSP"
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "Db9RTL99yUCO77oO",
+    "callerPolicy": "workflowsFromSameOwner",
+    "binaryMode": "separate"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-10T20:22:40.812Z",
+      "createdAt": "2026-03-10T20:22:40.812Z",
+      "role": "workflow:owner",
+      "workflowId": "XgI9UTyMIVyVUKrv",
+      "projectId": "M9bTlSGaaAbsZxvs"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-10T22:42:06.797Z",
+      "createdAt": "2026-03-10T20:29:40.741Z",
+      "id": "HSeQ7xesTRYUoDv8",
+      "name": "SP_FashionCreative"
+    },
+    {
+      "updatedAt": "2026-03-02T14:25:49.805Z",
+      "createdAt": "2026-03-02T14:25:49.805Z",
+      "id": "uZYZiWAvyVAXbBbR",
+      "name": "CL"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-22T21:43:29.236Z",
+  "versionId": "4bc7e770-5a63-4a35-9104-bcfc8701ad27"
+}
