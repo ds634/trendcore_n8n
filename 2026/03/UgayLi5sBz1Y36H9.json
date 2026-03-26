@@ -1,0 +1,914 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-03-17T16:32:07.000Z",
+    "createdAt": "2026-03-17T16:31:35.625Z",
+    "versionId": "ac91a7a6-02c5-417c-8ab4-2db20e4166e3",
+    "workflowId": "UgayLi5sBz1Y36H9",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "message_chat_id",
+                "type": "any"
+              },
+              {
+                "name": "botTocken"
+              }
+            ]
+          }
+        },
+        "id": "f9b8fbc0-8f65-4cab-ad3d-d17d80a4561b",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          -304,
+          -16
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Error"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Done"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -96,
+          -16
+        ],
+        "id": "897bc63c-143a-4b98-be2b-3f35a1dc75d1",
+        "name": "GetMsgId+TaskId",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "NJfAQt9WXtWm5g15",
+            "mode": "list",
+            "cachedResultName": "TrendcoreObjectDescr",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/NJfAQt9WXtWm5g15"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "objectMainId",
+                "keyValue": "={{$('Limit1').item.json.id }}"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetGalleryForFace"
+              },
+              {
+                "keyName": "objectTGbuttons",
+                "condition": "isNotEmpty"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          560,
+          -16
+        ],
+        "id": "429dd835-b6c5-4e09-9cd8-2b8842818e0e",
+        "name": "GetObjData",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "keep": "lastItems"
+        },
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          96,
+          -16
+        ],
+        "id": "06759feb-3ff8-4e2e-a5ce-f9764f0a02e8",
+        "name": "Limit1",
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "=https://api.telegram.org/bot{{ $('Start').item.json.botTocken }}/sendMessage",
+          "sendBody": true,
+          "specifyBody": "json",
+          "jsonBody": "={\n      \"chat_id\": {{ $('Start').item.json.message_chat_id }},\n      \"text\": \"Выберите предметы, которые должны войти в образ.\",\n      \"parse_mode\": \"HTML\",\n      \"reply_markup\": {\n        \"inline_keyboard\": \n        {{$json.objectTGbuttons}}\n       \n      }\n}\n",
+          "options": {}
+        },
+        "id": "2f6843ea-f042-4548-aba4-bfa678950137",
+        "name": "CreateMsgSelectItems",
+        "type": "n8n-nodes-base.httpRequest",
+        "position": [
+          1008,
+          -16
+        ],
+        "typeVersion": 4.2
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createlook"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetGalleryForFace"
+              },
+              {
+                "keyValue": "={{ $('GetObjData').item.json.objectMainId }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $json.result.message_id }}",
+              "lookSelected": -1
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "lookSelected",
+                "displayName": "lookSelected",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          1312,
+          -16
+        ],
+        "id": "e54ee6ea-06e8-4028-bdf9-24e3303369a8",
+        "name": "MsgId",
+        "notesInFlow": true,
+        "notes": "Store MsgId with buttons to edit later"
+      },
+      {
+        "parameters": {
+          "operation": "editMessageText",
+          "chatId": "={{ $('Start').item.json.message_chat_id }}",
+          "messageId": "={{ $json.replyToMessageIdGallery }}",
+          "text": "={{\"На фото несколько предметов гардероба.\" +\"\\n\\n\" +\n\n\"Хотите взять готовый образ или выбрать отдельные предметы?\"}}",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          336,
+          -16
+        ],
+        "id": "e975599c-44e3-4e03-855b-988f4b84721c",
+        "name": "Edit a text message2",
+        "webhookId": "09589ebb-ea70-4a02-8d4e-71a05b6ed1da",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "keep": "lastItems"
+        },
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          784,
+          -16
+        ],
+        "id": "89f6cee6-d994-4610-9993-40c931d82bd0",
+        "name": "Limit"
+      }
+    ],
+    "connections": {
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "GetMsgId+TaskId",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetMsgId+TaskId": {
+        "main": [
+          [
+            {
+              "node": "Limit1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit1": {
+        "main": [
+          [
+            {
+              "node": "Edit a text message2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetObjData": {
+        "main": [
+          [
+            {
+              "node": "Limit",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CreateMsgSelectItems": {
+        "main": [
+          [
+            {
+              "node": "MsgId",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit a text message2": {
+        "main": [
+          [
+            {
+              "node": "GetObjData",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit": {
+        "main": [
+          [
+            {
+              "node": "CreateMsgSelectItems",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "DLS  ",
+    "name": "Version ac91a7a6",
+    "description": "",
+    "autosaved": true
+  },
+  "activeVersionId": "ac91a7a6-02c5-417c-8ab4-2db20e4166e3",
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "GetMsgId+TaskId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetMsgId+TaskId": {
+      "main": [
+        [
+          {
+            "node": "Limit1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit1": {
+      "main": [
+        [
+          {
+            "node": "Edit a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetObjData": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateMsgSelectItems": {
+      "main": [
+        [
+          {
+            "node": "MsgId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit a text message2": {
+      "main": [
+        [
+          {
+            "node": "GetObjData",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "CreateMsgSelectItems",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-05T22:13:07.364Z",
+  "id": "UgayLi5sBz1Y36H9",
+  "isArchived": false,
+  "meta": null,
+  "name": "subTR_CL_GetObjects",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "message_chat_id",
+              "type": "any"
+            },
+            {
+              "name": "botTocken"
+            }
+          ]
+        }
+      },
+      "id": "f9b8fbc0-8f65-4cab-ad3d-d17d80a4561b",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -304,
+        -16
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Error"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Done"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -96,
+        -16
+      ],
+      "id": "897bc63c-143a-4b98-be2b-3f35a1dc75d1",
+      "name": "GetMsgId+TaskId",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "NJfAQt9WXtWm5g15",
+          "mode": "list",
+          "cachedResultName": "TrendcoreObjectDescr",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/NJfAQt9WXtWm5g15"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "objectMainId",
+              "keyValue": "={{$('Limit1').item.json.id }}"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetGalleryForFace"
+            },
+            {
+              "keyName": "objectTGbuttons",
+              "condition": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        -16
+      ],
+      "id": "429dd835-b6c5-4e09-9cd8-2b8842818e0e",
+      "name": "GetObjData",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        96,
+        -16
+      ],
+      "id": "06759feb-3ff8-4e2e-a5ce-f9764f0a02e8",
+      "name": "Limit1",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.telegram.org/bot{{ $('Start').item.json.botTocken }}/sendMessage",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n      \"chat_id\": {{ $('Start').item.json.message_chat_id }},\n      \"text\": \"Выберите предметы, которые должны войти в образ.\",\n      \"parse_mode\": \"HTML\",\n      \"reply_markup\": {\n        \"inline_keyboard\": \n        {{$json.objectTGbuttons}}\n       \n      }\n}\n",
+        "options": {}
+      },
+      "id": "2f6843ea-f042-4548-aba4-bfa678950137",
+      "name": "CreateMsgSelectItems",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        1008,
+        -16
+      ],
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.message_chat_id }}"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createlook"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetGalleryForFace"
+            },
+            {
+              "keyValue": "={{ $('GetObjData').item.json.objectMainId }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $json.result.message_id }}",
+            "lookSelected": -1
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "lookSelected",
+              "displayName": "lookSelected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1312,
+        -16
+      ],
+      "id": "e54ee6ea-06e8-4028-bdf9-24e3303369a8",
+      "name": "MsgId",
+      "notesInFlow": true,
+      "notes": "Store MsgId with buttons to edit later"
+    },
+    {
+      "parameters": {
+        "operation": "editMessageText",
+        "chatId": "={{ $('Start').item.json.message_chat_id }}",
+        "messageId": "={{ $json.replyToMessageIdGallery }}",
+        "text": "={{\"На фото несколько предметов гардероба.\" +\"\\n\\n\" +\n\n\"Хотите взять готовый образ или выбрать отдельные предметы?\"}}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        336,
+        -16
+      ],
+      "id": "e975599c-44e3-4e03-855b-988f4b84721c",
+      "name": "Edit a text message2",
+      "webhookId": "09589ebb-ea70-4a02-8d4e-71a05b6ed1da",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        784,
+        -16
+      ],
+      "id": "89f6cee6-d994-4610-9993-40c931d82bd0",
+      "name": "Limit"
+    }
+  ],
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "Db9RTL99yUCO77oO",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-05T22:13:07.366Z",
+      "createdAt": "2026-03-05T22:13:07.366Z",
+      "role": "workflow:owner",
+      "workflowId": "UgayLi5sBz1Y36H9",
+      "projectId": "M9bTlSGaaAbsZxvs"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-02T14:25:49.831Z",
+      "createdAt": "2026-03-02T14:25:49.831Z",
+      "id": "6ZyTvRGaNVzskE04",
+      "name": "TG_PROD"
+    },
+    {
+      "updatedAt": "2026-03-02T14:26:06.738Z",
+      "createdAt": "2026-03-02T14:26:06.738Z",
+      "id": "tzvi3HGYBgqT00vr",
+      "name": "CM"
+    },
+    {
+      "updatedAt": "2026-03-02T14:25:49.805Z",
+      "createdAt": "2026-03-02T14:25:49.805Z",
+      "id": "uZYZiWAvyVAXbBbR",
+      "name": "CL"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-17T16:31:35.625Z",
+  "versionId": "ac91a7a6-02c5-417c-8ab4-2db20e4166e3"
+}
