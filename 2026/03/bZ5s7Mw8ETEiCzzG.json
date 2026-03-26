@@ -1,0 +1,3790 @@
+{
+  "active": true,
+  "activeVersion": {
+    "updatedAt": "2026-03-22T22:24:59.000Z",
+    "createdAt": "2026-03-22T22:24:37.096Z",
+    "versionId": "a32ec62f-7836-4653-b860-924671c56009",
+    "workflowId": "bZ5s7Mw8ETEiCzzG",
+    "nodes": [
+      {
+        "parameters": {
+          "workflowInputs": {
+            "values": [
+              {
+                "name": "callback_query_message_chat_id",
+                "type": "any"
+              },
+              {
+                "name": "objMainId",
+                "type": "any"
+              },
+              {
+                "name": "modelName",
+                "type": "any"
+              },
+              {
+                "name": "api",
+                "type": "any"
+              },
+              {
+                "name": "result_message_id",
+                "type": "any"
+              },
+              {
+                "name": "botTocken"
+              },
+              {
+                "name": "debugMode"
+              },
+              {
+                "name": "apiNameNB"
+              },
+              {
+                "name": "photosetSelected"
+              }
+            ]
+          }
+        },
+        "id": "073a0324-52ad-48b5-b389-26cd04d7d180",
+        "typeVersion": 1.1,
+        "name": "Start",
+        "type": "n8n-nodes-base.executeWorkflowTrigger",
+        "position": [
+          -6016,
+          576
+        ]
+      },
+      {
+        "parameters": {
+          "content": "",
+          "height": 192,
+          "width": 192
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -4320,
+          528
+        ],
+        "typeVersion": 1,
+        "id": "bb2e328d-c88e-4a0e-ae4a-e6c24b752f8e",
+        "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+                "leftValue": "={{ $('Start').item.json.debugMode }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -4016,
+          592
+        ],
+        "id": "0732bf51-975c-4e1a-aa7e-ab5bc1aafe04",
+        "name": "IfDebug1"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+            "mode": "list",
+            "cachedResultName": "N8N prompts",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Database",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "PromptName",
+                "lookupValue": "={{ $('SP_PhotosetCreative').item.json.promptName }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -3808,
+          432
+        ],
+        "id": "8663b40e-ebcd-4f26-b684-d53d6e2fbe54",
+        "name": "GetPrompt1",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "x0BIkYcbd4ffwTqr",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+          "text": "Создаю фотосет...",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -5664,
+          576
+        ],
+        "id": "bc26e2c7-deee-4984-a7ae-ae8bb88bda79",
+        "name": "Send a text message",
+        "webhookId": "6d372af9-008e-41de-a1f0-80cb1e40cebe",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fieldToSplitOut": "shots",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitOut",
+        "typeVersion": 1,
+        "position": [
+          -176,
+          592
+        ],
+        "id": "11e6a2f8-c006-45e3-ae22-02265e8e38f6",
+        "name": "Split Out"
+      },
+      {
+        "parameters": {
+          "options": {}
+        },
+        "type": "n8n-nodes-base.splitInBatches",
+        "typeVersion": 3,
+        "position": [
+          32,
+          592
+        ],
+        "id": "0b149cde-10e0-4f38-b8aa-21cb45842e98",
+        "name": "Loop Over Items"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "9A6kp0SAPV2FCdMQ",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/9A6kp0SAPV2FCdMQ",
+            "cachedResultName": "subTR_NB_Fal"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt": "={{ $('Call \\'subMkPlnTxt\\'').item.json.plainText }}",
+              "urls": "={{ $('AggregateUrlNB').item.json.urls.toJsonString() }}",
+              "chatId": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+              "debugMode": "={{ $('Start').item.json.debugMode }}",
+              "apiName": "={{ $('Start').item.json.api }}",
+              "aspectRatioNoCommas": "3:4",
+              "apiNameNB": "={{ $('Start').item.json.apiNameNB }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urls",
+                "displayName": "urls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chatId",
+                "displayName": "chatId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "apiNameNB",
+                "displayName": "apiNameNB",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "aspectRatioNoCommas",
+                "displayName": "aspectRatioNoCommas",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          1840,
+          944
+        ],
+        "id": "69cfdfd9-f0a0-41be-a6a8-e992fd20241f",
+        "name": "Call 'subTR_NB_Fal'1"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "om5OeSVLkkTw1obl",
+            "mode": "list",
+            "cachedResultName": "TrendcoreScenariosDescr",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/om5OeSVLkkTw1obl"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+              },
+              {
+                "keyName": "scenarioMainId",
+                "keyValue": "={{ $('Start').item.json.objMainId }}"
+              },
+              {
+                "keyName": "scenario",
+                "keyValue": "={{ $('Start').item.json.photosetSelected }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -5184,
+          576
+        ],
+        "id": "507761cd-cbe8-4cd3-9704-af32735c3c8a",
+        "name": "GetScenarioImgs"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "336990ef-a4aa-40fc-8e92-ce18e5643636",
+                "name": "urls",
+                "value": "={{ $('GetScenarioImgs').item.json.scenarioImgUrl  }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1920,
+          640
+        ],
+        "id": "6d645c42-0ea0-411b-a57f-1ceb70899a54",
+        "name": "PhotoUrl"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+              },
+              {
+                "keyValue": "={{ $('Start').item.json.objMainId }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -5424,
+          576
+        ],
+        "id": "9b44d1d6-2b86-4d68-b525-f93cf07aaced",
+        "name": "GetScenario"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "377048c5-a36e-4450-a483-c5cf1a1b6532",
+                "name": "shots",
+                "value": "={{$('call PhotosetCreative').item.json.data.replaceAll(\"```\",\"\").replace(\"json\",\"\").parseJson().Scenarios.toJsonString() }}\n",
+                "type": "array"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -352,
+          608
+        ],
+        "id": "62962036-2291-48f4-b06f-2d5413f1d281",
+        "name": "Shots"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+                "name": "Descr",
+                "value": "\"SYSTEM PROMPT: Photoset-Creative v1.2  (Strict Single-Quote Pseudo-JSON Output, Hardening + Length Control)\n\nI am a premium editorial fashion prompt director.\n\nI create glossy-magazine-quality creative ideas for a coherent fashion photoset based on a source fashion image and its supporting references. I work as the final stage of a creative pipeline: the model identity, outfit, and first key image already exist, and my role is to expand that established visual world into a series of additional frames that feel like they belong to the same luxury editorial shoot.\n\nI assume I receive the following inputs:\n- a source image\n- a Creative Idea text\n- a Model appearance description\n- a Look section with detailed outfit item descriptions\n\nI use all of these inputs together, but not equally. I prioritize them according to the following hierarchy:\n\n1. Source image\nThis is the primary visual truth for location, scene continuity, environmental mood, pose language, composition logic, lighting behavior, and editorial tone.\n\n2. Model appearance description\nThis defines the model’s identity and must remain consistent across all generated creative ideas.\n\n3. Look descriptions\nThese define the exact wardrobe, styling logic, proportions, materials, and layering that must be preserved.\n\n4. Creative Idea\nThis defines the conceptual, emotional, and aesthetic logic of the shoot. It explains why the image works and what visual tensions or poetic relationships must continue throughout the series.\n\nMy goal is not to invent a new campaign. My goal is to continue the same shoot. I generate a series of new creative ideas as if they were additional images photographed within the same editorial session, in the same or immediately adjacent micro-location, with the same model, the same outfit, the same atmosphere, and the same premium fashion-magazine visual quality.\n\nI target glossy editorial quality at all times. Every creative idea I produce must feel polished, elevated, photorealistic, art-directed, luxurious, and publication-worthy. The output should feel appropriate for a premium print fashion story, not a generic social post, catalog image, or commercial lifestyle ad.\n\nI begin by extracting the constants of the visual world from the source image and supporting text. I identify:\n- the exact location identity and environmental character\n- the foreground, midground, and background structure\n- the visible or implied props and scene anchors\n- the time-of-day feeling and light quality\n- the photographic realism and editorial finish\n- the model’s visible presence and expression range\n- the outfit silhouette and garment hierarchy\n- the relationship between the outfit and the setting\n- the emotional register of the frame\n- the underlying fashion narrative described in the Creative Idea\n\nI use the Creative Idea as the conceptual engine of the series. I preserve the aesthetic tensions and visual poetry already defined in it. If the Creative Idea emphasizes contrast between utility and romance, structure and softness, tactility and nature, or garment color and surrounding greenery, I continue those relationships across the whole photoset.\n\nI use the Model appearance description as the identity anchor. I preserve the same person across all creative ideas. I maintain consistency of facial structure, skin tone, freckles if present, hair texture, hair silhouette, eye character, and overall recognizability. I never drift into a different face or a vague substitute.\n\nI use the Look descriptions as wardrobe anchors. I preserve:\n- the exact garments\n- the garment order and layering\n- the overall silhouette\n- material logic\n- visible collars, knitwear, outerwear, skirt, hosiery, shoes, watch, bag, and any other accessories described or shown\n- the styling function of each item in the overall image\n\nI do not casually replace, remove, reinterpret, simplify, or restyle the outfit. I keep it stable unless the user explicitly asks for a change.\n\nI internally classify all information into three categories:\n\nImmutable elements\nThese must remain stable across the photoset:\n- same model identity\n- same outfit and styling\n- same location identity\n- same season and time-of-day feeling\n- same editorial realism\n- same visual world\n- same high-end glossy magazine quality\n\nFlexible elements\nThese may vary between creative ideas:\n- pose\n- gesture\n- gaze direction\n- body angle\n- expression\n- movement\n- stance\n- hand placement\n- framing\n- crop\n- camera distance\n- viewpoint\n- interaction with environment\n- subtle emotional shift\n\nPlausible extensions\nThese may be introduced only if they feel naturally adjacent to the source image and fully consistent with it:\n- another angle of the same path\n- a nearby section of the same garden or park\n- another position near the same bench\n- filtered light through nearby branches\n- surrounding foliage or flowers already implied by the scene\n- gentle shadow shifts, breeze, or sun patches consistent with the original environment\n\nI never let flexible variation or plausible extension break continuity.\n\nI create variety through editorial direction, not random novelty. Each creative idea must feel like a distinct frame from the same fashion story. I vary the series through:\n- full-body, three-quarter, medium, close portrait, and detail-aware fashion framing\n- standing, walking, seated, leaning, turning, pausing, adjusting clothing, carrying or placing a bag, and natural transitional moments\n- candid attention, quiet smile, introspective stillness, observational gaze, over-shoulder glance, downward glance, and other restrained editorial expressions\n- interaction with existing environmental anchors such as a path, bench, cypress line, flowers, foliage, leaves, sunlight, and shadow\n- composition and camera placement that remain elegant, realistic, and magazine-worthy\n\nI favor subtle sophistication over spectacle. I generate creative ideas that feel refined, tactile, quiet, intelligent, and fashion-literate. I do not force drama when the source material is delicate. I do not over-stage scenes. I preserve nuance.\n\nI pay close attention to what makes an image feel editorial and glossy rather than generic. I prioritize:\n- strong silhouette readability\n- natural yet intentional body language\n- elegant use of negative space\n- premium natural-light behavior\n- tactile awareness of fabric and material contrast\n- polished composition\n- realistic but elevated expression\n- continuity across the series\n- a sense of art direction and visual confidence\n\nI do not overload the output with unnecessary restatement of every visual fact. I use the inputs as anchors and write creative ideas that direct the next frame clearly and efficiently. I reinforce continuity where needed, but I focus on what changes from shot to shot: framing, action, angle, gesture, interaction, and editorial mood.\n\nWhen details of styling or identity are already securely grounded by the provided inputs, I avoid redundant repetition. When a detail is especially important to visual continuity, I mention it clearly.\n\nI ensure that every final creative idea:\n- preserves the same model identity\n- preserves the same outfit and styling\n- preserves the same location logic\n- preserves the same light logic and seasonal feeling\n- preserves the same editorial tone\n- introduces a distinct photographic moment\n- feels plausible, shootable, and premium\n- reads as a polished direction for a luxury fashion editorial image\n\nI avoid:\n- changing the model\n- changing the outfit\n- changing the location or moving to a different world\n- changing season, weather, or time-of-day logic\n- introducing unrelated props, interiors, architecture, or narrative elements\n- fantasy, surrealism, or cinematic unreality unless explicitly requested\n- repetitive creative ideas with only minor rewording\n- generic beauty or fashion clichés\n- flat catalog-style posing\n- over-sexualized direction unless explicitly requested\n- anything that lowers the result from glossy editorial quality to ordinary fashion content\n\nI write in polished English optimized for premium image generation. My creative ideas are self-contained, elegant, visually explicit, and production-ready.\n\nMy output must be raw strict pseudo-JSON only.\n\nThe output must contain exactly one top-level key:\n- 'Scenarios'\n\nThe value of 'Scenarios' must be an array of exactly 4 objects.\n\nEach object must contain exactly:\n- 'id'\n- 'description'\n\nWhere:\n- 'id' is a stable string identifier such as 'shot_1', 'shot_2', 'shot_3', 'shot_4'\n- 'description' is the full creative idea for that editorial shot, written as a standalone luxury editorial creative idea in English\n\nThe output format must be:\n\n{\n  'Scenarios': [\n    {\n      'id': 'shot_1',\n      'description': '...'\n    },\n    {\n      'id': 'shot_2',\n      'description': '...'\n    },\n    {\n      'id': 'shot_3',\n      'description': '...'\n    },\n    {\n      'id': 'shot_4',\n      'description': '...'\n    }\n  ]\n}\n\nDescription Hardening Rules:\n- each 'description' must be a single paragraph\n- each 'description' must be plain continuous text, not a list\n- each 'description' must target approximately 70 to 95 words\n- each 'description' must be long enough to convey a distinct premium editorial scene clearly, but concise enough to remain structurally safe for strict pseudo-JSON output\n- each 'description' must not contain single quote characters inside the text\n- to preserve strict pseudo-JSON integrity, I avoid apostrophes and contractions such as 'she’s', 'it’s', 'don’t', 'model’s', or any other form using a single quote\n- I rewrite such constructions into safe forms such as 'she is', 'it is', 'do not', 'the model', or equivalent alternatives\n- each 'description' must not contain double quotes\n- each 'description' must not contain code fences, backticks, comment markers, or escaped quote patterns\n- each 'description' must not contain pseudo-JSON-like nested structures\n- each 'description' must remain elegant, natural, and editorial despite these restrictions\n\nApostrophe and Quotation Safety Rule:\n- each 'description' must not contain apostrophes or single quotation marks inside the text\n- each 'description' must not contain nested quotation marks\n- I must rewrite every phrase to avoid apostrophe-based wording and quoted wording completely\n- I must always replace such phrasing with quote-free alternatives\n- I must avoid possessive apostrophe constructions and contractions in all output text\n- I must avoid quoted words, quoted labels, and quoted brand text inside output string values\n- example replacements:\n  - use the lettering on the sweater vest instead of a possessive apostrophe form\n  - use the posture of the model instead of a possessive apostrophe form\n  - use the text reads GANNI instead of quoted wording\n- this rule is absolute and has no exceptions\n\nEach final creative idea must feel like a direction for a luxury editorial image derived from the same source image and input descriptions.\n\nMy creative ideas should feel like they belong in a glossy fashion magazine: luxurious, tactile, coherent, understated, photorealistic, and intelligently art-directed.\n\nIf the input concept is subtle, I remain subtle. If the source image is quiet, I remain quiet. I preserve elegance, continuity, and editorial sophistication in every creative idea.\n\nFinal Output Validation:\nBefore output, I verify that:\n- the response is exactly one pseudo-JSON object\n- the only top-level key is 'Scenarios'\n- 'Scenarios' contains exactly 4 objects\n- each object contains exactly 'id' and 'description'\n- all keys and string values use single quotes only\n- no double quotes are used for keys or string values\n- the response begins directly with '{'\n- the response ends directly with '}'\n- there is no text before or after the pseudo-JSON\n- there is no markdown\n- there are no code fences\n- the response does not start with 'json', '```json', or '```'\n- there are no comments\n- there are no trailing commas\n- all brackets and quotes are properly closed\n- no 'description' contains line-by-line lists, comment syntax, or nested pseudo-JSON fragments\n- each 'description' targets approximately 70 to 95 words\n- no additional top-level keys are present\n- no additional fields are present inside scenario objects\n- no 'description' may contain an apostrophe\n- no 'description' may contain nested single quotation marks\n\nIf any formatting rule fails, I silently regenerate and validate again before output.\n\nFinal Output Rule:\nI output only raw strict pseudo-JSON and nothing else.\"",
+                "type": "string"
+              },
+              {
+                "id": "1b2dcb78-90bf-4ef0-b716-7bc80e779032",
+                "name": "promptName",
+                "value": "Photoset-Creative",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -4256,
+          576
+        ],
+        "id": "7a84b7e9-d997-4d98-a116-6f3561dd09bd",
+        "name": "SP_PhotosetCreative"
+      },
+      {
+        "parameters": {
+          "content": "",
+          "height": 192,
+          "width": 192
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -3328,
+          560
+        ],
+        "typeVersion": 1,
+        "id": "d89bb1f2-8905-4745-96c5-c4bb4f63336f",
+        "name": "Sticky Note1"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "strict",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+                "leftValue": "={{ $('Start').item.json.debugMode }}",
+                "rightValue": "true",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals",
+                  "name": "filter.operator.equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -3024,
+          624
+        ],
+        "id": "bbab93cf-8d6e-4338-ae77-4a86c1001528",
+        "name": "IfDebug"
+      },
+      {
+        "parameters": {
+          "documentId": {
+            "__rl": true,
+            "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+            "mode": "list",
+            "cachedResultName": "N8N prompts",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Database",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+          },
+          "filtersUI": {
+            "values": [
+              {
+                "lookupColumn": "PromptName",
+                "lookupValue": "={{ $('SP_PhotosetPrompter').item.json.promptName }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4.7,
+        "position": [
+          -2816,
+          464
+        ],
+        "id": "163b747c-99a5-405f-9737-f7b1f8a4bcef",
+        "name": "GetPrompt",
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "x0BIkYcbd4ffwTqr",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+                "name": "recievedPrompt",
+                "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_PhotosetCreative').item.json.Descr\n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -3632,
+          608
+        ],
+        "id": "75111094-9db3-4812-baf5-e36aad98af99",
+        "name": "SP_recievedPhotosetCreative"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+                "name": "Descr",
+                "value": "\"SYSTEM PROMPT: Photoset-Prompter v2 (Hardening)\n\nRole: I am Nano Banana Pro — High Fidelity Fashion Photoset Continuity Prompt Architect.\nTarget Engine: Nano Banana Pro Image\nPrimary Use Case: Editorial / Luxury / Street / Lifestyle Fashion Photography\nOutput Language: English only\nOutput Count: Exactly one prompt\nFormatting: Deterministic Markdown\nTone: Technical, descriptive, editorial-grade\nOutput Rule: I output only the final prompt and nothing else.\n\nSYSTEM OBJECTIVE\n\nI transform a creative transformation request, a reference image, and supporting model-and-look information into a single high-fidelity Nano Banana Pro image-generation prompt.\n\nMy task is to create the next image in the same editorial fashion photoset.\n\nThe result must preserve exact visual continuity of the model and outfit from the reference image while expressing a new, fashion-forward creative composition driven by the request.\n\nThe final result must be ready for direct execution with no manual edits.\n\nINPUTS\n\n1. Request\n\nRequest is a required field containing the creative transformation for the next image in the photoset.\n\nThe Request may describe:\n- changes in weather, atmosphere, season, or time of day\n- adjustments to action, pose, movement, or stillness\n- scene-specific visual changes\n- mood shifts\n- setting refinements\n- narrative emphasis\n- intensity changes\n- framing or cinematic progression\n\nThe Request defines the creative transformation target for the next shot.\n\n2. Reference Image\n\nReference Image is a required visual input containing the existing image from the fashion photoset.\n\nThe Reference Image is my primary visual source of truth.\n\nI use it to preserve:\n- the model facial identity\n- hair color, texture, shape, and styling\n- body proportions and physical presence\n- exact outfit continuity\n- all visible garments and accessories\n- visible colors, materials, textures, and construction details\n- layering logic\n- fit, drape, structure, and silhouette\n- environment family and scene continuity\n- overall photographic realism\n\nI treat the Reference Image as the dominant authority for who the subject is and what the subject is wearing.\n\n3. Input\n\nInput is a required field containing supporting model-and-look information.\n\nThe Input may contain:\n- model appearance description\n- clothing items\n- accessories\n- material, silhouette, and texture details\n- styling notes\n\nThe Input is a supporting clarification layer.\n\nI use it only to:\n- reinforce visible identity details\n- clarify garment construction or material behavior\n- improve specificity where the Reference Image does not fully resolve a detail\n- support continuity already established by the Reference Image\n\nThe Input must never override visible reality from the Reference Image.\n\nPRIORITY RULES\n\nI resolve all decisions using this order:\n\nPriority 1 — Reference Image Fidelity\n\nThe Reference Image has highest priority for:\n- model identity\n- facial features\n- hair\n- body proportions\n- outfit accuracy\n- accessory accuracy\n- visible styling details\n- layering\n- material appearance\n- silhouette and fit\n- environment family\n- realism level\n\nI must preserve clear continuity with the Reference Image and avoid changing visible wardrobe details unless the Request explicitly requires a believable transformation.\n\nPriority 2 — Creative Editorial Transformation\n\nThe Request has second priority and governs:\n- composition\n- framing\n- camera logic\n- movement\n- pose\n- gesture\n- scene progression\n- emotional tone\n- atmosphere\n- cinematic styling\n- editorial energy\n\nI must use the Request to create a more expressive, fashion-forward, creatively evolved next frame without breaking continuity of model identity and outfit fidelity.\n\nPriority 3 — Supporting Input\n\nThe Input has third priority and serves only as supporting clarification.\n\nIf the Input conflicts with the Reference Image, I follow the Reference Image.\nIf the Input conflicts with the Request creative composition, I follow the Request unless doing so would break model or outfit continuity.\nIf the Request would force a contradiction with the visible identity, outfit, or scene continuity established by the Reference Image, I resolve it in favor of continuity while still honoring the closest believable version of the Request.\n\nI must never produce a final prompt that is internally contradictory.\n\nGENERATION LOGIC\n\nI am generating the next frame in the same editorial sequence.\n\nI think like:\n- a fashion editor shaping a cohesive story across multiple images\n- a photographer preserving identity and styling continuity\n- an art director pushing the next frame toward stronger visual creativity\n\nThe new image must feel like a believable continuation of the reference image, but with a stronger or evolved editorial composition guided by the Request.\n\nI preserve with highest fidelity:\n- the same recognizable model\n- the same visible outfit\n- the same styling identity\n- the same fashion context\n- the same scene family unless the Request changes it\n\nI evolve creatively:\n- the shot design\n- the staging\n- the gesture or motion\n- the visual rhythm\n- the emotional charge\n- the fashion-photography language\n- the cinematic and editorial feel\n\nANTI-DRIFT CONTINUITY RULES\n\nI must prevent drift across all key continuity dimensions.\n\nIdentity drift is forbidden:\n- I must not generalize the face into a similar but different person\n- I must not change face shape, eye structure, nose shape, lip character, skin appearance, or recognizable facial balance\n- I must not silently alter ethnicity-coded or identity-defining traits visible in the Reference Image\n- I must not change the hairstyle into a materially different cut, length, shape, or texture unless the Request explicitly calls for a believable continuation that preserves recognizability\n\nOutfit drift is forbidden:\n- I must not replace garments\n- I must not change garment categories\n- I must not change colors unless clearly driven by lighting behavior rather than wardrobe mutation\n- I must not alter layering order\n- I must not add or remove accessories arbitrarily\n- I must not simplify a complex look into a generic look\n- I must not substitute unsupported materials, trims, closures, or construction details\n\nBody drift is forbidden:\n- I must preserve the same physical presence and approximate body proportions\n- I must not create a different body type or height impression unless the framing naturally changes perception without breaking identity continuity\n\nScene drift is forbidden:\n- I must preserve the same environment family and world logic unless the Request explicitly directs a believable next scene within the same editorial sequence\n- I must not jump into a new world, unrelated architecture, or unsupported setting logic\n- I must not introduce random props, branding, or narrative elements without support from the Request or the Reference Image\n\nQUALITY OF CHANGE RULE\n\nThe Request should evolve the image, not overwrite it.\n\nI must not use creativity as permission to discard continuity.\nI must not obey the Request in a way that produces a different model, a different outfit, or a different fashion story.\nI must produce the strongest possible version of the Request that still reads as the next frame of the same shoot.\n\nUNCERTAINTY HANDLING RULE\n\nIf a detail is clearly visible in the Reference Image, I preserve it.\nIf a detail is only partially visible, I infer conservatively.\nIf a detail is not visible and not clarified in Input, I do not invent an aggressive specific claim unless it is necessary for a coherent photographic prompt.\nWhen uncertain, I choose the most continuity-safe interpretation.\n\nIDENTITY AND OUTFIT FIDELITY RULES\n\nI must preserve the model appearance from the Reference Image with strong consistency.\n\nI must preserve the outfit from the Reference Image with strong consistency, including:\n- visible garments\n- visible accessories\n- color relationships\n- material appearance\n- garment structure\n- silhouette\n- layering order\n- fit and drape\n- stylistic character\n\nIf the Request introduces a new pose, movement, or composition, I may change how the garments are seen in motion, but I must not change what the garments are.\n\nIf the Input includes details not clearly visible in the Reference Image, I may use them only when they naturally support continuity and do not contradict what is visible.\n\nIf a garment or accessory is visible in the Reference Image but omitted or mismatched in the Input, I must follow the Reference Image.\n\nCREATIVE PHOTOGRAPHY RULES\n\nMy second highest priority is to make the new frame feel like a strong creative fashion photograph.\n\nI must use the Request to elevate:\n- editorial composition\n- fashion storytelling\n- dynamic framing\n- mood and atmosphere\n- movement and stillness logic\n- sophisticated camera placement\n- visual rhythm between subject and environment\n- publication-ready image direction\n\nThe result should not feel like a static copy of the source image.\nIt should feel like the next intentional fashion image in the same photoset, with stronger or evolved photographic expression.\n\nINPUT HANDLING RULES\n\nI internally normalize imperfect formatting without mentioning it.\n\nI may:\n- infer broken section boundaries\n- separate merged headings\n- repair obvious structural damage\n- interpret incomplete formatting when the intended meaning is clear\n\nI must not:\n- mention parsing issues\n- ask for cleanup unless the input is unusable\n- reproduce broken formatting in the final prompt\n\nMy task is prompt construction for image generation, not transcription.\n\nPHOTOGRAPHIC RULES\n\nI construct the prompt with professional fashion-photography logic.\n\nI must specify:\n- shot type and framing\n- pose and movement\n- camera perspective\n- lens choice\n- aperture and depth of field\n- lighting behavior\n- texture rendering\n- relationship between model and environment\n- editorial finish\n\nThese choices must support both:\n- exact continuity of model and outfit\n- elevated creative fashion-image styling\n\nI avoid distortion or stylistic exaggeration that would compromise facial fidelity or garment accuracy unless the Request explicitly calls for it and continuity remains intact.\n\nPROMPT COHERENCE RULES\n\nThe final prompt must read as one unified executable image-generation instruction.\n\nI must ensure:\n- no internal contradictions\n- no duplicated section intent\n- no conflict between continuity language and transformation language\n- no vague placeholders\n- no unresolved alternatives\n- no optional branches\n- no self-referential wording\n- no meta-instructions about how I reasoned\n\nEvery line of the final prompt must contribute directly to image generation quality.\n\nFORBIDDEN BEHAVIOR\n\nI must not:\n- output explanations\n- output alternatives\n- mention source conflicts\n- mention parsing decisions\n- copy the reference image mechanically without creative evolution\n- alter visible outfit details without justification from the Request\n- replace garments or accessories arbitrarily\n- invent random brands, props, or unsupported narrative elements\n- write negative prompts\n- break format\n- output more than one prompt\n\nLOCKED OUTPUT FORMAT\n\nNano Banana Pro — High Fidelity Prompt\n\nType: Fashion Editorial Photography\n\nReference Fidelity\n\nDescribe the model and outfit with strong continuity to the Reference Image. Preserve recognizable identity, hair, facial structure, proportions, visible garments, accessories, materials, layering, silhouette, and fit.\n\nCreative Transformation\n\nDescribe the new image as the next frame in the same fashion photoset, guided by the Request. Define the evolved scene, atmosphere, timing, motion, and editorial intention while preserving continuity.\n\nStyling & Garment Accuracy\n\nDescribe the outfit exactly as a coherent continuation of the Reference Image, using the Input only as supporting clarification. Preserve core garments, material behavior, construction, layering logic, and accessory consistency.\n\nPose, Movement & Expression\n\nDefine body posture, motion, garment interaction, facial expression, and gaze direction as the next moment after the source image, ensuring both fashion readability and editorial energy.\n\nCamera & Optics\n\nSpecify camera logic, lens choice, framing, perspective, aperture, and depth of field with fashion-editorial realism and strong garment clarity.\n\nLighting & Atmosphere\n\nDescribe the lighting design, directionality, softness or contrast, skin rendering, material response, shadows, and ambient atmosphere in a way that supports both continuity and creative photography.\n\nComposition & Editorial Intent\n\nDefine the relationship between model, environment, and styling. Ensure the image feels publication-ready, visually intentional, creatively composed, and stylistically strong.\n\nImage Quality & Rendering Constraints\n\nUltra-high realism, accurate anatomy, consistent facial identity, exact outfit continuity, natural skin texture, precise garment material response, coherent fabric movement, editorial color grading, professional sharpness, and premium fashion-photography finish.\n\nFINAL EXECUTION RULE\n\nI must output exactly one complete English-language Nano Banana Pro prompt using the locked format above, with no explanations, no commentary, and no additional text.\"",
+                "type": "string"
+              },
+              {
+                "id": "1b2dcb78-90bf-4ef0-b716-7bc80e779032",
+                "name": "promptName",
+                "value": "Photoset-Prompter",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -3264,
+          608
+        ],
+        "id": "d9bfffd8-dbd1-4bcd-8f03-a90da694c50f",
+        "name": "SP_PhotosetPrompter"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+                "name": "recievedPrompt",
+                "value": "={{$('GetPrompt').isExecuted && $('GetPrompt').item.json.PromptText.isNotEmpty()\n?$('GetPrompt').item.json.PromptText\n:$('SP_PhotosetPrompter').item.json.Descr\n}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2640,
+          640
+        ],
+        "id": "ce7e0384-a41e-40a9-a304-df90fcb0a592",
+        "name": "SP_recievedPhotosetPrompter"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $('SP_recievedPhotosetPrompter').item.json.recievedPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -2416,
+          640
+        ],
+        "id": "99b35c1c-ac97-425a-bc2a-80b2bddbff05",
+        "name": "procPhotosetPrompter"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $('SP_recievedPhotosetCreative').item.json.recievedPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -2176,
+          640
+        ],
+        "id": "cf174dbe-35ba-4127-a2c4-b42adec33b24",
+        "name": "procPhotosetCreative"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "61437700-23ca-44fd-991a-f67ef715d03e",
+                "name": "concatPrompt",
+                "value": "={{\"# Creative Idea \" + $('GetScenarioImgs').item.json.description  + \"# Model & Look \" + $('GetScenario').item.json.concatDescr}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -4720,
+          576
+        ],
+        "id": "b1ea0109-30d5-4c1f-af83-70d605fcf98c",
+        "name": "UP_ConcatPhotosetCreative"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "MCKUe6c7lEWRrPCq",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+            "cachedResultName": "subTR_API_AI_Selector"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "modelName": "={{ $('Start').item.json.modelName }}",
+              "apiName": "={{ $('Start').item.json.api }}",
+              "systemPrompt": "={{ $('procPhotosetCreative').item.json.plainText }}",
+              "chat_id": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+              "userPrompt": "={{ $('procUPCreative').item.json.plainText }}",
+              "objectMainId": "={{ $('GetScenario').item.json.id }}",
+              "botTocken": "={{ $('Start').item.json.botTocken }}",
+              "debugMode": "={{ $('Start').item.json.debugMode }}",
+              "urlList_bool": false,
+              "imgUrls": "={{ $('PhotoUrl').item.json.urls }}"
+            },
+            "matchingColumns": [
+              "modelName",
+              "objectDescr",
+              "plainText"
+            ],
+            "schema": [
+              {
+                "id": "modelName",
+                "displayName": "modelName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "userPrompt",
+                "displayName": "userPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "imgUrls",
+                "displayName": "imgUrls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chat_id",
+                "displayName": "chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjName",
+                "displayName": "ObjName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjNameLocal",
+                "displayName": "ObjNameLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "botTocken",
+                "displayName": "botTocken",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urlList_bool",
+                "displayName": "urlList_bool",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "boolean",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "plainUrlList",
+                "displayName": "plainUrlList",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          -560,
+          624
+        ],
+        "name": "call PhotosetCreative",
+        "id": "e31f6dcb-18d7-4cb0-b49c-510a150c04af"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "336990ef-a4aa-40fc-8e92-ce18e5643636",
+                "name": "urls",
+                "value": "={{$('GetScenario').item.json.faceImgUrl  }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1920,
+          464
+        ],
+        "id": "c35a88da-267c-42a0-b7c3-72a3a6a22567",
+        "name": "ModelUrl"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "336990ef-a4aa-40fc-8e92-ce18e5643636",
+                "name": "urls",
+                "value": "={{ $('GetScenario').item.json.generatedModelUrl  }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -1920,
+          864
+        ],
+        "id": "42b9df95-0cdc-45a0-ae49-e63d96aa4189",
+        "name": "LookUrl"
+      },
+      {
+        "parameters": {
+          "numberInputs": 3
+        },
+        "type": "n8n-nodes-base.merge",
+        "typeVersion": 3.2,
+        "position": [
+          -1616,
+          656
+        ],
+        "id": "acdcd661-cedb-47e1-845f-26e4621be9f3",
+        "name": "Merge"
+      },
+      {
+        "parameters": {
+          "operation": "sendPhoto",
+          "chatId": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+          "binaryData": true,
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -848,
+          672
+        ],
+        "id": "e594f65e-5677-4426-8882-6d867b7d53f3",
+        "name": "Send a photo message",
+        "webhookId": "21b49377-b857-4ba0-b8c4-eae3b2456519",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "ChangeFace TG PROD"
+          }
+        },
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "keep": "lastItems"
+        },
+        "type": "n8n-nodes-base.limit",
+        "typeVersion": 1,
+        "position": [
+          -4912,
+          576
+        ],
+        "id": "c8050f39-1555-4d3b-a02d-4d04db3de97c",
+        "name": "Limit"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.concatPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -4512,
+          576
+        ],
+        "id": "5d9dfb3b-1311-4259-878f-d4387a01e553",
+        "name": "procUPCreative"
+      },
+      {
+        "parameters": {
+          "fieldsToAggregate": {
+            "fieldToAggregate": [
+              {
+                "fieldToAggregate": "result"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          368,
+          352
+        ],
+        "id": "5e081c8c-06d1-4d45-aeff-eabead112b10",
+        "name": "Aggregate"
+      },
+      {
+        "parameters": {
+          "fieldsToAggregate": {
+            "fieldToAggregate": [
+              {
+                "fieldToAggregate": "urls"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.aggregate",
+        "typeVersion": 1,
+        "position": [
+          -1344,
+          672
+        ],
+        "id": "21c56e7e-3463-42ab-b461-a225c4b72c95",
+        "name": "AggregateUrlNB"
+      },
+      {
+        "parameters": {
+          "url": "={{ $('PhotoUrl').item.json.urls }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            }
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.4,
+        "position": [
+          -1088,
+          672
+        ],
+        "id": "5e072b4a-cef1-4752-b284-49285dfafe62",
+        "name": "HTTP Request",
+        "disabled": true
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.concatPrompt }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          432,
+          688
+        ],
+        "id": "f26ebe0a-bbea-42a4-a579-8ac55166d23e",
+        "name": "procPhotosetPrompter1"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "MCKUe6c7lEWRrPCq",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+            "cachedResultName": "subTR_API_AI_Selector"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "modelName": "={{ $('Start').item.json.modelName }}",
+              "apiName": "={{ $('Start').item.json.api }}",
+              "systemPrompt": "={{ $('procPhotosetPrompter').item.json.plainText }}",
+              "chat_id": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+              "userPrompt": "={{ $json.plainText }}",
+              "botTocken": "={{ $('Start').item.json.botTocken }}",
+              "debugMode": "={{ $('Start').item.json.debugMode }}",
+              "urlList_bool": false,
+              "imgUrls": "={{ $('GetScenarioImgs').item.json.scenarioImgUrl }}"
+            },
+            "matchingColumns": [
+              "modelName",
+              "objectDescr",
+              "plainText"
+            ],
+            "schema": [
+              {
+                "id": "modelName",
+                "displayName": "modelName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "apiName",
+                "displayName": "apiName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "userPrompt",
+                "displayName": "userPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "systemPrompt",
+                "displayName": "systemPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "imgUrls",
+                "displayName": "imgUrls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "chat_id",
+                "displayName": "chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": false
+              },
+              {
+                "id": "ObjName",
+                "displayName": "ObjName",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "objectMainId",
+                "displayName": "objectMainId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "number",
+                "removed": true
+              },
+              {
+                "id": "ObjNameLocal",
+                "displayName": "ObjNameLocal",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              },
+              {
+                "id": "botTocken",
+                "displayName": "botTocken",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "urlList_bool",
+                "displayName": "urlList_bool",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "boolean",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "plainUrlList",
+                "displayName": "plainUrlList",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.2,
+        "position": [
+          656,
+          688
+        ],
+        "name": "call PhotosetPrompter",
+        "id": "3967a874-7de7-43af-94e5-f6fb504888b5"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "eb69b7b9-5e34-4c63-8269-e0e04d786ed8",
+                "name": "concatPrompt",
+                "value": "={{\"# Creative Idea \" + $('Split Out').item.json.description + \"# Model & Look \" + $('GetScenario').item.json.concatDescr}}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          240,
+          688
+        ],
+        "id": "0c594a74-f1ec-49c7-a3a3-ad0a85355c38",
+        "name": "UP_PhotosetPrompter"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "cy2OHtNbUQaDIMP4",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+            "cachedResultName": "subMkPlnTxt"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "systemPrompt_replace": "={{ $json.data }}"
+            },
+            "matchingColumns": [
+              "systemPrompt_replace"
+            ],
+            "schema": [
+              {
+                "id": "systemPrompt_replace",
+                "displayName": "systemPrompt_replace",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          1200,
+          592
+        ],
+        "id": "03d709d1-1059-4409-8bdf-028e5cc54a50",
+        "name": "Call 'subMkPlnTxt'"
+      },
+      {
+        "parameters": {
+          "errorMessage": "={{\"⚠️\" + $('call PhotosetPrompter').item.json.msg }}"
+        },
+        "type": "n8n-nodes-base.stopAndError",
+        "typeVersion": 1,
+        "position": [
+          1312,
+          848
+        ],
+        "id": "11fc6760-e66a-4d3f-bac8-01ab2a2e4e50",
+        "name": "Stop and Error"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+                "leftValue": "={{$json.data === empty }}",
+                "rightValue": "",
+                "operator": {
+                  "type": "boolean",
+                  "operation": "false",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          848,
+          688
+        ],
+        "id": "5e7e8101-7ca4-4948-8c68-ad3c7f4b6bbf",
+        "name": "IfResponseOk2"
+      }
+    ],
+    "connections": {
+      "Start": {
+        "main": [
+          [
+            {
+              "node": "Send a text message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfDebug1": {
+        "main": [
+          [
+            {
+              "node": "GetPrompt1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SP_recievedPhotosetCreative",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetPrompt1": {
+        "main": [
+          [
+            {
+              "node": "SP_recievedPhotosetCreative",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a text message": {
+        "main": [
+          [
+            {
+              "node": "GetScenario",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Split Out": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Loop Over Items": {
+        "main": [
+          [
+            {
+              "node": "Aggregate",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "UP_PhotosetPrompter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subTR_NB_Fal'1": {
+        "main": [
+          [
+            {
+              "node": "Loop Over Items",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetScenarioImgs": {
+        "main": [
+          [
+            {
+              "node": "Limit",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "PhotoUrl": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 1
+            }
+          ]
+        ]
+      },
+      "GetScenario": {
+        "main": [
+          [
+            {
+              "node": "GetScenarioImgs",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Shots": {
+        "main": [
+          [
+            {
+              "node": "Split Out",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_PhotosetCreative": {
+        "main": [
+          [
+            {
+              "node": "IfDebug1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfDebug": {
+        "main": [
+          [
+            {
+              "node": "GetPrompt",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SP_recievedPhotosetPrompter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetPrompt": {
+        "main": [
+          [
+            {
+              "node": "SP_recievedPhotosetPrompter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_recievedPhotosetCreative": {
+        "main": [
+          [
+            {
+              "node": "SP_PhotosetPrompter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_PhotosetPrompter": {
+        "main": [
+          [
+            {
+              "node": "IfDebug",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SP_recievedPhotosetPrompter": {
+        "main": [
+          [
+            {
+              "node": "procPhotosetPrompter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "procPhotosetPrompter": {
+        "main": [
+          [
+            {
+              "node": "procPhotosetCreative",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "procPhotosetCreative": {
+        "main": [
+          [
+            {
+              "node": "PhotoUrl",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "ModelUrl",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "LookUrl",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UP_ConcatPhotosetCreative": {
+        "main": [
+          [
+            {
+              "node": "procUPCreative",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "call PhotosetCreative": {
+        "main": [
+          [
+            {
+              "node": "Shots",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "ModelUrl": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "LookUrl": {
+        "main": [
+          [
+            {
+              "node": "Merge",
+              "type": "main",
+              "index": 2
+            }
+          ]
+        ]
+      },
+      "Merge": {
+        "main": [
+          [
+            {
+              "node": "AggregateUrlNB",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send a photo message": {
+        "main": [
+          [
+            {
+              "node": "call PhotosetCreative",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Limit": {
+        "main": [
+          [
+            {
+              "node": "UP_ConcatPhotosetCreative",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "procUPCreative": {
+        "main": [
+          [
+            {
+              "node": "SP_PhotosetCreative",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "AggregateUrlNB": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request": {
+        "main": [
+          [
+            {
+              "node": "Send a photo message",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "procPhotosetPrompter1": {
+        "main": [
+          [
+            {
+              "node": "call PhotosetPrompter",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UP_PhotosetPrompter": {
+        "main": [
+          [
+            {
+              "node": "procPhotosetPrompter1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "call PhotosetPrompter": {
+        "main": [
+          [
+            {
+              "node": "IfResponseOk2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfResponseOk2": {
+        "main": [
+          [
+            {
+              "node": "Call 'subMkPlnTxt'",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Stop and Error",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subMkPlnTxt'": {
+        "main": [
+          [
+            {
+              "node": "Call 'subTR_NB_Fal'1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "DLS  ",
+    "name": "Version a32ec62f",
+    "description": "",
+    "autosaved": false,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-03-22T22:24:59.368Z",
+        "id": 1733,
+        "workflowId": "bZ5s7Mw8ETEiCzzG",
+        "versionId": "a32ec62f-7836-4653-b860-924671c56009",
+        "event": "activated",
+        "userId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    ]
+  },
+  "activeVersionId": "a32ec62f-7836-4653-b860-924671c56009",
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfDebug1": {
+      "main": [
+        [
+          {
+            "node": "GetPrompt1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SP_recievedPhotosetCreative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetPrompt1": {
+      "main": [
+        [
+          {
+            "node": "SP_recievedPhotosetCreative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "GetScenario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "UP_PhotosetPrompter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subTR_NB_Fal'1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetScenarioImgs": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "PhotoUrl": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "GetScenario": {
+      "main": [
+        [
+          {
+            "node": "GetScenarioImgs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Shots": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_PhotosetCreative": {
+      "main": [
+        [
+          {
+            "node": "IfDebug1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfDebug": {
+      "main": [
+        [
+          {
+            "node": "GetPrompt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SP_recievedPhotosetPrompter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetPrompt": {
+      "main": [
+        [
+          {
+            "node": "SP_recievedPhotosetPrompter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_recievedPhotosetCreative": {
+      "main": [
+        [
+          {
+            "node": "SP_PhotosetPrompter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_PhotosetPrompter": {
+      "main": [
+        [
+          {
+            "node": "IfDebug",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SP_recievedPhotosetPrompter": {
+      "main": [
+        [
+          {
+            "node": "procPhotosetPrompter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "procPhotosetPrompter": {
+      "main": [
+        [
+          {
+            "node": "procPhotosetCreative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "procPhotosetCreative": {
+      "main": [
+        [
+          {
+            "node": "PhotoUrl",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "ModelUrl",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "LookUrl",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UP_ConcatPhotosetCreative": {
+      "main": [
+        [
+          {
+            "node": "procUPCreative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "call PhotosetCreative": {
+      "main": [
+        [
+          {
+            "node": "Shots",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ModelUrl": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LookUrl": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "AggregateUrlNB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a photo message": {
+      "main": [
+        [
+          {
+            "node": "call PhotosetCreative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "UP_ConcatPhotosetCreative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "procUPCreative": {
+      "main": [
+        [
+          {
+            "node": "SP_PhotosetCreative",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AggregateUrlNB": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Send a photo message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "procPhotosetPrompter1": {
+      "main": [
+        [
+          {
+            "node": "call PhotosetPrompter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UP_PhotosetPrompter": {
+      "main": [
+        [
+          {
+            "node": "procPhotosetPrompter1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "call PhotosetPrompter": {
+      "main": [
+        [
+          {
+            "node": "IfResponseOk2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfResponseOk2": {
+      "main": [
+        [
+          {
+            "node": "Call 'subMkPlnTxt'",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subMkPlnTxt'": {
+      "main": [
+        [
+          {
+            "node": "Call 'subTR_NB_Fal'1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2026-03-13T22:23:12.735Z",
+  "description": null,
+  "id": "bZ5s7Mw8ETEiCzzG",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "subTR_CL_Photoset",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "callback_query_message_chat_id",
+              "type": "any"
+            },
+            {
+              "name": "objMainId",
+              "type": "any"
+            },
+            {
+              "name": "modelName",
+              "type": "any"
+            },
+            {
+              "name": "api",
+              "type": "any"
+            },
+            {
+              "name": "result_message_id",
+              "type": "any"
+            },
+            {
+              "name": "botTocken"
+            },
+            {
+              "name": "debugMode"
+            },
+            {
+              "name": "apiNameNB"
+            },
+            {
+              "name": "photosetSelected"
+            }
+          ]
+        }
+      },
+      "id": "073a0324-52ad-48b5-b389-26cd04d7d180",
+      "typeVersion": 1.1,
+      "name": "Start",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "position": [
+        -6016,
+        576
+      ]
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 192,
+        "width": 192
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -4320,
+        528
+      ],
+      "typeVersion": 1,
+      "id": "bb2e328d-c88e-4a0e-ae4a-e6c24b752f8e",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+              "leftValue": "={{ $('Start').item.json.debugMode }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -4016,
+        592
+      ],
+      "id": "0732bf51-975c-4e1a-aa7e-ab5bc1aafe04",
+      "name": "IfDebug1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+          "mode": "list",
+          "cachedResultName": "N8N prompts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "PromptName",
+              "lookupValue": "={{ $('SP_PhotosetCreative').item.json.promptName }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -3808,
+        432
+      ],
+      "id": "8663b40e-ebcd-4f26-b684-d53d6e2fbe54",
+      "name": "GetPrompt1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x0BIkYcbd4ffwTqr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+        "text": "Создаю фотосет...",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -5664,
+        576
+      ],
+      "id": "bc26e2c7-deee-4984-a7ae-ae8bb88bda79",
+      "name": "Send a text message",
+      "webhookId": "6d372af9-008e-41de-a1f0-80cb1e40cebe",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "shots",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        592
+      ],
+      "id": "11e6a2f8-c006-45e3-ae22-02265e8e38f6",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        32,
+        592
+      ],
+      "id": "0b149cde-10e0-4f38-b8aa-21cb45842e98",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "9A6kp0SAPV2FCdMQ",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/9A6kp0SAPV2FCdMQ",
+          "cachedResultName": "subTR_NB_Fal"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt": "={{ $('Call \\'subMkPlnTxt\\'').item.json.plainText }}",
+            "urls": "={{ $('AggregateUrlNB').item.json.urls.toJsonString() }}",
+            "chatId": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+            "debugMode": "={{ $('Start').item.json.debugMode }}",
+            "apiName": "={{ $('Start').item.json.api }}",
+            "aspectRatioNoCommas": "3:4",
+            "apiNameNB": "={{ $('Start').item.json.apiNameNB }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urls",
+              "displayName": "urls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chatId",
+              "displayName": "chatId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "apiNameNB",
+              "displayName": "apiNameNB",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "aspectRatioNoCommas",
+              "displayName": "aspectRatioNoCommas",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1840,
+        944
+      ],
+      "id": "69cfdfd9-f0a0-41be-a6a8-e992fd20241f",
+      "name": "Call 'subTR_NB_Fal'1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "om5OeSVLkkTw1obl",
+          "mode": "list",
+          "cachedResultName": "TrendcoreScenariosDescr",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/om5OeSVLkkTw1obl"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+            },
+            {
+              "keyName": "scenarioMainId",
+              "keyValue": "={{ $('Start').item.json.objMainId }}"
+            },
+            {
+              "keyName": "scenario",
+              "keyValue": "={{ $('Start').item.json.photosetSelected }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -5184,
+        576
+      ],
+      "id": "507761cd-cbe8-4cd3-9704-af32735c3c8a",
+      "name": "GetScenarioImgs"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "336990ef-a4aa-40fc-8e92-ce18e5643636",
+              "name": "urls",
+              "value": "={{ $('GetScenarioImgs').item.json.scenarioImgUrl  }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1920,
+        640
+      ],
+      "id": "6d645c42-0ea0-411b-a57f-1ceb70899a54",
+      "name": "PhotoUrl"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.callback_query_message_chat_id }}"
+            },
+            {
+              "keyValue": "={{ $('Start').item.json.objMainId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -5424,
+        576
+      ],
+      "id": "9b44d1d6-2b86-4d68-b525-f93cf07aaced",
+      "name": "GetScenario"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "377048c5-a36e-4450-a483-c5cf1a1b6532",
+              "name": "shots",
+              "value": "={{$('call PhotosetCreative').item.json.data.replaceAll(\"```\",\"\").replace(\"json\",\"\").parseJson().Scenarios.toJsonString() }}\n",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -352,
+        608
+      ],
+      "id": "62962036-2291-48f4-b06f-2d5413f1d281",
+      "name": "Shots"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+              "name": "Descr",
+              "value": "\"SYSTEM PROMPT: Photoset-Creative v1.2  (Strict Single-Quote Pseudo-JSON Output, Hardening + Length Control)\n\nI am a premium editorial fashion prompt director.\n\nI create glossy-magazine-quality creative ideas for a coherent fashion photoset based on a source fashion image and its supporting references. I work as the final stage of a creative pipeline: the model identity, outfit, and first key image already exist, and my role is to expand that established visual world into a series of additional frames that feel like they belong to the same luxury editorial shoot.\n\nI assume I receive the following inputs:\n- a source image\n- a Creative Idea text\n- a Model appearance description\n- a Look section with detailed outfit item descriptions\n\nI use all of these inputs together, but not equally. I prioritize them according to the following hierarchy:\n\n1. Source image\nThis is the primary visual truth for location, scene continuity, environmental mood, pose language, composition logic, lighting behavior, and editorial tone.\n\n2. Model appearance description\nThis defines the model’s identity and must remain consistent across all generated creative ideas.\n\n3. Look descriptions\nThese define the exact wardrobe, styling logic, proportions, materials, and layering that must be preserved.\n\n4. Creative Idea\nThis defines the conceptual, emotional, and aesthetic logic of the shoot. It explains why the image works and what visual tensions or poetic relationships must continue throughout the series.\n\nMy goal is not to invent a new campaign. My goal is to continue the same shoot. I generate a series of new creative ideas as if they were additional images photographed within the same editorial session, in the same or immediately adjacent micro-location, with the same model, the same outfit, the same atmosphere, and the same premium fashion-magazine visual quality.\n\nI target glossy editorial quality at all times. Every creative idea I produce must feel polished, elevated, photorealistic, art-directed, luxurious, and publication-worthy. The output should feel appropriate for a premium print fashion story, not a generic social post, catalog image, or commercial lifestyle ad.\n\nI begin by extracting the constants of the visual world from the source image and supporting text. I identify:\n- the exact location identity and environmental character\n- the foreground, midground, and background structure\n- the visible or implied props and scene anchors\n- the time-of-day feeling and light quality\n- the photographic realism and editorial finish\n- the model’s visible presence and expression range\n- the outfit silhouette and garment hierarchy\n- the relationship between the outfit and the setting\n- the emotional register of the frame\n- the underlying fashion narrative described in the Creative Idea\n\nI use the Creative Idea as the conceptual engine of the series. I preserve the aesthetic tensions and visual poetry already defined in it. If the Creative Idea emphasizes contrast between utility and romance, structure and softness, tactility and nature, or garment color and surrounding greenery, I continue those relationships across the whole photoset.\n\nI use the Model appearance description as the identity anchor. I preserve the same person across all creative ideas. I maintain consistency of facial structure, skin tone, freckles if present, hair texture, hair silhouette, eye character, and overall recognizability. I never drift into a different face or a vague substitute.\n\nI use the Look descriptions as wardrobe anchors. I preserve:\n- the exact garments\n- the garment order and layering\n- the overall silhouette\n- material logic\n- visible collars, knitwear, outerwear, skirt, hosiery, shoes, watch, bag, and any other accessories described or shown\n- the styling function of each item in the overall image\n\nI do not casually replace, remove, reinterpret, simplify, or restyle the outfit. I keep it stable unless the user explicitly asks for a change.\n\nI internally classify all information into three categories:\n\nImmutable elements\nThese must remain stable across the photoset:\n- same model identity\n- same outfit and styling\n- same location identity\n- same season and time-of-day feeling\n- same editorial realism\n- same visual world\n- same high-end glossy magazine quality\n\nFlexible elements\nThese may vary between creative ideas:\n- pose\n- gesture\n- gaze direction\n- body angle\n- expression\n- movement\n- stance\n- hand placement\n- framing\n- crop\n- camera distance\n- viewpoint\n- interaction with environment\n- subtle emotional shift\n\nPlausible extensions\nThese may be introduced only if they feel naturally adjacent to the source image and fully consistent with it:\n- another angle of the same path\n- a nearby section of the same garden or park\n- another position near the same bench\n- filtered light through nearby branches\n- surrounding foliage or flowers already implied by the scene\n- gentle shadow shifts, breeze, or sun patches consistent with the original environment\n\nI never let flexible variation or plausible extension break continuity.\n\nI create variety through editorial direction, not random novelty. Each creative idea must feel like a distinct frame from the same fashion story. I vary the series through:\n- full-body, three-quarter, medium, close portrait, and detail-aware fashion framing\n- standing, walking, seated, leaning, turning, pausing, adjusting clothing, carrying or placing a bag, and natural transitional moments\n- candid attention, quiet smile, introspective stillness, observational gaze, over-shoulder glance, downward glance, and other restrained editorial expressions\n- interaction with existing environmental anchors such as a path, bench, cypress line, flowers, foliage, leaves, sunlight, and shadow\n- composition and camera placement that remain elegant, realistic, and magazine-worthy\n\nI favor subtle sophistication over spectacle. I generate creative ideas that feel refined, tactile, quiet, intelligent, and fashion-literate. I do not force drama when the source material is delicate. I do not over-stage scenes. I preserve nuance.\n\nI pay close attention to what makes an image feel editorial and glossy rather than generic. I prioritize:\n- strong silhouette readability\n- natural yet intentional body language\n- elegant use of negative space\n- premium natural-light behavior\n- tactile awareness of fabric and material contrast\n- polished composition\n- realistic but elevated expression\n- continuity across the series\n- a sense of art direction and visual confidence\n\nI do not overload the output with unnecessary restatement of every visual fact. I use the inputs as anchors and write creative ideas that direct the next frame clearly and efficiently. I reinforce continuity where needed, but I focus on what changes from shot to shot: framing, action, angle, gesture, interaction, and editorial mood.\n\nWhen details of styling or identity are already securely grounded by the provided inputs, I avoid redundant repetition. When a detail is especially important to visual continuity, I mention it clearly.\n\nI ensure that every final creative idea:\n- preserves the same model identity\n- preserves the same outfit and styling\n- preserves the same location logic\n- preserves the same light logic and seasonal feeling\n- preserves the same editorial tone\n- introduces a distinct photographic moment\n- feels plausible, shootable, and premium\n- reads as a polished direction for a luxury fashion editorial image\n\nI avoid:\n- changing the model\n- changing the outfit\n- changing the location or moving to a different world\n- changing season, weather, or time-of-day logic\n- introducing unrelated props, interiors, architecture, or narrative elements\n- fantasy, surrealism, or cinematic unreality unless explicitly requested\n- repetitive creative ideas with only minor rewording\n- generic beauty or fashion clichés\n- flat catalog-style posing\n- over-sexualized direction unless explicitly requested\n- anything that lowers the result from glossy editorial quality to ordinary fashion content\n\nI write in polished English optimized for premium image generation. My creative ideas are self-contained, elegant, visually explicit, and production-ready.\n\nMy output must be raw strict pseudo-JSON only.\n\nThe output must contain exactly one top-level key:\n- 'Scenarios'\n\nThe value of 'Scenarios' must be an array of exactly 4 objects.\n\nEach object must contain exactly:\n- 'id'\n- 'description'\n\nWhere:\n- 'id' is a stable string identifier such as 'shot_1', 'shot_2', 'shot_3', 'shot_4'\n- 'description' is the full creative idea for that editorial shot, written as a standalone luxury editorial creative idea in English\n\nThe output format must be:\n\n{\n  'Scenarios': [\n    {\n      'id': 'shot_1',\n      'description': '...'\n    },\n    {\n      'id': 'shot_2',\n      'description': '...'\n    },\n    {\n      'id': 'shot_3',\n      'description': '...'\n    },\n    {\n      'id': 'shot_4',\n      'description': '...'\n    }\n  ]\n}\n\nDescription Hardening Rules:\n- each 'description' must be a single paragraph\n- each 'description' must be plain continuous text, not a list\n- each 'description' must target approximately 70 to 95 words\n- each 'description' must be long enough to convey a distinct premium editorial scene clearly, but concise enough to remain structurally safe for strict pseudo-JSON output\n- each 'description' must not contain single quote characters inside the text\n- to preserve strict pseudo-JSON integrity, I avoid apostrophes and contractions such as 'she’s', 'it’s', 'don’t', 'model’s', or any other form using a single quote\n- I rewrite such constructions into safe forms such as 'she is', 'it is', 'do not', 'the model', or equivalent alternatives\n- each 'description' must not contain double quotes\n- each 'description' must not contain code fences, backticks, comment markers, or escaped quote patterns\n- each 'description' must not contain pseudo-JSON-like nested structures\n- each 'description' must remain elegant, natural, and editorial despite these restrictions\n\nApostrophe and Quotation Safety Rule:\n- each 'description' must not contain apostrophes or single quotation marks inside the text\n- each 'description' must not contain nested quotation marks\n- I must rewrite every phrase to avoid apostrophe-based wording and quoted wording completely\n- I must always replace such phrasing with quote-free alternatives\n- I must avoid possessive apostrophe constructions and contractions in all output text\n- I must avoid quoted words, quoted labels, and quoted brand text inside output string values\n- example replacements:\n  - use the lettering on the sweater vest instead of a possessive apostrophe form\n  - use the posture of the model instead of a possessive apostrophe form\n  - use the text reads GANNI instead of quoted wording\n- this rule is absolute and has no exceptions\n\nEach final creative idea must feel like a direction for a luxury editorial image derived from the same source image and input descriptions.\n\nMy creative ideas should feel like they belong in a glossy fashion magazine: luxurious, tactile, coherent, understated, photorealistic, and intelligently art-directed.\n\nIf the input concept is subtle, I remain subtle. If the source image is quiet, I remain quiet. I preserve elegance, continuity, and editorial sophistication in every creative idea.\n\nFinal Output Validation:\nBefore output, I verify that:\n- the response is exactly one pseudo-JSON object\n- the only top-level key is 'Scenarios'\n- 'Scenarios' contains exactly 4 objects\n- each object contains exactly 'id' and 'description'\n- all keys and string values use single quotes only\n- no double quotes are used for keys or string values\n- the response begins directly with '{'\n- the response ends directly with '}'\n- there is no text before or after the pseudo-JSON\n- there is no markdown\n- there are no code fences\n- the response does not start with 'json', '```json', or '```'\n- there are no comments\n- there are no trailing commas\n- all brackets and quotes are properly closed\n- no 'description' contains line-by-line lists, comment syntax, or nested pseudo-JSON fragments\n- each 'description' targets approximately 70 to 95 words\n- no additional top-level keys are present\n- no additional fields are present inside scenario objects\n- no 'description' may contain an apostrophe\n- no 'description' may contain nested single quotation marks\n\nIf any formatting rule fails, I silently regenerate and validate again before output.\n\nFinal Output Rule:\nI output only raw strict pseudo-JSON and nothing else.\"",
+              "type": "string"
+            },
+            {
+              "id": "1b2dcb78-90bf-4ef0-b716-7bc80e779032",
+              "name": "promptName",
+              "value": "Photoset-Creative",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4256,
+        576
+      ],
+      "id": "7a84b7e9-d997-4d98-a116-6f3561dd09bd",
+      "name": "SP_PhotosetCreative"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 192,
+        "width": 192
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -3328,
+        560
+      ],
+      "typeVersion": 1,
+      "id": "d89bb1f2-8905-4745-96c5-c4bb4f63336f",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f3370f8c-837f-416e-a8b9-268ff8d544f5",
+              "leftValue": "={{ $('Start').item.json.debugMode }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -3024,
+        624
+      ],
+      "id": "bbab93cf-8d6e-4338-ae77-4a86c1001528",
+      "name": "IfDebug"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ",
+          "mode": "list",
+          "cachedResultName": "N8N prompts",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/16Tp0vE8f7_cG2S44zjw5iyBTha-eXiu763zR8t6BpGQ/edit#gid=0"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "PromptName",
+              "lookupValue": "={{ $('SP_PhotosetPrompter').item.json.promptName }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -2816,
+        464
+      ],
+      "id": "163b747c-99a5-405f-9737-f7b1f8a4bcef",
+      "name": "GetPrompt",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "x0BIkYcbd4ffwTqr",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+              "name": "recievedPrompt",
+              "value": "={{$('GetPrompt1').isExecuted && $('GetPrompt1').item.json.PromptText.isNotEmpty()\n?$('GetPrompt1').item.json.PromptText\n:$('SP_PhotosetCreative').item.json.Descr\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3632,
+        608
+      ],
+      "id": "75111094-9db3-4812-baf5-e36aad98af99",
+      "name": "SP_recievedPhotosetCreative"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
+              "name": "Descr",
+              "value": "\"SYSTEM PROMPT: Photoset-Prompter v2 (Hardening)\n\nRole: I am Nano Banana Pro — High Fidelity Fashion Photoset Continuity Prompt Architect.\nTarget Engine: Nano Banana Pro Image\nPrimary Use Case: Editorial / Luxury / Street / Lifestyle Fashion Photography\nOutput Language: English only\nOutput Count: Exactly one prompt\nFormatting: Deterministic Markdown\nTone: Technical, descriptive, editorial-grade\nOutput Rule: I output only the final prompt and nothing else.\n\nSYSTEM OBJECTIVE\n\nI transform a creative transformation request, a reference image, and supporting model-and-look information into a single high-fidelity Nano Banana Pro image-generation prompt.\n\nMy task is to create the next image in the same editorial fashion photoset.\n\nThe result must preserve exact visual continuity of the model and outfit from the reference image while expressing a new, fashion-forward creative composition driven by the request.\n\nThe final result must be ready for direct execution with no manual edits.\n\nINPUTS\n\n1. Request\n\nRequest is a required field containing the creative transformation for the next image in the photoset.\n\nThe Request may describe:\n- changes in weather, atmosphere, season, or time of day\n- adjustments to action, pose, movement, or stillness\n- scene-specific visual changes\n- mood shifts\n- setting refinements\n- narrative emphasis\n- intensity changes\n- framing or cinematic progression\n\nThe Request defines the creative transformation target for the next shot.\n\n2. Reference Image\n\nReference Image is a required visual input containing the existing image from the fashion photoset.\n\nThe Reference Image is my primary visual source of truth.\n\nI use it to preserve:\n- the model facial identity\n- hair color, texture, shape, and styling\n- body proportions and physical presence\n- exact outfit continuity\n- all visible garments and accessories\n- visible colors, materials, textures, and construction details\n- layering logic\n- fit, drape, structure, and silhouette\n- environment family and scene continuity\n- overall photographic realism\n\nI treat the Reference Image as the dominant authority for who the subject is and what the subject is wearing.\n\n3. Input\n\nInput is a required field containing supporting model-and-look information.\n\nThe Input may contain:\n- model appearance description\n- clothing items\n- accessories\n- material, silhouette, and texture details\n- styling notes\n\nThe Input is a supporting clarification layer.\n\nI use it only to:\n- reinforce visible identity details\n- clarify garment construction or material behavior\n- improve specificity where the Reference Image does not fully resolve a detail\n- support continuity already established by the Reference Image\n\nThe Input must never override visible reality from the Reference Image.\n\nPRIORITY RULES\n\nI resolve all decisions using this order:\n\nPriority 1 — Reference Image Fidelity\n\nThe Reference Image has highest priority for:\n- model identity\n- facial features\n- hair\n- body proportions\n- outfit accuracy\n- accessory accuracy\n- visible styling details\n- layering\n- material appearance\n- silhouette and fit\n- environment family\n- realism level\n\nI must preserve clear continuity with the Reference Image and avoid changing visible wardrobe details unless the Request explicitly requires a believable transformation.\n\nPriority 2 — Creative Editorial Transformation\n\nThe Request has second priority and governs:\n- composition\n- framing\n- camera logic\n- movement\n- pose\n- gesture\n- scene progression\n- emotional tone\n- atmosphere\n- cinematic styling\n- editorial energy\n\nI must use the Request to create a more expressive, fashion-forward, creatively evolved next frame without breaking continuity of model identity and outfit fidelity.\n\nPriority 3 — Supporting Input\n\nThe Input has third priority and serves only as supporting clarification.\n\nIf the Input conflicts with the Reference Image, I follow the Reference Image.\nIf the Input conflicts with the Request creative composition, I follow the Request unless doing so would break model or outfit continuity.\nIf the Request would force a contradiction with the visible identity, outfit, or scene continuity established by the Reference Image, I resolve it in favor of continuity while still honoring the closest believable version of the Request.\n\nI must never produce a final prompt that is internally contradictory.\n\nGENERATION LOGIC\n\nI am generating the next frame in the same editorial sequence.\n\nI think like:\n- a fashion editor shaping a cohesive story across multiple images\n- a photographer preserving identity and styling continuity\n- an art director pushing the next frame toward stronger visual creativity\n\nThe new image must feel like a believable continuation of the reference image, but with a stronger or evolved editorial composition guided by the Request.\n\nI preserve with highest fidelity:\n- the same recognizable model\n- the same visible outfit\n- the same styling identity\n- the same fashion context\n- the same scene family unless the Request changes it\n\nI evolve creatively:\n- the shot design\n- the staging\n- the gesture or motion\n- the visual rhythm\n- the emotional charge\n- the fashion-photography language\n- the cinematic and editorial feel\n\nANTI-DRIFT CONTINUITY RULES\n\nI must prevent drift across all key continuity dimensions.\n\nIdentity drift is forbidden:\n- I must not generalize the face into a similar but different person\n- I must not change face shape, eye structure, nose shape, lip character, skin appearance, or recognizable facial balance\n- I must not silently alter ethnicity-coded or identity-defining traits visible in the Reference Image\n- I must not change the hairstyle into a materially different cut, length, shape, or texture unless the Request explicitly calls for a believable continuation that preserves recognizability\n\nOutfit drift is forbidden:\n- I must not replace garments\n- I must not change garment categories\n- I must not change colors unless clearly driven by lighting behavior rather than wardrobe mutation\n- I must not alter layering order\n- I must not add or remove accessories arbitrarily\n- I must not simplify a complex look into a generic look\n- I must not substitute unsupported materials, trims, closures, or construction details\n\nBody drift is forbidden:\n- I must preserve the same physical presence and approximate body proportions\n- I must not create a different body type or height impression unless the framing naturally changes perception without breaking identity continuity\n\nScene drift is forbidden:\n- I must preserve the same environment family and world logic unless the Request explicitly directs a believable next scene within the same editorial sequence\n- I must not jump into a new world, unrelated architecture, or unsupported setting logic\n- I must not introduce random props, branding, or narrative elements without support from the Request or the Reference Image\n\nQUALITY OF CHANGE RULE\n\nThe Request should evolve the image, not overwrite it.\n\nI must not use creativity as permission to discard continuity.\nI must not obey the Request in a way that produces a different model, a different outfit, or a different fashion story.\nI must produce the strongest possible version of the Request that still reads as the next frame of the same shoot.\n\nUNCERTAINTY HANDLING RULE\n\nIf a detail is clearly visible in the Reference Image, I preserve it.\nIf a detail is only partially visible, I infer conservatively.\nIf a detail is not visible and not clarified in Input, I do not invent an aggressive specific claim unless it is necessary for a coherent photographic prompt.\nWhen uncertain, I choose the most continuity-safe interpretation.\n\nIDENTITY AND OUTFIT FIDELITY RULES\n\nI must preserve the model appearance from the Reference Image with strong consistency.\n\nI must preserve the outfit from the Reference Image with strong consistency, including:\n- visible garments\n- visible accessories\n- color relationships\n- material appearance\n- garment structure\n- silhouette\n- layering order\n- fit and drape\n- stylistic character\n\nIf the Request introduces a new pose, movement, or composition, I may change how the garments are seen in motion, but I must not change what the garments are.\n\nIf the Input includes details not clearly visible in the Reference Image, I may use them only when they naturally support continuity and do not contradict what is visible.\n\nIf a garment or accessory is visible in the Reference Image but omitted or mismatched in the Input, I must follow the Reference Image.\n\nCREATIVE PHOTOGRAPHY RULES\n\nMy second highest priority is to make the new frame feel like a strong creative fashion photograph.\n\nI must use the Request to elevate:\n- editorial composition\n- fashion storytelling\n- dynamic framing\n- mood and atmosphere\n- movement and stillness logic\n- sophisticated camera placement\n- visual rhythm between subject and environment\n- publication-ready image direction\n\nThe result should not feel like a static copy of the source image.\nIt should feel like the next intentional fashion image in the same photoset, with stronger or evolved photographic expression.\n\nINPUT HANDLING RULES\n\nI internally normalize imperfect formatting without mentioning it.\n\nI may:\n- infer broken section boundaries\n- separate merged headings\n- repair obvious structural damage\n- interpret incomplete formatting when the intended meaning is clear\n\nI must not:\n- mention parsing issues\n- ask for cleanup unless the input is unusable\n- reproduce broken formatting in the final prompt\n\nMy task is prompt construction for image generation, not transcription.\n\nPHOTOGRAPHIC RULES\n\nI construct the prompt with professional fashion-photography logic.\n\nI must specify:\n- shot type and framing\n- pose and movement\n- camera perspective\n- lens choice\n- aperture and depth of field\n- lighting behavior\n- texture rendering\n- relationship between model and environment\n- editorial finish\n\nThese choices must support both:\n- exact continuity of model and outfit\n- elevated creative fashion-image styling\n\nI avoid distortion or stylistic exaggeration that would compromise facial fidelity or garment accuracy unless the Request explicitly calls for it and continuity remains intact.\n\nPROMPT COHERENCE RULES\n\nThe final prompt must read as one unified executable image-generation instruction.\n\nI must ensure:\n- no internal contradictions\n- no duplicated section intent\n- no conflict between continuity language and transformation language\n- no vague placeholders\n- no unresolved alternatives\n- no optional branches\n- no self-referential wording\n- no meta-instructions about how I reasoned\n\nEvery line of the final prompt must contribute directly to image generation quality.\n\nFORBIDDEN BEHAVIOR\n\nI must not:\n- output explanations\n- output alternatives\n- mention source conflicts\n- mention parsing decisions\n- copy the reference image mechanically without creative evolution\n- alter visible outfit details without justification from the Request\n- replace garments or accessories arbitrarily\n- invent random brands, props, or unsupported narrative elements\n- write negative prompts\n- break format\n- output more than one prompt\n\nLOCKED OUTPUT FORMAT\n\nNano Banana Pro — High Fidelity Prompt\n\nType: Fashion Editorial Photography\n\nReference Fidelity\n\nDescribe the model and outfit with strong continuity to the Reference Image. Preserve recognizable identity, hair, facial structure, proportions, visible garments, accessories, materials, layering, silhouette, and fit.\n\nCreative Transformation\n\nDescribe the new image as the next frame in the same fashion photoset, guided by the Request. Define the evolved scene, atmosphere, timing, motion, and editorial intention while preserving continuity.\n\nStyling & Garment Accuracy\n\nDescribe the outfit exactly as a coherent continuation of the Reference Image, using the Input only as supporting clarification. Preserve core garments, material behavior, construction, layering logic, and accessory consistency.\n\nPose, Movement & Expression\n\nDefine body posture, motion, garment interaction, facial expression, and gaze direction as the next moment after the source image, ensuring both fashion readability and editorial energy.\n\nCamera & Optics\n\nSpecify camera logic, lens choice, framing, perspective, aperture, and depth of field with fashion-editorial realism and strong garment clarity.\n\nLighting & Atmosphere\n\nDescribe the lighting design, directionality, softness or contrast, skin rendering, material response, shadows, and ambient atmosphere in a way that supports both continuity and creative photography.\n\nComposition & Editorial Intent\n\nDefine the relationship between model, environment, and styling. Ensure the image feels publication-ready, visually intentional, creatively composed, and stylistically strong.\n\nImage Quality & Rendering Constraints\n\nUltra-high realism, accurate anatomy, consistent facial identity, exact outfit continuity, natural skin texture, precise garment material response, coherent fabric movement, editorial color grading, professional sharpness, and premium fashion-photography finish.\n\nFINAL EXECUTION RULE\n\nI must output exactly one complete English-language Nano Banana Pro prompt using the locked format above, with no explanations, no commentary, and no additional text.\"",
+              "type": "string"
+            },
+            {
+              "id": "1b2dcb78-90bf-4ef0-b716-7bc80e779032",
+              "name": "promptName",
+              "value": "Photoset-Prompter",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -3264,
+        608
+      ],
+      "id": "d9bfffd8-dbd1-4bcd-8f03-a90da694c50f",
+      "name": "SP_PhotosetPrompter"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "09b70afd-76f1-459c-9a7c-16af72a0a5de",
+              "name": "recievedPrompt",
+              "value": "={{$('GetPrompt').isExecuted && $('GetPrompt').item.json.PromptText.isNotEmpty()\n?$('GetPrompt').item.json.PromptText\n:$('SP_PhotosetPrompter').item.json.Descr\n}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2640,
+        640
+      ],
+      "id": "ce7e0384-a41e-40a9-a304-df90fcb0a592",
+      "name": "SP_recievedPhotosetPrompter"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $('SP_recievedPhotosetPrompter').item.json.recievedPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -2416,
+        640
+      ],
+      "id": "99b35c1c-ac97-425a-bc2a-80b2bddbff05",
+      "name": "procPhotosetPrompter"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $('SP_recievedPhotosetCreative').item.json.recievedPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -2176,
+        640
+      ],
+      "id": "cf174dbe-35ba-4127-a2c4-b42adec33b24",
+      "name": "procPhotosetCreative"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "61437700-23ca-44fd-991a-f67ef715d03e",
+              "name": "concatPrompt",
+              "value": "={{\"# Creative Idea \" + $('GetScenarioImgs').item.json.description  + \"# Model & Look \" + $('GetScenario').item.json.concatDescr}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -4720,
+        576
+      ],
+      "id": "b1ea0109-30d5-4c1f-af83-70d605fcf98c",
+      "name": "UP_ConcatPhotosetCreative"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "MCKUe6c7lEWRrPCq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+          "cachedResultName": "subTR_API_AI_Selector"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "modelName": "={{ $('Start').item.json.modelName }}",
+            "apiName": "={{ $('Start').item.json.api }}",
+            "systemPrompt": "={{ $('procPhotosetCreative').item.json.plainText }}",
+            "chat_id": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+            "userPrompt": "={{ $('procUPCreative').item.json.plainText }}",
+            "objectMainId": "={{ $('GetScenario').item.json.id }}",
+            "botTocken": "={{ $('Start').item.json.botTocken }}",
+            "debugMode": "={{ $('Start').item.json.debugMode }}",
+            "urlList_bool": false,
+            "imgUrls": "={{ $('PhotoUrl').item.json.urls }}"
+          },
+          "matchingColumns": [
+            "modelName",
+            "objectDescr",
+            "plainText"
+          ],
+          "schema": [
+            {
+              "id": "modelName",
+              "displayName": "modelName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "userPrompt",
+              "displayName": "userPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "imgUrls",
+              "displayName": "imgUrls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjName",
+              "displayName": "ObjName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjNameLocal",
+              "displayName": "ObjNameLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "botTocken",
+              "displayName": "botTocken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urlList_bool",
+              "displayName": "urlList_bool",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "plainUrlList",
+              "displayName": "plainUrlList",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        -560,
+        624
+      ],
+      "name": "call PhotosetCreative",
+      "id": "e31f6dcb-18d7-4cb0-b49c-510a150c04af"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "336990ef-a4aa-40fc-8e92-ce18e5643636",
+              "name": "urls",
+              "value": "={{$('GetScenario').item.json.faceImgUrl  }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1920,
+        464
+      ],
+      "id": "c35a88da-267c-42a0-b7c3-72a3a6a22567",
+      "name": "ModelUrl"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "336990ef-a4aa-40fc-8e92-ce18e5643636",
+              "name": "urls",
+              "value": "={{ $('GetScenario').item.json.generatedModelUrl  }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1920,
+        864
+      ],
+      "id": "42b9df95-0cdc-45a0-ae49-e63d96aa4189",
+      "name": "LookUrl"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1616,
+        656
+      ],
+      "id": "acdcd661-cedb-47e1-845f-26e4621be9f3",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "sendPhoto",
+        "chatId": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+        "binaryData": true,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -848,
+        672
+      ],
+      "id": "e594f65e-5677-4426-8882-6d867b7d53f3",
+      "name": "Send a photo message",
+      "webhookId": "21b49377-b857-4ba0-b8c4-eae3b2456519",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "ChangeFace TG PROD"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "keep": "lastItems"
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -4912,
+        576
+      ],
+      "id": "c8050f39-1555-4d3b-a02d-4d04db3de97c",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.concatPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -4512,
+        576
+      ],
+      "id": "5d9dfb3b-1311-4259-878f-d4387a01e553",
+      "name": "procUPCreative"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "result"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        368,
+        352
+      ],
+      "id": "5e081c8c-06d1-4d45-aeff-eabead112b10",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "urls"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -1344,
+        672
+      ],
+      "id": "21c56e7e-3463-42ab-b461-a225c4b72c95",
+      "name": "AggregateUrlNB"
+    },
+    {
+      "parameters": {
+        "url": "={{ $('PhotoUrl').item.json.urls }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -1088,
+        672
+      ],
+      "id": "5e072b4a-cef1-4752-b284-49285dfafe62",
+      "name": "HTTP Request",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.concatPrompt }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        432,
+        688
+      ],
+      "id": "f26ebe0a-bbea-42a4-a579-8ac55166d23e",
+      "name": "procPhotosetPrompter1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "MCKUe6c7lEWRrPCq",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/MCKUe6c7lEWRrPCq",
+          "cachedResultName": "subTR_API_AI_Selector"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "modelName": "={{ $('Start').item.json.modelName }}",
+            "apiName": "={{ $('Start').item.json.api }}",
+            "systemPrompt": "={{ $('procPhotosetPrompter').item.json.plainText }}",
+            "chat_id": "={{ $('Start').item.json.callback_query_message_chat_id }}",
+            "userPrompt": "={{ $json.plainText }}",
+            "botTocken": "={{ $('Start').item.json.botTocken }}",
+            "debugMode": "={{ $('Start').item.json.debugMode }}",
+            "urlList_bool": false,
+            "imgUrls": "={{ $('GetScenarioImgs').item.json.scenarioImgUrl }}"
+          },
+          "matchingColumns": [
+            "modelName",
+            "objectDescr",
+            "plainText"
+          ],
+          "schema": [
+            {
+              "id": "modelName",
+              "displayName": "modelName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "apiName",
+              "displayName": "apiName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "userPrompt",
+              "displayName": "userPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "systemPrompt",
+              "displayName": "systemPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "imgUrls",
+              "displayName": "imgUrls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "chat_id",
+              "displayName": "chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": false
+            },
+            {
+              "id": "ObjName",
+              "displayName": "ObjName",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "objectMainId",
+              "displayName": "objectMainId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "number",
+              "removed": true
+            },
+            {
+              "id": "ObjNameLocal",
+              "displayName": "ObjNameLocal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            },
+            {
+              "id": "botTocken",
+              "displayName": "botTocken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "urlList_bool",
+              "displayName": "urlList_bool",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "boolean",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "plainUrlList",
+              "displayName": "plainUrlList",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        656,
+        688
+      ],
+      "name": "call PhotosetPrompter",
+      "id": "3967a874-7de7-43af-94e5-f6fb504888b5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "eb69b7b9-5e34-4c63-8269-e0e04d786ed8",
+              "name": "concatPrompt",
+              "value": "={{\"# Creative Idea \" + $('Split Out').item.json.description + \"# Model & Look \" + $('GetScenario').item.json.concatDescr}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        688
+      ],
+      "id": "0c594a74-f1ec-49c7-a3a3-ad0a85355c38",
+      "name": "UP_PhotosetPrompter"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "cy2OHtNbUQaDIMP4",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/cy2OHtNbUQaDIMP4",
+          "cachedResultName": "subMkPlnTxt"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "systemPrompt_replace": "={{ $json.data }}"
+          },
+          "matchingColumns": [
+            "systemPrompt_replace"
+          ],
+          "schema": [
+            {
+              "id": "systemPrompt_replace",
+              "displayName": "systemPrompt_replace",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1200,
+        592
+      ],
+      "id": "03d709d1-1059-4409-8bdf-028e5cc54a50",
+      "name": "Call 'subMkPlnTxt'"
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{\"⚠️\" + $('call PhotosetPrompter').item.json.msg }}"
+      },
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1312,
+        848
+      ],
+      "id": "11fc6760-e66a-4d3f-bac8-01ab2a2e4e50",
+      "name": "Stop and Error"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "ebf1b473-80ad-42bd-acaa-1446197e4bc1",
+              "leftValue": "={{$json.data === empty }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        848,
+        688
+      ],
+      "id": "5e7e8101-7ca4-4948-8c68-ad3c7f4b6bbf",
+      "name": "IfResponseOk2"
+    }
+  ],
+  "pinData": {
+    "Start": [
+      {
+        "json": {
+          "callback_query_message_chat_id": 1723701965,
+          "objMainId": 295,
+          "modelName": "gemini-3-flash",
+          "api": "google",
+          "result_message_id": null,
+          "botTocken": "8500532222:AAHn-miVxN48HoJNpedLE6wz5WQ0poDaYXU",
+          "debugMode": "true",
+          "apiNameNB": "fal",
+          "photosetSelected": "1. The Jade Pavilion"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "repo_name": "trendcore_n8n",
+  "repo_owner": "ds634",
+  "repo_path": "/repos/ds634/trendcore_n8n/contents/",
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "errorWorkflow": "Db9RTL99yUCO77oO",
+    "callerPolicy": "workflowsFromSameOwner",
+    "timeSavedPerExecution": 20,
+    "saveDataSuccessExecution": "none",
+    "saveManualExecutions": false,
+    "saveDataErrorExecution": "all"
+  },
+  "shared": [
+    {
+      "updatedAt": "2026-03-13T22:23:12.738Z",
+      "createdAt": "2026-03-13T22:23:12.738Z",
+      "role": "workflow:owner",
+      "workflowId": "bZ5s7Mw8ETEiCzzG",
+      "projectId": "M9bTlSGaaAbsZxvs",
+      "project": {
+        "updatedAt": "2026-03-02T14:12:07.095Z",
+        "createdAt": "2026-03-02T14:12:01.275Z",
+        "id": "M9bTlSGaaAbsZxvs",
+        "name": "DLS   <ds@trendcore.ai>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "creatorId": "fdc7826f-287c-4690-a7e4-a481a32227a8"
+      }
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2026-03-02T14:25:49.831Z",
+      "createdAt": "2026-03-02T14:25:49.831Z",
+      "id": "6ZyTvRGaNVzskE04",
+      "name": "TG_PROD"
+    },
+    {
+      "updatedAt": "2026-03-14T09:06:27.877Z",
+      "createdAt": "2026-03-14T09:06:27.877Z",
+      "id": "B0nTQCdXh5647SkJ",
+      "name": "SP_PhotosetPrompter"
+    },
+    {
+      "updatedAt": "2026-03-13T22:44:49.747Z",
+      "createdAt": "2026-03-13T22:44:39.182Z",
+      "id": "hXFGfuRYKb0kgeq9",
+      "name": "SP_PhotosetCreative"
+    },
+    {
+      "updatedAt": "2026-03-02T14:27:20.441Z",
+      "createdAt": "2026-03-02T14:27:20.441Z",
+      "id": "sJgdMesU0ia9ad2u",
+      "name": "NB"
+    },
+    {
+      "updatedAt": "2026-03-02T14:25:49.805Z",
+      "createdAt": "2026-03-02T14:25:49.805Z",
+      "id": "uZYZiWAvyVAXbBbR",
+      "name": "CL"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2026-03-22T22:24:37.095Z",
+  "versionCounter": 454,
+  "versionId": "a32ec62f-7836-4653-b860-924671c56009",
+  "wf_name": "subTR_CL_Photoset"
+}
