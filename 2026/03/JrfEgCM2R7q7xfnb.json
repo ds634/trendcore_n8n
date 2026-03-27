@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-27T20:11:06.000Z",
-    "createdAt": "2026-03-27T20:10:21.665Z",
-    "versionId": "c99fb2c9-a3e5-498c-a12f-d7b36e9ed3d8",
+    "updatedAt": "2026-03-27T20:59:04.000Z",
+    "createdAt": "2026-03-27T20:46:32.374Z",
+    "versionId": "e0dad660-9c0c-435f-82ea-5d48431a2b95",
     "workflowId": "JrfEgCM2R7q7xfnb",
     "nodes": [
       {
@@ -1916,7 +1916,7 @@
       {
         "parameters": {
           "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id}}",
-          "text": "={{\"Загрузите фото человека, чью внешность нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
+          "text": "={{\"Загрузите фото человека, чей типаж нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
           "additionalFields": {
             "appendAttribution": false,
             "parse_mode": "HTML"
@@ -2156,7 +2156,7 @@
       {
         "parameters": {
           "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id}}",
-          "text": "={{\"Загрузите фото человека, чью внешность нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
+          "text": "={{\"Загрузите фото человека, чей типаж нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
           "additionalFields": {
             "appendAttribution": false
           }
@@ -3920,7 +3920,7 @@
         "parameters": {
           "content": "##CreateModel\n\nотработка нажатий \nна кнопки в сообщениях\n(callback_data)",
           "height": 944,
-          "width": 1856
+          "width": 2192
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
@@ -4072,7 +4072,8 @@
           6928
         ],
         "name": "Call subTR_CreateModel_GetFeature",
-        "id": "d6ea328c-e49c-4fe4-9b2b-2f4e7d7174c7"
+        "id": "d6ea328c-e49c-4fe4-9b2b-2f4e7d7174c7",
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -4720,7 +4721,7 @@
       },
       {
         "parameters": {
-          "errorMessage": "={{ \"Ошибка обработки: \" +  $('subAI_Model').item.json.msg }}"
+          "errorMessage": "={{ \"Ошибка обработки: \" + $('subAI_Model').item.json.msg.parseJson().msg  }}"
         },
         "type": "n8n-nodes-base.stopAndError",
         "typeVersion": 1,
@@ -5008,7 +5009,8 @@
           1488
         ],
         "id": "76f43254-7835-4f83-8593-926cda4b4ec7",
-        "name": "Call 'subTR_CreateModel_Photo'"
+        "name": "Call 'subTR_CreateModel_Photo'",
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -5648,8 +5650,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          80,
-          5968
+          96,
+          6272
         ],
         "id": "c09673d1-8107-4e0e-9ff5-ad17a6a108a1",
         "name": "IfEmpty"
@@ -5688,7 +5690,7 @@
       {
         "parameters": {
           "chatId": "={{ $('subAI_Model').item.json.chat_id }}",
-          "text": "={{\"Загрузите фото человека, чью внешность нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
+          "text": "={{\"Загрузите фото человека, чей типаж нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
           "additionalFields": {
             "appendAttribution": false
           }
@@ -5972,7 +5974,8 @@
           1104
         ],
         "name": "subTR_CreateModel_GenImg",
-        "id": "052bf6aa-e956-4d52-961d-75442678048d"
+        "id": "052bf6aa-e956-4d52-961d-75442678048d",
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -5981,7 +5984,7 @@
             "value": "MJ56MiweXUyRxLMn",
             "mode": "list",
             "cachedResultUrl": "/workflow/MJ56MiweXUyRxLMn",
-            "cachedResultName": "subTR_CreateModel_GenImg"
+            "cachedResultName": "subTR_CM_GenImg"
           },
           "workflowInputs": {
             "mappingMode": "defineBelow",
@@ -6091,7 +6094,8 @@
           1296
         ],
         "name": "subTR_CreateModel_GenImg1",
-        "id": "ae3b6f0c-951b-41dd-9f91-197c69feadd9"
+        "id": "ae3b6f0c-951b-41dd-9f91-197c69feadd9",
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -6625,7 +6629,7 @@
             "value": "OvyFK4P4uTnOpF0u",
             "mode": "list",
             "cachedResultUrl": "/workflow/OvyFK4P4uTnOpF0u",
-            "cachedResultName": "subTR_CreateModel_CancelClbk"
+            "cachedResultName": "subTR_CM_CancelClbk"
           },
           "workflowInputs": {
             "mappingMode": "defineBelow",
@@ -6657,7 +6661,8 @@
           720
         ],
         "name": "Call subTR_CM_CancelClbk",
-        "id": "9c239c87-9799-4fc2-ba3d-7457d7d4766f"
+        "id": "9c239c87-9799-4fc2-ba3d-7457d7d4766f",
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -6689,7 +6694,7 @@
             "value": "zUatcgkw4d6mR6A9",
             "mode": "list",
             "cachedResultUrl": "/workflow/zUatcgkw4d6mR6A9",
-            "cachedResultName": "subTR_CreateLook_GetObjGallery"
+            "cachedResultName": "subTR_CL_GetObjGallery"
           },
           "workflowInputs": {
             "mappingMode": "defineBelow",
@@ -6815,7 +6820,8 @@
           4336
         ],
         "name": "GetObjGallery_CompleteLook",
-        "id": "7151f6d8-69be-455c-97c0-c456dae94302"
+        "id": "7151f6d8-69be-455c-97c0-c456dae94302",
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -6950,7 +6956,8 @@
           4576
         ],
         "name": "Call GetObjGallery_NoCompleteLook",
-        "id": "1bb5469c-9b40-4f89-be7b-139aba28e9fd"
+        "id": "1bb5469c-9b40-4f89-be7b-139aba28e9fd",
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -7101,8 +7108,8 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          3344,
-          4480
+          3744,
+          4496
         ],
         "name": "Call GetObject",
         "id": "9edb37b7-627b-42e3-9b0d-a5cea2a6bf81"
@@ -8588,7 +8595,8 @@
           1840
         ],
         "name": "Call subTR_CL_CallbacksProcessing",
-        "id": "666a99d6-4a83-4881-81bc-c5acd9bc3747"
+        "id": "666a99d6-4a83-4881-81bc-c5acd9bc3747",
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -9584,6 +9592,206 @@
         ],
         "id": "63caeb92-6858-4f93-bcc0-af36a57a78c0",
         "name": "Switch"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+          "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1984,
+          1920
+        ],
+        "id": "0bee58b7-ea60-42e9-a5f2-6c94771b52cc",
+        "name": "ErrorGlobal",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+          "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3136,
+          736
+        ],
+        "id": "120f4cf0-7506-4fce-9555-96647215668d",
+        "name": "ErrorGlobal1",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+          "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3568,
+          1120
+        ],
+        "id": "84fb609c-450d-43b6-8f4f-4e835aa27683",
+        "name": "ErrorGlobal2",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+          "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3824,
+          1312
+        ],
+        "id": "9e8cc663-1465-46ea-9211-5eac3f80ebc1",
+        "name": "ErrorGlobal3",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+          "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3824,
+          1504
+        ],
+        "id": "8990646a-2bdf-46cf-9596-c4d7787bcabb",
+        "name": "ErrorGlobal4",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+          "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3312,
+          4400
+        ],
+        "id": "3a2efe64-f998-4796-9fd7-04d61c8e78c9",
+        "name": "ErrorGlobal5",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+          "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3312,
+          4624
+        ],
+        "id": "36af238f-dc34-4708-ac12-df0fee9afa6f",
+        "name": "ErrorGlobal6",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+          "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          4880,
+          7008
+        ],
+        "id": "40b579a2-03e5-4c36-bd7a-bb84734022d3",
+        "name": "ErrorGlobal7",
+        "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
       }
     ],
     "connections": {
@@ -11321,14 +11529,110 @@
             }
           ]
         ]
+      },
+      "Call subTR_CL_CallbacksProcessing": {
+        "main": [
+          [],
+          [
+            {
+              "node": "ErrorGlobal",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call subTR_CM_CancelClbk": {
+        "main": [
+          [],
+          [
+            {
+              "node": "ErrorGlobal1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "subTR_CreateModel_GenImg": {
+        "main": [
+          [],
+          [
+            {
+              "node": "ErrorGlobal2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "subTR_CreateModel_GenImg1": {
+        "main": [
+          [],
+          [
+            {
+              "node": "ErrorGlobal3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subTR_CreateModel_Photo'": {
+        "main": [
+          [],
+          [
+            {
+              "node": "ErrorGlobal4",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetObjGallery_CompleteLook": {
+        "main": [
+          [],
+          [
+            {
+              "node": "ErrorGlobal5",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call GetObjGallery_NoCompleteLook": {
+        "main": [
+          [],
+          [
+            {
+              "node": "ErrorGlobal6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call subTR_CreateModel_GetFeature": {
+        "main": [
+          [],
+          [
+            {
+              "node": "ErrorGlobal7",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "DLS  ",
-    "name": "Version c99fb2c9",
+    "name": "Version e0dad660",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c99fb2c9-a3e5-498c-a12f-d7b36e9ed3d8",
+  "activeVersionId": "e0dad660-9c0c-435f-82ea-5d48431a2b95",
   "connections": {
     "Telegram Trigger": {
       "main": [
@@ -13059,6 +13363,102 @@
         [
           {
             "node": "Stop and Error6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call subTR_CL_CallbacksProcessing": {
+      "main": [
+        [],
+        [
+          {
+            "node": "ErrorGlobal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call subTR_CM_CancelClbk": {
+      "main": [
+        [],
+        [
+          {
+            "node": "ErrorGlobal1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "subTR_CreateModel_GenImg": {
+      "main": [
+        [],
+        [
+          {
+            "node": "ErrorGlobal2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "subTR_CreateModel_GenImg1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "ErrorGlobal3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subTR_CreateModel_Photo'": {
+      "main": [
+        [],
+        [
+          {
+            "node": "ErrorGlobal4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetObjGallery_CompleteLook": {
+      "main": [
+        [],
+        [
+          {
+            "node": "ErrorGlobal5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call GetObjGallery_NoCompleteLook": {
+      "main": [
+        [],
+        [
+          {
+            "node": "ErrorGlobal6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call subTR_CreateModel_GetFeature": {
+      "main": [
+        [],
+        [
+          {
+            "node": "ErrorGlobal7",
             "type": "main",
             "index": 0
           }
@@ -14984,7 +15384,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id}}",
-        "text": "={{\"Загрузите фото человека, чью внешность нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
+        "text": "={{\"Загрузите фото человека, чей типаж нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
         "additionalFields": {
           "appendAttribution": false,
           "parse_mode": "HTML"
@@ -15224,7 +15624,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id}}",
-        "text": "={{\"Загрузите фото человека, чью внешность нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
+        "text": "={{\"Загрузите фото человека, чей типаж нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -16988,7 +17388,7 @@
       "parameters": {
         "content": "##CreateModel\n\nотработка нажатий \nна кнопки в сообщениях\n(callback_data)",
         "height": 944,
-        "width": 1856
+        "width": 2192
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
@@ -17140,7 +17540,8 @@
         6928
       ],
       "name": "Call subTR_CreateModel_GetFeature",
-      "id": "d6ea328c-e49c-4fe4-9b2b-2f4e7d7174c7"
+      "id": "d6ea328c-e49c-4fe4-9b2b-2f4e7d7174c7",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -17788,7 +18189,7 @@
     },
     {
       "parameters": {
-        "errorMessage": "={{ \"Ошибка обработки: \" +  $('subAI_Model').item.json.msg }}"
+        "errorMessage": "={{ \"Ошибка обработки: \" + $('subAI_Model').item.json.msg.parseJson().msg  }}"
       },
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
@@ -18076,7 +18477,8 @@
         1488
       ],
       "id": "76f43254-7835-4f83-8593-926cda4b4ec7",
-      "name": "Call 'subTR_CreateModel_Photo'"
+      "name": "Call 'subTR_CreateModel_Photo'",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -18716,8 +19118,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        80,
-        5968
+        96,
+        6272
       ],
       "id": "c09673d1-8107-4e0e-9ff5-ad17a6a108a1",
       "name": "IfEmpty"
@@ -18756,7 +19158,7 @@
     {
       "parameters": {
         "chatId": "={{ $('subAI_Model').item.json.chat_id }}",
-        "text": "={{\"Загрузите фото человека, чью внешность нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
+        "text": "={{\"Загрузите фото человека, чей типаж нужно взять за основу.\"+ \"\\n\\n\" +\"Ожидаю загрузки фото...\"}}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -19040,7 +19442,8 @@
         1104
       ],
       "name": "subTR_CreateModel_GenImg",
-      "id": "052bf6aa-e956-4d52-961d-75442678048d"
+      "id": "052bf6aa-e956-4d52-961d-75442678048d",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -19049,7 +19452,7 @@
           "value": "MJ56MiweXUyRxLMn",
           "mode": "list",
           "cachedResultUrl": "/workflow/MJ56MiweXUyRxLMn",
-          "cachedResultName": "subTR_CreateModel_GenImg"
+          "cachedResultName": "subTR_CM_GenImg"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -19159,7 +19562,8 @@
         1296
       ],
       "name": "subTR_CreateModel_GenImg1",
-      "id": "ae3b6f0c-951b-41dd-9f91-197c69feadd9"
+      "id": "ae3b6f0c-951b-41dd-9f91-197c69feadd9",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -19693,7 +20097,7 @@
           "value": "OvyFK4P4uTnOpF0u",
           "mode": "list",
           "cachedResultUrl": "/workflow/OvyFK4P4uTnOpF0u",
-          "cachedResultName": "subTR_CreateModel_CancelClbk"
+          "cachedResultName": "subTR_CM_CancelClbk"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -19725,7 +20129,8 @@
         720
       ],
       "name": "Call subTR_CM_CancelClbk",
-      "id": "9c239c87-9799-4fc2-ba3d-7457d7d4766f"
+      "id": "9c239c87-9799-4fc2-ba3d-7457d7d4766f",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -19757,7 +20162,7 @@
           "value": "zUatcgkw4d6mR6A9",
           "mode": "list",
           "cachedResultUrl": "/workflow/zUatcgkw4d6mR6A9",
-          "cachedResultName": "subTR_CreateLook_GetObjGallery"
+          "cachedResultName": "subTR_CL_GetObjGallery"
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
@@ -19883,7 +20288,8 @@
         4336
       ],
       "name": "GetObjGallery_CompleteLook",
-      "id": "7151f6d8-69be-455c-97c0-c456dae94302"
+      "id": "7151f6d8-69be-455c-97c0-c456dae94302",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -20018,7 +20424,8 @@
         4576
       ],
       "name": "Call GetObjGallery_NoCompleteLook",
-      "id": "1bb5469c-9b40-4f89-be7b-139aba28e9fd"
+      "id": "1bb5469c-9b40-4f89-be7b-139aba28e9fd",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -20169,8 +20576,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        3344,
-        4480
+        3744,
+        4496
       ],
       "name": "Call GetObject",
       "id": "9edb37b7-627b-42e3-9b0d-a5cea2a6bf81"
@@ -21656,7 +22063,8 @@
         1840
       ],
       "name": "Call subTR_CL_CallbacksProcessing",
-      "id": "666a99d6-4a83-4881-81bc-c5acd9bc3747"
+      "id": "666a99d6-4a83-4881-81bc-c5acd9bc3747",
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -22652,6 +23060,206 @@
       ],
       "id": "63caeb92-6858-4f93-bcc0-af36a57a78c0",
       "name": "Switch"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+        "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1984,
+        1920
+      ],
+      "id": "0bee58b7-ea60-42e9-a5f2-6c94771b52cc",
+      "name": "ErrorGlobal",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+        "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3136,
+        736
+      ],
+      "id": "120f4cf0-7506-4fce-9555-96647215668d",
+      "name": "ErrorGlobal1",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+        "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3568,
+        1120
+      ],
+      "id": "84fb609c-450d-43b6-8f4f-4e835aa27683",
+      "name": "ErrorGlobal2",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+        "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3824,
+        1312
+      ],
+      "id": "9e8cc663-1465-46ea-9211-5eac3f80ebc1",
+      "name": "ErrorGlobal3",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+        "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3824,
+        1504
+      ],
+      "id": "8990646a-2bdf-46cf-9596-c4d7787bcabb",
+      "name": "ErrorGlobal4",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3312,
+        4400
+      ],
+      "id": "3a2efe64-f998-4796-9fd7-04d61c8e78c9",
+      "name": "ErrorGlobal5",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3312,
+        4624
+      ],
+      "id": "36af238f-dc34-4708-ac12-df0fee9afa6f",
+      "name": "ErrorGlobal6",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{\"🔧 Упс, что-то пошло не так. Мы уже получили сигнал об ошибке и скоро всё починим. Пожалуйста, попробуйте немного позже!\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4880,
+        7008
+      ],
+      "id": "40b579a2-03e5-4c36-bd7a-bb84734022d3",
+      "name": "ErrorGlobal7",
+      "webhookId": "20dac25f-e37e-4ea0-a5ba-c4d440d34ae8",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
     }
   ],
   "settings": {
@@ -22694,6 +23302,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-03-27T20:10:21.662Z",
-  "versionId": "c99fb2c9-a3e5-498c-a12f-d7b36e9ed3d8"
+  "updatedAt": "2026-03-27T20:46:32.372Z",
+  "versionId": "e0dad660-9c0c-435f-82ea-5d48431a2b95"
 }
