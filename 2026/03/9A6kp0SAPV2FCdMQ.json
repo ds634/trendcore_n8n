@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-26T11:29:38.000Z",
-    "createdAt": "2026-03-26T11:29:36.805Z",
-    "versionId": "43f40438-d4f4-4f04-aa56-34f1a99b0429",
+    "updatedAt": "2026-03-26T21:59:48.000Z",
+    "createdAt": "2026-03-26T21:59:43.642Z",
+    "versionId": "4c49c26a-66f3-4a63-903a-5f0fca4b4fe7",
     "workflowId": "9A6kp0SAPV2FCdMQ",
     "nodes": [
       {
@@ -237,7 +237,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -329,7 +329,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -407,6 +407,12 @@
                 "name": "result",
                 "value": "={{ $('SetNBgen_Fal_getResult').item.json.images[0].url }}",
                 "type": "string"
+              },
+              {
+                "id": "631f2955-0bf0-41d9-9fb8-042a7fc1c98f",
+                "name": "",
+                "value": "",
+                "type": "string"
               }
             ]
           },
@@ -415,7 +421,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          48,
+          256,
           48
         ],
         "id": "a2b5eb3b-b6c8-497c-a941-e017314c6d43",
@@ -565,6 +571,92 @@
             "name": "Google Sheets account"
           }
         }
+      },
+      {
+        "parameters": {
+          "dataTableId": {
+            "__rl": true,
+            "value": "RM6PbiNg1j5XXKOc",
+            "mode": "list",
+            "cachedResultName": "TrendcoreNbLogs",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/RM6PbiNg1j5XXKOc"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "userId": "={{ $('Start').item.json.chatId }}",
+              "execId": "=\n\nhttps://fashion-pro.app.n8n.cloud/workflow/{{$workflow.id }}/executions/{{ $execution.id }}\n\n",
+              "Model": "={{ $('Start').item.json.apiNameNB }}",
+              "urls": "={{ $('Start').item.json.urls }}",
+              "urlResult": "={{$('SetNBgen_Fal_getResult').item.json.images[0].url}}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "Model",
+                "displayName": "Model",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "urls",
+                "displayName": "urls",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "execId",
+                "displayName": "execId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "urlResult",
+                "displayName": "urlResult",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          48,
+          48
+        ],
+        "id": "f64c1fb9-e8d5-41c4-9669-772997f768d9",
+        "name": "Insert row",
+        "onError": "continueRegularOutput"
       }
     ],
     "connections": {
@@ -727,7 +819,7 @@
         "main": [
           [
             {
-              "node": "Edit Fields",
+              "node": "Insert row",
               "type": "main",
               "index": 0
             }
@@ -767,14 +859,25 @@
         "main": [
           []
         ]
+      },
+      "Insert row": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "DLS  ",
-    "name": "Version 43f40438",
+    "name": "Version 4c49c26a",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "43f40438-d4f4-4f04-aa56-34f1a99b0429",
+  "activeVersionId": "4c49c26a-66f3-4a63-903a-5f0fca4b4fe7",
   "connections": {
     "Wait": {
       "main": [
@@ -935,7 +1038,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Insert row",
             "type": "main",
             "index": 0
           }
@@ -974,6 +1077,17 @@
     "Edit Fields": {
       "main": [
         []
+      ]
+    },
+    "Insert row": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },
@@ -1216,7 +1330,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -1308,7 +1422,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -1386,6 +1500,12 @@
               "name": "result",
               "value": "={{ $('SetNBgen_Fal_getResult').item.json.images[0].url }}",
               "type": "string"
+            },
+            {
+              "id": "631f2955-0bf0-41d9-9fb8-042a7fc1c98f",
+              "name": "",
+              "value": "",
+              "type": "string"
             }
           ]
         },
@@ -1394,7 +1514,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        48,
+        256,
         48
       ],
       "id": "a2b5eb3b-b6c8-497c-a941-e017314c6d43",
@@ -1544,6 +1664,92 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "RM6PbiNg1j5XXKOc",
+          "mode": "list",
+          "cachedResultName": "TrendcoreNbLogs",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/RM6PbiNg1j5XXKOc"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "userId": "={{ $('Start').item.json.chatId }}",
+            "execId": "=\n\nhttps://fashion-pro.app.n8n.cloud/workflow/{{$workflow.id }}/executions/{{ $execution.id }}\n\n",
+            "Model": "={{ $('Start').item.json.apiNameNB }}",
+            "urls": "={{ $('Start').item.json.urls }}",
+            "urlResult": "={{$('SetNBgen_Fal_getResult').item.json.images[0].url}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Model",
+              "displayName": "Model",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "urls",
+              "displayName": "urls",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "execId",
+              "displayName": "execId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "urlResult",
+              "displayName": "urlResult",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        48,
+        48
+      ],
+      "id": "f64c1fb9-e8d5-41c4-9669-772997f768d9",
+      "name": "Insert row",
+      "onError": "continueRegularOutput"
     }
   ],
   "settings": {
@@ -1583,6 +1789,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-26T11:29:36.804Z",
-  "versionId": "43f40438-d4f4-4f04-aa56-34f1a99b0429"
+  "updatedAt": "2026-03-26T21:59:43.641Z",
+  "versionId": "4c49c26a-66f3-4a63-903a-5f0fca4b4fe7"
 }
