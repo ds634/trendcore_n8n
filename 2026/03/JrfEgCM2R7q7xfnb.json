@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-26T17:50:56.000Z",
-    "createdAt": "2026-03-25T20:18:59.730Z",
-    "versionId": "75a33bdc-df98-4e0d-91bd-c418ee65e2ed",
+    "updatedAt": "2026-03-27T20:11:06.000Z",
+    "createdAt": "2026-03-27T20:10:21.665Z",
+    "versionId": "c99fb2c9-a3e5-498c-a12f-d7b36e9ed3d8",
     "workflowId": "JrfEgCM2R7q7xfnb",
     "nodes": [
       {
@@ -28,7 +28,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -659,7 +659,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -684,7 +684,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -732,7 +732,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -959,7 +959,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1110,7 +1110,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueErrorOutput"
@@ -1135,7 +1135,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1215,7 +1215,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -1240,7 +1240,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1338,7 +1338,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1535,7 +1535,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1556,7 +1556,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1935,7 +1935,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2079,7 +2079,7 @@
         "typeVersion": 1.1,
         "position": [
           6240,
-          5872
+          5888
         ],
         "id": "ca365f1a-d5b5-44f7-a6d2-24a34599785e",
         "name": "Set GetFace status2"
@@ -2123,8 +2123,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3072,
-          6160
+          3056,
+          6096
         ],
         "id": "a99ae647-c93c-418f-ae3a-82589e866eb3",
         "name": "Empty imgs2"
@@ -2141,7 +2141,7 @@
         "typeVersion": 1.2,
         "position": [
           5792,
-          5680
+          5696
         ],
         "id": "f9021e00-0379-4823-9319-7eb8a0a70d44",
         "name": "No imgs sent1",
@@ -2149,7 +2149,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2165,7 +2165,7 @@
         "typeVersion": 1.2,
         "position": [
           6048,
-          5840
+          5856
         ],
         "id": "8763106c-fd27-41ce-a0d6-cefaf6ecb134",
         "name": "send msg to upload face2",
@@ -2174,7 +2174,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2318,7 +2318,7 @@
         "typeVersion": 1.1,
         "position": [
           6832,
-          6608
+          6752
         ],
         "id": "1cd4d358-7148-4cba-a4bf-ec5482bb11dc",
         "name": "Set GetGalleryForFace status",
@@ -2475,7 +2475,7 @@
         "typeVersion": 1.1,
         "position": [
           6112,
-          6336
+          6480
         ],
         "id": "f04c0cac-4b17-4fb8-b504-41f65197735c",
         "name": "Set FaceRecieved status + store faceUrl1",
@@ -2510,7 +2510,7 @@
         "typeVersion": 2.3,
         "position": [
           3264,
-          6768
+          6912
         ],
         "id": "22973a17-2657-447b-8595-f5ec1129109f",
         "name": "Empty imgs3"
@@ -2527,7 +2527,7 @@
         "typeVersion": 1.2,
         "position": [
           6016,
-          6624
+          6768
         ],
         "id": "a037e642-dbe7-4f34-ab62-62e00ce46259",
         "name": "No imgs forGallery1",
@@ -2535,7 +2535,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2648,7 +2648,7 @@
         "typeVersion": 1.1,
         "position": [
           3744,
-          6480
+          6624
         ],
         "id": "b6046993-99ff-4543-a04f-52f6a72d25e4",
         "name": "Set Error status1",
@@ -2666,7 +2666,7 @@
         "typeVersion": 1.2,
         "position": [
           5792,
-          5872
+          5888
         ],
         "id": "574c09b7-dc9d-48b6-a83d-be94dcbea7af",
         "name": "GallerySent1",
@@ -2674,7 +2674,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2696,7 +2696,7 @@
         "typeVersion": 3.4,
         "position": [
           5008,
-          6256
+          6400
         ],
         "id": "0fc7695a-eb66-402a-af72-2d76d4cfeaa6",
         "name": "urlModel1"
@@ -2713,8 +2713,8 @@
             "conditions": [
               {
                 "id": "a869a9c7-791d-4f1c-852e-828a3569b146",
-                "leftValue": "={{$json.data}}",
-                "rightValue": "Error",
+                "leftValue": "={{ $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() }}",
+                "rightValue": "error",
                 "operator": {
                   "type": "string",
                   "operation": "contains"
@@ -2728,8 +2728,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          5600,
-          6160
+          5232,
+          6128
         ],
         "id": "022e7171-9749-4621-b59e-7006b7aa0634",
         "name": "IfError1"
@@ -2737,7 +2737,7 @@
       {
         "parameters": {
           "chatId": "={{ $('subAI_Model').item.json.chat_id }}",
-          "text": "={{$('subAI_Model').item.json.data  }}",
+          "text": "={{$('subAI_Model').item.json.msg.parseJson().msg  }}",
           "additionalFields": {
             "appendAttribution": false
           }
@@ -2746,7 +2746,7 @@
         "typeVersion": 1.2,
         "position": [
           5904,
-          6064
+          6208
         ],
         "id": "50ec04f5-5ccd-44b0-b155-e6c1aed8aff0",
         "name": "OP_Err_ model1",
@@ -2754,7 +2754,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2800,7 +2800,7 @@
         "typeVersion": 1.2,
         "position": [
           6592,
-          6320
+          6464
         ],
         "id": "e407e379-2f60-449d-92fc-8e20f5fcf41c",
         "name": "OP_final_model1",
@@ -2808,7 +2808,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2842,7 +2842,7 @@
         "typeVersion": 2.3,
         "position": [
           5376,
-          6256
+          6400
         ],
         "id": "2749dbac-0f13-4c46-9b20-54572773dc75",
         "name": "IfResponseOk1"
@@ -2856,7 +2856,7 @@
         "typeVersion": 1.2,
         "position": [
           4848,
-          6272
+          6416
         ],
         "id": "9fd73991-8645-40fe-9783-81a48fc92665",
         "name": "Send a chat action2",
@@ -2864,7 +2864,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2905,7 +2905,7 @@
         "typeVersion": 1.3,
         "position": [
           4688,
-          6272
+          6416
         ],
         "id": "5bc3ce89-abba-4bcd-a325-6ef67e048f54",
         "name": "subMkPlnTxt-"
@@ -2938,8 +2938,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3216,
-          6288
+          3264,
+          6240
         ],
         "id": "d499b6d8-8bf7-418a-88a0-2fca005026fe",
         "name": "IfMediaGroup"
@@ -2953,7 +2953,7 @@
         "typeVersion": 1.2,
         "position": [
           3520,
-          6864
+          7008
         ],
         "id": "dd08c850-926e-4f43-86ce-39be94054709",
         "name": "Send a chat action3",
@@ -2961,20 +2961,20 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
       {
         "parameters": {
           "content": " 1 phase/ Model-Constructor",
-          "height": 1552,
-          "width": 4144
+          "height": 1696,
+          "width": 4384
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          2320,
-          5632
+          2768,
+          5664
         ],
         "typeVersion": 1,
         "id": "c4d8c0e6-68d2-4a40-8774-375f68ba663b",
@@ -2989,8 +2989,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3520,
-          6352
+          3552,
+          6496
         ],
         "id": "98334a79-1e69-4226-bba4-8ecd34830e87",
         "name": "GetModelImg",
@@ -2998,7 +2998,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueErrorOutput"
@@ -3155,7 +3155,7 @@
         "typeVersion": 3.4,
         "position": [
           2848,
-          6336
+          6480
         ],
         "id": "61554298-aaad-46f0-b16c-c720a0b943d7",
         "name": "CreateModelCommand"
@@ -3441,7 +3441,7 @@
         "typeVersion": 2.3,
         "position": [
           3744,
-          6864
+          7008
         ],
         "id": "8bdd9f3e-f135-42bc-89e5-b4cd88db0400",
         "name": "IfDescrExists"
@@ -3458,7 +3458,7 @@
         "typeVersion": 1.2,
         "position": [
           3984,
-          6816
+          6960
         ],
         "id": "d487f1cb-7ee6-4636-8591-ed3b1af6de1b",
         "name": "Send a text message2",
@@ -3466,7 +3466,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -3941,7 +3941,7 @@
         "typeVersion": 1.2,
         "position": [
           4224,
-          6768
+          6912
         ],
         "id": "78f7efdd-9e82-4223-a37d-b2844eb4e55f",
         "name": "GetObjectGallery1",
@@ -3949,7 +3949,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -4069,7 +4069,7 @@
         "typeVersion": 1.2,
         "position": [
           4560,
-          6784
+          6928
         ],
         "name": "Call subTR_CreateModel_GetFeature",
         "id": "d6ea328c-e49c-4fe4-9b2b-2f4e7d7174c7"
@@ -4278,7 +4278,7 @@
         "typeVersion": 1.2,
         "position": [
           5184,
-          6256
+          6400
         ],
         "name": "subAI_Model",
         "id": "16e237c9-e8f7-4df3-9f8b-09ab8ff902ef"
@@ -4469,7 +4469,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -4638,7 +4638,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -4663,7 +4663,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -4687,7 +4687,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -4725,8 +4725,8 @@
         "type": "n8n-nodes-base.stopAndError",
         "typeVersion": 1,
         "position": [
-          5680,
-          6384
+          5872,
+          6688
         ],
         "id": "dbb75d0d-2a93-4cc0-9591-b8bfeef36ec3",
         "name": "Stop and Error6"
@@ -4920,7 +4920,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -5030,7 +5030,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -5096,7 +5096,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -5121,7 +5121,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -5187,7 +5187,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -5564,7 +5564,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "disabled": true
@@ -5697,7 +5697,7 @@
         "typeVersion": 1.2,
         "position": [
           6128,
-          6064
+          6208
         ],
         "id": "16936766-7ab0-4be8-9097-d3996c1f1cb9",
         "name": "send msg to upload face4",
@@ -5706,7 +5706,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -5850,7 +5850,7 @@
         "typeVersion": 1.1,
         "position": [
           6320,
-          6064
+          6208
         ],
         "id": "7e84ed0b-4e5a-4b3f-bd25-0ae8b0886fd5",
         "name": "Set GetFace status4"
@@ -6249,7 +6249,7 @@
         "typeVersion": 2.3,
         "position": [
           4000,
-          6272
+          6416
         ],
         "id": "d65bcade-6c8f-49f9-b5db-ea3293c690d6",
         "name": "IfDebug1"
@@ -6272,7 +6272,7 @@
         "typeVersion": 3.4,
         "position": [
           4464,
-          6272
+          6416
         ],
         "id": "78c45abd-2aa5-46e7-b81a-b885e7a04309",
         "name": "SP_recievedPrompt1"
@@ -6307,7 +6307,7 @@
         "typeVersion": 4.7,
         "position": [
           4256,
-          6112
+          6256
         ],
         "id": "ff85472e-67d0-4497-8d5d-c75a553e0afb",
         "name": "GetPrompt1",
@@ -6342,7 +6342,7 @@
         "typeVersion": 3.4,
         "position": [
           3760,
-          6288
+          6432
         ],
         "id": "17f9c978-289f-4b40-b241-35a26650ab00",
         "name": "SP_ModelConstructor-"
@@ -6376,8 +6376,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3360,
-          6464
+          3376,
+          6416
         ],
         "id": "57e45416-ebce-41ce-88c9-20078659cd20",
         "name": "Send a text message3",
@@ -6385,7 +6385,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -6402,7 +6402,7 @@
         "typeVersion": 1.2,
         "position": [
           6400,
-          6320
+          6464
         ],
         "id": "6d1c0fea-752e-4421-9fcb-aaa66030c87c",
         "name": "OP_final_model7",
@@ -6410,7 +6410,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -6434,7 +6434,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -6669,7 +6669,7 @@
         "typeVersion": 1.2,
         "position": [
           3088,
-          6592
+          6736
         ],
         "id": "69ce8a6b-8cbb-4050-9fa0-2732375f783c",
         "name": "Delete a chat message",
@@ -6677,7 +6677,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -6976,7 +6976,7 @@
         "typeVersion": 3.4,
         "position": [
           5904,
-          6304
+          6448
         ],
         "id": "5ddccb3e-deb3-42ba-87ab-10b2c6f26e32",
         "name": "ParsedDescr"
@@ -7101,8 +7101,8 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          3136,
-          4448
+          3344,
+          4480
         ],
         "name": "Call GetObject",
         "id": "9edb37b7-627b-42e3-9b0d-a5cea2a6bf81"
@@ -7128,7 +7128,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7188,7 +7188,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7213,7 +7213,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7336,7 +7336,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7361,7 +7361,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7404,7 +7404,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7464,7 +7464,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7489,7 +7489,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7655,7 +7655,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7695,7 +7695,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7720,7 +7720,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7763,7 +7763,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -7971,7 +7971,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -8030,7 +8030,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -8055,7 +8055,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -8661,7 +8661,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -8695,7 +8695,7 @@
         "typeVersion": 1.2,
         "position": [
           4016,
-          7008
+          7152
         ],
         "id": "7e2df7cd-bc56-4038-a874-9a0b7c9ccc5a",
         "name": "AwaitModelEdits1",
@@ -8703,7 +8703,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -8845,7 +8845,7 @@
         "typeVersion": 1.1,
         "position": [
           4304,
-          7008
+          7152
         ],
         "id": "8d29eb15-83ec-452a-a984-4087ad6ff44b",
         "name": "Set GetGalleryForFace status2",
@@ -9018,7 +9018,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -9043,7 +9043,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -9215,7 +9215,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -9240,7 +9240,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -9299,7 +9299,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -9465,7 +9465,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -9490,9 +9490,100 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() }}",
+                      "rightValue": "error",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals"
+                      },
+                      "id": "3b76698a-aec7-4221-b357-45ded56e4182"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "error"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "0f42a651-0468-4a2e-be8c-507fd7169a3f",
+                      "leftValue": "={{ $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() }}",
+                      "rightValue": "success",
+                      "operator": {
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "success"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "strict",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "dda3be1f-4bf4-419d-903f-329e3d44cc27",
+                      "leftValue": "={{ $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() !== \"error\" && $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() !== \"success\" }}",
+                      "rightValue": "tr",
+                      "operator": {
+                        "type": "boolean",
+                        "operation": "true",
+                        "singleValue": true
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "other"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          5568,
+          6240
+        ],
+        "id": "63caeb92-6858-4f93-bcc0-af36a57a78c0",
+        "name": "Switch"
       }
     ],
     "connections": {
@@ -10047,20 +10138,8 @@
       },
       "IfError1": {
         "main": [
-          [
-            {
-              "node": "OP_Err_ model1",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "ParsedDescr",
-              "type": "main",
-              "index": 0
-            }
-          ]
+          [],
+          []
         ]
       },
       "OP_Err_ model1": {
@@ -10089,7 +10168,7 @@
         "main": [
           [
             {
-              "node": "IfError1",
+              "node": "Switch",
               "type": "main",
               "index": 0
             }
@@ -11217,14 +11296,39 @@
             }
           ]
         ]
+      },
+      "Switch": {
+        "main": [
+          [
+            {
+              "node": "OP_Err_ model1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "ParsedDescr",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Stop and Error6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "DLS  ",
-    "name": "Version 75a33bdc",
+    "name": "Version c99fb2c9",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "75a33bdc-df98-4e0d-91bd-c418ee65e2ed",
+  "activeVersionId": "c99fb2c9-a3e5-498c-a12f-d7b36e9ed3d8",
   "connections": {
     "Telegram Trigger": {
       "main": [
@@ -11777,20 +11881,8 @@
     },
     "IfError1": {
       "main": [
-        [
-          {
-            "node": "OP_Err_ model1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "ParsedDescr",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        [],
+        []
       ]
     },
     "OP_Err_ model1": {
@@ -11819,7 +11911,7 @@
       "main": [
         [
           {
-            "node": "IfError1",
+            "node": "Switch",
             "type": "main",
             "index": 0
           }
@@ -12947,6 +13039,31 @@
           }
         ]
       ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "OP_Err_ model1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ParsedDescr",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Stop and Error6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-03-02T16:18:24.430Z",
@@ -12979,7 +13096,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -13610,7 +13727,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -13635,7 +13752,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -13683,7 +13800,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -13910,7 +14027,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -14061,7 +14178,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueErrorOutput"
@@ -14086,7 +14203,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -14166,7 +14283,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -14191,7 +14308,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -14289,7 +14406,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -14486,7 +14603,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -14507,7 +14624,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -14886,7 +15003,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -15030,7 +15147,7 @@
       "typeVersion": 1.1,
       "position": [
         6240,
-        5872
+        5888
       ],
       "id": "ca365f1a-d5b5-44f7-a6d2-24a34599785e",
       "name": "Set GetFace status2"
@@ -15074,8 +15191,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3072,
-        6160
+        3056,
+        6096
       ],
       "id": "a99ae647-c93c-418f-ae3a-82589e866eb3",
       "name": "Empty imgs2"
@@ -15092,7 +15209,7 @@
       "typeVersion": 1.2,
       "position": [
         5792,
-        5680
+        5696
       ],
       "id": "f9021e00-0379-4823-9319-7eb8a0a70d44",
       "name": "No imgs sent1",
@@ -15100,7 +15217,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -15116,7 +15233,7 @@
       "typeVersion": 1.2,
       "position": [
         6048,
-        5840
+        5856
       ],
       "id": "8763106c-fd27-41ce-a0d6-cefaf6ecb134",
       "name": "send msg to upload face2",
@@ -15125,7 +15242,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -15269,7 +15386,7 @@
       "typeVersion": 1.1,
       "position": [
         6832,
-        6608
+        6752
       ],
       "id": "1cd4d358-7148-4cba-a4bf-ec5482bb11dc",
       "name": "Set GetGalleryForFace status",
@@ -15426,7 +15543,7 @@
       "typeVersion": 1.1,
       "position": [
         6112,
-        6336
+        6480
       ],
       "id": "f04c0cac-4b17-4fb8-b504-41f65197735c",
       "name": "Set FaceRecieved status + store faceUrl1",
@@ -15461,7 +15578,7 @@
       "typeVersion": 2.3,
       "position": [
         3264,
-        6768
+        6912
       ],
       "id": "22973a17-2657-447b-8595-f5ec1129109f",
       "name": "Empty imgs3"
@@ -15478,7 +15595,7 @@
       "typeVersion": 1.2,
       "position": [
         6016,
-        6624
+        6768
       ],
       "id": "a037e642-dbe7-4f34-ab62-62e00ce46259",
       "name": "No imgs forGallery1",
@@ -15486,7 +15603,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -15599,7 +15716,7 @@
       "typeVersion": 1.1,
       "position": [
         3744,
-        6480
+        6624
       ],
       "id": "b6046993-99ff-4543-a04f-52f6a72d25e4",
       "name": "Set Error status1",
@@ -15617,7 +15734,7 @@
       "typeVersion": 1.2,
       "position": [
         5792,
-        5872
+        5888
       ],
       "id": "574c09b7-dc9d-48b6-a83d-be94dcbea7af",
       "name": "GallerySent1",
@@ -15625,7 +15742,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -15647,7 +15764,7 @@
       "typeVersion": 3.4,
       "position": [
         5008,
-        6256
+        6400
       ],
       "id": "0fc7695a-eb66-402a-af72-2d76d4cfeaa6",
       "name": "urlModel1"
@@ -15664,8 +15781,8 @@
           "conditions": [
             {
               "id": "a869a9c7-791d-4f1c-852e-828a3569b146",
-              "leftValue": "={{$json.data}}",
-              "rightValue": "Error",
+              "leftValue": "={{ $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() }}",
+              "rightValue": "error",
               "operator": {
                 "type": "string",
                 "operation": "contains"
@@ -15679,8 +15796,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        5600,
-        6160
+        5232,
+        6128
       ],
       "id": "022e7171-9749-4621-b59e-7006b7aa0634",
       "name": "IfError1"
@@ -15688,7 +15805,7 @@
     {
       "parameters": {
         "chatId": "={{ $('subAI_Model').item.json.chat_id }}",
-        "text": "={{$('subAI_Model').item.json.data  }}",
+        "text": "={{$('subAI_Model').item.json.msg.parseJson().msg  }}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -15697,7 +15814,7 @@
       "typeVersion": 1.2,
       "position": [
         5904,
-        6064
+        6208
       ],
       "id": "50ec04f5-5ccd-44b0-b155-e6c1aed8aff0",
       "name": "OP_Err_ model1",
@@ -15705,7 +15822,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -15751,7 +15868,7 @@
       "typeVersion": 1.2,
       "position": [
         6592,
-        6320
+        6464
       ],
       "id": "e407e379-2f60-449d-92fc-8e20f5fcf41c",
       "name": "OP_final_model1",
@@ -15759,7 +15876,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -15793,7 +15910,7 @@
       "typeVersion": 2.3,
       "position": [
         5376,
-        6256
+        6400
       ],
       "id": "2749dbac-0f13-4c46-9b20-54572773dc75",
       "name": "IfResponseOk1"
@@ -15807,7 +15924,7 @@
       "typeVersion": 1.2,
       "position": [
         4848,
-        6272
+        6416
       ],
       "id": "9fd73991-8645-40fe-9783-81a48fc92665",
       "name": "Send a chat action2",
@@ -15815,7 +15932,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -15856,7 +15973,7 @@
       "typeVersion": 1.3,
       "position": [
         4688,
-        6272
+        6416
       ],
       "id": "5bc3ce89-abba-4bcd-a325-6ef67e048f54",
       "name": "subMkPlnTxt-"
@@ -15889,8 +16006,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3216,
-        6288
+        3264,
+        6240
       ],
       "id": "d499b6d8-8bf7-418a-88a0-2fca005026fe",
       "name": "IfMediaGroup"
@@ -15904,7 +16021,7 @@
       "typeVersion": 1.2,
       "position": [
         3520,
-        6864
+        7008
       ],
       "id": "dd08c850-926e-4f43-86ce-39be94054709",
       "name": "Send a chat action3",
@@ -15912,20 +16029,20 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
     {
       "parameters": {
         "content": " 1 phase/ Model-Constructor",
-        "height": 1552,
-        "width": 4144
+        "height": 1696,
+        "width": 4384
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2320,
-        5632
+        2768,
+        5664
       ],
       "typeVersion": 1,
       "id": "c4d8c0e6-68d2-4a40-8774-375f68ba663b",
@@ -15940,8 +16057,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3520,
-        6352
+        3552,
+        6496
       ],
       "id": "98334a79-1e69-4226-bba4-8ecd34830e87",
       "name": "GetModelImg",
@@ -15949,7 +16066,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueErrorOutput"
@@ -16106,7 +16223,7 @@
       "typeVersion": 3.4,
       "position": [
         2848,
-        6336
+        6480
       ],
       "id": "61554298-aaad-46f0-b16c-c720a0b943d7",
       "name": "CreateModelCommand"
@@ -16392,7 +16509,7 @@
       "typeVersion": 2.3,
       "position": [
         3744,
-        6864
+        7008
       ],
       "id": "8bdd9f3e-f135-42bc-89e5-b4cd88db0400",
       "name": "IfDescrExists"
@@ -16409,7 +16526,7 @@
       "typeVersion": 1.2,
       "position": [
         3984,
-        6816
+        6960
       ],
       "id": "d487f1cb-7ee6-4636-8591-ed3b1af6de1b",
       "name": "Send a text message2",
@@ -16417,7 +16534,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -16892,7 +17009,7 @@
       "typeVersion": 1.2,
       "position": [
         4224,
-        6768
+        6912
       ],
       "id": "78f7efdd-9e82-4223-a37d-b2844eb4e55f",
       "name": "GetObjectGallery1",
@@ -16900,7 +17017,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -17020,7 +17137,7 @@
       "typeVersion": 1.2,
       "position": [
         4560,
-        6784
+        6928
       ],
       "name": "Call subTR_CreateModel_GetFeature",
       "id": "d6ea328c-e49c-4fe4-9b2b-2f4e7d7174c7"
@@ -17229,7 +17346,7 @@
       "typeVersion": 1.2,
       "position": [
         5184,
-        6256
+        6400
       ],
       "name": "subAI_Model",
       "id": "16e237c9-e8f7-4df3-9f8b-09ab8ff902ef"
@@ -17420,7 +17537,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -17589,7 +17706,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -17614,7 +17731,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -17638,7 +17755,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -17676,8 +17793,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        5680,
-        6384
+        5872,
+        6688
       ],
       "id": "dbb75d0d-2a93-4cc0-9591-b8bfeef36ec3",
       "name": "Stop and Error6"
@@ -17871,7 +17988,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -17981,7 +18098,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -18047,7 +18164,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -18072,7 +18189,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -18138,7 +18255,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -18515,7 +18632,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "disabled": true
@@ -18648,7 +18765,7 @@
       "typeVersion": 1.2,
       "position": [
         6128,
-        6064
+        6208
       ],
       "id": "16936766-7ab0-4be8-9097-d3996c1f1cb9",
       "name": "send msg to upload face4",
@@ -18657,7 +18774,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -18801,7 +18918,7 @@
       "typeVersion": 1.1,
       "position": [
         6320,
-        6064
+        6208
       ],
       "id": "7e84ed0b-4e5a-4b3f-bd25-0ae8b0886fd5",
       "name": "Set GetFace status4"
@@ -19200,7 +19317,7 @@
       "typeVersion": 2.3,
       "position": [
         4000,
-        6272
+        6416
       ],
       "id": "d65bcade-6c8f-49f9-b5db-ea3293c690d6",
       "name": "IfDebug1"
@@ -19223,7 +19340,7 @@
       "typeVersion": 3.4,
       "position": [
         4464,
-        6272
+        6416
       ],
       "id": "78c45abd-2aa5-46e7-b81a-b885e7a04309",
       "name": "SP_recievedPrompt1"
@@ -19258,7 +19375,7 @@
       "typeVersion": 4.7,
       "position": [
         4256,
-        6112
+        6256
       ],
       "id": "ff85472e-67d0-4497-8d5d-c75a553e0afb",
       "name": "GetPrompt1",
@@ -19293,7 +19410,7 @@
       "typeVersion": 3.4,
       "position": [
         3760,
-        6288
+        6432
       ],
       "id": "17f9c978-289f-4b40-b241-35a26650ab00",
       "name": "SP_ModelConstructor-"
@@ -19327,8 +19444,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3360,
-        6464
+        3376,
+        6416
       ],
       "id": "57e45416-ebce-41ce-88c9-20078659cd20",
       "name": "Send a text message3",
@@ -19336,7 +19453,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -19353,7 +19470,7 @@
       "typeVersion": 1.2,
       "position": [
         6400,
-        6320
+        6464
       ],
       "id": "6d1c0fea-752e-4421-9fcb-aaa66030c87c",
       "name": "OP_final_model7",
@@ -19361,7 +19478,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -19385,7 +19502,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -19620,7 +19737,7 @@
       "typeVersion": 1.2,
       "position": [
         3088,
-        6592
+        6736
       ],
       "id": "69ce8a6b-8cbb-4050-9fa0-2732375f783c",
       "name": "Delete a chat message",
@@ -19628,7 +19745,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -19927,7 +20044,7 @@
       "typeVersion": 3.4,
       "position": [
         5904,
-        6304
+        6448
       ],
       "id": "5ddccb3e-deb3-42ba-87ab-10b2c6f26e32",
       "name": "ParsedDescr"
@@ -20052,8 +20169,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        3136,
-        4448
+        3344,
+        4480
       ],
       "name": "Call GetObject",
       "id": "9edb37b7-627b-42e3-9b0d-a5cea2a6bf81"
@@ -20079,7 +20196,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20139,7 +20256,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20164,7 +20281,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20287,7 +20404,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20312,7 +20429,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20355,7 +20472,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20415,7 +20532,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20440,7 +20557,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20606,7 +20723,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20646,7 +20763,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20671,7 +20788,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20714,7 +20831,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -20922,7 +21039,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -20981,7 +21098,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -21006,7 +21123,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -21612,7 +21729,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -21646,7 +21763,7 @@
       "typeVersion": 1.2,
       "position": [
         4016,
-        7008
+        7152
       ],
       "id": "7e2df7cd-bc56-4038-a874-9a0b7c9ccc5a",
       "name": "AwaitModelEdits1",
@@ -21654,7 +21771,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -21796,7 +21913,7 @@
       "typeVersion": 1.1,
       "position": [
         4304,
-        7008
+        7152
       ],
       "id": "8d29eb15-83ec-452a-a984-4087ad6ff44b",
       "name": "Set GetGalleryForFace status2",
@@ -21969,7 +22086,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -21994,7 +22111,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -22166,7 +22283,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -22191,7 +22308,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -22250,7 +22367,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -22416,7 +22533,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -22441,9 +22558,100 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() }}",
+                    "rightValue": "error",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "3b76698a-aec7-4221-b357-45ded56e4182"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "error"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "0f42a651-0468-4a2e-be8c-507fd7169a3f",
+                    "leftValue": "={{ $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() }}",
+                    "rightValue": "success",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "success"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "dda3be1f-4bf4-419d-903f-329e3d44cc27",
+                    "leftValue": "={{ $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() !== \"error\" && $('subAI_Model').item.json.msg.parseJson().response.toLowerCase() !== \"success\" }}",
+                    "rightValue": "tr",
+                    "operator": {
+                      "type": "boolean",
+                      "operation": "true",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "other"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        5568,
+        6240
+      ],
+      "id": "63caeb92-6858-4f93-bcc0-af36a57a78c0",
+      "name": "Switch"
     }
   ],
   "settings": {
@@ -22486,6 +22694,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-03-25T20:18:59.727Z",
-  "versionId": "75a33bdc-df98-4e0d-91bd-c418ee65e2ed"
+  "updatedAt": "2026-03-27T20:10:21.662Z",
+  "versionId": "c99fb2c9-a3e5-498c-a12f-d7b36e9ed3d8"
 }
