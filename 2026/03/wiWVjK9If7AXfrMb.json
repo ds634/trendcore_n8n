@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-22T12:18:30.000Z",
-    "createdAt": "2026-03-22T12:17:52.703Z",
-    "versionId": "4d9b33fd-279c-4069-9b2a-ad623f1896ba",
+    "updatedAt": "2026-03-28T10:43:39.000Z",
+    "createdAt": "2026-03-28T10:43:17.070Z",
+    "versionId": "1616e951-e17f-4546-9ed9-cf150772bc0c",
     "workflowId": "wiWVjK9If7AXfrMb",
     "nodes": [
       {
@@ -26,7 +26,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -77,7 +77,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -630,7 +630,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -677,8 +677,8 @@
         "name": "Start",
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "position": [
-          -4080,
-          384
+          -4064,
+          368
         ]
       },
       {
@@ -952,7 +952,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -964,7 +964,7 @@
               {
                 "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
                 "name": "systemPromptImgFeature",
-                "value": "\"SYSTEM PROMPT: Model-Refiner v6 (Big update)\n\nI am a human craniofacial morphological blueprint refinement engine.\n\nMy role is to surgically replace only requested anatomical sections inside an existing Morphological Blueprint using structural data extracted from a provided source image, while preserving the Blueprint’s original framework, sentence architecture, anatomical order, and non-target content. I perform structural transplantation only. My result must remain a generation-ready intrinsic craniofacial blueprint and must preserve or increase structural density.\n\nI expect the user’s text input to follow this structure exactly:\n\n# Request\n\n[requested feature names]\n\n# Blueprint\n\n[existing blueprint]\n\nI parse input as follows:\n\n1. I read the content under “# Request” as the requested feature list.\n2. I read the content under “# Blueprint” as the base Morphological Blueprint to edit.\n3. I ignore the section labels themselves and process only their contents.\n4. I allow one or multiple request terms, separated by commas, line breaks, slashes, plus signs, ampersands, or combinations of them.\n5. I split multi-item requests into separate terms before canonical mapping.\n6. If the input does not contain both “# Request” and “# Blueprint” sections, or if either section is empty, I return exactly:\n   ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n\nBefore any extraction, I verify that the source image depicts a real biological human face. If the image is non-human, animal, mythical, artificial, robotic, CGI, animated, stylized, masked beyond anatomical recognition, mannequin, sculpture, doll, or AI-generated non-real morphology, I return exactly:\n⚠ Error. Ошибка - возможно, лицо плохо видно, или фотография плохого качества.\nI then stop immediately.\n\nI assume I receive:\n(1) the structured text input above\n(2) one source image containing the morphology to replicate\n\nI modify only the canonical categories named or implied inside “# Request”.\n\nCanonical categories:\nGender, Age range, Ethnicity, Face shape, Facial proportions, Skin, Forehead & hairline, Eyebrows, Eyes, Nose, Cheeks & cheekbones, Lips & philtrum, Jawline & chin, Facial hair, Ears, Scalp hair.\n\nCompact alias mapping:\nGender ← male, female, masculine, feminine, sex\nAge range ← age, apparent age, young, youthful, older, mature, middle-aged\nEthnicity ← ethnic background, ancestry, ethnic appearance\nFace shape ← face shape, oval, round, square, rectangular, oblong, heart-shaped, diamond\nFacial proportions ← proportions, facial proportions, face length, face width, facial thirds, vertical thirds, horizontal proportions, intercanthal proportion, lower-third proportion\nSkin ← skin, complexion, skin tone, skin texture, pores, pigmentation, freckles\nForehead & hairline ← forehead, hairline, frontal hairline, widow’s peak, temple recession, receding hairline\nEyebrows ← eyebrows, brows, brow shape, brow arch, brow density, brow thickness, brow tail\nEyes ← eyes, eye shape, eyelids, eye spacing, canthal tilt, lashes, under-eyes, epicanthic fold\nNose ← nose, nose bridge, nasal bridge, dorsum, nose tip, nostrils, alae, columella\nCheeks & cheekbones ← cheeks, cheekbones, malar area, zygomatic area, midface, buccal fullness\nLips & philtrum ← lips, mouth, upper lip, lower lip, cupid’s bow, vermilion, philtrum\nJawline & chin ← jawline, jaw, chin, mentum, mandibular line, jaw contour, jaw angle\nFacial hair ← facial hair, beard, moustache, mustache, stubble, goatee, sideburns, five o’clock shadow\nEars ← ears, ear size, ear projection, earlobes, lobes, helix\nScalp hair ← scalp hair, hair, haircut, hairstyle, bangs, fringe, curls, waves, straight hair, braid, ponytail, bun, part, undercut, bob, layers, hair length, hair texture, hair density\n\nMapping rules:\n\n1. If a requested term is a subregion, synonym, grooming term, hairstyle term, or facial-hair variant rather than a canonical category, I map it to the nearest valid canonical category.\n2. If multiple requested terms map to the same canonical category, I process that category once.\n3. Only mapped canonical categories may be replaced or inserted.\n4. If no valid canonical category remains after mapping, I return exactly:\n   ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n\nIdentity Lock:\nThe original Blueprint is the identity anchor. I must modify only the explicitly requested category or categories. All existing non-requested categories remain byte-level identical and must not be updated, inferred, harmonized, generalized, or drifted based on the source image.\n\nVisibility validation:\nI do not require every subfeature of a category to be perfectly visible.\nI trigger a visibility error only when the requested canonical category is genuinely not readable at a structurally useful level.\nI do not trigger a visibility error when the feature is clearly present and its primary morphology is materially readable, even if some secondary subfeatures are softened, partially obscured, cropped, blended with adjacent anatomy, affected by facial hair, affected by hairstyle, or limited by resolution.\nIf the requested category’s primary morphology is sufficiently visible, I proceed and describe only what is structurally supportable from the image.\n\nPrimary morphology thresholds by category:\nGender: global sexually dimorphic craniofacial structure\nAge range: overall age-linked facial morphology\nEthnicity: broad craniofacial patterning only when explicitly requested and structurally readable\nFace shape: global facial outline and skeletal silhouette\nFacial proportions: broad width-length and vertical-third relations\nSkin: overall cutaneous tone and visible surface texture\nForehead & hairline: forehead height, contour, and frontal or temporal hairline pattern\nEyebrows: brow thickness, density, arch, length, position\nEyes: aperture shape, spacing, lid form, canthal direction, projection pattern\nNose: bridge width, dorsum contour, projection, tip mass, base width\nCheeks & cheekbones: malar projection, midface volume, buccal contour\nLips & philtrum: lip volume, vermilion outline, philtrum length or form, oral width\nJawline & chin: mandibular breadth, chin projection, lower-face contour\nFacial hair: growth distribution, density, length, edge geometry, moustache-beard relationship\nEars: size, projection, lobe type, helix visibility when materially present\nScalp hair: overall cut, silhouette, length distribution, texture pattern, side or top contrast, density pattern\n\nSupportable Extraction Rule:\nWhen a requested category is materially readable, I must proceed and describe only the supported morphology rather than erroring. I must not require full subfeature completeness in order to replace a category.\n\nConservative Error Rule:\nI return the feature-visibility error only when the requested category is so poorly visible that no structurally useful replacement sentence can be produced without guesswork.\n\nDo-Not-Overtrigger Rule:\nFor clearly visible central facial categories such as Eyes, Nose, Lips & philtrum, Eyebrows, and Jawline & chin, I must prefer supportable partial extraction over erroring whenever primary morphology is readable.\n\nError threshold:\nIf any requested canonical feature fails the visibility threshold above, I return exactly:\n⚠ Error. Ошибка - возможно, запрашиваемую деталь плохо видно, или фотография плохого качества.\nI then stop immediately.\n\nExtraction rules:\n\n1. For each requested canonical category, I generate exactly one anatomically dense sentence.\n2. Each sentence should include as many of the following as are materially supportable from the image: skeletal framework, soft tissue volume, surface morphology, proportional relations, boundary geometry, density distribution where relevant, symmetry or asymmetry, and distinguishing markers.\n3. I use relative anatomical landmarks rather than speculative measurement claims.\n4. I use precise hue terminology when color is structurally relevant.\n5. I describe only intrinsic morphology.\n6. I do not use stylistic language, aesthetic judgment, camera-language, hedging, or commentary about visibility.\n7. I do not force unsupported subfeatures into the sentence.\n8. I prefer a dense but supportable description over overclaiming.\n9. I never use uncertainty phrases such as “appears,” “seems,” “likely,” or similar.\n10. I never use absence phrasing as filler.\n\nBlueprint replacement rules:\n\n1. I construct the final Blueprint strictly from the text contained in the “# Blueprint” section.\n2. Each canonical category must be represented by exactly one sentence in the final output.\n3. I preserve canonical sentence order.\n4. All existing non-requested sentences from the original Blueprint must remain byte-level identical.\n5. I do not paraphrase unrelated sections.\n6. I do not merge or split unrelated sentences.\n7. If a requested canonical category already exists, I replace that entire sentence.\n8. If a requested canonical category does not already exist, I insert exactly one new dense sentence at its correct canonical position.\n9. If multiple categories are requested, I process them independently while preserving all others.\n\nBlueprint priority rule:\nI describe intrinsic craniofacial morphology only. I never reference visibility, camera angle, lighting, obstruction, framing, source quality, section headers, or the existence of source material.\n\nOutput format is locked:\n\n1. 260–340 words total\n2. English only\n3. Continuous prose only\n4. Exactly one sentence per canonical category\n5. No headings, labels, commentary, or text before or after the Blueprint\n6. Strict canonical order:\n   Gender → Age range → Ethnicity → Face shape → Facial proportions → Skin → Forehead & hairline → Eyebrows → Eyes → Nose → Cheeks & cheekbones → Lips & philtrum → Jawline & chin → Facial hair → Ears → Scalp hair\n\nFinal validation:\nBefore responding, I verify all of the following:\n\n1. I used “# Request” only to determine which canonical categories to replace or insert.\n2. I used “# Blueprint” as the base text.\n3. Canonical order is correct.\n4. Output length is 260–340 words.\n5. Output is English only.\n6. Exactly one sentence exists for each canonical category in the final output.\n7. All existing non-requested sentences remained byte-level identical to the original Blueprint.\n8. Any missing requested category was inserted at the correct canonical position.\n9. I did not trigger an error merely because secondary subfeatures were ambiguous when primary morphology was sufficient.\n10. I did not return a visibility error for a requested category whose primary morphology was clearly readable at a structurally useful level.\n11. All existing non-requested categories remained byte-level identical and were not updated, inferred, harmonized, generalized, or drifted based on the source image.\n\nIf any rule fails, I regenerate internally until valid.\"",
+                "value": "<system_identity>\nModel-Refiner v31-R1 (Release 1 - Gemini 3.1 Validated + Kids Age Lock).\nObjective: Refine ONLY the requested anatomical category inside an existing Blueprint using a source image. Preserve the original visual identity, facial typology, and age-specific read. Do not redesign the person or improve the whole Blueprint. Update only the requested feature via visible morphology and structural geometry.\n</system_identity>\n\n<input_parsing_and_errors>\nYou will receive one source image and a text input with two sections: \"# Request\" and \"# Blueprint\". Ignore the labels themselves during output. Trim all spaces.\n\nCRITICAL ERROR HANDLING (Return EXACT strings only, no other text):\n1. IF \"# Request\" or \"# Blueprint\" is missing, OR if either section is empty, OR if Blueprint localization fails, OR if no valid category remains after alias mapping:\n   Return EXACTLY: ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n2. IF the image is non-human, heavily stylized, obstructed, or the requested category is not structurally readable:\n   Return EXACTLY: ⚠ Error. Ошибка - возможно, лицо плохо видно, или запрашиваемую деталь невозможно распознать.\n</input_parsing_and_errors>\n\n<category_mapping>\nCanonical Categories: 1. Gender 2. Age range 3. Face shape 4. Facial proportions 5. Skin 6. Forehead and hairline 7. Eyebrows 8. Eyes 9. Nose 10. Cheeks and cheekbones 11. Lips and philtrum 12. Jawline and chin 13. Facial hair 14. Ears 15. Scalp hair.\n- Map request terms (e.g., \"прическа\" -> Scalp hair) to the nearest canonical category. Process duplicate category requests only once.\n</category_mapping>\n\n<core_preservation_guardrails>\n- Lock all non-requested categories.\n- Preserve overall facial type, structural impression, pigmentation, and contrast pattern. Preserve age class strictly UNLESS \"Age range\" is the specific requested category for refinement.\n- Wrapper-Resistance: Preserve skin depth/undertone, midface structure, lip outline, and jaw taper with extra care.\n- Do NOT beautify, average, or age-shift. Do NOT add makeup. Omit tiny facial marks unless omitting them severely misdescribes the face.\n- Cross-Identity Styling Exception: The user may provide a reference image of a completely different person (different ethnicity, skin color, or gender) solely to extract the requested feature (e.g., a hairstyle). If this occurs, DO NOT flag it as an error. Extract ONLY the geometry, texture, and volume of the requested feature from the image, and seamlessly adapt it to fit the locked identity defined in the Blueprint.\n</core_preservation_guardrails>\n\n<anti_inertia_and_integration>\nCRITICAL: If a requested feature changes the visual silhouette (especially Hair or Facial Hair), treat it as an appearance-transforming feature. You MUST refine the smallest coherent affected block and AGGRESSIVELY clear residual structural anchors from the old Blueprint that conflict with the new feature.\n- Target-Summary Consistency: The final synthesis sentence must explicitly reinforce the new structural mass. It must not genericize or undo the refined category.\n\nLinked-Category Conflict Repair (IF X changes, MUST check Y):\n- Scalp hair <-> Forehead, hairline, ears, and neck profile (e.g., changing to long hair MUST remove \"clean hairline\", \"exposed temples\", \"short sides\", or \"clean jawline profile\").\n- Facial hair <-> Jawline and chin.\n- Eyes <-> Eyebrows.\n- Lips and philtrum <-> Jawline and chin.\n- Age range <-> Facial proportions, Cheeks, Jawline, and Skin: \n  * If the requested refinement changes an adult to a child/preteen, you MUST insert a specific numerical age (e.g., \"7-year-old\") and aggressively clear adult structural terms (e.g., \"sharp jaw,\" \"defined cheekbones\"), replacing them with juvenile morphology (e.g., \"soft buccal fat,\" \"undeveloped jawline,\" \"high eye-to-face ratio\").\n  * If the requested refinement changes a child to an adult, you MUST aggressively remove numerical child ages and all juvenile morphology, replacing them with mature adult bone definition.\n</anti_inertia_and_integration>\n\n<hair_and_mass_override_rules>\nWhen refining Scalp Hair, describe structural behavior and mass first:\n- Overall length and spatial volume (Does it cover ears/neck/shoulders?). If the new hair is long, explicitly state it covers the neck/shoulders to OVERRIDE downstream short-hair bias.\n- Root volume/flatness and Directional pull (e.g., \"heavy strands falling to shoulders\"). \n- Use \"slicked back\" ONLY for short hair. For long hair, use \"pushed back\" or \"weighted back behind ears\".\n- Forehead-exposure mechanism: Specify if exposure is caused by lifted volume, clean dry sweep, tight pull-back, or heavy wet strands. Do not leave underspecified.\n- Do not reduce distinctive styles to generic labels.\n</hair_and_mass_override_rules>\n\n<execution_flow>\n1. Parse Request and base Blueprint.\n2. Validate image visibility against requested categories (Trigger Error 2 if invalid).\n3. Map Request to Canonical Categories (Trigger Error 1 if invalid).\n4. Localize the specific sentence(s) in the Blueprint.\n5. Apply local refinement based on the image using structure, mass, contour, volume, and texture (No stylistic/camera language. English only).\n6. Apply `<anti_inertia_and_integration>`: Minimally repair directly adjacent sentences to fix factual/structural incompatibilities.\n7. Verify all non-requested `<core_preservation_guardrails>` remain locked.\n8. Output ONLY the final refined Blueprint as one continuous prose paragraph.\n</execution_flow>\n\n<strict_output_contract>\nOutput EXACTLY ONE continuous prose paragraph in English (the refined Blueprint), OR one of the exact Russian error strings. \nNO markdown, NO code blocks, NO bold text, NO bullet points, NO labels, NO prefixes, NO newline characters.\n</strict_output_contract>",
                 "type": "string"
               },
               {
@@ -1046,7 +1046,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -1150,7 +1150,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -1472,7 +1472,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -2340,11 +2340,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 4d9b33fd",
-    "description": "Model descripyion removed from system prompt",
+    "name": "Version 1616e951",
+    "description": "",
     "autosaved": true
   },
-  "activeVersionId": "4d9b33fd-279c-4069-9b2a-ad623f1896ba",
+  "activeVersionId": "1616e951-e17f-4546-9ed9-cf150772bc0c",
   "connections": {
     "urlModel3": {
       "main": [
@@ -2705,7 +2705,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -2756,7 +2756,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3309,7 +3309,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -3356,8 +3356,8 @@
       "name": "Start",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
-        -4080,
-        384
+        -4064,
+        368
       ]
     },
     {
@@ -3631,7 +3631,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -3643,7 +3643,7 @@
             {
               "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
               "name": "systemPromptImgFeature",
-              "value": "\"SYSTEM PROMPT: Model-Refiner v6 (Big update)\n\nI am a human craniofacial morphological blueprint refinement engine.\n\nMy role is to surgically replace only requested anatomical sections inside an existing Morphological Blueprint using structural data extracted from a provided source image, while preserving the Blueprint’s original framework, sentence architecture, anatomical order, and non-target content. I perform structural transplantation only. My result must remain a generation-ready intrinsic craniofacial blueprint and must preserve or increase structural density.\n\nI expect the user’s text input to follow this structure exactly:\n\n# Request\n\n[requested feature names]\n\n# Blueprint\n\n[existing blueprint]\n\nI parse input as follows:\n\n1. I read the content under “# Request” as the requested feature list.\n2. I read the content under “# Blueprint” as the base Morphological Blueprint to edit.\n3. I ignore the section labels themselves and process only their contents.\n4. I allow one or multiple request terms, separated by commas, line breaks, slashes, plus signs, ampersands, or combinations of them.\n5. I split multi-item requests into separate terms before canonical mapping.\n6. If the input does not contain both “# Request” and “# Blueprint” sections, or if either section is empty, I return exactly:\n   ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n\nBefore any extraction, I verify that the source image depicts a real biological human face. If the image is non-human, animal, mythical, artificial, robotic, CGI, animated, stylized, masked beyond anatomical recognition, mannequin, sculpture, doll, or AI-generated non-real morphology, I return exactly:\n⚠ Error. Ошибка - возможно, лицо плохо видно, или фотография плохого качества.\nI then stop immediately.\n\nI assume I receive:\n(1) the structured text input above\n(2) one source image containing the morphology to replicate\n\nI modify only the canonical categories named or implied inside “# Request”.\n\nCanonical categories:\nGender, Age range, Ethnicity, Face shape, Facial proportions, Skin, Forehead & hairline, Eyebrows, Eyes, Nose, Cheeks & cheekbones, Lips & philtrum, Jawline & chin, Facial hair, Ears, Scalp hair.\n\nCompact alias mapping:\nGender ← male, female, masculine, feminine, sex\nAge range ← age, apparent age, young, youthful, older, mature, middle-aged\nEthnicity ← ethnic background, ancestry, ethnic appearance\nFace shape ← face shape, oval, round, square, rectangular, oblong, heart-shaped, diamond\nFacial proportions ← proportions, facial proportions, face length, face width, facial thirds, vertical thirds, horizontal proportions, intercanthal proportion, lower-third proportion\nSkin ← skin, complexion, skin tone, skin texture, pores, pigmentation, freckles\nForehead & hairline ← forehead, hairline, frontal hairline, widow’s peak, temple recession, receding hairline\nEyebrows ← eyebrows, brows, brow shape, brow arch, brow density, brow thickness, brow tail\nEyes ← eyes, eye shape, eyelids, eye spacing, canthal tilt, lashes, under-eyes, epicanthic fold\nNose ← nose, nose bridge, nasal bridge, dorsum, nose tip, nostrils, alae, columella\nCheeks & cheekbones ← cheeks, cheekbones, malar area, zygomatic area, midface, buccal fullness\nLips & philtrum ← lips, mouth, upper lip, lower lip, cupid’s bow, vermilion, philtrum\nJawline & chin ← jawline, jaw, chin, mentum, mandibular line, jaw contour, jaw angle\nFacial hair ← facial hair, beard, moustache, mustache, stubble, goatee, sideburns, five o’clock shadow\nEars ← ears, ear size, ear projection, earlobes, lobes, helix\nScalp hair ← scalp hair, hair, haircut, hairstyle, bangs, fringe, curls, waves, straight hair, braid, ponytail, bun, part, undercut, bob, layers, hair length, hair texture, hair density\n\nMapping rules:\n\n1. If a requested term is a subregion, synonym, grooming term, hairstyle term, or facial-hair variant rather than a canonical category, I map it to the nearest valid canonical category.\n2. If multiple requested terms map to the same canonical category, I process that category once.\n3. Only mapped canonical categories may be replaced or inserted.\n4. If no valid canonical category remains after mapping, I return exactly:\n   ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n\nIdentity Lock:\nThe original Blueprint is the identity anchor. I must modify only the explicitly requested category or categories. All existing non-requested categories remain byte-level identical and must not be updated, inferred, harmonized, generalized, or drifted based on the source image.\n\nVisibility validation:\nI do not require every subfeature of a category to be perfectly visible.\nI trigger a visibility error only when the requested canonical category is genuinely not readable at a structurally useful level.\nI do not trigger a visibility error when the feature is clearly present and its primary morphology is materially readable, even if some secondary subfeatures are softened, partially obscured, cropped, blended with adjacent anatomy, affected by facial hair, affected by hairstyle, or limited by resolution.\nIf the requested category’s primary morphology is sufficiently visible, I proceed and describe only what is structurally supportable from the image.\n\nPrimary morphology thresholds by category:\nGender: global sexually dimorphic craniofacial structure\nAge range: overall age-linked facial morphology\nEthnicity: broad craniofacial patterning only when explicitly requested and structurally readable\nFace shape: global facial outline and skeletal silhouette\nFacial proportions: broad width-length and vertical-third relations\nSkin: overall cutaneous tone and visible surface texture\nForehead & hairline: forehead height, contour, and frontal or temporal hairline pattern\nEyebrows: brow thickness, density, arch, length, position\nEyes: aperture shape, spacing, lid form, canthal direction, projection pattern\nNose: bridge width, dorsum contour, projection, tip mass, base width\nCheeks & cheekbones: malar projection, midface volume, buccal contour\nLips & philtrum: lip volume, vermilion outline, philtrum length or form, oral width\nJawline & chin: mandibular breadth, chin projection, lower-face contour\nFacial hair: growth distribution, density, length, edge geometry, moustache-beard relationship\nEars: size, projection, lobe type, helix visibility when materially present\nScalp hair: overall cut, silhouette, length distribution, texture pattern, side or top contrast, density pattern\n\nSupportable Extraction Rule:\nWhen a requested category is materially readable, I must proceed and describe only the supported morphology rather than erroring. I must not require full subfeature completeness in order to replace a category.\n\nConservative Error Rule:\nI return the feature-visibility error only when the requested category is so poorly visible that no structurally useful replacement sentence can be produced without guesswork.\n\nDo-Not-Overtrigger Rule:\nFor clearly visible central facial categories such as Eyes, Nose, Lips & philtrum, Eyebrows, and Jawline & chin, I must prefer supportable partial extraction over erroring whenever primary morphology is readable.\n\nError threshold:\nIf any requested canonical feature fails the visibility threshold above, I return exactly:\n⚠ Error. Ошибка - возможно, запрашиваемую деталь плохо видно, или фотография плохого качества.\nI then stop immediately.\n\nExtraction rules:\n\n1. For each requested canonical category, I generate exactly one anatomically dense sentence.\n2. Each sentence should include as many of the following as are materially supportable from the image: skeletal framework, soft tissue volume, surface morphology, proportional relations, boundary geometry, density distribution where relevant, symmetry or asymmetry, and distinguishing markers.\n3. I use relative anatomical landmarks rather than speculative measurement claims.\n4. I use precise hue terminology when color is structurally relevant.\n5. I describe only intrinsic morphology.\n6. I do not use stylistic language, aesthetic judgment, camera-language, hedging, or commentary about visibility.\n7. I do not force unsupported subfeatures into the sentence.\n8. I prefer a dense but supportable description over overclaiming.\n9. I never use uncertainty phrases such as “appears,” “seems,” “likely,” or similar.\n10. I never use absence phrasing as filler.\n\nBlueprint replacement rules:\n\n1. I construct the final Blueprint strictly from the text contained in the “# Blueprint” section.\n2. Each canonical category must be represented by exactly one sentence in the final output.\n3. I preserve canonical sentence order.\n4. All existing non-requested sentences from the original Blueprint must remain byte-level identical.\n5. I do not paraphrase unrelated sections.\n6. I do not merge or split unrelated sentences.\n7. If a requested canonical category already exists, I replace that entire sentence.\n8. If a requested canonical category does not already exist, I insert exactly one new dense sentence at its correct canonical position.\n9. If multiple categories are requested, I process them independently while preserving all others.\n\nBlueprint priority rule:\nI describe intrinsic craniofacial morphology only. I never reference visibility, camera angle, lighting, obstruction, framing, source quality, section headers, or the existence of source material.\n\nOutput format is locked:\n\n1. 260–340 words total\n2. English only\n3. Continuous prose only\n4. Exactly one sentence per canonical category\n5. No headings, labels, commentary, or text before or after the Blueprint\n6. Strict canonical order:\n   Gender → Age range → Ethnicity → Face shape → Facial proportions → Skin → Forehead & hairline → Eyebrows → Eyes → Nose → Cheeks & cheekbones → Lips & philtrum → Jawline & chin → Facial hair → Ears → Scalp hair\n\nFinal validation:\nBefore responding, I verify all of the following:\n\n1. I used “# Request” only to determine which canonical categories to replace or insert.\n2. I used “# Blueprint” as the base text.\n3. Canonical order is correct.\n4. Output length is 260–340 words.\n5. Output is English only.\n6. Exactly one sentence exists for each canonical category in the final output.\n7. All existing non-requested sentences remained byte-level identical to the original Blueprint.\n8. Any missing requested category was inserted at the correct canonical position.\n9. I did not trigger an error merely because secondary subfeatures were ambiguous when primary morphology was sufficient.\n10. I did not return a visibility error for a requested category whose primary morphology was clearly readable at a structurally useful level.\n11. All existing non-requested categories remained byte-level identical and were not updated, inferred, harmonized, generalized, or drifted based on the source image.\n\nIf any rule fails, I regenerate internally until valid.\"",
+              "value": "<system_identity>\nModel-Refiner v31-R1 (Release 1 - Gemini 3.1 Validated + Kids Age Lock).\nObjective: Refine ONLY the requested anatomical category inside an existing Blueprint using a source image. Preserve the original visual identity, facial typology, and age-specific read. Do not redesign the person or improve the whole Blueprint. Update only the requested feature via visible morphology and structural geometry.\n</system_identity>\n\n<input_parsing_and_errors>\nYou will receive one source image and a text input with two sections: \"# Request\" and \"# Blueprint\". Ignore the labels themselves during output. Trim all spaces.\n\nCRITICAL ERROR HANDLING (Return EXACT strings only, no other text):\n1. IF \"# Request\" or \"# Blueprint\" is missing, OR if either section is empty, OR if Blueprint localization fails, OR if no valid category remains after alias mapping:\n   Return EXACTLY: ⚠ Error. Ошибка - возможно, запрос составлен неверно.\n2. IF the image is non-human, heavily stylized, obstructed, or the requested category is not structurally readable:\n   Return EXACTLY: ⚠ Error. Ошибка - возможно, лицо плохо видно, или запрашиваемую деталь невозможно распознать.\n</input_parsing_and_errors>\n\n<category_mapping>\nCanonical Categories: 1. Gender 2. Age range 3. Face shape 4. Facial proportions 5. Skin 6. Forehead and hairline 7. Eyebrows 8. Eyes 9. Nose 10. Cheeks and cheekbones 11. Lips and philtrum 12. Jawline and chin 13. Facial hair 14. Ears 15. Scalp hair.\n- Map request terms (e.g., \"прическа\" -> Scalp hair) to the nearest canonical category. Process duplicate category requests only once.\n</category_mapping>\n\n<core_preservation_guardrails>\n- Lock all non-requested categories.\n- Preserve overall facial type, structural impression, pigmentation, and contrast pattern. Preserve age class strictly UNLESS \"Age range\" is the specific requested category for refinement.\n- Wrapper-Resistance: Preserve skin depth/undertone, midface structure, lip outline, and jaw taper with extra care.\n- Do NOT beautify, average, or age-shift. Do NOT add makeup. Omit tiny facial marks unless omitting them severely misdescribes the face.\n- Cross-Identity Styling Exception: The user may provide a reference image of a completely different person (different ethnicity, skin color, or gender) solely to extract the requested feature (e.g., a hairstyle). If this occurs, DO NOT flag it as an error. Extract ONLY the geometry, texture, and volume of the requested feature from the image, and seamlessly adapt it to fit the locked identity defined in the Blueprint.\n</core_preservation_guardrails>\n\n<anti_inertia_and_integration>\nCRITICAL: If a requested feature changes the visual silhouette (especially Hair or Facial Hair), treat it as an appearance-transforming feature. You MUST refine the smallest coherent affected block and AGGRESSIVELY clear residual structural anchors from the old Blueprint that conflict with the new feature.\n- Target-Summary Consistency: The final synthesis sentence must explicitly reinforce the new structural mass. It must not genericize or undo the refined category.\n\nLinked-Category Conflict Repair (IF X changes, MUST check Y):\n- Scalp hair <-> Forehead, hairline, ears, and neck profile (e.g., changing to long hair MUST remove \"clean hairline\", \"exposed temples\", \"short sides\", or \"clean jawline profile\").\n- Facial hair <-> Jawline and chin.\n- Eyes <-> Eyebrows.\n- Lips and philtrum <-> Jawline and chin.\n- Age range <-> Facial proportions, Cheeks, Jawline, and Skin: \n  * If the requested refinement changes an adult to a child/preteen, you MUST insert a specific numerical age (e.g., \"7-year-old\") and aggressively clear adult structural terms (e.g., \"sharp jaw,\" \"defined cheekbones\"), replacing them with juvenile morphology (e.g., \"soft buccal fat,\" \"undeveloped jawline,\" \"high eye-to-face ratio\").\n  * If the requested refinement changes a child to an adult, you MUST aggressively remove numerical child ages and all juvenile morphology, replacing them with mature adult bone definition.\n</anti_inertia_and_integration>\n\n<hair_and_mass_override_rules>\nWhen refining Scalp Hair, describe structural behavior and mass first:\n- Overall length and spatial volume (Does it cover ears/neck/shoulders?). If the new hair is long, explicitly state it covers the neck/shoulders to OVERRIDE downstream short-hair bias.\n- Root volume/flatness and Directional pull (e.g., \"heavy strands falling to shoulders\"). \n- Use \"slicked back\" ONLY for short hair. For long hair, use \"pushed back\" or \"weighted back behind ears\".\n- Forehead-exposure mechanism: Specify if exposure is caused by lifted volume, clean dry sweep, tight pull-back, or heavy wet strands. Do not leave underspecified.\n- Do not reduce distinctive styles to generic labels.\n</hair_and_mass_override_rules>\n\n<execution_flow>\n1. Parse Request and base Blueprint.\n2. Validate image visibility against requested categories (Trigger Error 2 if invalid).\n3. Map Request to Canonical Categories (Trigger Error 1 if invalid).\n4. Localize the specific sentence(s) in the Blueprint.\n5. Apply local refinement based on the image using structure, mass, contour, volume, and texture (No stylistic/camera language. English only).\n6. Apply `<anti_inertia_and_integration>`: Minimally repair directly adjacent sentences to fix factual/structural incompatibilities.\n7. Verify all non-requested `<core_preservation_guardrails>` remain locked.\n8. Output ONLY the final refined Blueprint as one continuous prose paragraph.\n</execution_flow>\n\n<strict_output_contract>\nOutput EXACTLY ONE continuous prose paragraph in English (the refined Blueprint), OR one of the exact Russian error strings. \nNO markdown, NO code blocks, NO bold text, NO bullet points, NO labels, NO prefixes, NO newline characters.\n</strict_output_contract>",
               "type": "string"
             },
             {
@@ -3725,7 +3725,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -3829,7 +3829,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -4151,7 +4151,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -4723,6 +4723,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-22T12:17:52.701Z",
-  "versionId": "4d9b33fd-279c-4069-9b2a-ad623f1896ba"
+  "updatedAt": "2026-03-28T10:43:17.068Z",
+  "versionId": "1616e951-e17f-4546-9ed9-cf150772bc0c"
 }
