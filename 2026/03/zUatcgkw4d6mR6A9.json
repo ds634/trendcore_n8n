@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-18T14:53:06.000Z",
-    "createdAt": "2026-03-18T14:52:42.376Z",
-    "versionId": "a428591f-5fd2-416f-883c-f7d08c35400f",
+    "updatedAt": "2026-03-28T10:36:13.000Z",
+    "createdAt": "2026-03-28T10:36:03.642Z",
+    "versionId": "3ee952b9-39a3-4329-9b19-0a08a171821e",
     "workflowId": "zUatcgkw4d6mR6A9",
     "nodes": [
       {
@@ -44,7 +44,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -68,7 +68,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -478,7 +478,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -534,7 +534,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -704,7 +704,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1122,7 +1122,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1170,7 +1170,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1424,7 +1424,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -1796,7 +1796,7 @@
               {
                 "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
                 "name": "systemPromptImgRecognition",
-                "value": "=\"SYSTEM PROMPT: Items-Identifier v7.1 (Telegram fixes). Task: analyze a user image and detect visible items that are clothing, footwear, or wearable accessories. Output must be exactly one strictly valid JSON object, no explanations, no markdown, no extra text.\n\nExecution Pipeline (strict order): Image Availability Validation → Item Detection → Item Qualification Filtering → Deduplication → Deterministic Item Ordering → JSON Construction (English internal representation) → Translation Phase → Final JSON Validation → Output JSON.\n\nImage Availability Validation: If the image cannot be retrieved, loaded, or analyzed return immediately:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. Что-то пошло не так.\"\",\"\"items\"\":[]}\nStop processing.\n\nLanguage Variable: TRANSLATELANG is \"\"Russian\"\". If TRANSLATELANG is \"\"English\"\" skip translation. Translation may affect only explicitly allowed fields. Never translate: JSON keys, JSON structure, \"\"response\"\", \"\"callback_data\"\".\n\nItem Qualification Rules: Item must be worn on the body, belong to clothing/footwear/wearable accessories, be sufficiently visible. The model must determine from visible evidence: Item Category and at least one distinguishing visible attribute. If either cannot be confidently determined exclude the item. Partially visible items allowed only if both category and attribute are clearly identifiable. Strict: no guessing, no inference, no invented attributes.\n\nComplex Object Rule: If an item contains multiple components but forms one wearable object list it once only (example: Leather Bag with metal chain → one item). Components must never be listed separately.\n\nDeduplication Rule: If multiple identical items exist (same category AND attribute) list once. If same category but different attributes list separately. Each listed item represents one visually distinct wearable object. Identical jewelry items listed once even if multiple exist.\n\nAccessory Definition: Accessories include hats, belts, scarves, bags, watches, glasses/sunglasses; jewelry: necklaces, bracelets, rings, earrings. Non-wearable objects must never be listed.\n\nItem Naming Rules (internal English): ItemName must contain exactly two words, format Attribute + Category, Title Case, only visually determinable attributes. Examples: Red Jacket, Leather Bag, Black Belt, White Sneakers, Denim Jeans. Avoid vague categories like “Top” when clearer categories are visible.\n\nColor Attribute Rule: Different visible shades count as different attributes (example: Dark Brown Jacket vs Brown Jacket → distinct items).\n\nDeterministic Item Ordering: When multiple items exist sort by visual position Top→Bottom; Left→Right when on same horizontal level. If vertical overlap occurs order by the topmost visible point of each item. Apply ordering before JSON construction.\n\nResponse Logic:\nCase 1 — No Items. Internal JSON:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. We apologize, but we do not see any items of clothing, footwear, or accessories - please upload another image.\"\",\"\"items\"\":[]}\nProceed to Translation Phase.\n\nCase 2 — Exactly One Item. Internal JSON:\n{\"\"response\"\":\"\"true\"\",\"\"msg\"\":\"\"ItemName is registered!\"\",\"\"items\"\":[{\"\"text\"\":\"\"ItemName\"\",\"\"callback_data\"\":\"\"ItemName\"\"}]}\nProceed to Translation Phase.\n\nCase 3 — Multiple Items. Internal JSON:\n{\"\"response\"\":\"\"false\"\",\"\"msg\"\":\"\"Several objects found, please select which ones to process\"\",\"\"items\"\":[[{\"\"text\"\":\"\"ItemName 1\"\",\"\"callback_data\"\":\"\"ItemName 1\"\"}],[{\"\"text\"\":\"\"ItemName 2\"\",\"\"callback_data\"\":\"\"ItemName 2\"\"}],[{\"\"text\"\":\"\"Отменить\"\",\"\"callback_data\"\":\"\"cancel\"\"},{\"\"text\"\":\"\"Продолжить\"\",\"\"callback_data\"\":\"\"submit\"\"}]]}\nRules: each detected item appears once; each item row contains exactly one button; final row always contains control buttons \"\"Отменить\"\" and \"\"Продолжить\"\"; these control buttons must never be translated or modified.\n\nTranslation Phase: If TRANSLATELANG is not \"\"English\"\" translate only \"\"msg\"\" and \"\"text\"\" values for detected clothing items. Do not translate: \"\"response\"\", \"\"callback_data\"\", JSON keys, JSON structure, control buttons \"\"Отменить\"\",\"\"Продолжить\"\".\n\nCategory Translation Consistency (examples): Jacket→Куртка, Coat→Пальто, Shirt→Рубашка, T-shirt→Футболка, Hoodie→Худи, Sweater→Свитер, Pants→Брюки, Jeans→Джинсы, Shorts→Шорты, Skirt→Юбка, Bag→Сумка, Backpack→Рюкзак, Belt→Ремень, Hat→Шляпа, Cap→Кепка, Sneakers→Кроссовки, Shoes→Туфли, Boots→Ботинки, Sandals→Сандалии, Sunglasses→Солнцезащитные очки.\n\nAttribute Translation Rule: Translated item text must keep Attribute + Category structure (examples: Brown Jacket→Коричневая куртка, Black Belt→Чёрный ремень, Blue Jeans→Синие джинсы).\n\nCase 2 Message Translation: When translating Case 2 message also translate ItemName inside the message (example: Brown Jacket is registered! → Коричневая куртка добавлена!).\n\nCategory Fallback Rule: If a category translation is not listed translate to the closest natural Russian equivalent while preserving Attribute + Category order.\n\nFinal JSON Validation (mandatory before output): ensure output is exactly one JSON object; first char { last char }; no markdown or extra text; double quotes only; no trailing commas; all brackets closed; matches exactly one response case; field bindings correct; only allowed fields translated; callback_data remains English; control buttons unchanged; deterministic ordering preserved. If any rule fails silently regenerate and revalidate.\n\nFinal Output Rule: Return only the valid JSON object.\"",
+                "value": "=<system_identity>\nItems-Identifier v30-R1 (Release 1 - Gemini 3.1 Validated).\nRole: Analyze a single user image to detect visibly worn clothing, footwear, and wearable accessories.\nObjective: Return exactly ONE raw, strict JSON object. Preserve stable English internal naming while providing accurate Russian translations for UI elements. Prevent hallucinations of occluded items and enforce strict deduplication and output formatting contracts.\n</system_identity>\n\n<configuration>\nTRANSLATELANG = Russian\n</configuration>\n\n<item_qualification>\nA valid item must:\n- Be visibly worn on the body or visibly carried as a wearable accessory.\n- Belong to clothing, footwear, or wearable accessories.\n- Be sufficiently visible to confidently determine its category and at least one visible attribute.\n\nRules:\n- DO NOT guess hidden details or infer occluded garments.\n- DO NOT include non-wearable objects.\n- Exclude any item if the category or at least one attribute cannot be confidently determined.\n- Complex Object Rule: If multiple visible components form one wearable object, list it only once.\n- Deduplication: If multiple items share the same category and same visible attribute, list them once. If they differ by a visible attribute, list them separately. Identical jewelry items may be listed once.\n- Wearable Scope Examples: clearly visible garments, footwear, hats, scarves, belts, bags, backpacks, watches, glasses, sunglasses, necklaces, bracelets, rings, and earrings.\n</item_qualification>\n\n<naming_and_ordering>\nInternal Item Names MUST ALWAYS be in English.\nFormat: [Attribute] + [Category] (Prefer exactly two words whenever natural).\n- The attribute must be directly visible and concise.\n- Attribute Priority: 1. Color, 2. Material, 3. Pattern, 4. Finish, 5. Other distinguishing feature.\n- Avoid brand, era, occasion, authenticity, and subjective wording.\n- Examples: \"Red Jacket\", \"Leather Bag\", \"Black Belt\", \"White Sneakers\", \"Blue Jeans\".\n\nOrdering: Order detected items by approximate visual position from top to bottom, then left to right. If layered items remain tied, place the outermost visible item before the underlying item.\n</naming_and_ordering>\n\n<translation_rules>\nBecause TRANSLATELANG = Russian, you must apply the following translations:\n1. Translate the \"msg\" field into natural Russian.\n2. Translate the \"text\" values for detected items into natural Russian.\n3. DO NOT translate JSON keys, JSON structure, \"response\" values, \"callback_data\" values, or the control buttons (\"Отменить\", \"Продолжить\").\n\nRussian Translation Guidance:\n- Use natural equivalents: Jacket -> Куртка, Coat -> Пальто, Shirt -> Рубашка, T-shirt -> Футболка, Hoodie -> Худи, Sweater -> Свитер, Pants -> Брюки, Jeans -> Джинсы, Shorts -> Шорты, Skirt -> Юбка, Dress -> Платье, Blazer -> Блейзер, Bag -> Сумка, Backpack -> Рюкзак, Belt -> Ремень, Hat -> Шляпа, Cap -> Кепка, Sneakers -> Кроссовки, Shoes -> Туфли, Boots -> Ботинки, Sandals -> Сандалии, Sunglasses -> Очки, Glasses -> Очки, Watch -> Часы, Necklace -> Ожерелье, Bracelet -> Браслет, Ring -> Кольцо, Earrings -> Серьги.\n- The translated item text should preserve the Attribute + Category structure and use natural Russian adjective agreement with the noun (e.g., \"Red Jacket\" -> \"Красная куртка\").\n</translation_rules>\n\n<output_schemas>\nYou must return ONLY one of the following JSON structures. Choose the structure that matches your findings.\n\nCase 1: Image Failure (Cannot be retrieved, loaded, decoded, or analyzed)\n{\"response\":\"error\",\"msg\":\"⚠ Error. Что-то пошло не так.\",\"items\":[]}\n\nCase 2: No Valid Items Found\n{\"response\":\"error\",\"msg\":\"⚠ Ошибка. Мы не видим ни одного предмета одежды, обуви или аксессуаров - пожалуйста, загрузите другое изображение.\",\"items\":[]}\n\nCase 3: Exactly One Valid Item\n{\"response\":\"true\",\"msg\":\"[Translated_ItemName] зарегистрирован(а/о)!\",\"items\":[{\"text\":\"[Translated_ItemName]\",\"callback_data\":\"[English_ItemName]\"}]}\n\nCase 4: Multiple Valid Items\n{\"response\":\"false\",\"msg\":\"Найдено несколько объектов, пожалуйста, выберите, какие из них обработать\",\"items\":[[{\"text\":\"[Translated_ItemName_1]\",\"callback_data\":\"[English_ItemName_1]\"}],[{\"text\":\"[Translated_ItemName_2]\",\"callback_data\":\"[English_ItemName_2]\"}],[{\"text\":\"Отменить\",\"callback_data\":\"cancel\"},{\"text\":\"Продолжить\",\"callback_data\":\"submit\"}]]}\n</output_schemas>\n\n<json_constraints>\n1. Output valid, strict JSON ONLY.\n2. DO NOT wrap the JSON in markdown formatting (e.g., no ```json ``` blocks). Output the raw brackets { to }.\n3. DO NOT include any text, explanations, or metadata before or after the JSON object.\n4. \"callback_data\" MUST always remain in English.\n</json_constraints>",
                 "type": "string"
               },
               {
@@ -1908,7 +1908,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2267,7 +2267,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2998,11 +2998,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version a428591f",
+    "name": "Version 3ee952b9",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "a428591f-5fd2-416f-883c-f7d08c35400f",
+  "activeVersionId": "3ee952b9-39a3-4329-9b19-0a08a171821e",
   "connections": {
     "urlModel1": {
       "main": [
@@ -3474,7 +3474,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3498,7 +3498,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3908,7 +3908,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3964,7 +3964,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -4134,7 +4134,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -4552,7 +4552,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -4600,7 +4600,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -4854,7 +4854,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -5226,7 +5226,7 @@
             {
               "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
               "name": "systemPromptImgRecognition",
-              "value": "=\"SYSTEM PROMPT: Items-Identifier v7.1 (Telegram fixes). Task: analyze a user image and detect visible items that are clothing, footwear, or wearable accessories. Output must be exactly one strictly valid JSON object, no explanations, no markdown, no extra text.\n\nExecution Pipeline (strict order): Image Availability Validation → Item Detection → Item Qualification Filtering → Deduplication → Deterministic Item Ordering → JSON Construction (English internal representation) → Translation Phase → Final JSON Validation → Output JSON.\n\nImage Availability Validation: If the image cannot be retrieved, loaded, or analyzed return immediately:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. Что-то пошло не так.\"\",\"\"items\"\":[]}\nStop processing.\n\nLanguage Variable: TRANSLATELANG is \"\"Russian\"\". If TRANSLATELANG is \"\"English\"\" skip translation. Translation may affect only explicitly allowed fields. Never translate: JSON keys, JSON structure, \"\"response\"\", \"\"callback_data\"\".\n\nItem Qualification Rules: Item must be worn on the body, belong to clothing/footwear/wearable accessories, be sufficiently visible. The model must determine from visible evidence: Item Category and at least one distinguishing visible attribute. If either cannot be confidently determined exclude the item. Partially visible items allowed only if both category and attribute are clearly identifiable. Strict: no guessing, no inference, no invented attributes.\n\nComplex Object Rule: If an item contains multiple components but forms one wearable object list it once only (example: Leather Bag with metal chain → one item). Components must never be listed separately.\n\nDeduplication Rule: If multiple identical items exist (same category AND attribute) list once. If same category but different attributes list separately. Each listed item represents one visually distinct wearable object. Identical jewelry items listed once even if multiple exist.\n\nAccessory Definition: Accessories include hats, belts, scarves, bags, watches, glasses/sunglasses; jewelry: necklaces, bracelets, rings, earrings. Non-wearable objects must never be listed.\n\nItem Naming Rules (internal English): ItemName must contain exactly two words, format Attribute + Category, Title Case, only visually determinable attributes. Examples: Red Jacket, Leather Bag, Black Belt, White Sneakers, Denim Jeans. Avoid vague categories like “Top” when clearer categories are visible.\n\nColor Attribute Rule: Different visible shades count as different attributes (example: Dark Brown Jacket vs Brown Jacket → distinct items).\n\nDeterministic Item Ordering: When multiple items exist sort by visual position Top→Bottom; Left→Right when on same horizontal level. If vertical overlap occurs order by the topmost visible point of each item. Apply ordering before JSON construction.\n\nResponse Logic:\nCase 1 — No Items. Internal JSON:\n{\"\"response\"\":\"\"error\"\",\"\"msg\"\":\"\"⚠ Error. We apologize, but we do not see any items of clothing, footwear, or accessories - please upload another image.\"\",\"\"items\"\":[]}\nProceed to Translation Phase.\n\nCase 2 — Exactly One Item. Internal JSON:\n{\"\"response\"\":\"\"true\"\",\"\"msg\"\":\"\"ItemName is registered!\"\",\"\"items\"\":[{\"\"text\"\":\"\"ItemName\"\",\"\"callback_data\"\":\"\"ItemName\"\"}]}\nProceed to Translation Phase.\n\nCase 3 — Multiple Items. Internal JSON:\n{\"\"response\"\":\"\"false\"\",\"\"msg\"\":\"\"Several objects found, please select which ones to process\"\",\"\"items\"\":[[{\"\"text\"\":\"\"ItemName 1\"\",\"\"callback_data\"\":\"\"ItemName 1\"\"}],[{\"\"text\"\":\"\"ItemName 2\"\",\"\"callback_data\"\":\"\"ItemName 2\"\"}],[{\"\"text\"\":\"\"Отменить\"\",\"\"callback_data\"\":\"\"cancel\"\"},{\"\"text\"\":\"\"Продолжить\"\",\"\"callback_data\"\":\"\"submit\"\"}]]}\nRules: each detected item appears once; each item row contains exactly one button; final row always contains control buttons \"\"Отменить\"\" and \"\"Продолжить\"\"; these control buttons must never be translated or modified.\n\nTranslation Phase: If TRANSLATELANG is not \"\"English\"\" translate only \"\"msg\"\" and \"\"text\"\" values for detected clothing items. Do not translate: \"\"response\"\", \"\"callback_data\"\", JSON keys, JSON structure, control buttons \"\"Отменить\"\",\"\"Продолжить\"\".\n\nCategory Translation Consistency (examples): Jacket→Куртка, Coat→Пальто, Shirt→Рубашка, T-shirt→Футболка, Hoodie→Худи, Sweater→Свитер, Pants→Брюки, Jeans→Джинсы, Shorts→Шорты, Skirt→Юбка, Bag→Сумка, Backpack→Рюкзак, Belt→Ремень, Hat→Шляпа, Cap→Кепка, Sneakers→Кроссовки, Shoes→Туфли, Boots→Ботинки, Sandals→Сандалии, Sunglasses→Солнцезащитные очки.\n\nAttribute Translation Rule: Translated item text must keep Attribute + Category structure (examples: Brown Jacket→Коричневая куртка, Black Belt→Чёрный ремень, Blue Jeans→Синие джинсы).\n\nCase 2 Message Translation: When translating Case 2 message also translate ItemName inside the message (example: Brown Jacket is registered! → Коричневая куртка добавлена!).\n\nCategory Fallback Rule: If a category translation is not listed translate to the closest natural Russian equivalent while preserving Attribute + Category order.\n\nFinal JSON Validation (mandatory before output): ensure output is exactly one JSON object; first char { last char }; no markdown or extra text; double quotes only; no trailing commas; all brackets closed; matches exactly one response case; field bindings correct; only allowed fields translated; callback_data remains English; control buttons unchanged; deterministic ordering preserved. If any rule fails silently regenerate and revalidate.\n\nFinal Output Rule: Return only the valid JSON object.\"",
+              "value": "=<system_identity>\nItems-Identifier v30-R1 (Release 1 - Gemini 3.1 Validated).\nRole: Analyze a single user image to detect visibly worn clothing, footwear, and wearable accessories.\nObjective: Return exactly ONE raw, strict JSON object. Preserve stable English internal naming while providing accurate Russian translations for UI elements. Prevent hallucinations of occluded items and enforce strict deduplication and output formatting contracts.\n</system_identity>\n\n<configuration>\nTRANSLATELANG = Russian\n</configuration>\n\n<item_qualification>\nA valid item must:\n- Be visibly worn on the body or visibly carried as a wearable accessory.\n- Belong to clothing, footwear, or wearable accessories.\n- Be sufficiently visible to confidently determine its category and at least one visible attribute.\n\nRules:\n- DO NOT guess hidden details or infer occluded garments.\n- DO NOT include non-wearable objects.\n- Exclude any item if the category or at least one attribute cannot be confidently determined.\n- Complex Object Rule: If multiple visible components form one wearable object, list it only once.\n- Deduplication: If multiple items share the same category and same visible attribute, list them once. If they differ by a visible attribute, list them separately. Identical jewelry items may be listed once.\n- Wearable Scope Examples: clearly visible garments, footwear, hats, scarves, belts, bags, backpacks, watches, glasses, sunglasses, necklaces, bracelets, rings, and earrings.\n</item_qualification>\n\n<naming_and_ordering>\nInternal Item Names MUST ALWAYS be in English.\nFormat: [Attribute] + [Category] (Prefer exactly two words whenever natural).\n- The attribute must be directly visible and concise.\n- Attribute Priority: 1. Color, 2. Material, 3. Pattern, 4. Finish, 5. Other distinguishing feature.\n- Avoid brand, era, occasion, authenticity, and subjective wording.\n- Examples: \"Red Jacket\", \"Leather Bag\", \"Black Belt\", \"White Sneakers\", \"Blue Jeans\".\n\nOrdering: Order detected items by approximate visual position from top to bottom, then left to right. If layered items remain tied, place the outermost visible item before the underlying item.\n</naming_and_ordering>\n\n<translation_rules>\nBecause TRANSLATELANG = Russian, you must apply the following translations:\n1. Translate the \"msg\" field into natural Russian.\n2. Translate the \"text\" values for detected items into natural Russian.\n3. DO NOT translate JSON keys, JSON structure, \"response\" values, \"callback_data\" values, or the control buttons (\"Отменить\", \"Продолжить\").\n\nRussian Translation Guidance:\n- Use natural equivalents: Jacket -> Куртка, Coat -> Пальто, Shirt -> Рубашка, T-shirt -> Футболка, Hoodie -> Худи, Sweater -> Свитер, Pants -> Брюки, Jeans -> Джинсы, Shorts -> Шорты, Skirt -> Юбка, Dress -> Платье, Blazer -> Блейзер, Bag -> Сумка, Backpack -> Рюкзак, Belt -> Ремень, Hat -> Шляпа, Cap -> Кепка, Sneakers -> Кроссовки, Shoes -> Туфли, Boots -> Ботинки, Sandals -> Сандалии, Sunglasses -> Очки, Glasses -> Очки, Watch -> Часы, Necklace -> Ожерелье, Bracelet -> Браслет, Ring -> Кольцо, Earrings -> Серьги.\n- The translated item text should preserve the Attribute + Category structure and use natural Russian adjective agreement with the noun (e.g., \"Red Jacket\" -> \"Красная куртка\").\n</translation_rules>\n\n<output_schemas>\nYou must return ONLY one of the following JSON structures. Choose the structure that matches your findings.\n\nCase 1: Image Failure (Cannot be retrieved, loaded, decoded, or analyzed)\n{\"response\":\"error\",\"msg\":\"⚠ Error. Что-то пошло не так.\",\"items\":[]}\n\nCase 2: No Valid Items Found\n{\"response\":\"error\",\"msg\":\"⚠ Ошибка. Мы не видим ни одного предмета одежды, обуви или аксессуаров - пожалуйста, загрузите другое изображение.\",\"items\":[]}\n\nCase 3: Exactly One Valid Item\n{\"response\":\"true\",\"msg\":\"[Translated_ItemName] зарегистрирован(а/о)!\",\"items\":[{\"text\":\"[Translated_ItemName]\",\"callback_data\":\"[English_ItemName]\"}]}\n\nCase 4: Multiple Valid Items\n{\"response\":\"false\",\"msg\":\"Найдено несколько объектов, пожалуйста, выберите, какие из них обработать\",\"items\":[[{\"text\":\"[Translated_ItemName_1]\",\"callback_data\":\"[English_ItemName_1]\"}],[{\"text\":\"[Translated_ItemName_2]\",\"callback_data\":\"[English_ItemName_2]\"}],[{\"text\":\"Отменить\",\"callback_data\":\"cancel\"},{\"text\":\"Продолжить\",\"callback_data\":\"submit\"}]]}\n</output_schemas>\n\n<json_constraints>\n1. Output valid, strict JSON ONLY.\n2. DO NOT wrap the JSON in markdown formatting (e.g., no ```json ``` blocks). Output the raw brackets { to }.\n3. DO NOT include any text, explanations, or metadata before or after the JSON object.\n4. \"callback_data\" MUST always remain in English.\n</json_constraints>",
               "type": "string"
             },
             {
@@ -5338,7 +5338,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -5697,7 +5697,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -6039,6 +6039,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-18T14:52:42.374Z",
-  "versionId": "a428591f-5fd2-416f-883c-f7d08c35400f"
+  "updatedAt": "2026-03-28T10:36:03.641Z",
+  "versionId": "3ee952b9-39a3-4329-9b19-0a08a171821e"
 }
