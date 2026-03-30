@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-22T22:08:25.000Z",
-    "createdAt": "2026-03-22T16:04:50.683Z",
-    "versionId": "92355c7e-b625-4a06-b562-7b9659373b66",
+    "updatedAt": "2026-03-29T09:05:04.000Z",
+    "createdAt": "2026-03-29T09:04:48.139Z",
+    "versionId": "9ed61e77-e754-4e8c-9818-3b674a7597cf",
     "workflowId": "iXOPeBadNc5q45BW",
     "nodes": [
       {
@@ -886,7 +886,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1060,7 +1060,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -1938,7 +1938,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -1994,7 +1994,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2186,7 +2186,7 @@
       {
         "parameters": {
           "chatId": "={{ $('Start').item.json.chat_id }}",
-          "text": "={{\"Опишите вашу идею для фотосессии.\" + \"\\n\\n\" +\n\n\"Например: «Утро в минималистичном лофте, мягкий солнечный свет» или «Киберпанк-эстетика ночного Токио, неоновые блики» или просто «Париж».\"\n}}",
+          "text": "={{\"Опишите идею для креативной фотосессии.\" + \"\\n\\n\" +\n\n\"Пишите кратко - это дает мне максимум свободы для творчества. Наилучшие результаты получаются с реалистичными, жизненными сюжетами. Отлично работает связка Сезон + Событие + Город.\" + \"\\n\\n\" +\n\"Например:\"+ \"\\n\" +\n\"- Зимняя прогулка по Венеции\"+ \"\\n\" +\n\"- Осенняя Неделя моды в Милане\"+ \"\\n\" +\n\"- Шопинг в солнечном Палермо\"\n}}",
           "additionalFields": {
             "appendAttribution": false
           }
@@ -2204,7 +2204,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2229,7 +2229,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2396,7 +2396,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -2542,7 +2542,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2728,7 +2728,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -2752,7 +2752,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -2907,7 +2907,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -3121,7 +3121,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -3177,7 +3177,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -3347,7 +3347,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -3796,7 +3796,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -3821,7 +3821,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -3848,7 +3848,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -3875,7 +3875,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -4481,11 +4481,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 92355c7e",
+    "name": "Version 9ed61e77",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "92355c7e-b625-4a06-b562-7b9659373b66",
+  "activeVersionId": "9ed61e77-e754-4e8c-9818-3b674a7597cf",
   "connections": {
     "Get row(s)1": {
       "main": [
@@ -5948,7 +5948,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -6122,7 +6122,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -7000,7 +7000,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -7056,7 +7056,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -7248,7 +7248,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Start').item.json.chat_id }}",
-        "text": "={{\"Опишите вашу идею для фотосессии.\" + \"\\n\\n\" +\n\n\"Например: «Утро в минималистичном лофте, мягкий солнечный свет» или «Киберпанк-эстетика ночного Токио, неоновые блики» или просто «Париж».\"\n}}",
+        "text": "={{\"Опишите идею для креативной фотосессии.\" + \"\\n\\n\" +\n\n\"Пишите кратко - это дает мне максимум свободы для творчества. Наилучшие результаты получаются с реалистичными, жизненными сюжетами. Отлично работает связка Сезон + Событие + Город.\" + \"\\n\\n\" +\n\"Например:\"+ \"\\n\" +\n\"- Зимняя прогулка по Венеции\"+ \"\\n\" +\n\"- Осенняя Неделя моды в Милане\"+ \"\\n\" +\n\"- Шопинг в солнечном Палермо\"\n}}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -7266,7 +7266,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -7291,7 +7291,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -7458,7 +7458,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -7604,7 +7604,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -7790,7 +7790,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -7814,7 +7814,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -7969,7 +7969,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -8183,7 +8183,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -8239,7 +8239,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -8409,7 +8409,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -8858,7 +8858,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -8883,7 +8883,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -8910,7 +8910,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -8937,7 +8937,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -9005,6 +9005,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-25T17:58:16.462Z",
-  "versionId": "92355c7e-b625-4a06-b562-7b9659373b66"
+  "updatedAt": "2026-03-29T09:04:48.137Z",
+  "versionId": "9ed61e77-e754-4e8c-9818-3b674a7597cf"
 }
