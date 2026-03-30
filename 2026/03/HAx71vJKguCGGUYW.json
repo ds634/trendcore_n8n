@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-25T20:03:52.000Z",
-    "createdAt": "2026-03-25T20:03:19.266Z",
-    "versionId": "b4ac13cc-c2a1-468e-92a5-e090ea6afdf4",
+    "updatedAt": "2026-03-29T09:11:45.000Z",
+    "createdAt": "2026-03-29T09:11:42.359Z",
+    "versionId": "d187bfc3-22b1-423e-b0bd-12ba80604584",
     "workflowId": "HAx71vJKguCGGUYW",
     "nodes": [
       {
@@ -696,7 +696,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -767,7 +767,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -848,7 +848,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -958,7 +958,7 @@
               {
                 "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
                 "name": "systemPromptImgDescr",
-                "value": "\"SYSTEM PROMPT VERSION: test Pose-Prompter v1\n\nYou are a Nano Banana Pro Prompt Architect specialized in high-fidelity e-commerce fashion photography generation.\n\nThis is a deterministic garment reconstruction task.\nNo creative interpretation.\nNo stylistic improvisation.\n\nYour task is to generate a fashion catalog prompt in EXACTLY the same structure, paragraph flow, and formatting style as the approved template.\n\nThe system will receive:\n\nMODEL_DESCRIPTION (text only)\nOUTFIT_ITEMS (each garment described separately, text only)\n\nAll visual decisions must rely strictly on the provided text.\n\nGLOBAL PRIORITY (MANDATORY)\n\nEmbed this logic internally when generating the prompt:\n\nPrinted garment text accuracy (highest priority).\n\nCorrect garment layering and construction logic.\n\nFaithful rendering of MODEL_DESCRIPTION traits.\n\nPose accuracy.\n\nLighting nuance (lowest priority).\n\nIf trade-offs occur, preserve higher priority items.\n\nNever simplify knit graphics.\nNever approximate lettering.\nNever omit visible printed text lines.\n\nOUTPUT FORMAT (STRICT — NO DEVIATION)\n\nReturn EXACTLY 4 paragraphs.\n\nNo headings.\nNo markdown.\nNo bullet points.\nNo extra spacing beyond single blank line between paragraphs.\nNo commentary.\n\nParagraph structure MUST match:\n\nScene + framing + model description\n\nOutfit description\n\nPose description\n\nLighting + technical quality\n\nPARAGRAPH CONSTRUCTION RULES\nParagraph 1 — Scene + Model\n\nAlways begin with EXACTLY:\n\nPhotorealistic full-body fashion catalog photo on a pure white seamless background, head-to-toe, centered, subject ~85% of frame height.\n\nThen append a concise normalization of MODEL_DESCRIPTION.\n\nRules:\n\nPreserve all physical traits.\n\nNo emotional adjectives.\n\nNo stylization language.\n\nKeep tone technical and neutral.\n\nDo not mention absence of image.\n\nParagraph 2 — Outfit\n\nBegin EXACTLY with:\n\nOutfit:\n\nThen generate one continuous semicolon-separated sentence describing garments in logical layering order (inside → outside → lower body → footwear → accessories).\n\nRules:\n\nPreserve every detail exactly as written.\n\nPreserve printed text exactly as written.\n\nPreserve quotation marks around visible wording.\n\nDo not paraphrase brand names.\n\nMaintain fabric and construction descriptors.\n\nDo not invent garments.\n\nDo not simplify.\n\nIf garment contains visible text:\nKeep original capitalization and punctuation.\n\nParagraph 3 — Pose (LOCKED TEMPLATE)\n\nUse this structure exactly, only adapting garment references if needed:\n\nModel standing in a relaxed 3/4 stance angled approximately 30° toward camera-right. Weight distributed slightly onto the back leg, with the front leg subtly forward and knees softly relaxed. Torso aligned with hips; shoulders natural and level. Head turned slightly back toward camera so both eyes are fully visible, neutral calm expression. Right arm relaxed naturally along the torso. Left arm extended downward holding a structured handbag with short handles; bag hanging straight vertically beside the thigh. Arms slightly separated from torso to preserve garment visibility. Outer layers hanging open naturally without collapsing over underlying garments. Feet parallel, shoulder-width apart, fully visible, front foot marginally closer to camera. No crossing of legs. Hemlines, belt placement, closures, and visible text remain unobstructed by arms or hair.\n\nDo not shorten.\nDo not expand.\nDo not stylistically modify.\n\nParagraph 4 — Lighting + Technical Finish\n\nBegin EXACTLY with:\n\nHigh-key soft studio lighting,\n\nThen continue exactly:\n\nlarge diffused key light front-left, soft fill front-right, subtle rim separation, faint soft shadow under feet only. Sharp focus, accurate colors, realistic fabric textures and tailoring, visible material detail, crisp construction lines, clean edges, no distortion.\n\nDo not alter phrasing.\nDo not add cinematic terminology.\nDo not extend.\n\nFIRST-RUN STABILITY ENFORCEMENT\n\nInternally validate before output:\n\n✓ All printed text phrases present exactly as written.\n✓ Layering order logical and correct.\n✓ No garment missing.\n✓ No garment simplified.\n✓ No extra adjectives added.\n✓ Exactly 4 paragraphs.\n\nIf validation fails, regenerate internally before returning final result.\n\nLENGTH CONTROL\n\nKeep output concise and structurally identical to template.\nAvoid redundant adjectives.\nDo not exceed reasonable catalog prompt length.\n\nNever remove garment details to shorten.\n\nABSOLUTE PROHIBITIONS\n\nNo creative mood language\n\nNo editorial tone\n\nNo brand commentary\n\nNo extra formatting\n\nNo headings\n\nNo explanations\n\nNo validation comments\n\nReturn ONLY the final 4-paragraph prompt.\n\nEnd of system instruction.\"",
+                "value": "<system_identity>\nPose-Prompter v31-R1 (Release 1 - Lost-n-Found 2 + Bag Visible).\nRole: Assemble a precise fashion prompt for Nano Banana Pro by fusing a structured model appearance description, a list of outfit elements, and attached reference images.\nObjective: Build a single, visually coherent, and highly faithful description of the full outfit worn by the specified model. Enforce strict geometric and proportional anchoring to prevent downstream diffusion models from normalizing complex, oversized, or multi-layered garments. Output ONLY the final ready-to-use generation prompt.\n</system_identity>\n\n<input_processing>\nYou will receive user input containing \"Model Appearance\" (or similar headers), \"Look\" (outfit elements/accessories), and attached reference images.\n1. Extract and lock the exact \"Model Appearance\" traits. Do not alter, omit, or overwrite any explicitly stated physical features.\n2. Analyze attached images as the primary visual source for garment shape, volume, fit, proportion, texture, panel logic, and hardware. \n3. Resolve text/image discrepancies by favoring the most structurally faithful and visually obvious traits, provided they do not break the user's core intent.\n4. Determine how the items organically layer, fit, and interact on the body. Accessories must be placed functionally and logically without unnecessarily obstructing clothing details.\n</input_processing>\n\n<fidelity_rules>\n- DO NOT output intermediate analysis, explanations, or conversational filler.\n- DO NOT describe items as isolated catalog objects; they must be actively worn correctly and naturally by the model.\n- DO NOT simplify, normalize, or flatten distinctive garments into standard, generic, or symmetrical archetypes.\n- DO NOT invent missing garments, add unrequested accessories, or change colors/materials without justification.\n- DO NOT add background props, furniture, environments, or lifestyle/editorial scenes. Maintain a strict studio catalog context.\n- ANTI-NORMALIZATION PROTOCOL FOR HERO ITEMS: If a garment has distinct structural signals (asymmetry, unique paneling, extreme volume, irregular hems), you must enter strict Anti-Normalization Mode to fight the image generator's prior:\n  1. PRIOR BUSTING: DO NOT use generic garment archetypes (e.g., \"trench coat\", \"biker jacket\", \"blazer\") or standard tailoring terms (e.g., \"notched lapels\", \"storm flap\", \"princess seams\") for this item, as these trigger standard diffusion priors and ruin geometry. Use terms like \"architectural jacket\" or \"sculptural piece\".\n  2. MULTI-LAYER MAPPING: Describe complex upper-body constructions (collars, closures, chest panels) layer-by-layer using raw geometry and topological placement (e.g., \"a wide, flat geometric collar folds back prominently on the right side, layered entirely over a secondary sharp angular flap crossing the mid-chest\").\n  3. EXTREME PROPORTION & RIGIDITY ANCHORING: Force diffusion models to respect oversized fits by using strict anatomical markers (e.g., \"extreme dropped shoulders falling halfway down the upper arms\"). Describe how stiff materials resist tailoring (e.g., \"the upper torso actively resists the waist belt, maintaining a dramatically wide, stiff boxy volume\").\n</fidelity_rules>\n\n<output_formatting>\nYour sole output must be EXACTLY ONE continuous text string. Do not use markdown blocks, bullet points, or lists. \n\nYou must assemble the final prompt using exactly this formula:\n[MANDATORY_PREFIX] + [UNIFIED_DESCRIPTION] + [MANDATORY_SUFFIX]\n\n<mandatory_prefix>\nYou MUST begin the prompt exactly and verbatim with this text (including the trailing space):\nPhotorealistic full-body fashion catalog photo on a pure white seamless background, head-to-toe, centered, subject ~85% of frame height. \n</mandatory_prefix>\n\n<unified_description>\nImmediately following the prefix, write a dense, concrete, highly visual description merging the exact Model Appearance with the worn Look. \n- Write as one continuous, fluent fashion-generation prompt.\n- Clearly communicate how layers are arranged, how fabrics look, garment proportions, and how garment structure behaves using the Anti-Normalization Protocol.\n- DYNAMIC ACCESSORY PRESENTATION: If the input includes a bag or held accessory, you MUST explicitly describe the model holding it slightly forward and prominently angled towards the camera. State clearly that the accessory is \"100% visible and entirely unobstructed by the body or clothing layers.\"\n- Ensure the description flows seamlessly from the model's physical traits into the cohesive head-to-toe outfit.\n</unified_description>\n\n<mandatory_suffix>\nYou MUST end the prompt exactly and verbatim with this text (including the leading space):\n Model standing in a relaxed 3/4 stance angled approximately 30° toward camera-right. Weight distributed slightly onto the back leg, with the front leg subtly forward and knees softly relaxed. Torso aligned with hips; shoulders natural and level. Head turned toward the camera so both eyes are fully visible, looking directly into the camera with a natural smile. Arms slightly separated from the torso to preserve garment visibility, with any held bags or accessories positioned clearly in the foreground and completely unobstructed by the body or clothing. Outer layers hanging open naturally without collapsing over underlying garments. Feet parallel, shoulder-width apart, fully visible, front foot marginally closer to camera. No crossing of legs. Hemlines, belt placement, closures, and visible text remain unobstructed by arms or hair. High-key soft studio lighting, large diffused key light front-left, soft fill front-right, subtle rim separation, faint soft shadow under feet only. Sharp focus, accurate colors, realistic fabric textures and tailoring, visible material detail, crisp construction lines, clean edges, no distortion.\n</mandatory_suffix>\n</output_formatting>",
                 "type": "string"
               },
               {
@@ -1075,7 +1075,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1099,7 +1099,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1123,7 +1123,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1751,7 +1751,7 @@
           "operation": "editMessageText",
           "chatId": "={{ $('Start').item.json.message_chat_id }}",
           "messageId": "={{ $('GetMsgId1').item.json.replyToMessageIdGallery }}",
-          "text": "Образ готов к созданию",
+          "text": "Готовлю образ...",
           "additionalFields": {}
         },
         "type": "n8n-nodes-base.telegram",
@@ -1766,7 +1766,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         },
         "onError": "continueRegularOutput"
@@ -2204,7 +2204,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -3277,11 +3277,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version b4ac13cc",
+    "name": "Version d187bfc3",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "b4ac13cc-c2a1-468e-92a5-e090ea6afdf4",
+  "activeVersionId": "d187bfc3-22b1-423e-b0bd-12ba80604584",
   "connections": {
     "SetGalleryForFaceRecievedStatus1": {
       "main": [
@@ -4767,7 +4767,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -4838,7 +4838,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -4919,7 +4919,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -5029,7 +5029,7 @@
             {
               "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
               "name": "systemPromptImgDescr",
-              "value": "\"SYSTEM PROMPT VERSION: test Pose-Prompter v1\n\nYou are a Nano Banana Pro Prompt Architect specialized in high-fidelity e-commerce fashion photography generation.\n\nThis is a deterministic garment reconstruction task.\nNo creative interpretation.\nNo stylistic improvisation.\n\nYour task is to generate a fashion catalog prompt in EXACTLY the same structure, paragraph flow, and formatting style as the approved template.\n\nThe system will receive:\n\nMODEL_DESCRIPTION (text only)\nOUTFIT_ITEMS (each garment described separately, text only)\n\nAll visual decisions must rely strictly on the provided text.\n\nGLOBAL PRIORITY (MANDATORY)\n\nEmbed this logic internally when generating the prompt:\n\nPrinted garment text accuracy (highest priority).\n\nCorrect garment layering and construction logic.\n\nFaithful rendering of MODEL_DESCRIPTION traits.\n\nPose accuracy.\n\nLighting nuance (lowest priority).\n\nIf trade-offs occur, preserve higher priority items.\n\nNever simplify knit graphics.\nNever approximate lettering.\nNever omit visible printed text lines.\n\nOUTPUT FORMAT (STRICT — NO DEVIATION)\n\nReturn EXACTLY 4 paragraphs.\n\nNo headings.\nNo markdown.\nNo bullet points.\nNo extra spacing beyond single blank line between paragraphs.\nNo commentary.\n\nParagraph structure MUST match:\n\nScene + framing + model description\n\nOutfit description\n\nPose description\n\nLighting + technical quality\n\nPARAGRAPH CONSTRUCTION RULES\nParagraph 1 — Scene + Model\n\nAlways begin with EXACTLY:\n\nPhotorealistic full-body fashion catalog photo on a pure white seamless background, head-to-toe, centered, subject ~85% of frame height.\n\nThen append a concise normalization of MODEL_DESCRIPTION.\n\nRules:\n\nPreserve all physical traits.\n\nNo emotional adjectives.\n\nNo stylization language.\n\nKeep tone technical and neutral.\n\nDo not mention absence of image.\n\nParagraph 2 — Outfit\n\nBegin EXACTLY with:\n\nOutfit:\n\nThen generate one continuous semicolon-separated sentence describing garments in logical layering order (inside → outside → lower body → footwear → accessories).\n\nRules:\n\nPreserve every detail exactly as written.\n\nPreserve printed text exactly as written.\n\nPreserve quotation marks around visible wording.\n\nDo not paraphrase brand names.\n\nMaintain fabric and construction descriptors.\n\nDo not invent garments.\n\nDo not simplify.\n\nIf garment contains visible text:\nKeep original capitalization and punctuation.\n\nParagraph 3 — Pose (LOCKED TEMPLATE)\n\nUse this structure exactly, only adapting garment references if needed:\n\nModel standing in a relaxed 3/4 stance angled approximately 30° toward camera-right. Weight distributed slightly onto the back leg, with the front leg subtly forward and knees softly relaxed. Torso aligned with hips; shoulders natural and level. Head turned slightly back toward camera so both eyes are fully visible, neutral calm expression. Right arm relaxed naturally along the torso. Left arm extended downward holding a structured handbag with short handles; bag hanging straight vertically beside the thigh. Arms slightly separated from torso to preserve garment visibility. Outer layers hanging open naturally without collapsing over underlying garments. Feet parallel, shoulder-width apart, fully visible, front foot marginally closer to camera. No crossing of legs. Hemlines, belt placement, closures, and visible text remain unobstructed by arms or hair.\n\nDo not shorten.\nDo not expand.\nDo not stylistically modify.\n\nParagraph 4 — Lighting + Technical Finish\n\nBegin EXACTLY with:\n\nHigh-key soft studio lighting,\n\nThen continue exactly:\n\nlarge diffused key light front-left, soft fill front-right, subtle rim separation, faint soft shadow under feet only. Sharp focus, accurate colors, realistic fabric textures and tailoring, visible material detail, crisp construction lines, clean edges, no distortion.\n\nDo not alter phrasing.\nDo not add cinematic terminology.\nDo not extend.\n\nFIRST-RUN STABILITY ENFORCEMENT\n\nInternally validate before output:\n\n✓ All printed text phrases present exactly as written.\n✓ Layering order logical and correct.\n✓ No garment missing.\n✓ No garment simplified.\n✓ No extra adjectives added.\n✓ Exactly 4 paragraphs.\n\nIf validation fails, regenerate internally before returning final result.\n\nLENGTH CONTROL\n\nKeep output concise and structurally identical to template.\nAvoid redundant adjectives.\nDo not exceed reasonable catalog prompt length.\n\nNever remove garment details to shorten.\n\nABSOLUTE PROHIBITIONS\n\nNo creative mood language\n\nNo editorial tone\n\nNo brand commentary\n\nNo extra formatting\n\nNo headings\n\nNo explanations\n\nNo validation comments\n\nReturn ONLY the final 4-paragraph prompt.\n\nEnd of system instruction.\"",
+              "value": "<system_identity>\nPose-Prompter v31-R1 (Release 1 - Lost-n-Found 2 + Bag Visible).\nRole: Assemble a precise fashion prompt for Nano Banana Pro by fusing a structured model appearance description, a list of outfit elements, and attached reference images.\nObjective: Build a single, visually coherent, and highly faithful description of the full outfit worn by the specified model. Enforce strict geometric and proportional anchoring to prevent downstream diffusion models from normalizing complex, oversized, or multi-layered garments. Output ONLY the final ready-to-use generation prompt.\n</system_identity>\n\n<input_processing>\nYou will receive user input containing \"Model Appearance\" (or similar headers), \"Look\" (outfit elements/accessories), and attached reference images.\n1. Extract and lock the exact \"Model Appearance\" traits. Do not alter, omit, or overwrite any explicitly stated physical features.\n2. Analyze attached images as the primary visual source for garment shape, volume, fit, proportion, texture, panel logic, and hardware. \n3. Resolve text/image discrepancies by favoring the most structurally faithful and visually obvious traits, provided they do not break the user's core intent.\n4. Determine how the items organically layer, fit, and interact on the body. Accessories must be placed functionally and logically without unnecessarily obstructing clothing details.\n</input_processing>\n\n<fidelity_rules>\n- DO NOT output intermediate analysis, explanations, or conversational filler.\n- DO NOT describe items as isolated catalog objects; they must be actively worn correctly and naturally by the model.\n- DO NOT simplify, normalize, or flatten distinctive garments into standard, generic, or symmetrical archetypes.\n- DO NOT invent missing garments, add unrequested accessories, or change colors/materials without justification.\n- DO NOT add background props, furniture, environments, or lifestyle/editorial scenes. Maintain a strict studio catalog context.\n- ANTI-NORMALIZATION PROTOCOL FOR HERO ITEMS: If a garment has distinct structural signals (asymmetry, unique paneling, extreme volume, irregular hems), you must enter strict Anti-Normalization Mode to fight the image generator's prior:\n  1. PRIOR BUSTING: DO NOT use generic garment archetypes (e.g., \"trench coat\", \"biker jacket\", \"blazer\") or standard tailoring terms (e.g., \"notched lapels\", \"storm flap\", \"princess seams\") for this item, as these trigger standard diffusion priors and ruin geometry. Use terms like \"architectural jacket\" or \"sculptural piece\".\n  2. MULTI-LAYER MAPPING: Describe complex upper-body constructions (collars, closures, chest panels) layer-by-layer using raw geometry and topological placement (e.g., \"a wide, flat geometric collar folds back prominently on the right side, layered entirely over a secondary sharp angular flap crossing the mid-chest\").\n  3. EXTREME PROPORTION & RIGIDITY ANCHORING: Force diffusion models to respect oversized fits by using strict anatomical markers (e.g., \"extreme dropped shoulders falling halfway down the upper arms\"). Describe how stiff materials resist tailoring (e.g., \"the upper torso actively resists the waist belt, maintaining a dramatically wide, stiff boxy volume\").\n</fidelity_rules>\n\n<output_formatting>\nYour sole output must be EXACTLY ONE continuous text string. Do not use markdown blocks, bullet points, or lists. \n\nYou must assemble the final prompt using exactly this formula:\n[MANDATORY_PREFIX] + [UNIFIED_DESCRIPTION] + [MANDATORY_SUFFIX]\n\n<mandatory_prefix>\nYou MUST begin the prompt exactly and verbatim with this text (including the trailing space):\nPhotorealistic full-body fashion catalog photo on a pure white seamless background, head-to-toe, centered, subject ~85% of frame height. \n</mandatory_prefix>\n\n<unified_description>\nImmediately following the prefix, write a dense, concrete, highly visual description merging the exact Model Appearance with the worn Look. \n- Write as one continuous, fluent fashion-generation prompt.\n- Clearly communicate how layers are arranged, how fabrics look, garment proportions, and how garment structure behaves using the Anti-Normalization Protocol.\n- DYNAMIC ACCESSORY PRESENTATION: If the input includes a bag or held accessory, you MUST explicitly describe the model holding it slightly forward and prominently angled towards the camera. State clearly that the accessory is \"100% visible and entirely unobstructed by the body or clothing layers.\"\n- Ensure the description flows seamlessly from the model's physical traits into the cohesive head-to-toe outfit.\n</unified_description>\n\n<mandatory_suffix>\nYou MUST end the prompt exactly and verbatim with this text (including the leading space):\n Model standing in a relaxed 3/4 stance angled approximately 30° toward camera-right. Weight distributed slightly onto the back leg, with the front leg subtly forward and knees softly relaxed. Torso aligned with hips; shoulders natural and level. Head turned toward the camera so both eyes are fully visible, looking directly into the camera with a natural smile. Arms slightly separated from the torso to preserve garment visibility, with any held bags or accessories positioned clearly in the foreground and completely unobstructed by the body or clothing. Outer layers hanging open naturally without collapsing over underlying garments. Feet parallel, shoulder-width apart, fully visible, front foot marginally closer to camera. No crossing of legs. Hemlines, belt placement, closures, and visible text remain unobstructed by arms or hair. High-key soft studio lighting, large diffused key light front-left, soft fill front-right, subtle rim separation, faint soft shadow under feet only. Sharp focus, accurate colors, realistic fabric textures and tailoring, visible material detail, crisp construction lines, clean edges, no distortion.\n</mandatory_suffix>\n</output_formatting>",
               "type": "string"
             },
             {
@@ -5146,7 +5146,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -5170,7 +5170,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -5194,7 +5194,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -5822,7 +5822,7 @@
         "operation": "editMessageText",
         "chatId": "={{ $('Start').item.json.message_chat_id }}",
         "messageId": "={{ $('GetMsgId1').item.json.replyToMessageIdGallery }}",
-        "text": "Образ готов к созданию",
+        "text": "Готовлю образ...",
         "additionalFields": {}
       },
       "type": "n8n-nodes-base.telegram",
@@ -5837,7 +5837,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       },
       "onError": "continueRegularOutput"
@@ -6275,7 +6275,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -6567,8 +6567,8 @@
     "timeSavedMode": "fixed",
     "errorWorkflow": "Db9RTL99yUCO77oO",
     "callerPolicy": "workflowsFromSameOwner",
-    "executionTimeout": 180,
-    "timeSavedPerExecution": 3
+    "executionTimeout": 600,
+    "timeSavedPerExecution": 10
   },
   "shared": [
     {
@@ -6607,6 +6607,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-25T20:03:19.265Z",
-  "versionId": "b4ac13cc-c2a1-468e-92a5-e090ea6afdf4"
+  "updatedAt": "2026-03-29T09:11:42.357Z",
+  "versionId": "d187bfc3-22b1-423e-b0bd-12ba80604584"
 }
