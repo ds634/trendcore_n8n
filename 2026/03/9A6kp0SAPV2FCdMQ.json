@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-26T21:59:48.000Z",
-    "createdAt": "2026-03-26T21:59:43.642Z",
-    "versionId": "4c49c26a-66f3-4a63-903a-5f0fca4b4fe7",
+    "updatedAt": "2026-03-28T18:54:12.000Z",
+    "createdAt": "2026-03-28T18:54:07.656Z",
+    "versionId": "99c0a3b0-bd1f-4460-8043-ddf100252e74",
     "workflowId": "9A6kp0SAPV2FCdMQ",
     "nodes": [
       {
@@ -29,7 +29,7 @@
           "genericAuthType": "httpHeaderAuth",
           "sendBody": true,
           "specifyBody": "json",
-          "jsonBody": "={\n  \"prompt\": \"{{ $json.SystemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $json.FileUrls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
+          "jsonBody": "={\n  \"prompt\": \"{{ $('Start').item.json.systemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $('UrlNotEmpty').item.json.FileUrls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
           "options": {
             "timeout": 300000
           }
@@ -376,7 +376,7 @@
           "genericAuthType": "httpHeaderAuth",
           "sendBody": true,
           "specifyBody": "json",
-          "jsonBody": "={\n  \"prompt\": \"{{ $json.SystemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n \n  \"resolution\": \"1K\"\n}\n",
+          "jsonBody": "={\n  \"prompt\": \"{{$('Start').item.json.systemPrompt}}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n \n  \"resolution\": \"1K\"\n}\n",
           "options": {
             "timeout": 300000
           }
@@ -873,11 +873,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 4c49c26a",
+    "name": "Version 99c0a3b0",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "4c49c26a-66f3-4a63-903a-5f0fca4b4fe7",
+  "activeVersionId": "99c0a3b0-bd1f-4460-8043-ddf100252e74",
   "connections": {
     "Wait": {
       "main": [
@@ -1122,7 +1122,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"prompt\": \"{{ $json.SystemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $json.FileUrls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
+        "jsonBody": "={\n  \"prompt\": \"{{ $('Start').item.json.systemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $('UrlNotEmpty').item.json.FileUrls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
         "options": {
           "timeout": 300000
         }
@@ -1469,7 +1469,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"prompt\": \"{{ $json.SystemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n \n  \"resolution\": \"1K\"\n}\n",
+        "jsonBody": "={\n  \"prompt\": \"{{$('Start').item.json.systemPrompt}}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n \n  \"resolution\": \"1K\"\n}\n",
         "options": {
           "timeout": 300000
         }
@@ -1789,6 +1789,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-26T21:59:43.641Z",
-  "versionId": "4c49c26a-66f3-4a63-903a-5f0fca4b4fe7"
+  "updatedAt": "2026-03-28T18:54:07.655Z",
+  "versionId": "99c0a3b0-bd1f-4460-8043-ddf100252e74"
 }
