@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-26T11:29:23.000Z",
-    "createdAt": "2026-03-26T11:29:21.377Z",
-    "versionId": "de8cb8fd-78d4-4c1a-aeaa-0e7f2eaca069",
+    "updatedAt": "2026-03-28T11:28:14.000Z",
+    "createdAt": "2026-03-28T11:26:05.865Z",
+    "versionId": "5b125f97-ebaa-4492-9073-9f623ee1a603",
     "workflowId": "MCKUe6c7lEWRrPCq",
     "nodes": [
       {
@@ -212,7 +212,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -270,7 +270,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -553,7 +553,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -577,7 +577,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1683,8 +1683,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -3952,
-          1056
+          -3888,
+          1072
         ],
         "id": "d097db23-7ced-44cc-92b9-8a33c6e0fad5",
         "name": "IfDebug6"
@@ -2480,11 +2480,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version de8cb8fd",
+    "name": "Version 5b125f97",
     "description": "",
     "autosaved": false
   },
-  "activeVersionId": "de8cb8fd-78d4-4c1a-aeaa-0e7f2eaca069",
+  "activeVersionId": "5b125f97-ebaa-4492-9073-9f623ee1a603",
   "connections": {
     "Start": {
       "main": [
@@ -3291,7 +3291,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3349,7 +3349,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3632,7 +3632,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3656,7 +3656,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -4762,8 +4762,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -3952,
-        1056
+        -3888,
+        1072
       ],
       "id": "d097db23-7ced-44cc-92b9-8a33c6e0fad5",
       "name": "IfDebug6"
@@ -4976,8 +4976,8 @@
     "saveDataSuccessExecution": "all",
     "saveManualExecutions": true,
     "saveExecutionProgress": true,
-    "executionTimeout": 180,
-    "timeSavedPerExecution": 3
+    "executionTimeout": 600,
+    "timeSavedPerExecution": 10
   },
   "shared": [
     {
@@ -5016,6 +5016,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-26T11:29:21.374Z",
-  "versionId": "de8cb8fd-78d4-4c1a-aeaa-0e7f2eaca069"
+  "updatedAt": "2026-03-28T11:54:51.566Z",
+  "versionId": "5b125f97-ebaa-4492-9073-9f623ee1a603"
 }
