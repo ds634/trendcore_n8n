@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-22T12:20:08.000Z",
-    "createdAt": "2026-03-22T12:19:23.347Z",
-    "versionId": "c7c1f9ae-4917-49dd-96d5-b04c005a1222",
+    "updatedAt": "2026-03-28T10:42:36.000Z",
+    "createdAt": "2026-03-28T10:42:27.814Z",
+    "versionId": "89d0cc05-afe4-4b48-be60-06c2f82c497c",
     "workflowId": "YVTngpIa8BIVq22d",
     "nodes": [
       {
@@ -68,7 +68,7 @@
               {
                 "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
                 "name": "Descr",
-                "value": "\"USER PROMPT: Model-MagazinePrompter v7 (VOGUE Style Optimized)\n\nUse the reference portrait as the identity anchor and create a photorealistic luxury fashion magazine cover featuring the same person, preserving their recognizable facial structure, skin tone, eye color, hairstyle, and overall appearance. Design the image as an authentic Vogue-style high-fashion cover with vertical framing, premium editorial realism, and polished magazine layout.\n\nThe most important composition rule is the masthead layering: place \"\"VOGUE\"\" at the top center as a true background element behind the subject’s head and hair. The person must be rendered in front of the masthead so the head and hair naturally occlude the lower portions of the letters wherever they overlap. Parts of the logo must disappear behind the silhouette in classic printed-cover style, while the word \"\"VOGUE\"\" remains clearly recognizable. The masthead must never appear as a foreground overlay and must never be printed across the forehead, face, skin, or front surface of the hair. Frame the subject high enough so the top of the head and hair physically intersect the lower part of the masthead, creating unmistakable depth layering.\n\nChange the pose and facial expression from the source image while keeping the person clearly identifiable. The pose should feel distinctly editorial and visibly different from the reference, such as a three-quarter turn, subtle torso rotation, over-the-shoulder angle, seated posture, asymmetric shoulder line, or graceful hand interaction with the garment. The facial expression should also be newly interpreted rather than copied from the source, with a camera-aware editorial mood such as soft confidence, luminous warmth, poised glamour, playful sophistication, or quietly powerful intensity. Avoid blank or emotionally flat expressions.\n\nDress the subject in premium high-fashion styling chosen to suit their features and presence, such as sculptural tailoring, refined draping, couture-inspired eveningwear, statement outerwear, elegant separates, monochrome minimalism, or richly textured luxury fabrics. Avoid generic repetitive blazer-only styling unless it is transformed into a strong editorial look.\n\nUse high-end editorial lighting, crisp facial detail, natural skin texture, believable fabric realism, elegant color grading, shallow controlled depth of field, and a glossy print-magazine finish against a clean luxurious background. Include realistic magazine typography with the exact masthead \"\"VOGUE\"\" at the top center behind the subject’s head, one sophisticated main feature headline in the lower third, and 4 to 7 polished supporting cover lines along the sides with believable editorial hierarchy, refined fonts, balanced spacing, and text that does not cover the eyes or key facial features.\n\nAvoid identity drift, warped text, awkward anatomy, weak wardrobe choices, repetitive beauty-cover posing, and any result where the \"\"VOGUE\"\" masthead appears detached above the head or visibly over the forehead, face, or front surface of the hair.\nIf any part of the masthead appears on the forehead, face, or front plane of the hair, the result is incorrect.\"",
+                "value": "A photorealistic, high-end \"People\" magazine cover featuring the exact subject from the input image. The subject is radiating a warm, friendly, and authentic smile with bright, joyful eyes. They are captured in a dynamic, engaging pose, turned slightly in a three-quarter angle toward the camera with a relaxed, confident posture, dressed in elegant, high-quality, tailored contemporary fashion. CRITICAL SPATIAL LAYOUT: The subject is the dominant foreground figure standing closest to the camera. The large \"People\" masthead is a flat, printed graphic strictly on the rear background wall at the top center. The subject MUST physically overlap and break the \"People\" masthead. Parts of the masthead letters must be physically hidden behind the subject's silhouette. TYPOGRAPHY AND DESIGN: Add one bold main feature headline in the lower third, and several distinct, colorful supporting cover lines placed along the left and right borders. AESTHETICS: Full natural color photography, vibrant and realistic skin tones. Striking, cinematic studio lighting featuring warm golden rim lights, soft diffused fill, and flattering sculpted shadows. Crisp facial detail and a glossy premium print-magazine finish. STRICT QUALITY ENFORCEMENT: The subject must have flawless, realistic human anatomy with perfectly balanced body proportions. The head must be perfectly sized relative to the shoulders and torso. Do not generate oversized heads, distorted features, bobblehead effects, or anatomical mutations. Absolutely no floating text, no text overlapping the subject's face or clothing, and no black-and-white or grayscale imagery.",
                 "type": "string"
               },
               {
@@ -220,7 +220,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -312,7 +312,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -359,7 +359,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -383,7 +383,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -407,7 +407,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -865,7 +865,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -889,7 +889,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -913,7 +913,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -937,7 +937,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1029,7 +1029,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1053,7 +1053,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1077,7 +1077,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1101,7 +1101,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1378,7 +1378,7 @@
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
-            "name": "ChangeFace TG PROD"
+            "name": "TG PROD"
           }
         }
       },
@@ -1933,11 +1933,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version c7c1f9ae",
+    "name": "Version 89d0cc05",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c7c1f9ae-4917-49dd-96d5-b04c005a1222",
+  "activeVersionId": "89d0cc05-afe4-4b48-be60-06c2f82c497c",
   "connections": {
     "SP_MagazinePrompter": {
       "main": [
@@ -2534,7 +2534,7 @@
             {
               "id": "b51b3b63-2255-45fe-9023-8b136b8f4080",
               "name": "Descr",
-              "value": "\"USER PROMPT: Model-MagazinePrompter v7 (VOGUE Style Optimized)\n\nUse the reference portrait as the identity anchor and create a photorealistic luxury fashion magazine cover featuring the same person, preserving their recognizable facial structure, skin tone, eye color, hairstyle, and overall appearance. Design the image as an authentic Vogue-style high-fashion cover with vertical framing, premium editorial realism, and polished magazine layout.\n\nThe most important composition rule is the masthead layering: place \"\"VOGUE\"\" at the top center as a true background element behind the subject’s head and hair. The person must be rendered in front of the masthead so the head and hair naturally occlude the lower portions of the letters wherever they overlap. Parts of the logo must disappear behind the silhouette in classic printed-cover style, while the word \"\"VOGUE\"\" remains clearly recognizable. The masthead must never appear as a foreground overlay and must never be printed across the forehead, face, skin, or front surface of the hair. Frame the subject high enough so the top of the head and hair physically intersect the lower part of the masthead, creating unmistakable depth layering.\n\nChange the pose and facial expression from the source image while keeping the person clearly identifiable. The pose should feel distinctly editorial and visibly different from the reference, such as a three-quarter turn, subtle torso rotation, over-the-shoulder angle, seated posture, asymmetric shoulder line, or graceful hand interaction with the garment. The facial expression should also be newly interpreted rather than copied from the source, with a camera-aware editorial mood such as soft confidence, luminous warmth, poised glamour, playful sophistication, or quietly powerful intensity. Avoid blank or emotionally flat expressions.\n\nDress the subject in premium high-fashion styling chosen to suit their features and presence, such as sculptural tailoring, refined draping, couture-inspired eveningwear, statement outerwear, elegant separates, monochrome minimalism, or richly textured luxury fabrics. Avoid generic repetitive blazer-only styling unless it is transformed into a strong editorial look.\n\nUse high-end editorial lighting, crisp facial detail, natural skin texture, believable fabric realism, elegant color grading, shallow controlled depth of field, and a glossy print-magazine finish against a clean luxurious background. Include realistic magazine typography with the exact masthead \"\"VOGUE\"\" at the top center behind the subject’s head, one sophisticated main feature headline in the lower third, and 4 to 7 polished supporting cover lines along the sides with believable editorial hierarchy, refined fonts, balanced spacing, and text that does not cover the eyes or key facial features.\n\nAvoid identity drift, warped text, awkward anatomy, weak wardrobe choices, repetitive beauty-cover posing, and any result where the \"\"VOGUE\"\" masthead appears detached above the head or visibly over the forehead, face, or front surface of the hair.\nIf any part of the masthead appears on the forehead, face, or front plane of the hair, the result is incorrect.\"",
+              "value": "A photorealistic, high-end \"People\" magazine cover featuring the exact subject from the input image. The subject is radiating a warm, friendly, and authentic smile with bright, joyful eyes. They are captured in a dynamic, engaging pose, turned slightly in a three-quarter angle toward the camera with a relaxed, confident posture, dressed in elegant, high-quality, tailored contemporary fashion. CRITICAL SPATIAL LAYOUT: The subject is the dominant foreground figure standing closest to the camera. The large \"People\" masthead is a flat, printed graphic strictly on the rear background wall at the top center. The subject MUST physically overlap and break the \"People\" masthead. Parts of the masthead letters must be physically hidden behind the subject's silhouette. TYPOGRAPHY AND DESIGN: Add one bold main feature headline in the lower third, and several distinct, colorful supporting cover lines placed along the left and right borders. AESTHETICS: Full natural color photography, vibrant and realistic skin tones. Striking, cinematic studio lighting featuring warm golden rim lights, soft diffused fill, and flattering sculpted shadows. Crisp facial detail and a glossy premium print-magazine finish. STRICT QUALITY ENFORCEMENT: The subject must have flawless, realistic human anatomy with perfectly balanced body proportions. The head must be perfectly sized relative to the shoulders and torso. Do not generate oversized heads, distorted features, bobblehead effects, or anatomical mutations. Absolutely no floating text, no text overlapping the subject's face or clothing, and no black-and-white or grayscale imagery.",
               "type": "string"
             },
             {
@@ -2686,7 +2686,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -2778,7 +2778,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -2825,7 +2825,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -2849,7 +2849,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -2873,7 +2873,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3331,7 +3331,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3355,7 +3355,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3379,7 +3379,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3403,7 +3403,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3495,7 +3495,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3519,7 +3519,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3543,7 +3543,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3567,7 +3567,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3844,7 +3844,7 @@
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
-          "name": "ChangeFace TG PROD"
+          "name": "TG PROD"
         }
       }
     },
@@ -3879,8 +3879,8 @@
     "timeSavedMode": "fixed",
     "errorWorkflow": "Db9RTL99yUCO77oO",
     "callerPolicy": "workflowsFromSameOwner",
-    "executionTimeout": 180,
-    "timeSavedPerExecution": 3
+    "executionTimeout": 600,
+    "timeSavedPerExecution": 10
   },
   "shared": [
     {
@@ -3919,6 +3919,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-22T14:23:40.363Z",
-  "versionId": "c7c1f9ae-4917-49dd-96d5-b04c005a1222"
+  "updatedAt": "2026-03-28T11:55:43.325Z",
+  "versionId": "89d0cc05-afe4-4b48-be60-06c2f82c497c"
 }
