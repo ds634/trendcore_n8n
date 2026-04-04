@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-31T09:22:08.000Z",
-    "createdAt": "2026-03-31T09:22:03.430Z",
-    "versionId": "a6e0bd72-bf99-4280-8d10-81cce7032e9f",
+    "updatedAt": "2026-04-04T18:55:41.000Z",
+    "createdAt": "2026-04-04T18:55:38.093Z",
+    "versionId": "eb8ea339-f818-47ea-8581-d731459bc6db",
     "workflowId": "9A6kp0SAPV2FCdMQ",
     "nodes": [
       {
@@ -430,7 +430,7 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          256,
+          768,
           48
         ],
         "id": "a2b5eb3b-b6c8-497c-a941-e017314c6d43",
@@ -664,7 +664,129 @@
           48
         ],
         "id": "f64c1fb9-e8d5-41c4-9669-772997f768d9",
-        "name": "Insert row",
+        "name": "Insert log row",
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "QSv7aVHUCVTpB23N",
+            "mode": "list",
+            "cachedResultName": "TrendcoreTgUsers",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/QSv7aVHUCVTpB23N"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "tgUserId",
+                "keyValue": "={{ $('Start').item.json.chatId }}"
+              }
+            ]
+          }
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          288,
+          48
+        ],
+        "id": "cd2ff7e4-95cc-4e63-9056-802ed7ecc46e",
+        "name": "GetQuotaRow",
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "QSv7aVHUCVTpB23N",
+            "mode": "list",
+            "cachedResultName": "TrendcoreTgUsers",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/QSv7aVHUCVTpB23N"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "tgUserId",
+                "keyValue": "={{ $('Start').item.json.chatId }}"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "nbQuotaLeft": "={{ $('GetQuotaRow').item.json.nbQuotaLeft -1 }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "tgUserId",
+                "displayName": "tgUserId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "nbQuota",
+                "displayName": "nbQuota",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "nbQuotaLeft",
+                "displayName": "nbQuotaLeft",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "nbQuotaStartsFrom",
+                "displayName": "nbQuotaStartsFrom",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "dateTime",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          480,
+          48
+        ],
+        "id": "89af088f-0c8b-457b-b40e-0754b9a5e915",
+        "name": "UpdateQuotaRow",
         "onError": "continueRegularOutput"
       }
     ],
@@ -828,7 +950,7 @@
         "main": [
           [
             {
-              "node": "Insert row",
+              "node": "Insert log row",
               "type": "main",
               "index": 0
             }
@@ -869,7 +991,29 @@
           []
         ]
       },
-      "Insert row": {
+      "Insert log row": {
+        "main": [
+          [
+            {
+              "node": "GetQuotaRow",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "GetQuotaRow": {
+        "main": [
+          [
+            {
+              "node": "UpdateQuotaRow",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UpdateQuotaRow": {
         "main": [
           [
             {
@@ -882,11 +1026,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version a6e0bd72",
+    "name": "Version eb8ea339",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "a6e0bd72-bf99-4280-8d10-81cce7032e9f",
+  "activeVersionId": "eb8ea339-f818-47ea-8581-d731459bc6db",
   "connections": {
     "Wait": {
       "main": [
@@ -1047,7 +1191,7 @@
       "main": [
         [
           {
-            "node": "Insert row",
+            "node": "Insert log row",
             "type": "main",
             "index": 0
           }
@@ -1088,7 +1232,29 @@
         []
       ]
     },
-    "Insert row": {
+    "Insert log row": {
+      "main": [
+        [
+          {
+            "node": "GetQuotaRow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetQuotaRow": {
+      "main": [
+        [
+          {
+            "node": "UpdateQuotaRow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateQuotaRow": {
       "main": [
         [
           {
@@ -1532,7 +1698,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        256,
+        768,
         48
       ],
       "id": "a2b5eb3b-b6c8-497c-a941-e017314c6d43",
@@ -1766,7 +1932,129 @@
         48
       ],
       "id": "f64c1fb9-e8d5-41c4-9669-772997f768d9",
-      "name": "Insert row",
+      "name": "Insert log row",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "QSv7aVHUCVTpB23N",
+          "mode": "list",
+          "cachedResultName": "TrendcoreTgUsers",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/QSv7aVHUCVTpB23N"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "tgUserId",
+              "keyValue": "={{ $('Start').item.json.chatId }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        288,
+        48
+      ],
+      "id": "cd2ff7e4-95cc-4e63-9056-802ed7ecc46e",
+      "name": "GetQuotaRow",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "QSv7aVHUCVTpB23N",
+          "mode": "list",
+          "cachedResultName": "TrendcoreTgUsers",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/QSv7aVHUCVTpB23N"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "tgUserId",
+              "keyValue": "={{ $('Start').item.json.chatId }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "nbQuotaLeft": "={{ $('GetQuotaRow').item.json.nbQuotaLeft -1 }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "tgUserId",
+              "displayName": "tgUserId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "nbQuota",
+              "displayName": "nbQuota",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "nbQuotaLeft",
+              "displayName": "nbQuotaLeft",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "nbQuotaStartsFrom",
+              "displayName": "nbQuotaStartsFrom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        48
+      ],
+      "id": "89af088f-0c8b-457b-b40e-0754b9a5e915",
+      "name": "UpdateQuotaRow",
       "onError": "continueRegularOutput"
     }
   ],
@@ -1807,6 +2095,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-31T09:22:03.429Z",
-  "versionId": "a6e0bd72-bf99-4280-8d10-81cce7032e9f"
+  "updatedAt": "2026-04-04T18:55:38.092Z",
+  "versionId": "eb8ea339-f818-47ea-8581-d731459bc6db"
 }
