@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-04T17:55:02.000Z",
-    "createdAt": "2026-04-04T17:54:59.034Z",
-    "versionId": "8ee9fda0-b73c-4836-99ae-fbb9ae93a8b3",
+    "updatedAt": "2026-04-04T20:41:44.000Z",
+    "createdAt": "2026-04-04T20:41:29.054Z",
+    "versionId": "fcc5aa34-476c-4f5b-9568-ea59c3fd07c1",
     "workflowId": "JrfEgCM2R7q7xfnb",
     "nodes": [
       {
@@ -19,8 +19,8 @@
         "type": "n8n-nodes-base.telegramTrigger",
         "typeVersion": 1.2,
         "position": [
-          -4704,
-          2960
+          -5744,
+          2944
         ],
         "id": "afc07df0-a9a0-49d9-9251-023682cd85ba",
         "name": "Telegram Trigger",
@@ -201,8 +201,8 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          -128,
-          4496
+          -112,
+          4656
         ],
         "id": "aa53fe4c-f7a4-46f4-af10-51c570fc4801",
         "name": "Get row(s)",
@@ -1297,8 +1297,8 @@
         "name": "Set Bot Token",
         "type": "n8n-nodes-base.set",
         "position": [
-          -1472,
-          2992
+          -2800,
+          2912
         ],
         "typeVersion": 3.4
       },
@@ -1316,8 +1316,8 @@
         "name": "Is CALLBACK?",
         "type": "n8n-nodes-base.if",
         "position": [
-          -1184,
-          2992
+          -2544,
+          2912
         ],
         "typeVersion": 1
       },
@@ -1441,7 +1441,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          80,
+          -1424,
           5632
         ],
         "id": "28bad94d-1ad8-4ac3-b728-283eec246b0a",
@@ -1477,8 +1477,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -1648,
-          2992
+          -2976,
+          2912
         ],
         "id": "aa9c5e42-1cbc-49cf-b4a1-1826548cbd6f",
         "name": "Model"
@@ -1680,8 +1680,8 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          528,
-          5632
+          -720,
+          5664
         ],
         "id": "a9304f12-d683-49a8-9d74-f7bfb679d135",
         "name": "Insert row Initial status1",
@@ -1756,13 +1756,14 @@
       {
         "parameters": {
           "content": "совместить с createlook",
-          "height": 288,
-          "width": 1552
+          "height": 368,
+          "width": 2848,
+          "color": 3
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -112,
-          5552
+          -1616,
+          5472
         ],
         "typeVersion": 1,
         "id": "6b6a0911-1748-45d6-bbb3-a2e9e1bad7a0",
@@ -1907,8 +1908,8 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          1232,
-          5632
+          928,
+          5680
         ],
         "id": "8904dc1d-c661-44bb-aa6a-83d26b36f480",
         "name": "Set GetFace status1"
@@ -1925,8 +1926,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          976,
-          5632
+          672,
+          5680
         ],
         "id": "c1fa80ce-1e30-47e6-9f07-7b54dfccf683",
         "name": "send msg to upload face1",
@@ -3007,12 +3008,12 @@
         "parameters": {
           "content": "",
           "height": 2256,
-          "width": 5392,
+          "width": 7040,
           "color": 4
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -672,
+          -2320,
           3504
         ],
         "typeVersion": 1,
@@ -3910,8 +3911,8 @@
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
         "position": [
-          -384,
-          4352
+          -1984,
+          3840
         ],
         "id": "4be07484-6729-412f-845c-1feb759c9e34",
         "name": "CurrentProcess2"
@@ -3924,8 +3925,8 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          1840,
-          704
+          1792,
+          688
         ],
         "typeVersion": 1,
         "id": "069e55ad-be71-4d2c-91e3-564cdb89ff89",
@@ -5023,7 +5024,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3616,
+          3184,
           1584
         ],
         "id": "73421be4-7ada-44b8-a673-bb9021bfba29",
@@ -5335,7 +5336,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          304,
+          -1200,
           5632
         ],
         "id": "68e01864-bb99-4401-b6c3-c0224ef2dd55",
@@ -5507,8 +5508,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -1792,
-          2992
+          -3120,
+          2912
         ],
         "id": "46168c2a-11d4-40e6-a33f-e47a3226a2d0",
         "name": "DebugMode"
@@ -5580,7 +5581,7 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -112,
+          -1616,
           5872
         ],
         "typeVersion": 1,
@@ -5614,47 +5615,13 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          16,
+          -1488,
           5968
         ],
         "id": "785b0241-d5e5-4bb5-8c85-b21996e62a01",
         "name": "GetSettings",
         "alwaysOutputData": true,
         "onError": "continueRegularOutput"
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "options": {
-              "caseSensitive": true,
-              "leftValue": "",
-              "typeValidation": "strict",
-              "version": 3
-            },
-            "conditions": [
-              {
-                "id": "97025318-a2f2-441f-8f76-d29e59fb13c2",
-                "leftValue": "={{$('GetSettings')}}",
-                "rightValue": "",
-                "operator": {
-                  "type": "object",
-                  "operation": "empty",
-                  "singleValue": true
-                }
-              }
-            ],
-            "combinator": "and"
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 2.3,
-        "position": [
-          96,
-          6272
-        ],
-        "id": "c09673d1-8107-4e0e-9ff5-ad17a6a108a1",
-        "name": "IfEmpty"
       },
       {
         "parameters": {
@@ -5669,7 +5636,7 @@
         "name": "Send to Telegram API",
         "type": "n8n-nodes-base.httpRequest",
         "position": [
-          576,
+          -928,
           5952
         ],
         "typeVersion": 4.2
@@ -5681,7 +5648,7 @@
         "type": "n8n-nodes-base.code",
         "typeVersion": 2,
         "position": [
-          320,
+          -1184,
           5952
         ],
         "id": "d170fc93-c36a-4dd0-b347-8a139a9b5a16",
@@ -6364,8 +6331,8 @@
         "name": "CreateMsgSelectItems",
         "type": "n8n-nodes-base.httpRequest",
         "position": [
-          752,
-          5632
+          -496,
+          5664
         ],
         "typeVersion": 4.2
       },
@@ -8410,8 +8377,8 @@
         "type": "n8n-nodes-base.executeWorkflow",
         "typeVersion": 1.2,
         "position": [
-          1680,
-          1840
+          1600,
+          2144
         ],
         "name": "Call subTR_CL_CallbacksProcessing",
         "id": "666a99d6-4a83-4881-81bc-c5acd9bc3747",
@@ -8818,8 +8785,8 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          1312,
-          2128
+          1392,
+          2656
         ],
         "id": "2cfc266d-ed57-4a39-b8c0-4dfa0cf1a0ed",
         "name": "Set Done if left not done1",
@@ -8836,8 +8803,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1552,
-          2128
+          1632,
+          2656
         ],
         "id": "0a9db7e7-4583-4309-ac22-e80e04695d82",
         "name": "HideButtons3",
@@ -8861,8 +8828,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1776,
-          2128
+          1856,
+          2656
         ],
         "id": "0537ef01-4883-4e52-9058-0f2547486ac2",
         "name": "HideButtons4",
@@ -9099,8 +9066,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          32,
-          4496
+          48,
+          4656
         ],
         "id": "e1b22275-c03e-4c3e-88c4-7fd2a31ecc94",
         "name": "IfNotStop"
@@ -9147,8 +9114,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          -2000,
-          2992
+          -3312,
+          2912
         ],
         "id": "1feef3ec-6bc4-42f6-a97e-4d97219d855d",
         "name": "Edit Fields"
@@ -9167,7 +9134,7 @@
             "conditions": [
               {
                 "keyName": "tgUserId",
-                "keyValue": "={{$('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id\n\n}}"
+                "keyValue": "={{$('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id\n\n}}"
               }
             ]
           }
@@ -9175,8 +9142,8 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          -4496,
-          2960
+          -5376,
+          2944
         ],
         "id": "75961dc6-94fd-43d6-ad62-e82ba92479d4",
         "name": "GetUser",
@@ -9221,8 +9188,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -4288,
-          2960
+          -5168,
+          2944
         ],
         "id": "3f0f131c-77c2-4c5f-a9b1-b70994369a7d",
         "name": "IfUserExistsAndActive"
@@ -9265,15 +9232,15 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -4080,
-          3184
+          -4960,
+          3168
         ],
         "id": "e5607233-e32a-4602-8c15-b2b13a217487",
         "name": "IfUserNotActive"
       },
       {
         "parameters": {
-          "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+          "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
           "text": "={{\"Пользователь заблокирован!\"}}",
           "additionalFields": {
             "appendAttribution": false
@@ -9282,8 +9249,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          -3824,
-          3184
+          -4704,
+          3168
         ],
         "id": "1d961b60-989e-481d-a356-427ea06b62af",
         "name": "BlockedUser",
@@ -9298,8 +9265,8 @@
       },
       {
         "parameters": {
-          "chatId": "={{ $('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id\n}}",
-          "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\" + \"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+          "chatId": "={{ $('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id\n}}",
+          "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\" + \"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id)\n}}",
           "additionalFields": {
             "appendAttribution": false
           }
@@ -9307,8 +9274,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          -3840,
-          3376
+          -4720,
+          3360
         ],
         "id": "dedd1ef0-1e06-4d0b-b8b4-788960e91130",
         "name": "NoUser",
@@ -9423,8 +9390,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          1984,
-          1920
+          2224,
+          2384
         ],
         "id": "0bee58b7-ea60-42e9-a5f2-6c94771b52cc",
         "name": "ErrorGlobal",
@@ -9614,7 +9581,7 @@
       },
       {
         "parameters": {
-          "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+          "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
           "text": "={{\"⚠️ Доступное количество генераций почти исчерпано: осталось \"+ $('GetUser').item.json.nbQuotaLeft + \" генераций из \"+ $('GetUser').item.json.nbQuota + \"\\n\\n\" + \"Рекомендуется пополнить\"}}",
           "additionalFields": {
             "appendAttribution": false
@@ -9623,8 +9590,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          -2192,
-          2832
+          112,
+          5504
         ],
         "id": "3bff52ed-deb4-45b8-bbd0-8adf1f96d3e5",
         "name": "QuotaWarning",
@@ -9639,7 +9606,7 @@
       },
       {
         "parameters": {
-          "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+          "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
           "text": "={{\"⚠️ Доступное количество генераций исчерпано. Обратитесь к администратору.\"}}",
           "additionalFields": {
             "appendAttribution": false
@@ -9648,8 +9615,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          -2432,
-          2704
+          -704,
+          5488
         ],
         "id": "6d2482a3-7c1e-4c0f-8ca8-bcc2b51e92ff",
         "name": "NoQuotaLeft",
@@ -9690,8 +9657,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -2656,
-          2960
+          -944,
+          5632
         ],
         "id": "95f84b65-d5a6-4034-b2d0-226fbab5017c",
         "name": "IfNoQuotaLeft"
@@ -9724,15 +9691,15 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          -2416,
-          2976
+          -272,
+          5664
         ],
         "id": "09afb8c5-30e0-4ec0-99ff-28e7564e7531",
         "name": "IfWarning"
       },
       {
         "parameters": {
-          "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+          "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
           "text": "={{\"⚠️ Доступное количество генераций почти исчерпано: осталось \"+ $('GetUser').item.json.nbQuotaLeft + \" генераций из \"+ $('GetUser').item.json.nbQuota + \"\\n\\n\" + \"Рекомендуется пополнить\"}}",
           "additionalFields": {
             "appendAttribution": false
@@ -9741,8 +9708,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3424,
-          1472
+          3616,
+          1456
         ],
         "id": "79b73286-45d5-4573-8619-8c634f453a21",
         "name": "QuotaWarning1",
@@ -9757,7 +9724,7 @@
       },
       {
         "parameters": {
-          "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+          "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
           "text": "={{\"⚠️ Доступное количество генераций исчерпано. Повторная генерация отменена.\"}}",
           "additionalFields": {
             "appendAttribution": false
@@ -9766,7 +9733,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3168,
+          3344,
           1328
         ],
         "id": "6a834358-0a1e-41b7-b5df-e38db4285b50",
@@ -9842,15 +9809,15 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          3200,
-          1568
+          3360,
+          1584
         ],
         "id": "f353832b-e38f-405c-9fc1-4a0f297a70e7",
         "name": "IfWarning1"
       },
       {
         "parameters": {
-          "chatId": "={{ $('subAI_Model').item.json.chat_id }}",
+          "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
           "text": "={{\"\\n\\n\"+\"<b>Я готов создать фотомодель.</b>\" + \"\\n\\n\"+ \"Если нужно, внесите правки - например, измените прическу или добавьте новые детали.\" }}",
           "replyMarkup": "inlineKeyboard",
           "inlineKeyboard": {
@@ -9889,8 +9856,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          3392,
-          1328
+          4288,
+          1264
         ],
         "id": "8ae7bcc1-62b3-4956-8ed3-79ca667fad86",
         "name": "OP_final_model2",
@@ -9910,12 +9877,615 @@
         },
         "type": "n8n-nodes-base.stickyNote",
         "position": [
-          -4528,
-          2880
+          -5408,
+          2864
         ],
         "typeVersion": 1,
         "id": "6721622f-6144-4d16-aa31-bc06bae400d3",
         "name": "Sticky Note"
+      },
+      {
+        "parameters": {
+          "operation": "get",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "null"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Done"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Error"
+              }
+            ]
+          },
+          "returnAll": true
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -4304,
+          2928
+        ],
+        "id": "5ef0a146-3df4-48bc-a7f1-09a27a219776",
+        "name": "CheckActiveTask",
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "fieldsToSummarize": {
+            "values": [
+              {
+                "field": "id"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.summarize",
+        "typeVersion": 1.1,
+        "position": [
+          -4096,
+          2928
+        ],
+        "id": "34020d98-c887-45a5-beef-cb70d3314787",
+        "name": "Summarize"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "6cdc0d96-5042-4a3d-8dd3-9591b489cae6",
+                "leftValue": "={{ $('Summarize').item.json.count_id == 0 || $('Summarize').item.json.count_id == 1 }}",
+                "rightValue": 1,
+                "operator": {
+                  "type": "boolean",
+                  "operation": "true",
+                  "singleValue": true
+                }
+              }
+            ],
+            "combinator": "or"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -3888,
+          2928
+        ],
+        "id": "1771d9dc-6c70-47c3-a751-876cfc4b5c15",
+        "name": "IfOneActiveRecord"
+      },
+      {
+        "parameters": {
+          "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
+          "text": "={{\"⚠️ Вероятно, предыдущая операция завершилась некорректно.\" +\"\\n\\n\"+ \"Попробуйте начать заново через меню бота 👇\"}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -3632,
+          3024
+        ],
+        "id": "55853c2d-561e-432c-9a32-e80834764926",
+        "name": "ActiveRec>1",
+        "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+        "executeOnce": false,
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "content": "Check if session unique",
+          "height": 368,
+          "width": 1040
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -4464,
+          2864
+        ],
+        "typeVersion": 1,
+        "id": "4b7ec188-8d47-46d5-aca1-66a4c752036a",
+        "name": "Sticky Note9"
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "options": {
+              "caseSensitive": true,
+              "leftValue": "",
+              "typeValidation": "loose",
+              "version": 3
+            },
+            "conditions": [
+              {
+                "id": "6160da92-e7bb-4d88-a8a1-014965c69245",
+                "leftValue": "={{ $('CheckActiveTask').item.json.quotaWarningSet }}",
+                "rightValue": "1",
+                "operator": {
+                  "type": "string",
+                  "operation": "equals"
+                }
+              }
+            ],
+            "combinator": "and"
+          },
+          "looseTypeValidation": true,
+          "options": {}
+        },
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 2.3,
+        "position": [
+          -48,
+          5408
+        ],
+        "id": "cc2326b3-8baa-4843-8b95-2c115d7ba1b4",
+        "name": "IfQuotaWarningSet"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "null"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Done"
+              },
+              {
+                "keyName": "status",
+                "condition": "neq",
+                "keyValue": "Error"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "quotaWarningSet": 1
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "quotaWarningSet",
+                "displayName": "quotaWarningSet",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "lookSelected",
+                "displayName": "lookSelected",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "concatDescr",
+                "displayName": "concatDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "creativeScenarios",
+                "displayName": "creativeScenarios",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "selectedScenario",
+                "displayName": "selectedScenario",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          256,
+          5584
+        ],
+        "id": "43167df9-a6af-4e0f-9a6b-f660c3ea1318",
+        "name": "UpdateActiveTask",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
+          "text": "={{\n\"Вы можете сделать пробное фото модели и завершить работу.\"\n}}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Сделать пробное фото",
+                      "additionalFields": {
+                        "callback_data": "modelPhotoTest"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3600,
+          1328
+        ],
+        "id": "ee728fef-00e3-4af1-9306-abfe89c2d7cc",
+        "name": "NextSteps1",
+        "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TG dialog statuses PROD",
+            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createmodel"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetFeatureGallery"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "faceGalleryUrl",
+                "displayName": "faceGalleryUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "FaceErrToMsgId",
+                "displayName": "FaceErrToMsgId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          3792,
+          1328
+        ],
+        "id": "a971c5eb-3408-475b-976f-bcef9eb6f635",
+        "name": "Set GetGalleryForFace status3",
+        "notesInFlow": true,
+        "notes": "Store MsgId with buttons to edit later"
+      },
+      {
+        "parameters": {
+          "operation": "editMessageText",
+          "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+          "messageId": "={{ $('Telegram Trigger').item.json.callback_query.message.message_id }}",
+          "text": "={{ $('Telegram Trigger').item.json.callback_query.message.text }}",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          3152,
+          1328
+        ],
+        "id": "3b41fe90-5af7-46ee-ad8d-24e4d4ae03f8",
+        "name": "HideButtons7",
+        "webhookId": "bc01907f-ea00-49f7-920f-3fdd6e1eee5d",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
       }
     ],
     "connections": {
@@ -10886,7 +11456,7 @@
         "main": [
           [
             {
-              "node": "GetCurrentCount",
+              "node": "IfWarning1",
               "type": "main",
               "index": 0
             }
@@ -10952,7 +11522,7 @@
         "main": [
           [
             {
-              "node": "Insert row Initial status1",
+              "node": "IfNoQuotaLeft",
               "type": "main",
               "index": 0
             }
@@ -11004,17 +11574,6 @@
           [
             {
               "node": "IfResponseOk",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "IfEmpty": {
-        "main": [
-          [
-            {
-              "node": "Code in JavaScript",
               "type": "main",
               "index": 0
             }
@@ -11149,7 +11708,7 @@
         "main": [
           [
             {
-              "node": "send msg to upload face1",
+              "node": "IfWarning",
               "type": "main",
               "index": 0
             }
@@ -11586,7 +12145,7 @@
         "main": [
           [
             {
-              "node": "IfNoQuotaLeft",
+              "node": "CheckActiveTask",
               "type": "main",
               "index": 0
             }
@@ -11743,7 +12302,7 @@
         "main": [
           [
             {
-              "node": "Edit Fields",
+              "node": "UpdateActiveTask",
               "type": "main",
               "index": 0
             }
@@ -11761,7 +12320,7 @@
           ],
           [
             {
-              "node": "IfWarning",
+              "node": "Insert row Initial status1",
               "type": "main",
               "index": 0
             }
@@ -11772,14 +12331,14 @@
         "main": [
           [
             {
-              "node": "QuotaWarning",
+              "node": "IfQuotaWarningSet",
               "type": "main",
               "index": 0
             }
           ],
           [
             {
-              "node": "Edit Fields",
+              "node": "send msg to upload face1",
               "type": "main",
               "index": 0
             }
@@ -11790,14 +12349,14 @@
         "main": [
           [
             {
-              "node": "NoQuotaLeft1",
+              "node": "HideButtons7",
               "type": "main",
               "index": 0
             }
           ],
           [
             {
-              "node": "IfWarning1",
+              "node": "HideButtons1",
               "type": "main",
               "index": 0
             }
@@ -11815,7 +12374,7 @@
           ],
           [
             {
-              "node": "HideButtons1",
+              "node": "GetCurrentCount",
               "type": "main",
               "index": 0
             }
@@ -11826,7 +12385,7 @@
         "main": [
           [
             {
-              "node": "HideButtons1",
+              "node": "GetCurrentCount",
               "type": "main",
               "index": 0
             }
@@ -11837,7 +12396,108 @@
         "main": [
           [
             {
-              "node": "OP_final_model2",
+              "node": "NextSteps1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "CheckActiveTask": {
+        "main": [
+          [
+            {
+              "node": "Summarize",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Summarize": {
+        "main": [
+          [
+            {
+              "node": "IfOneActiveRecord",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfOneActiveRecord": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "ActiveRec>1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IfQuotaWarningSet": {
+        "main": [
+          [
+            {
+              "node": "send msg to upload face1",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "QuotaWarning",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "UpdateActiveTask": {
+        "main": [
+          [
+            {
+              "node": "send msg to upload face1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "NoQuotaLeft": {
+        "main": [
+          []
+        ]
+      },
+      "Set GetFace status1": {
+        "main": [
+          []
+        ]
+      },
+      "NextSteps1": {
+        "main": [
+          [
+            {
+              "node": "Set GetGalleryForFace status3",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HideButtons7": {
+        "main": [
+          [
+            {
+              "node": "NoQuotaLeft1",
               "type": "main",
               "index": 0
             }
@@ -11846,11 +12506,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 8ee9fda0",
+    "name": "Version fcc5aa34",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "8ee9fda0-b73c-4836-99ae-fbb9ae93a8b3",
+  "activeVersionId": "fcc5aa34-476c-4f5b-9568-ea59c3fd07c1",
   "connections": {
     "Telegram Trigger": {
       "main": [
@@ -12819,7 +13479,7 @@
       "main": [
         [
           {
-            "node": "GetCurrentCount",
+            "node": "IfWarning1",
             "type": "main",
             "index": 0
           }
@@ -12885,7 +13545,7 @@
       "main": [
         [
           {
-            "node": "Insert row Initial status1",
+            "node": "IfNoQuotaLeft",
             "type": "main",
             "index": 0
           }
@@ -12937,17 +13597,6 @@
         [
           {
             "node": "IfResponseOk",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "IfEmpty": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript",
             "type": "main",
             "index": 0
           }
@@ -13082,7 +13731,7 @@
       "main": [
         [
           {
-            "node": "send msg to upload face1",
+            "node": "IfWarning",
             "type": "main",
             "index": 0
           }
@@ -13519,7 +14168,7 @@
       "main": [
         [
           {
-            "node": "IfNoQuotaLeft",
+            "node": "CheckActiveTask",
             "type": "main",
             "index": 0
           }
@@ -13676,7 +14325,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "UpdateActiveTask",
             "type": "main",
             "index": 0
           }
@@ -13694,7 +14343,7 @@
         ],
         [
           {
-            "node": "IfWarning",
+            "node": "Insert row Initial status1",
             "type": "main",
             "index": 0
           }
@@ -13705,14 +14354,14 @@
       "main": [
         [
           {
-            "node": "QuotaWarning",
+            "node": "IfQuotaWarningSet",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "Edit Fields",
+            "node": "send msg to upload face1",
             "type": "main",
             "index": 0
           }
@@ -13723,14 +14372,14 @@
       "main": [
         [
           {
-            "node": "NoQuotaLeft1",
+            "node": "HideButtons7",
             "type": "main",
             "index": 0
           }
         ],
         [
           {
-            "node": "IfWarning1",
+            "node": "HideButtons1",
             "type": "main",
             "index": 0
           }
@@ -13748,7 +14397,7 @@
         ],
         [
           {
-            "node": "HideButtons1",
+            "node": "GetCurrentCount",
             "type": "main",
             "index": 0
           }
@@ -13759,7 +14408,7 @@
       "main": [
         [
           {
-            "node": "HideButtons1",
+            "node": "GetCurrentCount",
             "type": "main",
             "index": 0
           }
@@ -13770,7 +14419,108 @@
       "main": [
         [
           {
-            "node": "OP_final_model2",
+            "node": "NextSteps1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CheckActiveTask": {
+      "main": [
+        [
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize": {
+      "main": [
+        [
+          {
+            "node": "IfOneActiveRecord",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfOneActiveRecord": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ActiveRec>1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IfQuotaWarningSet": {
+      "main": [
+        [
+          {
+            "node": "send msg to upload face1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "QuotaWarning",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UpdateActiveTask": {
+      "main": [
+        [
+          {
+            "node": "send msg to upload face1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NoQuotaLeft": {
+      "main": [
+        []
+      ]
+    },
+    "Set GetFace status1": {
+      "main": [
+        []
+      ]
+    },
+    "NextSteps1": {
+      "main": [
+        [
+          {
+            "node": "Set GetGalleryForFace status3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HideButtons7": {
+      "main": [
+        [
+          {
+            "node": "NoQuotaLeft1",
             "type": "main",
             "index": 0
           }
@@ -13799,8 +14549,8 @@
       "type": "n8n-nodes-base.telegramTrigger",
       "typeVersion": 1.2,
       "position": [
-        -4704,
-        2960
+        -5744,
+        2944
       ],
       "id": "afc07df0-a9a0-49d9-9251-023682cd85ba",
       "name": "Telegram Trigger",
@@ -13981,8 +14731,8 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        -128,
-        4496
+        -112,
+        4656
       ],
       "id": "aa53fe4c-f7a4-46f4-af10-51c570fc4801",
       "name": "Get row(s)",
@@ -15077,8 +15827,8 @@
       "name": "Set Bot Token",
       "type": "n8n-nodes-base.set",
       "position": [
-        -1472,
-        2992
+        -2800,
+        2912
       ],
       "typeVersion": 3.4
     },
@@ -15096,8 +15846,8 @@
       "name": "Is CALLBACK?",
       "type": "n8n-nodes-base.if",
       "position": [
-        -1184,
-        2992
+        -2544,
+        2912
       ],
       "typeVersion": 1
     },
@@ -15221,7 +15971,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        80,
+        -1424,
         5632
       ],
       "id": "28bad94d-1ad8-4ac3-b728-283eec246b0a",
@@ -15257,8 +16007,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1648,
-        2992
+        -2976,
+        2912
       ],
       "id": "aa9c5e42-1cbc-49cf-b4a1-1826548cbd6f",
       "name": "Model"
@@ -15460,8 +16210,8 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        528,
-        5632
+        -720,
+        5664
       ],
       "id": "a9304f12-d683-49a8-9d74-f7bfb679d135",
       "name": "Insert row Initial status1",
@@ -15536,13 +16286,14 @@
     {
       "parameters": {
         "content": "совместить с createlook",
-        "height": 288,
-        "width": 1552
+        "height": 368,
+        "width": 2848,
+        "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -112,
-        5552
+        -1616,
+        5472
       ],
       "typeVersion": 1,
       "id": "6b6a0911-1748-45d6-bbb3-a2e9e1bad7a0",
@@ -15687,8 +16438,8 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1232,
-        5632
+        928,
+        5680
       ],
       "id": "8904dc1d-c661-44bb-aa6a-83d26b36f480",
       "name": "Set GetFace status1"
@@ -15705,8 +16456,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        976,
-        5632
+        672,
+        5680
       ],
       "id": "c1fa80ce-1e30-47e6-9f07-7b54dfccf683",
       "name": "send msg to upload face1",
@@ -16787,12 +17538,12 @@
       "parameters": {
         "content": "",
         "height": 2256,
-        "width": 5392,
+        "width": 7040,
         "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -672,
+        -2320,
         3504
       ],
       "typeVersion": 1,
@@ -17690,8 +18441,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -384,
-        4352
+        -1984,
+        3840
       ],
       "id": "4be07484-6729-412f-845c-1feb759c9e34",
       "name": "CurrentProcess2"
@@ -17704,8 +18455,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1840,
-        704
+        1792,
+        688
       ],
       "typeVersion": 1,
       "id": "069e55ad-be71-4d2c-91e3-564cdb89ff89",
@@ -18803,7 +19554,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3616,
+        3184,
         1584
       ],
       "id": "73421be4-7ada-44b8-a673-bb9021bfba29",
@@ -19115,7 +19866,7 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        304,
+        -1200,
         5632
       ],
       "id": "68e01864-bb99-4401-b6c3-c0224ef2dd55",
@@ -19287,8 +20038,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1792,
-        2992
+        -3120,
+        2912
       ],
       "id": "46168c2a-11d4-40e6-a33f-e47a3226a2d0",
       "name": "DebugMode"
@@ -19360,7 +20111,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -112,
+        -1616,
         5872
       ],
       "typeVersion": 1,
@@ -19394,47 +20145,13 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        16,
+        -1488,
         5968
       ],
       "id": "785b0241-d5e5-4bb5-8c85-b21996e62a01",
       "name": "GetSettings",
       "alwaysOutputData": true,
       "onError": "continueRegularOutput"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "97025318-a2f2-441f-8f76-d29e59fb13c2",
-              "leftValue": "={{$('GetSettings')}}",
-              "rightValue": "",
-              "operator": {
-                "type": "object",
-                "operation": "empty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        96,
-        6272
-      ],
-      "id": "c09673d1-8107-4e0e-9ff5-ad17a6a108a1",
-      "name": "IfEmpty"
     },
     {
       "parameters": {
@@ -19449,7 +20166,7 @@
       "name": "Send to Telegram API",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        576,
+        -928,
         5952
       ],
       "typeVersion": 4.2
@@ -19461,7 +20178,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        320,
+        -1184,
         5952
       ],
       "id": "d170fc93-c36a-4dd0-b347-8a139a9b5a16",
@@ -20144,8 +20861,8 @@
       "name": "CreateMsgSelectItems",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        752,
-        5632
+        -496,
+        5664
       ],
       "typeVersion": 4.2
     },
@@ -22190,8 +22907,8 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.2,
       "position": [
-        1680,
-        1840
+        1600,
+        2144
       ],
       "name": "Call subTR_CL_CallbacksProcessing",
       "id": "666a99d6-4a83-4881-81bc-c5acd9bc3747",
@@ -22598,8 +23315,8 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1312,
-        2128
+        1392,
+        2656
       ],
       "id": "2cfc266d-ed57-4a39-b8c0-4dfa0cf1a0ed",
       "name": "Set Done if left not done1",
@@ -22616,8 +23333,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1552,
-        2128
+        1632,
+        2656
       ],
       "id": "0a9db7e7-4583-4309-ac22-e80e04695d82",
       "name": "HideButtons3",
@@ -22641,8 +23358,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1776,
-        2128
+        1856,
+        2656
       ],
       "id": "0537ef01-4883-4e52-9058-0f2547486ac2",
       "name": "HideButtons4",
@@ -22879,8 +23596,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        32,
-        4496
+        48,
+        4656
       ],
       "id": "e1b22275-c03e-4c3e-88c4-7fd2a31ecc94",
       "name": "IfNotStop"
@@ -22927,8 +23644,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2000,
-        2992
+        -3312,
+        2912
       ],
       "id": "1feef3ec-6bc4-42f6-a97e-4d97219d855d",
       "name": "Edit Fields"
@@ -22947,7 +23664,7 @@
           "conditions": [
             {
               "keyName": "tgUserId",
-              "keyValue": "={{$('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id\n\n}}"
+              "keyValue": "={{$('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id\n\n}}"
             }
           ]
         }
@@ -22955,8 +23672,8 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        -4496,
-        2960
+        -5376,
+        2944
       ],
       "id": "75961dc6-94fd-43d6-ad62-e82ba92479d4",
       "name": "GetUser",
@@ -23001,8 +23718,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -4288,
-        2960
+        -5168,
+        2944
       ],
       "id": "3f0f131c-77c2-4c5f-a9b1-b70994369a7d",
       "name": "IfUserExistsAndActive"
@@ -23045,15 +23762,15 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -4080,
-        3184
+        -4960,
+        3168
       ],
       "id": "e5607233-e32a-4602-8c15-b2b13a217487",
       "name": "IfUserNotActive"
     },
     {
       "parameters": {
-        "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+        "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
         "text": "={{\"Пользователь заблокирован!\"}}",
         "additionalFields": {
           "appendAttribution": false
@@ -23062,8 +23779,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -3824,
-        3184
+        -4704,
+        3168
       ],
       "id": "1d961b60-989e-481d-a356-427ea06b62af",
       "name": "BlockedUser",
@@ -23078,8 +23795,8 @@
     },
     {
       "parameters": {
-        "chatId": "={{ $('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id\n}}",
-        "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\" + \"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+        "chatId": "={{ $('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id\n}}",
+        "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\" + \"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id)\n}}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -23087,8 +23804,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -3840,
-        3376
+        -4720,
+        3360
       ],
       "id": "dedd1ef0-1e06-4d0b-b8b4-788960e91130",
       "name": "NoUser",
@@ -23203,8 +23920,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        1984,
-        1920
+        2224,
+        2384
       ],
       "id": "0bee58b7-ea60-42e9-a5f2-6c94771b52cc",
       "name": "ErrorGlobal",
@@ -23394,7 +24111,7 @@
     },
     {
       "parameters": {
-        "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+        "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
         "text": "={{\"⚠️ Доступное количество генераций почти исчерпано: осталось \"+ $('GetUser').item.json.nbQuotaLeft + \" генераций из \"+ $('GetUser').item.json.nbQuota + \"\\n\\n\" + \"Рекомендуется пополнить\"}}",
         "additionalFields": {
           "appendAttribution": false
@@ -23403,8 +24120,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -2192,
-        2832
+        112,
+        5504
       ],
       "id": "3bff52ed-deb4-45b8-bbd0-8adf1f96d3e5",
       "name": "QuotaWarning",
@@ -23419,7 +24136,7 @@
     },
     {
       "parameters": {
-        "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+        "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
         "text": "={{\"⚠️ Доступное количество генераций исчерпано. Обратитесь к администратору.\"}}",
         "additionalFields": {
           "appendAttribution": false
@@ -23428,8 +24145,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        -2432,
-        2704
+        -704,
+        5488
       ],
       "id": "6d2482a3-7c1e-4c0f-8ca8-bcc2b51e92ff",
       "name": "NoQuotaLeft",
@@ -23470,8 +24187,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -2656,
-        2960
+        -944,
+        5632
       ],
       "id": "95f84b65-d5a6-4034-b2d0-226fbab5017c",
       "name": "IfNoQuotaLeft"
@@ -23504,15 +24221,15 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -2416,
-        2976
+        -272,
+        5664
       ],
       "id": "09afb8c5-30e0-4ec0-99ff-28e7564e7531",
       "name": "IfWarning"
     },
     {
       "parameters": {
-        "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+        "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
         "text": "={{\"⚠️ Доступное количество генераций почти исчерпано: осталось \"+ $('GetUser').item.json.nbQuotaLeft + \" генераций из \"+ $('GetUser').item.json.nbQuota + \"\\n\\n\" + \"Рекомендуется пополнить\"}}",
         "additionalFields": {
           "appendAttribution": false
@@ -23521,8 +24238,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3424,
-        1472
+        3616,
+        1456
       ],
       "id": "79b73286-45d5-4573-8619-8c634f453a21",
       "name": "QuotaWarning1",
@@ -23537,7 +24254,7 @@
     },
     {
       "parameters": {
-        "chatId": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}",
+        "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
         "text": "={{\"⚠️ Доступное количество генераций исчерпано. Повторная генерация отменена.\"}}",
         "additionalFields": {
           "appendAttribution": false
@@ -23546,7 +24263,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3168,
+        3344,
         1328
       ],
       "id": "6a834358-0a1e-41b7-b5df-e38db4285b50",
@@ -23622,15 +24339,15 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        3200,
-        1568
+        3360,
+        1584
       ],
       "id": "f353832b-e38f-405c-9fc1-4a0f297a70e7",
       "name": "IfWarning1"
     },
     {
       "parameters": {
-        "chatId": "={{ $('subAI_Model').item.json.chat_id }}",
+        "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
         "text": "={{\"\\n\\n\"+\"<b>Я готов создать фотомодель.</b>\" + \"\\n\\n\"+ \"Если нужно, внесите правки - например, измените прическу или добавьте новые детали.\" }}",
         "replyMarkup": "inlineKeyboard",
         "inlineKeyboard": {
@@ -23669,8 +24386,8 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        3392,
-        1328
+        4288,
+        1264
       ],
       "id": "8ae7bcc1-62b3-4956-8ed3-79ca667fad86",
       "name": "OP_final_model2",
@@ -23690,12 +24407,615 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -4528,
-        2880
+        -5408,
+        2864
       ],
       "typeVersion": 1,
       "id": "6721622f-6144-4d16-aa31-bc06bae400d3",
       "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "null"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Done"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Error"
+            }
+          ]
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -4304,
+        2928
+      ],
+      "id": "5ef0a146-3df4-48bc-a7f1-09a27a219776",
+      "name": "CheckActiveTask",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "field": "id"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        -4096,
+        2928
+      ],
+      "id": "34020d98-c887-45a5-beef-cb70d3314787",
+      "name": "Summarize"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "6cdc0d96-5042-4a3d-8dd3-9591b489cae6",
+              "leftValue": "={{ $('Summarize').item.json.count_id == 0 || $('Summarize').item.json.count_id == 1 }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -3888,
+        2928
+      ],
+      "id": "1771d9dc-6c70-47c3-a751-876cfc4b5c15",
+      "name": "IfOneActiveRecord"
+    },
+    {
+      "parameters": {
+        "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
+        "text": "={{\"⚠️ Вероятно, предыдущая операция завершилась некорректно.\" +\"\\n\\n\"+ \"Попробуйте начать заново через меню бота 👇\"}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -3632,
+        3024
+      ],
+      "id": "55853c2d-561e-432c-9a32-e80834764926",
+      "name": "ActiveRec>1",
+      "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+      "executeOnce": false,
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "Check if session unique",
+        "height": 368,
+        "width": 1040
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -4464,
+        2864
+      ],
+      "typeVersion": 1,
+      "id": "4b7ec188-8d47-46d5-aca1-66a4c752036a",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "6160da92-e7bb-4d88-a8a1-014965c69245",
+              "leftValue": "={{ $('CheckActiveTask').item.json.quotaWarningSet }}",
+              "rightValue": "1",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -48,
+        5408
+      ],
+      "id": "cc2326b3-8baa-4843-8b95-2c115d7ba1b4",
+      "name": "IfQuotaWarningSet"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{($('Telegram Trigger').item.json.message?.from.id\n    ?$('Telegram Trigger').item.json.message.from.id\n    :$('Telegram Trigger').item.json.callback_query.from.id) \n}}"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "null"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Done"
+            },
+            {
+              "keyName": "status",
+              "condition": "neq",
+              "keyValue": "Error"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "quotaWarningSet": 1
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "quotaWarningSet",
+              "displayName": "quotaWarningSet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "lookSelected",
+              "displayName": "lookSelected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "concatDescr",
+              "displayName": "concatDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "creativeScenarios",
+              "displayName": "creativeScenarios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "selectedScenario",
+              "displayName": "selectedScenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        256,
+        5584
+      ],
+      "id": "43167df9-a6af-4e0f-9a6b-f660c3ea1318",
+      "name": "UpdateActiveTask",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
+        "text": "={{\n\"Вы можете сделать пробное фото модели и завершить работу.\"\n}}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Сделать пробное фото",
+                    "additionalFields": {
+                      "callback_data": "modelPhotoTest"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3600,
+        1328
+      ],
+      "id": "ee728fef-00e3-4af1-9306-abfe89c2d7cc",
+      "name": "NextSteps1",
+      "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TG dialog statuses PROD",
+          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createmodel"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetFeatureGallery"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $json.result.message_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "faceGalleryUrl",
+              "displayName": "faceGalleryUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "FaceErrToMsgId",
+              "displayName": "FaceErrToMsgId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3792,
+        1328
+      ],
+      "id": "a971c5eb-3408-475b-976f-bcef9eb6f635",
+      "name": "Set GetGalleryForFace status3",
+      "notesInFlow": true,
+      "notes": "Store MsgId with buttons to edit later"
+    },
+    {
+      "parameters": {
+        "operation": "editMessageText",
+        "chatId": "={{ $('Telegram Trigger').item.json.callback_query.message.chat.id }}",
+        "messageId": "={{ $('Telegram Trigger').item.json.callback_query.message.message_id }}",
+        "text": "={{ $('Telegram Trigger').item.json.callback_query.message.text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3152,
+        1328
+      ],
+      "id": "3b41fe90-5af7-46ee-ad8d-24e4d4ae03f8",
+      "name": "HideButtons7",
+      "webhookId": "bc01907f-ea00-49f7-920f-3fdd6e1eee5d",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
     }
   ],
   "settings": {
@@ -23744,6 +25064,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-04-04T17:54:59.031Z",
-  "versionId": "8ee9fda0-b73c-4836-99ae-fbb9ae93a8b3"
+  "updatedAt": "2026-04-04T20:41:29.050Z",
+  "versionId": "fcc5aa34-476c-4f5b-9568-ea59c3fd07c1"
 }
