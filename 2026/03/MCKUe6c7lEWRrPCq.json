@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-28T11:28:14.000Z",
-    "createdAt": "2026-03-28T11:26:05.865Z",
-    "versionId": "5b125f97-ebaa-4492-9073-9f623ee1a603",
+    "updatedAt": "2026-03-31T09:20:33.000Z",
+    "createdAt": "2026-03-31T09:20:30.625Z",
+    "versionId": "6232d32a-bf75-4f2b-b92c-413001145d07",
     "workflowId": "MCKUe6c7lEWRrPCq",
     "nodes": [
       {
@@ -1362,7 +1362,9 @@
           2272
         ],
         "id": "527420bd-18d3-4c97-abf7-60109da3e8cd",
-        "name": "HTTP Request2"
+        "name": "HTTP Request2",
+        "retryOnFail": true,
+        "waitBetweenTries": 5000
       },
       {
         "parameters": {
@@ -1436,7 +1438,9 @@
           1824
         ],
         "id": "bb35f988-d282-45e0-a328-4882c4c9807c",
-        "name": "HTTP Request3"
+        "name": "HTTP Request3",
+        "retryOnFail": true,
+        "waitBetweenTries": 5000
       },
       {
         "parameters": {
@@ -2480,11 +2484,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 5b125f97",
+    "name": "Version 6232d32a",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "5b125f97-ebaa-4492-9073-9f623ee1a603",
+  "activeVersionId": "6232d32a-bf75-4f2b-b92c-413001145d07",
   "connections": {
     "Start": {
       "main": [
@@ -4441,7 +4445,9 @@
         2272
       ],
       "id": "527420bd-18d3-4c97-abf7-60109da3e8cd",
-      "name": "HTTP Request2"
+      "name": "HTTP Request2",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
     },
     {
       "parameters": {
@@ -4515,7 +4521,9 @@
         1824
       ],
       "id": "bb35f988-d282-45e0-a328-4882c4c9807c",
-      "name": "HTTP Request3"
+      "name": "HTTP Request3",
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
     },
     {
       "parameters": {
@@ -5016,6 +5024,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-28T11:54:51.566Z",
-  "versionId": "5b125f97-ebaa-4492-9073-9f623ee1a603"
+  "updatedAt": "2026-03-31T09:20:30.624Z",
+  "versionId": "6232d32a-bf75-4f2b-b92c-413001145d07"
 }
