@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-28T18:54:12.000Z",
-    "createdAt": "2026-03-28T18:54:07.656Z",
-    "versionId": "99c0a3b0-bd1f-4460-8043-ddf100252e74",
+    "updatedAt": "2026-03-31T09:22:08.000Z",
+    "createdAt": "2026-03-31T09:22:03.430Z",
+    "versionId": "a6e0bd72-bf99-4280-8d10-81cce7032e9f",
     "workflowId": "9A6kp0SAPV2FCdMQ",
     "nodes": [
       {
@@ -43,6 +43,8 @@
         "id": "72f8d653-adc4-43d4-b83c-cc52c808a177",
         "name": "SetNBgen_Fal",
         "executeOnce": false,
+        "retryOnFail": true,
+        "waitBetweenTries": 5000,
         "credentials": {
           "httpHeaderAuth": {
             "id": "Mvt42bec1qeOFmzD",
@@ -69,6 +71,8 @@
         "id": "963a48ac-c0a3-4cdf-88c7-d3a2aab0bc0e",
         "name": "SetNBgen_Fal_status",
         "executeOnce": false,
+        "retryOnFail": true,
+        "waitBetweenTries": 5000,
         "credentials": {
           "httpHeaderAuth": {
             "id": "Mvt42bec1qeOFmzD",
@@ -210,6 +214,8 @@
         "id": "a54c0f61-3c98-4b2a-acec-dc4776d062bf",
         "name": "SetNBgen_Fal_getResult",
         "executeOnce": false,
+        "retryOnFail": true,
+        "waitBetweenTries": 5000,
         "credentials": {
           "httpHeaderAuth": {
             "id": "Mvt42bec1qeOFmzD",
@@ -254,7 +260,8 @@
         ],
         "id": "7566291f-d708-4c71-9c68-3b8a7b6d1071",
         "name": "HTTP Request1",
-        "retryOnFail": true
+        "retryOnFail": true,
+        "waitBetweenTries": 5000
       },
       {
         "parameters": {
@@ -390,6 +397,8 @@
         "id": "3c6b2069-f9be-487d-849d-6bd12d45be43",
         "name": "SetNBgen_FalNoImage",
         "executeOnce": false,
+        "retryOnFail": true,
+        "waitBetweenTries": 5000,
         "credentials": {
           "httpHeaderAuth": {
             "id": "Mvt42bec1qeOFmzD",
@@ -873,11 +882,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 99c0a3b0",
+    "name": "Version a6e0bd72",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "99c0a3b0-bd1f-4460-8043-ddf100252e74",
+  "activeVersionId": "a6e0bd72-bf99-4280-8d10-81cce7032e9f",
   "connections": {
     "Wait": {
       "main": [
@@ -1136,6 +1145,8 @@
       "id": "72f8d653-adc4-43d4-b83c-cc52c808a177",
       "name": "SetNBgen_Fal",
       "executeOnce": false,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
       "credentials": {
         "httpHeaderAuth": {
           "id": "Mvt42bec1qeOFmzD",
@@ -1162,6 +1173,8 @@
       "id": "963a48ac-c0a3-4cdf-88c7-d3a2aab0bc0e",
       "name": "SetNBgen_Fal_status",
       "executeOnce": false,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
       "credentials": {
         "httpHeaderAuth": {
           "id": "Mvt42bec1qeOFmzD",
@@ -1303,6 +1316,8 @@
       "id": "a54c0f61-3c98-4b2a-acec-dc4776d062bf",
       "name": "SetNBgen_Fal_getResult",
       "executeOnce": false,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
       "credentials": {
         "httpHeaderAuth": {
           "id": "Mvt42bec1qeOFmzD",
@@ -1347,7 +1362,8 @@
       ],
       "id": "7566291f-d708-4c71-9c68-3b8a7b6d1071",
       "name": "HTTP Request1",
-      "retryOnFail": true
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
     },
     {
       "parameters": {
@@ -1483,6 +1499,8 @@
       "id": "3c6b2069-f9be-487d-849d-6bd12d45be43",
       "name": "SetNBgen_FalNoImage",
       "executeOnce": false,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000,
       "credentials": {
         "httpHeaderAuth": {
           "id": "Mvt42bec1qeOFmzD",
@@ -1789,6 +1807,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-28T18:54:07.655Z",
-  "versionId": "99c0a3b0-bd1f-4460-8043-ddf100252e74"
+  "updatedAt": "2026-03-31T09:22:03.429Z",
+  "versionId": "a6e0bd72-bf99-4280-8d10-81cce7032e9f"
 }
