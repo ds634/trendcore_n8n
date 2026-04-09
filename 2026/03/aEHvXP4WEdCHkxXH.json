@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-29T09:08:55.000Z",
-    "createdAt": "2026-03-29T09:08:50.534Z",
-    "versionId": "4462fdda-a2c5-45ab-8a7f-32625210bc3f",
+    "updatedAt": "2026-04-05T14:15:41.000Z",
+    "createdAt": "2026-04-05T14:15:39.261Z",
+    "versionId": "949242c8-a6e1-4ac3-aa66-e2a6b6159be0",
     "workflowId": "aEHvXP4WEdCHkxXH",
     "nodes": [
       {
@@ -905,7 +905,7 @@
       {
         "parameters": {
           "chatId": "={{$('UpdateDescr').item.json.dialogId }}",
-          "text": "={{ \n\"Готовлю образ...\"\n\n}}",
+          "text": "={{ \n\"Образ готов к созданию!\"\n\n}}",
           "replyMarkup": "inlineKeyboard",
           "inlineKeyboard": {
             "rows": [
@@ -1194,11 +1194,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 4462fdda",
+    "name": "Version 949242c8",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "4462fdda-a2c5-45ab-8a7f-32625210bc3f",
+  "activeVersionId": "949242c8-a6e1-4ac3-aa66-e2a6b6159be0",
   "connections": {
     "Start": {
       "main": [
@@ -2314,7 +2314,7 @@
     {
       "parameters": {
         "chatId": "={{$('UpdateDescr').item.json.dialogId }}",
-        "text": "={{ \n\"Готовлю образ...\"\n\n}}",
+        "text": "={{ \n\"Образ готов к созданию!\"\n\n}}",
         "replyMarkup": "inlineKeyboard",
         "inlineKeyboard": {
           "rows": [
@@ -2437,6 +2437,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-29T09:08:50.533Z",
-  "versionId": "4462fdda-a2c5-45ab-8a7f-32625210bc3f"
+  "updatedAt": "2026-04-05T14:15:39.260Z",
+  "versionId": "949242c8-a6e1-4ac3-aa66-e2a6b6159be0"
 }
