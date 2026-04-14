@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-31T09:20:33.000Z",
-    "createdAt": "2026-03-31T09:20:30.625Z",
-    "versionId": "6232d32a-bf75-4f2b-b92c-413001145d07",
+    "updatedAt": "2026-04-10T21:28:38.000Z",
+    "createdAt": "2026-04-10T21:28:34.418Z",
+    "versionId": "1cef8992-703c-4261-af89-0e1f4d20661b",
     "workflowId": "MCKUe6c7lEWRrPCq",
     "nodes": [
       {
@@ -1128,12 +1128,14 @@
         ],
         "id": "5c12e6d3-8516-42f8-93cc-dfd1f2f5e26c",
         "name": "Append row in sheet1",
+        "retryOnFail": true,
         "credentials": {
           "googleSheetsOAuth2Api": {
             "id": "x0BIkYcbd4ffwTqr",
             "name": "Google Sheets account"
           }
-        }
+        },
+        "onError": "continueRegularOutput"
       },
       {
         "parameters": {
@@ -1236,8 +1238,8 @@
         "type": "n8n-nodes-base.googleSheets",
         "typeVersion": 4.7,
         "position": [
-          -1552,
-          112
+          -832,
+          64
         ],
         "id": "1e22e89a-600b-4a5f-9579-8ede8643535a",
         "name": "Append row in sheet2",
@@ -1261,21 +1263,6 @@
         "id": "69f94c82-7416-47d7-a51b-7f501a7c4b79",
         "name": "Wait2",
         "webhookId": "927724df-92fa-4441-9bfc-246b7d9213f9"
-      },
-      {
-        "parameters": {
-          "content": "Binary images are passed directly to AI Agent via passthroughBinaryImages option - no conversion needed",
-          "height": 1760,
-          "width": 4592
-        },
-        "type": "n8n-nodes-base.stickyNote",
-        "position": [
-          -3392,
-          1120
-        ],
-        "typeVersion": 1,
-        "id": "f3e39269-ea71-4440-ae47-a0d7d3ab7bcd",
-        "name": "Sticky Note"
       },
       {
         "parameters": {
@@ -1631,12 +1618,14 @@
         ],
         "id": "f9ba4b8f-070f-4482-8067-45da4eda401d",
         "name": "Append row in sheet4",
+        "retryOnFail": true,
         "credentials": {
           "googleSheetsOAuth2Api": {
             "id": "x0BIkYcbd4ffwTqr",
             "name": "Google Sheets account"
           }
-        }
+        },
+        "onError": "continueRegularOutput"
       },
       {
         "parameters": {
@@ -2484,11 +2473,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 6232d32a",
+    "name": "Version 1cef8992",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "6232d32a-bf75-4f2b-b92c-413001145d07",
+  "activeVersionId": "1cef8992-703c-4261-af89-0e1f4d20661b",
   "connections": {
     "Start": {
       "main": [
@@ -4211,12 +4200,14 @@
       ],
       "id": "5c12e6d3-8516-42f8-93cc-dfd1f2f5e26c",
       "name": "Append row in sheet1",
+      "retryOnFail": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "x0BIkYcbd4ffwTqr",
           "name": "Google Sheets account"
         }
-      }
+      },
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -4319,8 +4310,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -1552,
-        112
+        -832,
+        64
       ],
       "id": "1e22e89a-600b-4a5f-9579-8ede8643535a",
       "name": "Append row in sheet2",
@@ -4344,21 +4335,6 @@
       "id": "69f94c82-7416-47d7-a51b-7f501a7c4b79",
       "name": "Wait2",
       "webhookId": "927724df-92fa-4441-9bfc-246b7d9213f9"
-    },
-    {
-      "parameters": {
-        "content": "Binary images are passed directly to AI Agent via passthroughBinaryImages option - no conversion needed",
-        "height": 1760,
-        "width": 4592
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -3392,
-        1120
-      ],
-      "typeVersion": 1,
-      "id": "f3e39269-ea71-4440-ae47-a0d7d3ab7bcd",
-      "name": "Sticky Note"
     },
     {
       "parameters": {
@@ -4714,12 +4690,14 @@
       ],
       "id": "f9ba4b8f-070f-4482-8067-45da4eda401d",
       "name": "Append row in sheet4",
+      "retryOnFail": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
           "id": "x0BIkYcbd4ffwTqr",
           "name": "Google Sheets account"
         }
-      }
+      },
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -5024,6 +5002,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-31T09:20:30.624Z",
-  "versionId": "6232d32a-bf75-4f2b-b92c-413001145d07"
+  "updatedAt": "2026-04-10T21:28:34.417Z",
+  "versionId": "1cef8992-703c-4261-af89-0e1f4d20661b"
 }
