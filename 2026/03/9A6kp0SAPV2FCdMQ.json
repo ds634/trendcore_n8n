@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-04T18:55:41.000Z",
-    "createdAt": "2026-04-04T18:55:38.093Z",
-    "versionId": "eb8ea339-f818-47ea-8581-d731459bc6db",
+    "updatedAt": "2026-04-12T15:39:38.000Z",
+    "createdAt": "2026-04-12T15:39:09.275Z",
+    "versionId": "9f27fb22-9ae5-4665-bd6e-7225fc3a50aa",
     "workflowId": "9A6kp0SAPV2FCdMQ",
     "nodes": [
       {
@@ -240,12 +240,14 @@
         "id": "ccd56cda-de10-4cf5-9c9e-dcd93de31344",
         "name": "Send a photo message1",
         "webhookId": "31403701-6dcd-4625-9ca8-3a1049a901c2",
+        "retryOnFail": true,
         "credentials": {
           "telegramApi": {
             "id": "g1YmwDvJEK6hDKZS",
             "name": "TG PROD"
           }
-        }
+        },
+        "onError": "continueErrorOutput"
       },
       {
         "parameters": {
@@ -788,6 +790,30 @@
         "id": "89af088f-0c8b-457b-b40e-0754b9a5e915",
         "name": "UpdateQuotaRow",
         "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.chatId }}",
+          "text": "={{\"⚠️Ошибка при отправке генерации в Telegram\"\n}}",
+          "additionalFields": {
+            "appendAttribution": false
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          48,
+          288
+        ],
+        "id": "329e02a2-defa-46ed-95c2-ec8dc44a0cf0",
+        "name": "Send a text message1",
+        "webhookId": "cf11343f-5725-4662-8740-94bad68132f1",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        }
       }
     ],
     "connections": {
@@ -954,6 +980,13 @@
               "type": "main",
               "index": 0
             }
+          ],
+          [
+            {
+              "node": "Send a text message1",
+              "type": "main",
+              "index": 0
+            }
           ]
         ]
       },
@@ -1026,11 +1059,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version eb8ea339",
+    "name": "Version 9f27fb22",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "eb8ea339-f818-47ea-8581-d731459bc6db",
+  "activeVersionId": "9f27fb22-9ae5-4665-bd6e-7225fc3a50aa",
   "connections": {
     "Wait": {
       "main": [
@@ -1192,6 +1225,13 @@
         [
           {
             "node": "Insert log row",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message1",
             "type": "main",
             "index": 0
           }
@@ -1508,12 +1548,14 @@
       "id": "ccd56cda-de10-4cf5-9c9e-dcd93de31344",
       "name": "Send a photo message1",
       "webhookId": "31403701-6dcd-4625-9ca8-3a1049a901c2",
+      "retryOnFail": true,
       "credentials": {
         "telegramApi": {
           "id": "g1YmwDvJEK6hDKZS",
           "name": "TG PROD"
         }
-      }
+      },
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
@@ -2056,6 +2098,30 @@
       "id": "89af088f-0c8b-457b-b40e-0754b9a5e915",
       "name": "UpdateQuotaRow",
       "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.chatId }}",
+        "text": "={{\"⚠️Ошибка при отправке генерации в Telegram\"\n}}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        48,
+        288
+      ],
+      "id": "329e02a2-defa-46ed-95c2-ec8dc44a0cf0",
+      "name": "Send a text message1",
+      "webhookId": "cf11343f-5725-4662-8740-94bad68132f1",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      }
     }
   ],
   "settings": {
@@ -2095,6 +2161,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-04-04T18:55:38.092Z",
-  "versionId": "eb8ea339-f818-47ea-8581-d731459bc6db"
+  "updatedAt": "2026-04-12T15:39:09.274Z",
+  "versionId": "9f27fb22-9ae5-4665-bd6e-7225fc3a50aa"
 }
