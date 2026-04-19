@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-05T13:48:16.000Z",
-    "createdAt": "2026-04-05T13:48:13.585Z",
-    "versionId": "1280bb60-9485-46e5-8491-75126af16f6d",
+    "updatedAt": "2026-04-15T11:38:24.000Z",
+    "createdAt": "2026-04-15T11:38:21.484Z",
+    "versionId": "c923e8b3-ec85-4c16-810d-81a34f6f7263",
     "workflowId": "JrfEgCM2R7q7xfnb",
     "nodes": [
       {
@@ -588,8 +588,8 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          2896,
-          3296
+          2656,
+          3280
         ],
         "id": "cdd1ab3c-aa23-4fa8-a62e-d51109195825",
         "name": "Set GetFace status"
@@ -674,8 +674,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2656,
-          3296
+          2416,
+          3280
         ],
         "id": "f67227e1-78e4-4407-afff-5a7363ffd085",
         "name": "send msg to upload face",
@@ -1894,7 +1894,7 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          928,
+          464,
           5680
         ],
         "id": "8904dc1d-c661-44bb-aa6a-83d26b36f480",
@@ -1912,7 +1912,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          672,
+          208,
           5680
         ],
         "id": "c1fa80ce-1e30-47e6-9f07-7b54dfccf683",
@@ -5484,7 +5484,7 @@
               {
                 "id": "03d646c1-66e5-4233-911b-923ece659aa6",
                 "name": "debug",
-                "value": "true",
+                "value": "false",
                 "type": "string"
               }
             ]
@@ -9576,7 +9576,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          176,
+          0,
           5584
         ],
         "id": "3bff52ed-deb4-45b8-bbd0-8adf1f96d3e5",
@@ -10017,40 +10017,6 @@
       },
       {
         "parameters": {
-          "conditions": {
-            "options": {
-              "caseSensitive": true,
-              "leftValue": "",
-              "typeValidation": "loose",
-              "version": 3
-            },
-            "conditions": [
-              {
-                "id": "6160da92-e7bb-4d88-a8a1-014965c69245",
-                "leftValue": "={{ $('CheckActiveTask').item.json.quotaWarningSet }}",
-                "rightValue": "1",
-                "operator": {
-                  "type": "string",
-                  "operation": "equals"
-                }
-              }
-            ],
-            "combinator": "and"
-          },
-          "looseTypeValidation": true,
-          "options": {}
-        },
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 2.3,
-        "position": [
-          -48,
-          5408
-        ],
-        "id": "cc2326b3-8baa-4843-8b95-2c115d7ba1b4",
-        "name": "IfQuotaWarningSet"
-      },
-      {
-        "parameters": {
           "chatId": "={{($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id) \n}}",
           "text": "={{\n\"Вы можете сделать пробное фото модели и завершить работу.\"\n}}",
           "replyMarkup": "inlineKeyboard",
@@ -10272,8 +10238,8 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2224,
-          3184
+          2112,
+          3136
         ],
         "id": "a876aff6-2340-44f7-bfb3-9c2bf62c2b75",
         "name": "QuotaWarning2",
@@ -10378,40 +10344,6 @@
         ],
         "id": "53bd94c2-e34c-4f96-aba6-70801cf54469",
         "name": "IfWarning2"
-      },
-      {
-        "parameters": {
-          "conditions": {
-            "options": {
-              "caseSensitive": true,
-              "leftValue": "",
-              "typeValidation": "loose",
-              "version": 3
-            },
-            "conditions": [
-              {
-                "id": "6160da92-e7bb-4d88-a8a1-014965c69245",
-                "leftValue": "={{ $('CheckActiveTask').item.json.quotaWarningSet }}",
-                "rightValue": "1",
-                "operator": {
-                  "type": "string",
-                  "operation": "equals"
-                }
-              }
-            ],
-            "combinator": "and"
-          },
-          "looseTypeValidation": true,
-          "options": {}
-        },
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 2.3,
-        "position": [
-          2032,
-          3024
-        ],
-        "id": "8539b89a-a933-4c98-af7f-2e4fd6fbc5f5",
-        "name": "IfQuotaWarningSet1"
       }
     ],
     "connections": {
@@ -12246,7 +12178,7 @@
         "main": [
           [
             {
-              "node": "IfQuotaWarningSet",
+              "node": "QuotaWarning",
               "type": "main",
               "index": 0
             }
@@ -12358,24 +12290,6 @@
           ]
         ]
       },
-      "IfQuotaWarningSet": {
-        "main": [
-          [
-            {
-              "node": "send msg to upload face1",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "QuotaWarning",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "NoQuotaLeft": {
         "main": [
           []
@@ -12441,32 +12355,14 @@
         "main": [
           [
             {
-              "node": "IfQuotaWarningSet1",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "send msg to upload face",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
-      "IfQuotaWarningSet1": {
-        "main": [
-          [
-            {
-              "node": "send msg to upload face",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
               "node": "QuotaWarning2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "send msg to upload face",
               "type": "main",
               "index": 0
             }
@@ -12475,11 +12371,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 1280bb60",
+    "name": "Version c923e8b3",
     "description": "",
-    "autosaved": false
+    "autosaved": true
   },
-  "activeVersionId": "1280bb60-9485-46e5-8491-75126af16f6d",
+  "activeVersionId": "c923e8b3-ec85-4c16-810d-81a34f6f7263",
   "connections": {
     "Telegram Trigger": {
       "main": [
@@ -19990,7 +19886,7 @@
             {
               "id": "03d646c1-66e5-4233-911b-923ece659aa6",
               "name": "debug",
-              "value": "true",
+              "value": "false",
               "type": "string"
             }
           ]
@@ -24898,6 +24794,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-04-05T14:03:08.711Z",
-  "versionId": "bbf3e4d8-c27e-4266-9427-5e788824103c"
+  "updatedAt": "2026-04-15T11:38:21.481Z",
+  "versionId": "c923e8b3-ec85-4c16-810d-81a34f6f7263"
 }
