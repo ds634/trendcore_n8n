@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-12T15:39:38.000Z",
-    "createdAt": "2026-04-12T15:39:09.275Z",
-    "versionId": "9f27fb22-9ae5-4665-bd6e-7225fc3a50aa",
+    "updatedAt": "2026-04-19T11:08:06.000Z",
+    "createdAt": "2026-04-19T11:07:47.852Z",
+    "versionId": "7c8da08d-8873-4337-a445-0c2f1d341ddc",
     "workflowId": "9A6kp0SAPV2FCdMQ",
     "nodes": [
       {
@@ -29,7 +29,7 @@
           "genericAuthType": "httpHeaderAuth",
           "sendBody": true,
           "specifyBody": "json",
-          "jsonBody": "={\n  \"prompt\": \"{{ $('Start').item.json.systemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $('UrlNotEmpty').item.json.FileUrls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
+          "jsonBody": "={\n  \"prompt\": \"{{ $('Start').item.json.systemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $('Start').item.json.urls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
           "options": {
             "timeout": 300000
           }
@@ -321,7 +321,7 @@
       {
         "parameters": {
           "chatId": "={{ $('Start').item.json.chatId }}",
-          "text": "={{ $('SetNBgen_Fal_getResult').item.json?.error?.message\n?$('SetNBgen_Fal_getResult').item.json.error.message\n:\"Ошибка генерации\"\n}}",
+          "text": "={{ \"⚠️ Ошибка генерации\" }}",
           "additionalFields": {
             "appendAttribution": false
           }
@@ -354,7 +354,7 @@
             "conditions": [
               {
                 "id": "d76f7796-fddb-4b22-b608-27687939f539",
-                "leftValue": "={{ $('If').item.json. urls }}",
+                "leftValue": "={{ $('If').item.json.urls }}",
                 "rightValue": "",
                 "operator": {
                   "type": "string",
@@ -1059,11 +1059,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 9f27fb22",
+    "name": "Version 7c8da08d",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "9f27fb22-9ae5-4665-bd6e-7225fc3a50aa",
+  "activeVersionId": "7c8da08d-8873-4337-a445-0c2f1d341ddc",
   "connections": {
     "Wait": {
       "main": [
@@ -1337,7 +1337,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"prompt\": \"{{ $('Start').item.json.systemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $('UrlNotEmpty').item.json.FileUrls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
+        "jsonBody": "={\n  \"prompt\": \"{{ $('Start').item.json.systemPrompt }}\",\n  \"num_images\": 1,\n  \"aspect_ratio\": \"{{ $('Start').item.json.aspectRatioNoCommas }}\",\n  \"format\": \"jpeg\",\n  \"image_urls\": {{ $('Start').item.json.urls }},\n  \"enable_safety_checker\": false,\n  \"safety_checker_version\": \"v1\",\n  \"resolution\": \"1K\"\n\n}\n \n\n",
         "options": {
           "timeout": 300000
         }
@@ -1629,7 +1629,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Start').item.json.chatId }}",
-        "text": "={{ $('SetNBgen_Fal_getResult').item.json?.error?.message\n?$('SetNBgen_Fal_getResult').item.json.error.message\n:\"Ошибка генерации\"\n}}",
+        "text": "={{ \"⚠️ Ошибка генерации\" }}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -1662,7 +1662,7 @@
           "conditions": [
             {
               "id": "d76f7796-fddb-4b22-b608-27687939f539",
-              "leftValue": "={{ $('If').item.json. urls }}",
+              "leftValue": "={{ $('If').item.json.urls }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -2161,6 +2161,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-04-12T15:39:09.274Z",
-  "versionId": "9f27fb22-9ae5-4665-bd6e-7225fc3a50aa"
+  "updatedAt": "2026-04-19T11:07:47.852Z",
+  "versionId": "7c8da08d-8873-4337-a445-0c2f1d341ddc"
 }
