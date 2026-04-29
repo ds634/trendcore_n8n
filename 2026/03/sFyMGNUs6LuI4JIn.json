@@ -527,7 +527,7 @@
       "credentials": {
         "n8nApi": {
           "id": "Kn9x6aFBAvTLrAKr",
-          "name": "n8n account"
+          "name": "n8n OLD"
         }
       }
     },
@@ -781,12 +781,19 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrenceRules": [
-        115
+        120
       ]
     }
   },
-  "tags": [],
+  "tags": [
+    {
+      "updatedAt": "2026-03-03T17:50:11.363Z",
+      "createdAt": "2026-03-03T17:50:11.363Z",
+      "id": "3Ytt1v8Eyi5hxuuf",
+      "name": "TEST"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2026-04-04T17:55:11.815Z",
-  "versionId": "004eb671-bc45-4c52-aaf0-185c96d81e24"
+  "updatedAt": "2026-04-29T12:10:34.823Z",
+  "versionId": "2f1db0eb-9001-435f-8f28-7545826b91dc"
 }
