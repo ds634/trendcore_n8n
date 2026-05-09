@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-19T11:08:06.000Z",
-    "createdAt": "2026-04-19T11:07:47.852Z",
-    "versionId": "7c8da08d-8873-4337-a445-0c2f1d341ddc",
+    "updatedAt": "2026-05-05T23:28:44.000Z",
+    "createdAt": "2026-05-05T23:25:02.244Z",
+    "versionId": "b9f1a3bf-ca83-4369-b544-d56e9b1ff10f",
     "workflowId": "9A6kp0SAPV2FCdMQ",
     "nodes": [
       {
@@ -305,6 +305,9 @@
               },
               {
                 "name": "resolution"
+              },
+              {
+                "name": "result"
               }
             ]
           }
@@ -418,15 +421,10 @@
                 "name": "result",
                 "value": "={{ $('SetNBgen_Fal_getResult').item.json.images[0].url }}",
                 "type": "string"
-              },
-              {
-                "id": "631f2955-0bf0-41d9-9fb8-042a7fc1c98f",
-                "name": "",
-                "value": "",
-                "type": "string"
               }
             ]
           },
+          "includeOtherFields": true,
           "options": {}
         },
         "type": "n8n-nodes-base.set",
@@ -1059,11 +1057,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version 7c8da08d",
+    "name": "Version b9f1a3bf",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "7c8da08d-8873-4337-a445-0c2f1d341ddc",
+  "activeVersionId": "b9f1a3bf-ca83-4369-b544-d56e9b1ff10f",
   "connections": {
     "Wait": {
       "main": [
@@ -1613,6 +1611,9 @@
             },
             {
               "name": "resolution"
+            },
+            {
+              "name": "result"
             }
           ]
         }
@@ -1726,15 +1727,10 @@
               "name": "result",
               "value": "={{ $('SetNBgen_Fal_getResult').item.json.images[0].url }}",
               "type": "string"
-            },
-            {
-              "id": "631f2955-0bf0-41d9-9fb8-042a7fc1c98f",
-              "name": "",
-              "value": "",
-              "type": "string"
             }
           ]
         },
+        "includeOtherFields": true,
         "options": {}
       },
       "type": "n8n-nodes-base.set",
@@ -2161,6 +2157,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-04-19T11:07:47.852Z",
-  "versionId": "7c8da08d-8873-4337-a445-0c2f1d341ddc"
+  "updatedAt": "2026-05-05T23:25:02.243Z",
+  "versionId": "b9f1a3bf-ca83-4369-b544-d56e9b1ff10f"
 }
