@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-05T14:33:16.000Z",
-    "createdAt": "2026-04-05T14:32:19.301Z",
-    "versionId": "ba5917d1-816d-4251-b950-ff1060d0c9d0",
+    "updatedAt": "2026-05-06T07:37:10.000Z",
+    "createdAt": "2026-05-06T07:37:07.788Z",
+    "versionId": "1f5c3685-9323-4692-8a25-54569dde0a3c",
     "workflowId": "iXOPeBadNc5q45BW",
     "nodes": [
       {
@@ -23,8 +23,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          1472,
-          2864
+          1456,
+          3152
         ],
         "id": "cbacb80b-266c-4433-85e1-deb71c71e82f",
         "name": "SelectMsgPrepare"
@@ -36,8 +36,8 @@
         "type": "n8n-nodes-base.stopAndError",
         "typeVersion": 1,
         "position": [
-          1920,
-          2864
+          1904,
+          3152
         ],
         "id": "6d66bdcd-8faa-4fc2-8d4e-e2af89d6aff0",
         "name": "Stop and Error1"
@@ -49,8 +49,8 @@
         "type": "n8n-nodes-base.stopAndError",
         "typeVersion": 1,
         "position": [
-          2400,
-          2848
+          2384,
+          3136
         ],
         "id": "14df7c65-e748-4f6d-b280-31c679c122c8",
         "name": "Stop and Error"
@@ -68,8 +68,8 @@
         "name": "UpdateMsgSelected",
         "type": "n8n-nodes-base.httpRequest",
         "position": [
-          1696,
-          2768
+          1680,
+          3056
         ],
         "typeVersion": 4.2,
         "onError": "continueErrorOutput"
@@ -101,8 +101,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          1248,
-          2768
+          1232,
+          3056
         ],
         "id": "fbbf4c54-e342-4c49-8794-3bcff0ca979c",
         "name": "IfAlreadySelected"
@@ -236,8 +236,8 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          3680,
-          2720
+          3664,
+          3248
         ],
         "id": "52694a13-fbf3-4943-99c4-2d80ee388f09",
         "name": "StoreTaskIdForImgs1"
@@ -288,8 +288,8 @@
         "type": "n8n-nodes-base.dataTable",
         "typeVersion": 1.1,
         "position": [
-          1920,
-          2672
+          1904,
+          2960
         ],
         "id": "15351c8b-3428-40f1-b92c-5c6263349543",
         "name": "Get row(s)1",
@@ -332,8 +332,8 @@
         "type": "n8n-nodes-base.if",
         "typeVersion": 2.3,
         "position": [
-          2144,
-          2672
+          2128,
+          2960
         ],
         "id": "47175265-de72-4162-ae78-9313a2189090",
         "name": "ifOneRecord?"
@@ -355,8 +355,8 @@
         "type": "n8n-nodes-base.set",
         "typeVersion": 3.4,
         "position": [
-          1472,
-          2672
+          1456,
+          2960
         ],
         "id": "8c773938-3432-492c-893f-9afb113cbb88",
         "name": "RemovePrevSelected"
@@ -379,7 +379,7 @@
         "typeVersion": 3.4,
         "position": [
           2640,
-          2592
+          2832
         ],
         "id": "5c400c97-7d32-4fa9-bfd7-6b6b56f1960f",
         "name": "taskRecordIdCallback"
@@ -402,7 +402,7 @@
         "typeVersion": 3.4,
         "position": [
           3152,
-          2592
+          2832
         ],
         "id": "89cb4985-8477-4b0a-9a8a-2fc5b2285fed",
         "name": "taskUrlCallback1"
@@ -435,7 +435,7 @@
         "typeVersion": 2.3,
         "position": [
           3408,
-          2592
+          2832
         ],
         "id": "f534e2b6-f418-4902-b674-d369925fc20a",
         "name": "IfAddedObj"
@@ -477,7 +477,7 @@
         "typeVersion": 1.1,
         "position": [
           2864,
-          2592
+          2832
         ],
         "id": "983503f1-21e2-4476-9edc-89f07220f09b",
         "name": "getAllRecByMain"
@@ -643,7 +643,7 @@
         "typeVersion": 3.4,
         "position": [
           2400,
-          2528
+          2768
         ],
         "id": "cc9aa7dd-5f86-4c30-a83a-4fc38fcb4d75",
         "name": "Switch"
@@ -790,7 +790,7 @@
         "typeVersion": 1.1,
         "position": [
           3664,
-          2528
+          2768
         ],
         "id": "b01eef80-842b-4c22-a501-bcd54ec1071a",
         "name": "StoreTaskIdForImgs"
@@ -1779,24 +1779,27 @@
                   },
                   "conditions": [
                     {
-                      "id": "6d55c3f6-8992-449e-b895-29453636b4bb",
-                      "leftValue": "={{$('Start').item.json.callback_data !== \"submit\" && $('Start').item.json.callback_data !== \"cancel\" && $('Start').item.json.callback_data !== \"done\" \n&& $('Start').item.json.callback_data !== \"getLook\" \n&& $('Start').item.json.callback_data !== \"getObjects\" \n&& $('Start').item.json.callback_data !== \"doneLook\"\n&& $('Start').item.json.callback_data !== \"getScenarioIdea\"\n&& $('Start').item.json.callback_data !== \"cancelScenarioEdits\"\n&& $('Start').item.json.callback_data !== \"addScenarioEdits\"\n&& $('Start').item.json.callback_data !== \"generatePhotoset\"\n\n\n}}",
-                      "rightValue": "={{\"submit\" && \"done\" && \"cancel\"}}",
+                      "id": "1f962104-8998-43f6-860f-a1db46e70ec3",
+                      "leftValue": "={{ $('Start').item.json.callback_data }}",
+                      "rightValue": "getStyle",
                       "operator": {
-                        "type": "boolean",
-                        "operation": "true",
-                        "singleValue": true
+                        "type": "string",
+                        "operation": "equals",
+                        "name": "filter.operator.equals"
                       }
                     }
                   ],
                   "combinator": "and"
                 },
                 "renameOutput": true,
-                "outputKey": "other"
+                "outputKey": "getStyle"
               }
             ]
           },
-          "options": {}
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "other1"
+          }
         },
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
@@ -2134,39 +2137,6 @@
       },
       {
         "parameters": {
-          "conditions": {
-            "options": {
-              "caseSensitive": true,
-              "leftValue": "",
-              "typeValidation": "strict",
-              "version": 3
-            },
-            "conditions": [
-              {
-                "id": "00dcd1d7-0987-4c5d-8632-d5a26ff24f49",
-                "leftValue": "={{ $('Start').item.json.callback_data }}",
-                "rightValue": "Scen_",
-                "operator": {
-                  "type": "string",
-                  "operation": "startsWith"
-                }
-              }
-            ],
-            "combinator": "and"
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.if",
-        "typeVersion": 2.3,
-        "position": [
-          -1136,
-          1648
-        ],
-        "id": "7caafc3e-7167-41dc-87ad-fe097ef1389c",
-        "name": "IfScenarios"
-      },
-      {
-        "parameters": {
           "method": "POST",
           "url": "=https://api.telegram.org/bot{{$('Start').item.json.botToken}}/sendMessage",
           "sendBody": true,
@@ -2232,149 +2202,6 @@
             "name": "TG PROD"
           }
         }
-      },
-      {
-        "parameters": {
-          "operation": "update",
-          "dataTableId": {
-            "__rl": true,
-            "value": "y4BxUcToGeRL2Qi4",
-            "mode": "list",
-            "cachedResultName": "TG dialog statuses PROD",
-            "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
-          },
-          "matchType": "allConditions",
-          "filters": {
-            "conditions": [
-              {
-                "keyName": "userId",
-                "keyValue": "={{ $('Start').item.json.chat_id }}"
-              },
-              {
-                "keyName": "dialogId",
-                "keyValue": "={{ $('Start').item.json.chat_id }}"
-              },
-              {
-                "keyName": "process",
-                "keyValue": "/createlook"
-              },
-              {
-                "keyName": "status",
-                "keyValue": "GalleryForFaceRecieved"
-              }
-            ]
-          },
-          "columns": {
-            "mappingMode": "defineBelow",
-            "value": {
-              "status": "GetScenarioIdea"
-            },
-            "matchingColumns": [],
-            "schema": [
-              {
-                "id": "userId",
-                "displayName": "userId",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "dialogId",
-                "displayName": "dialogId",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "process",
-                "displayName": "process",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "status",
-                "displayName": "status",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "imgsCount",
-                "displayName": "imgsCount",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "number",
-                "readOnly": false,
-                "removed": true
-              },
-              {
-                "id": "faceImgUrl",
-                "displayName": "faceImgUrl",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "replyToMessageIdGallery",
-                "displayName": "replyToMessageIdGallery",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "number",
-                "readOnly": false,
-                "removed": true
-              },
-              {
-                "id": "faceGalleryUrl",
-                "displayName": "faceGalleryUrl",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "readOnly": false,
-                "removed": false
-              },
-              {
-                "id": "FaceErrToMsgId",
-                "displayName": "FaceErrToMsgId",
-                "required": false,
-                "defaultMatch": false,
-                "display": true,
-                "type": "string",
-                "readOnly": false,
-                "removed": false
-              }
-            ],
-            "attemptToConvertTypes": false,
-            "convertFieldsToString": false
-          },
-          "options": {}
-        },
-        "type": "n8n-nodes-base.dataTable",
-        "typeVersion": 1.1,
-        "position": [
-          3072,
-          1520
-        ],
-        "id": "fd5c4e83-bfe3-4533-bc86-fe58ada86047",
-        "name": "Set GalleryForFaceRecieved"
       },
       {
         "parameters": {
@@ -3563,8 +3390,8 @@
         "name": "Start",
         "type": "n8n-nodes-base.executeWorkflowTrigger",
         "position": [
-          -1344,
-          1648
+          -3392,
+          1600
         ]
       },
       {
@@ -3865,7 +3692,7 @@
         "type": "n8n-nodes-base.telegram",
         "typeVersion": 1.2,
         "position": [
-          2080,
+          2032,
           1520
         ],
         "id": "e1c6955f-1b5d-4328-a7db-e1d599f1cb6e",
@@ -4248,6 +4075,858 @@
         ],
         "id": "e7c7c639-b655-409e-9701-6ed0d379d34f",
         "name": "IfNoQuotaOr<"
+      },
+      {
+        "parameters": {
+          "rules": {
+            "values": [
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "loose",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "id": "985cb331-8fd8-4027-9473-9a20441e1a6a",
+                      "leftValue": "={{ $('Start').item.json.callback_data }}",
+                      "rightValue": "Style_",
+                      "operator": {
+                        "type": "string",
+                        "operation": "startsWith"
+                      }
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Style"
+              },
+              {
+                "conditions": {
+                  "options": {
+                    "caseSensitive": true,
+                    "leftValue": "",
+                    "typeValidation": "loose",
+                    "version": 3
+                  },
+                  "conditions": [
+                    {
+                      "leftValue": "={{ $('Start').item.json.callback_data }}",
+                      "rightValue": "Scen_",
+                      "operator": {
+                        "type": "string",
+                        "operation": "startsWith"
+                      },
+                      "id": "d261b6f1-37c3-47ad-94b3-34129e20ae12"
+                    }
+                  ],
+                  "combinator": "and"
+                },
+                "renameOutput": true,
+                "outputKey": "Scenario"
+              }
+            ]
+          },
+          "looseTypeValidation": true,
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "other"
+          }
+        },
+        "type": "n8n-nodes-base.switch",
+        "typeVersion": 3.4,
+        "position": [
+          -3120,
+          1584
+        ],
+        "id": "74aa32f9-d7d4-41bd-b2ff-f216bc94304d",
+        "name": "Switch1"
+      },
+      {
+        "parameters": {
+          "assignments": {
+            "assignments": [
+              {
+                "id": "ea44b8fa-9116-4b31-9804-580fb2784b97",
+                "name": "styleSelected",
+                "value": "={{ $('Start').item.json.callback_data.replaceAll(\"Style_\",\"\") }}",
+                "type": "string"
+              },
+              {
+                "id": "9d61c60d-2b6b-45a3-953d-b2629a2060e7",
+                "name": "styleSelectedLocal",
+                "value": "={{$('Start').item.json.replyMarkup.parseJson().inline_keyboard.reduce((acc, row) => acc || row.find(b => b.callback_data === $('Start').item.json.callback_data)?.text || null, null) }}",
+                "type": "string"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3.4,
+        "position": [
+          -2640,
+          560
+        ],
+        "id": "82a681d3-815b-4dee-b61c-d14f7d59053d",
+        "name": "SelectedStyle"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "11zKDApGG8avlzfn",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/11zKDApGG8avlzfn",
+            "cachedResultName": "subTR_CL_Done_Style"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "message_chat_id": "={{ $('Start').item.json.chat_id }}",
+              "model": "={{ $('Start').item.json.modelName }}",
+              "modelApi": "={{ $('Start').item.json.api }}",
+              "debugMode": "={{ $('Start').item.json.debug }}",
+              "apiNameNB": "={{ $('Start').item.json.apiNB }}",
+              "styleId": "={{ $('SelectedStyle').item.json.styleSelected }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "message_chat_id",
+                "displayName": "message_chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "model",
+                "displayName": "model",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "modelApi",
+                "displayName": "modelApi",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "debugMode",
+                "displayName": "debugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "apiNameNB",
+                "displayName": "apiNameNB",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "styleId",
+                "displayName": "styleId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {
+            "waitForSubWorkflow": true
+          }
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          -2176,
+          560
+        ],
+        "id": "1e83a584-40a6-4c86-8484-87e002ed9944",
+        "name": "Call 'subTR_CL_Done_Style'"
+      },
+      {
+        "parameters": {
+          "operation": "editMessageText",
+          "chatId": "={{ $('Start').item.json.chat_id }}",
+          "messageId": "={{ $('Start').item.json.replyToMessageIdGallery }}",
+          "text": "={{ \"Для фотосессии выбран стиль: \" + $('SelectedStyle').item.json.styleSelected }}",
+          "additionalFields": {}
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -2400,
+          560
+        ],
+        "id": "c4dc3f11-d32a-44b3-9100-e6684e54d14b",
+        "name": "Edit a text message6",
+        "webhookId": "888b2dc8-23ec-450f-8f07-bba9bed18dde",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TrendcoreRecordMain",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.chat_id }}"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createlook"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetStyle"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "replyToMessageIdGallery": "={{ $('NextSteps2').item.json.result.message_id }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "lookSelected",
+                "displayName": "lookSelected",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "concatDescr",
+                "displayName": "concatDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "creativeScenarios",
+                "displayName": "creativeScenarios",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedLookUrl",
+                "displayName": "generatedLookUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": true
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          -1728,
+          560
+        ],
+        "id": "52466621-a9ec-4b31-b796-c06ba19b9d3c",
+        "name": "Set GetGalleryForFace+MsgId",
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('Start').item.json.chat_id }}",
+          "text": "={{\"Студийная съемка создана!\" + \"\\n\\n\" +\n\n\"Вы можете создать еще пять студийных образов, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробный фотосет модели в локации и завершить работу.\"\n}}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Еще пять студийных образов",
+                      "additionalFields": {
+                        "callback_data": "getStyle"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать креативный фотосет",
+                      "additionalFields": {
+                        "callback_data": "getScenarioIdea"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -1952,
+          560
+        ],
+        "id": "f01d196a-21d7-45e9-9946-1dbb694a1066",
+        "name": "NextSteps2",
+        "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TrendcoreRecordMain",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.chat_id }}"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createlook"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GalleryForFaceRecieved"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "status": "GetScenarioIdea"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceGalleryUrl",
+                "displayName": "faceGalleryUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "FaceErrToMsgId",
+                "displayName": "FaceErrToMsgId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          3104,
+          1520
+        ],
+        "id": "58cc0a2b-3357-43d8-8ba1-7df8f302d00e",
+        "name": "Set GetScenarioIdea",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "operation": "update",
+          "dataTableId": {
+            "__rl": true,
+            "value": "y4BxUcToGeRL2Qi4",
+            "mode": "list",
+            "cachedResultName": "TrendcoreRecordMain",
+            "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/y4BxUcToGeRL2Qi4"
+          },
+          "matchType": "allConditions",
+          "filters": {
+            "conditions": [
+              {
+                "keyName": "userId",
+                "keyValue": "={{ $('Start').item.json.chat_id }}"
+              },
+              {
+                "keyName": "dialogId",
+                "keyValue": "={{ $('Start').item.json.chat_id }}"
+              },
+              {
+                "keyName": "process",
+                "keyValue": "/createlook"
+              },
+              {
+                "keyName": "status",
+                "keyValue": "GetStyle"
+              }
+            ]
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "status": "GetScenarioIdea"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "userId",
+                "displayName": "userId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "dialogId",
+                "displayName": "dialogId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "process",
+                "displayName": "process",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "status",
+                "displayName": "status",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceImgUrl",
+                "displayName": "faceImgUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": true
+              },
+              {
+                "id": "faceGalleryUrl",
+                "displayName": "faceGalleryUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "FaceErrToMsgId",
+                "displayName": "FaceErrToMsgId",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": false,
+            "convertFieldsToString": false
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.dataTable",
+        "typeVersion": 1.1,
+        "position": [
+          3328,
+          1520
+        ],
+        "id": "e36bcd56-8dab-48ee-b028-8dd1498d5ca3",
+        "name": "Set GetScenarioIdea1",
+        "alwaysOutputData": true,
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "workflowId": {
+            "__rl": true,
+            "value": "5PWrvAxuADjaVyOv",
+            "mode": "list",
+            "cachedResultUrl": "/workflow/5PWrvAxuADjaVyOv",
+            "cachedResultName": "subTR_CL_GetStyle"
+          },
+          "workflowInputs": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "message_chat_id": "={{ $('Start').item.json.chat_id }}",
+              "botTocken": "={{ $('Start').item.json.botToken }}",
+              "DebugMode": "={{ $('Start').item.json.debug }}"
+            },
+            "matchingColumns": [
+              "message_chat_id"
+            ],
+            "schema": [
+              {
+                "id": "message_chat_id",
+                "displayName": "message_chat_id",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "removed": false
+              },
+              {
+                "id": "botTocken",
+                "displayName": "botTocken",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              },
+              {
+                "id": "DebugMode",
+                "displayName": "DebugMode",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "canBeUsedToMatch": true,
+                "type": "string",
+                "removed": false
+              }
+            ],
+            "attemptToConvertTypes": true,
+            "convertFieldsToString": true
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.executeWorkflow",
+        "typeVersion": 1.3,
+        "position": [
+          1504,
+          2736
+        ],
+        "id": "57f41682-f346-4b03-83ee-93ac26b601b3",
+        "name": "subTR_GetStyle",
+        "retryOnFail": true,
+        "alwaysOutputData": true
+      },
+      {
+        "parameters": {
+          "operation": "editMessageText",
+          "chatId": "={{ $('Start').item.json.chat_id }}",
+          "messageId": "={{ $('Start').item.json.replyToMessageIdGallery }}",
+          "text": "={{\"Образ готов!\" + \"\\n\\n\" +\n\n\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробное фото модели в локации и завершить работу.\"\n}}",
+          "additionalFields": {
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          1296,
+          2736
+        ],
+        "id": "38ea1ec4-28e6-43cd-a8af-3a1e5ea6c722",
+        "name": "RmoveBtns2",
+        "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+        "executeOnce": false,
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        },
+        "onError": "continueRegularOutput"
       }
     ],
     "connections": {
@@ -4446,6 +5125,13 @@
           ],
           [
             {
+              "node": "RmoveBtns2",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
               "node": "IfAlreadySelected",
               "type": "main",
               "index": 0
@@ -4548,7 +5234,7 @@
         "main": [
           [
             {
-              "node": "Set GalleryForFaceRecieved",
+              "node": "Set GetScenarioIdea",
               "type": "main",
               "index": 0
             }
@@ -4681,24 +5367,6 @@
           []
         ]
       },
-      "IfScenarios": {
-        "main": [
-          [
-            {
-              "node": "SelectedScenario",
-              "type": "main",
-              "index": 0
-            }
-          ],
-          [
-            {
-              "node": "ClbkLngLocal",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "SelectedScenario": {
         "main": [
           [
@@ -4758,7 +5426,7 @@
         "main": [
           [
             {
-              "node": "IfScenarios",
+              "node": "Switch1",
               "type": "main",
               "index": 0
             }
@@ -4967,14 +5635,105 @@
             }
           ]
         ]
+      },
+      "Switch1": {
+        "main": [
+          [
+            {
+              "node": "SelectedStyle",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "SelectedScenario",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "ClbkLngLocal",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "SelectedStyle": {
+        "main": [
+          [
+            {
+              "node": "Edit a text message6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Call 'subTR_CL_Done_Style'": {
+        "main": [
+          [
+            {
+              "node": "NextSteps2",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit a text message6": {
+        "main": [
+          [
+            {
+              "node": "Call 'subTR_CL_Done_Style'",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "NextSteps2": {
+        "main": [
+          [
+            {
+              "node": "Set GetGalleryForFace+MsgId",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Set GetScenarioIdea": {
+        "main": [
+          [
+            {
+              "node": "Set GetScenarioIdea1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "RmoveBtns2": {
+        "main": [
+          [
+            {
+              "node": "subTR_GetStyle",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "DLS  ",
-    "name": "Version ba5917d1",
+    "name": "Version 1f5c3685",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "ba5917d1-816d-4251-b950-ff1060d0c9d0",
+  "activeVersionId": "1f5c3685-9323-4692-8a25-54569dde0a3c",
   "connections": {
     "Get row(s)1": {
       "main": [
@@ -5171,6 +5930,13 @@
         ],
         [
           {
+            "node": "RmoveBtns2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "IfAlreadySelected",
             "type": "main",
             "index": 0
@@ -5273,7 +6039,7 @@
       "main": [
         [
           {
-            "node": "Set GalleryForFaceRecieved",
+            "node": "Set GetScenarioIdea",
             "type": "main",
             "index": 0
           }
@@ -5406,24 +6172,6 @@
         []
       ]
     },
-    "IfScenarios": {
-      "main": [
-        [
-          {
-            "node": "SelectedScenario",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "ClbkLngLocal",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "SelectedScenario": {
       "main": [
         [
@@ -5483,7 +6231,7 @@
       "main": [
         [
           {
-            "node": "IfScenarios",
+            "node": "Switch1",
             "type": "main",
             "index": 0
           }
@@ -5692,12 +6440,105 @@
           }
         ]
       ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "SelectedStyle",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SelectedScenario",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ClbkLngLocal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SelectedStyle": {
+      "main": [
+        [
+          {
+            "node": "Edit a text message6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 'subTR_CL_Done_Style'": {
+      "main": [
+        [
+          {
+            "node": "NextSteps2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit a text message6": {
+      "main": [
+        [
+          {
+            "node": "Call 'subTR_CL_Done_Style'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NextSteps2": {
+      "main": [
+        [
+          {
+            "node": "Set GetGalleryForFace+MsgId",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set GetScenarioIdea": {
+      "main": [
+        [
+          {
+            "node": "Set GetScenarioIdea1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RmoveBtns2": {
+      "main": [
+        [
+          {
+            "node": "subTR_GetStyle",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2026-03-14T13:20:25.242Z",
   "id": "iXOPeBadNc5q45BW",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "subTR_CL_CallbacksProcessing",
   "nodes": [
     {
@@ -5717,8 +6558,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1472,
-        2864
+        1456,
+        3152
       ],
       "id": "cbacb80b-266c-4433-85e1-deb71c71e82f",
       "name": "SelectMsgPrepare"
@@ -5730,8 +6571,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        1920,
-        2864
+        1904,
+        3152
       ],
       "id": "6d66bdcd-8faa-4fc2-8d4e-e2af89d6aff0",
       "name": "Stop and Error1"
@@ -5743,8 +6584,8 @@
       "type": "n8n-nodes-base.stopAndError",
       "typeVersion": 1,
       "position": [
-        2400,
-        2848
+        2384,
+        3136
       ],
       "id": "14df7c65-e748-4f6d-b280-31c679c122c8",
       "name": "Stop and Error"
@@ -5762,8 +6603,8 @@
       "name": "UpdateMsgSelected",
       "type": "n8n-nodes-base.httpRequest",
       "position": [
-        1696,
-        2768
+        1680,
+        3056
       ],
       "typeVersion": 4.2,
       "onError": "continueErrorOutput"
@@ -5795,8 +6636,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        1248,
-        2768
+        1232,
+        3056
       ],
       "id": "fbbf4c54-e342-4c49-8794-3bcff0ca979c",
       "name": "IfAlreadySelected"
@@ -5930,8 +6771,8 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        3680,
-        2720
+        3664,
+        3248
       ],
       "id": "52694a13-fbf3-4943-99c4-2d80ee388f09",
       "name": "StoreTaskIdForImgs1"
@@ -5982,8 +6823,8 @@
       "type": "n8n-nodes-base.dataTable",
       "typeVersion": 1.1,
       "position": [
-        1920,
-        2672
+        1904,
+        2960
       ],
       "id": "15351c8b-3428-40f1-b92c-5c6263349543",
       "name": "Get row(s)1",
@@ -6026,8 +6867,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2144,
-        2672
+        2128,
+        2960
       ],
       "id": "47175265-de72-4162-ae78-9313a2189090",
       "name": "ifOneRecord?"
@@ -6049,8 +6890,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1472,
-        2672
+        1456,
+        2960
       ],
       "id": "8c773938-3432-492c-893f-9afb113cbb88",
       "name": "RemovePrevSelected"
@@ -6073,7 +6914,7 @@
       "typeVersion": 3.4,
       "position": [
         2640,
-        2592
+        2832
       ],
       "id": "5c400c97-7d32-4fa9-bfd7-6b6b56f1960f",
       "name": "taskRecordIdCallback"
@@ -6096,7 +6937,7 @@
       "typeVersion": 3.4,
       "position": [
         3152,
-        2592
+        2832
       ],
       "id": "89cb4985-8477-4b0a-9a8a-2fc5b2285fed",
       "name": "taskUrlCallback1"
@@ -6129,7 +6970,7 @@
       "typeVersion": 2.3,
       "position": [
         3408,
-        2592
+        2832
       ],
       "id": "f534e2b6-f418-4902-b674-d369925fc20a",
       "name": "IfAddedObj"
@@ -6171,7 +7012,7 @@
       "typeVersion": 1.1,
       "position": [
         2864,
-        2592
+        2832
       ],
       "id": "983503f1-21e2-4476-9edc-89f07220f09b",
       "name": "getAllRecByMain"
@@ -6337,7 +7178,7 @@
       "typeVersion": 3.4,
       "position": [
         2400,
-        2528
+        2768
       ],
       "id": "cc9aa7dd-5f86-4c30-a83a-4fc38fcb4d75",
       "name": "Switch"
@@ -6484,7 +7325,7 @@
       "typeVersion": 1.1,
       "position": [
         3664,
-        2528
+        2768
       ],
       "id": "b01eef80-842b-4c22-a501-bcd54ec1071a",
       "name": "StoreTaskIdForImgs"
@@ -7473,24 +8314,27 @@
                 },
                 "conditions": [
                   {
-                    "id": "6d55c3f6-8992-449e-b895-29453636b4bb",
-                    "leftValue": "={{$('Start').item.json.callback_data !== \"submit\" && $('Start').item.json.callback_data !== \"cancel\" && $('Start').item.json.callback_data !== \"done\" \n&& $('Start').item.json.callback_data !== \"getLook\" \n&& $('Start').item.json.callback_data !== \"getObjects\" \n&& $('Start').item.json.callback_data !== \"doneLook\"\n&& $('Start').item.json.callback_data !== \"getScenarioIdea\"\n&& $('Start').item.json.callback_data !== \"cancelScenarioEdits\"\n&& $('Start').item.json.callback_data !== \"addScenarioEdits\"\n&& $('Start').item.json.callback_data !== \"generatePhotoset\"\n\n\n}}",
-                    "rightValue": "={{\"submit\" && \"done\" && \"cancel\"}}",
+                    "id": "1f962104-8998-43f6-860f-a1db46e70ec3",
+                    "leftValue": "={{ $('Start').item.json.callback_data }}",
+                    "rightValue": "getStyle",
                     "operator": {
-                      "type": "boolean",
-                      "operation": "true",
-                      "singleValue": true
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
                     }
                   }
                 ],
                 "combinator": "and"
               },
               "renameOutput": true,
-              "outputKey": "other"
+              "outputKey": "getStyle"
             }
           ]
         },
-        "options": {}
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "other1"
+        }
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
@@ -7828,39 +8672,6 @@
     },
     {
       "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 3
-          },
-          "conditions": [
-            {
-              "id": "00dcd1d7-0987-4c5d-8632-d5a26ff24f49",
-              "leftValue": "={{ $('Start').item.json.callback_data }}",
-              "rightValue": "Scen_",
-              "operator": {
-                "type": "string",
-                "operation": "startsWith"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.3,
-      "position": [
-        -1136,
-        1648
-      ],
-      "id": "7caafc3e-7167-41dc-87ad-fe097ef1389c",
-      "name": "IfScenarios"
-    },
-    {
-      "parameters": {
         "method": "POST",
         "url": "=https://api.telegram.org/bot{{$('Start').item.json.botToken}}/sendMessage",
         "sendBody": true,
@@ -7926,149 +8737,6 @@
           "name": "TG PROD"
         }
       }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "dataTableId": {
-          "__rl": true,
-          "value": "y4BxUcToGeRL2Qi4",
-          "mode": "list",
-          "cachedResultName": "TG dialog statuses PROD",
-          "cachedResultUrl": "/projects/V5B37M0lqvYsnN7U/datatables/y4BxUcToGeRL2Qi4"
-        },
-        "matchType": "allConditions",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "userId",
-              "keyValue": "={{ $('Start').item.json.chat_id }}"
-            },
-            {
-              "keyName": "dialogId",
-              "keyValue": "={{ $('Start').item.json.chat_id }}"
-            },
-            {
-              "keyName": "process",
-              "keyValue": "/createlook"
-            },
-            {
-              "keyName": "status",
-              "keyValue": "GalleryForFaceRecieved"
-            }
-          ]
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "status": "GetScenarioIdea"
-          },
-          "matchingColumns": [],
-          "schema": [
-            {
-              "id": "userId",
-              "displayName": "userId",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "dialogId",
-              "displayName": "dialogId",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "process",
-              "displayName": "process",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "status",
-              "displayName": "status",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "imgsCount",
-              "displayName": "imgsCount",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "faceImgUrl",
-              "displayName": "faceImgUrl",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "replyToMessageIdGallery",
-              "displayName": "replyToMessageIdGallery",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "number",
-              "readOnly": false,
-              "removed": true
-            },
-            {
-              "id": "faceGalleryUrl",
-              "displayName": "faceGalleryUrl",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            },
-            {
-              "id": "FaceErrToMsgId",
-              "displayName": "FaceErrToMsgId",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "readOnly": false,
-              "removed": false
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.dataTable",
-      "typeVersion": 1.1,
-      "position": [
-        3072,
-        1520
-      ],
-      "id": "fd5c4e83-bfe3-4533-bc86-fe58ada86047",
-      "name": "Set GalleryForFaceRecieved"
     },
     {
       "parameters": {
@@ -9257,8 +9925,8 @@
       "name": "Start",
       "type": "n8n-nodes-base.executeWorkflowTrigger",
       "position": [
-        -1344,
-        1648
+        -3392,
+        1600
       ]
     },
     {
@@ -9559,7 +10227,7 @@
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
       "position": [
-        2080,
+        2032,
         1520
       ],
       "id": "e1c6955f-1b5d-4328-a7db-e1d599f1cb6e",
@@ -9942,6 +10610,858 @@
       ],
       "id": "e7c7c639-b655-409e-9701-6ed0d379d34f",
       "name": "IfNoQuotaOr<"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "985cb331-8fd8-4027-9473-9a20441e1a6a",
+                    "leftValue": "={{ $('Start').item.json.callback_data }}",
+                    "rightValue": "Style_",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Style"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Start').item.json.callback_data }}",
+                    "rightValue": "Scen_",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    },
+                    "id": "d261b6f1-37c3-47ad-94b3-34129e20ae12"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Scenario"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "other"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -3120,
+        1584
+      ],
+      "id": "74aa32f9-d7d4-41bd-b2ff-f216bc94304d",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ea44b8fa-9116-4b31-9804-580fb2784b97",
+              "name": "styleSelected",
+              "value": "={{ $('Start').item.json.callback_data.replaceAll(\"Style_\",\"\") }}",
+              "type": "string"
+            },
+            {
+              "id": "9d61c60d-2b6b-45a3-953d-b2629a2060e7",
+              "name": "styleSelectedLocal",
+              "value": "={{$('Start').item.json.replyMarkup.parseJson().inline_keyboard.reduce((acc, row) => acc || row.find(b => b.callback_data === $('Start').item.json.callback_data)?.text || null, null) }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2640,
+        560
+      ],
+      "id": "82a681d3-815b-4dee-b61c-d14f7d59053d",
+      "name": "SelectedStyle"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "11zKDApGG8avlzfn",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/11zKDApGG8avlzfn",
+          "cachedResultName": "subTR_CL_Done_Style"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_chat_id": "={{ $('Start').item.json.chat_id }}",
+            "model": "={{ $('Start').item.json.modelName }}",
+            "modelApi": "={{ $('Start').item.json.api }}",
+            "debugMode": "={{ $('Start').item.json.debug }}",
+            "apiNameNB": "={{ $('Start').item.json.apiNB }}",
+            "styleId": "={{ $('SelectedStyle').item.json.styleSelected }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "message_chat_id",
+              "displayName": "message_chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "model",
+              "displayName": "model",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "modelApi",
+              "displayName": "modelApi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "debugMode",
+              "displayName": "debugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "apiNameNB",
+              "displayName": "apiNameNB",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "styleId",
+              "displayName": "styleId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        -2176,
+        560
+      ],
+      "id": "1e83a584-40a6-4c86-8484-87e002ed9944",
+      "name": "Call 'subTR_CL_Done_Style'"
+    },
+    {
+      "parameters": {
+        "operation": "editMessageText",
+        "chatId": "={{ $('Start').item.json.chat_id }}",
+        "messageId": "={{ $('Start').item.json.replyToMessageIdGallery }}",
+        "text": "={{ \"Для фотосессии выбран стиль: \" + $('SelectedStyle').item.json.styleSelected }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2400,
+        560
+      ],
+      "id": "c4dc3f11-d32a-44b3-9100-e6684e54d14b",
+      "name": "Edit a text message6",
+      "webhookId": "888b2dc8-23ec-450f-8f07-bba9bed18dde",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TrendcoreRecordMain",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.chat_id }}"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createlook"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetStyle"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "replyToMessageIdGallery": "={{ $('NextSteps2').item.json.result.message_id }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "lookSelected",
+              "displayName": "lookSelected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "concatDescr",
+              "displayName": "concatDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "creativeScenarios",
+              "displayName": "creativeScenarios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedLookUrl",
+              "displayName": "generatedLookUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -1728,
+        560
+      ],
+      "id": "52466621-a9ec-4b31-b796-c06ba19b9d3c",
+      "name": "Set GetGalleryForFace+MsgId",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Start').item.json.chat_id }}",
+        "text": "={{\"Студийная съемка создана!\" + \"\\n\\n\" +\n\n\"Вы можете создать еще пять студийных образов, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробный фотосет модели в локации и завершить работу.\"\n}}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Еще пять студийных образов",
+                    "additionalFields": {
+                      "callback_data": "getStyle"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать креативный фотосет",
+                    "additionalFields": {
+                      "callback_data": "getScenarioIdea"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -1952,
+        560
+      ],
+      "id": "f01d196a-21d7-45e9-9946-1dbb694a1066",
+      "name": "NextSteps2",
+      "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TrendcoreRecordMain",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.chat_id }}"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createlook"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GalleryForFaceRecieved"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "GetScenarioIdea"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceGalleryUrl",
+              "displayName": "faceGalleryUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "FaceErrToMsgId",
+              "displayName": "FaceErrToMsgId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3104,
+        1520
+      ],
+      "id": "58cc0a2b-3357-43d8-8ba1-7df8f302d00e",
+      "name": "Set GetScenarioIdea",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "y4BxUcToGeRL2Qi4",
+          "mode": "list",
+          "cachedResultName": "TrendcoreRecordMain",
+          "cachedResultUrl": "/projects/M9bTlSGaaAbsZxvs/datatables/y4BxUcToGeRL2Qi4"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "userId",
+              "keyValue": "={{ $('Start').item.json.chat_id }}"
+            },
+            {
+              "keyName": "dialogId",
+              "keyValue": "={{ $('Start').item.json.chat_id }}"
+            },
+            {
+              "keyName": "process",
+              "keyValue": "/createlook"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "GetStyle"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "status": "GetScenarioIdea"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "userId",
+              "displayName": "userId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "dialogId",
+              "displayName": "dialogId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "process",
+              "displayName": "process",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceImgUrl",
+              "displayName": "faceImgUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "faceGalleryUrl",
+              "displayName": "faceGalleryUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "FaceErrToMsgId",
+              "displayName": "FaceErrToMsgId",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        3328,
+        1520
+      ],
+      "id": "e36bcd56-8dab-48ee-b028-8dd1498d5ca3",
+      "name": "Set GetScenarioIdea1",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "5PWrvAxuADjaVyOv",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/5PWrvAxuADjaVyOv",
+          "cachedResultName": "subTR_CL_GetStyle"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "message_chat_id": "={{ $('Start').item.json.chat_id }}",
+            "botTocken": "={{ $('Start').item.json.botToken }}",
+            "DebugMode": "={{ $('Start').item.json.debug }}"
+          },
+          "matchingColumns": [
+            "message_chat_id"
+          ],
+          "schema": [
+            {
+              "id": "message_chat_id",
+              "displayName": "message_chat_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "botTocken",
+              "displayName": "botTocken",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            },
+            {
+              "id": "DebugMode",
+              "displayName": "DebugMode",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": true,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1504,
+        2736
+      ],
+      "id": "57f41682-f346-4b03-83ee-93ac26b601b3",
+      "name": "subTR_GetStyle",
+      "retryOnFail": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "operation": "editMessageText",
+        "chatId": "={{ $('Start').item.json.chat_id }}",
+        "messageId": "={{ $('Start').item.json.replyToMessageIdGallery }}",
+        "text": "={{\"Образ готов!\" + \"\\n\\n\" +\n\n\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробное фото модели в локации и завершить работу.\"\n}}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1296,
+        2736
+      ],
+      "id": "38ea1ec4-28e6-43cd-a8af-3a1e5ea6c722",
+      "name": "RmoveBtns2",
+      "webhookId": "da04a605-c2ff-4b52-8fb9-ad119febfe61",
+      "executeOnce": false,
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      },
+      "onError": "continueRegularOutput"
     }
   ],
   "settings": {
@@ -9983,6 +11503,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-04-17T14:55:38.467Z",
-  "versionId": "ba5917d1-816d-4251-b950-ff1060d0c9d0"
+  "updatedAt": "2026-05-06T07:37:07.784Z",
+  "versionId": "1f5c3685-9323-4692-8a25-54569dde0a3c"
 }
