@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-03-29T09:11:45.000Z",
-    "createdAt": "2026-03-29T09:11:42.359Z",
-    "versionId": "d187bfc3-22b1-423e-b0bd-12ba80604584",
+    "updatedAt": "2026-05-06T08:24:35.000Z",
+    "createdAt": "2026-05-06T08:24:31.754Z",
+    "versionId": "090e9482-d236-47eb-8329-041603616c3e",
     "workflowId": "HAx71vJKguCGGUYW",
     "nodes": [
       {
@@ -2168,48 +2168,6 @@
       },
       {
         "parameters": {
-          "chatId": "={{ $('subTR_API').item.json.chat_id }}",
-          "text": "={{\"Образ готов!\" + \"\\n\\n\" +\n\n\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробное фото модели в локации и завершить работу.\"\n}}",
-          "replyMarkup": "inlineKeyboard",
-          "inlineKeyboard": {
-            "rows": [
-              {
-                "row": {
-                  "buttons": [
-                    {
-                      "text": "Создать фотосет",
-                      "additionalFields": {
-                        "callback_data": "getScenarioIdea"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          "additionalFields": {
-            "appendAttribution": false,
-            "parse_mode": "HTML"
-          }
-        },
-        "type": "n8n-nodes-base.telegram",
-        "typeVersion": 1.2,
-        "position": [
-          -720,
-          1680
-        ],
-        "id": "d9142119-1e19-4420-ad32-a2bfd13e1223",
-        "name": "NextSteps1",
-        "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
-        "credentials": {
-          "telegramApi": {
-            "id": "g1YmwDvJEK6hDKZS",
-            "name": "TG PROD"
-          }
-        }
-      },
-      {
-        "parameters": {
           "jsCode": "// 1. Get the raw string from the input (Start node)\nconst rawString = $('subTR_API').first().json.imgUrls;\n\n// 2. Wrap the string in square brackets to make it a valid JSON array\n//    and then parse it into a real JavaScript object.\nconst parsedData = JSON.parse(`[${rawString}]`);\n\n// 3. Map over the array to create separate items.\n//    We extract only the \"url\" value for each item.\nreturn parsedData.map(item => {\n  return {\n    json: {\n      url: item.image_url.url\n    }\n  };\n});"
         },
         "type": "n8n-nodes-base.code",
@@ -2487,6 +2445,117 @@
         "id": "f6ac25aa-255c-4190-a246-556d5d4f1475",
         "name": "UPFinal",
         "executeOnce": true
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('subTR_API').item.json.chat_id }}",
+          "text": "={{\"Образ готов!\" + \"\\n\\n\" +\n\n\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробное фото модели в локации и завершить работу.\"\n}}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать креативный фотосет",
+                      "additionalFields": {
+                        "callback_data": "getScenarioIdea"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -720,
+          1680
+        ],
+        "id": "f1389263-d1a5-4ffc-b170-60cfd9375bf9",
+        "name": "NextSteps1",
+        "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chatId": "={{ $('subTR_API').item.json.chat_id }}",
+          "text": "={{\"Образ готов!\" + \"\\n\\n\" +\n\n\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробное фото модели в локации и завершить работу.\"\n}}",
+          "replyMarkup": "inlineKeyboard",
+          "inlineKeyboard": {
+            "rows": [
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать креативный фотосет",
+                      "additionalFields": {
+                        "callback_data": "getScenarioIdea"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "row": {
+                  "buttons": [
+                    {
+                      "text": "Создать студийную сьемку",
+                      "additionalFields": {
+                        "callback_data": "getStyle"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "additionalFields": {
+            "appendAttribution": false,
+            "parse_mode": "HTML"
+          }
+        },
+        "type": "n8n-nodes-base.telegram",
+        "typeVersion": 1.2,
+        "position": [
+          -720,
+          1952
+        ],
+        "id": "9c61a876-8c4b-4360-9b9f-42a316e2f6e1",
+        "name": "NextSteps",
+        "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+        "credentials": {
+          "telegramApi": {
+            "id": "g1YmwDvJEK6hDKZS",
+            "name": "TG PROD"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "height": 272,
+          "width": 336,
+          "color": 3
+        },
+        "type": "n8n-nodes-base.stickyNote",
+        "position": [
+          -832,
+          1888
+        ],
+        "typeVersion": 1,
+        "id": "8c3aca47-2410-42ac-b39a-3e9026ddee84",
+        "name": "Sticky Note"
       }
     ],
     "connections": {
@@ -3193,17 +3262,6 @@
           ]
         ]
       },
-      "NextSteps1": {
-        "main": [
-          [
-            {
-              "node": "Set GetGalleryForFace+MsgId",
-              "type": "main",
-              "index": 0
-            }
-          ]
-        ]
-      },
       "GetURLsClean": {
         "main": [
           [
@@ -3274,14 +3332,25 @@
             }
           ]
         ]
+      },
+      "NextSteps1": {
+        "main": [
+          [
+            {
+              "node": "Set GetGalleryForFace+MsgId",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "authors": "DLS  ",
-    "name": "Version d187bfc3",
+    "name": "Version 090e9482",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "d187bfc3-22b1-423e-b0bd-12ba80604584",
+  "activeVersionId": "090e9482-d236-47eb-8329-041603616c3e",
   "connections": {
     "SetGalleryForFaceRecievedStatus1": {
       "main": [
@@ -3986,17 +4055,6 @@
         ]
       ]
     },
-    "NextSteps1": {
-      "main": [
-        [
-          {
-            "node": "Set GetGalleryForFace+MsgId",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "GetURLsClean": {
       "main": [
         [
@@ -4062,6 +4120,17 @@
           },
           {
             "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "NextSteps1": {
+      "main": [
+        [
+          {
+            "node": "Set GetGalleryForFace+MsgId",
             "type": "main",
             "index": 0
           }
@@ -6239,48 +6308,6 @@
     },
     {
       "parameters": {
-        "chatId": "={{ $('subTR_API').item.json.chat_id }}",
-        "text": "={{\"Образ готов!\" + \"\\n\\n\" +\n\n\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробное фото модели в локации и завершить работу.\"\n}}",
-        "replyMarkup": "inlineKeyboard",
-        "inlineKeyboard": {
-          "rows": [
-            {
-              "row": {
-                "buttons": [
-                  {
-                    "text": "Создать фотосет",
-                    "additionalFields": {
-                      "callback_data": "getScenarioIdea"
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        "additionalFields": {
-          "appendAttribution": false,
-          "parse_mode": "HTML"
-        }
-      },
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1.2,
-      "position": [
-        -720,
-        1680
-      ],
-      "id": "d9142119-1e19-4420-ad32-a2bfd13e1223",
-      "name": "NextSteps1",
-      "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
-      "credentials": {
-        "telegramApi": {
-          "id": "g1YmwDvJEK6hDKZS",
-          "name": "TG PROD"
-        }
-      }
-    },
-    {
-      "parameters": {
         "jsCode": "// 1. Get the raw string from the input (Start node)\nconst rawString = $('subTR_API').first().json.imgUrls;\n\n// 2. Wrap the string in square brackets to make it a valid JSON array\n//    and then parse it into a real JavaScript object.\nconst parsedData = JSON.parse(`[${rawString}]`);\n\n// 3. Map over the array to create separate items.\n//    We extract only the \"url\" value for each item.\nreturn parsedData.map(item => {\n  return {\n    json: {\n      url: item.image_url.url\n    }\n  };\n});"
       },
       "type": "n8n-nodes-base.code",
@@ -6558,6 +6585,117 @@
       "id": "f6ac25aa-255c-4190-a246-556d5d4f1475",
       "name": "UPFinal",
       "executeOnce": true
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('subTR_API').item.json.chat_id }}",
+        "text": "={{\"Образ готов!\" + \"\\n\\n\" +\n\n\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробное фото модели в локации и завершить работу.\"\n}}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать креативный фотосет",
+                    "additionalFields": {
+                      "callback_data": "getScenarioIdea"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -720,
+        1680
+      ],
+      "id": "f1389263-d1a5-4ffc-b170-60cfd9375bf9",
+      "name": "NextSteps1",
+      "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('subTR_API').item.json.chat_id }}",
+        "text": "={{\"Образ готов!\" + \"\\n\\n\" +\n\n\"<b>Пожалуйста, сохраните это изображение -  оно станет основой для ваших фотосессий.</b>\" +\"\\n\\n\"+ \n\"Вы можете создать еще несколько версий модели, используя те же параметры внешности.\"\n+\"\\n\\n\"+ \n\"Если же вы довольны результатом - можете сделать пробное фото модели в локации и завершить работу.\"\n}}",
+        "replyMarkup": "inlineKeyboard",
+        "inlineKeyboard": {
+          "rows": [
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать креативный фотосет",
+                    "additionalFields": {
+                      "callback_data": "getScenarioIdea"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "row": {
+                "buttons": [
+                  {
+                    "text": "Создать студийную сьемку",
+                    "additionalFields": {
+                      "callback_data": "getStyle"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -720,
+        1952
+      ],
+      "id": "9c61a876-8c4b-4360-9b9f-42a316e2f6e1",
+      "name": "NextSteps",
+      "webhookId": "c1f04e69-6b59-4eb0-96c8-9156e5485317",
+      "credentials": {
+        "telegramApi": {
+          "id": "g1YmwDvJEK6hDKZS",
+          "name": "TG PROD"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "height": 272,
+        "width": 336,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -832,
+        1888
+      ],
+      "typeVersion": 1,
+      "id": "8c3aca47-2410-42ac-b39a-3e9026ddee84",
+      "name": "Sticky Note"
     }
   ],
   "settings": {
@@ -6607,6 +6745,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-03-29T09:11:42.357Z",
-  "versionId": "d187bfc3-22b1-423e-b0bd-12ba80604584"
+  "updatedAt": "2026-05-06T08:24:31.753Z",
+  "versionId": "090e9482-d236-47eb-8329-041603616c3e"
 }
