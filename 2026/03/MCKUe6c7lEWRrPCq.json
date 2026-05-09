@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-19T11:17:57.000Z",
-    "createdAt": "2026-04-19T11:17:48.209Z",
-    "versionId": "eb7b3d5c-8b88-43c9-a8cf-f73b97730167",
+    "updatedAt": "2026-05-05T13:56:28.000Z",
+    "createdAt": "2026-05-05T13:56:25.472Z",
+    "versionId": "1f5b4e2a-810f-42db-99f8-414514161ba3",
     "workflowId": "MCKUe6c7lEWRrPCq",
     "nodes": [
       {
@@ -54,6 +54,9 @@
               },
               {
                 "name": "plainUrlList"
+              },
+              {
+                "name": "StyleId"
               }
             ]
           }
@@ -2473,11 +2476,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version eb7b3d5c",
+    "name": "Version 1f5b4e2a",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "eb7b3d5c-8b88-43c9-a8cf-f73b97730167",
+  "activeVersionId": "1f5b4e2a-810f-42db-99f8-414514161ba3",
   "connections": {
     "Start": {
       "main": [
@@ -3126,6 +3129,9 @@
             },
             {
               "name": "plainUrlList"
+            },
+            {
+              "name": "StyleId"
             }
           ]
         }
@@ -5002,6 +5008,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-04-19T11:17:48.207Z",
-  "versionId": "eb7b3d5c-8b88-43c9-a8cf-f73b97730167"
+  "updatedAt": "2026-05-05T13:56:25.470Z",
+  "versionId": "1f5b4e2a-810f-42db-99f8-414514161ba3"
 }
