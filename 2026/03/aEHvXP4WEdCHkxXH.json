@@ -1806,8 +1806,8 @@
           "conditions": [
             {
               "id": "a869a9c7-791d-4f1c-852e-828a3569b146",
-              "leftValue": "={{$json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson().response}}",
-              "rightValue": "Error",
+              "leftValue": "={{$json.data.replaceAll(\"```\",\"\").replaceAll(\"json\",\"\").parseJson().response.toLowerCase()}}",
+              "rightValue": "error",
               "operator": {
                 "type": "string",
                 "operation": "contains"
@@ -1998,7 +1998,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Start').item.json.message_chat_id }}",
-        "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg }}",
+        "text": "={{$('Call \\'subTR_API_AI_Selector\\'').item.json.msg.parseJson().msg }}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -2437,6 +2437,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2026-04-05T14:15:39.260Z",
-  "versionId": "949242c8-a6e1-4ac3-aa66-e2a6b6159be0"
+  "updatedAt": "2026-05-05T19:02:04.316Z",
+  "versionId": "e8d3e699-747e-475e-a264-13c972048642"
 }
