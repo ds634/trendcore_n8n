@@ -1,9 +1,9 @@
 {
   "active": true,
   "activeVersion": {
-    "updatedAt": "2026-04-15T11:38:24.000Z",
-    "createdAt": "2026-04-15T11:38:21.484Z",
-    "versionId": "c923e8b3-ec85-4c16-810d-81a34f6f7263",
+    "updatedAt": "2026-05-06T18:55:32.000Z",
+    "createdAt": "2026-05-06T18:55:30.008Z",
+    "versionId": "da43a6f6-6e00-4cc1-b1e6-7a695e40220a",
     "workflowId": "JrfEgCM2R7q7xfnb",
     "nodes": [
       {
@@ -985,11 +985,11 @@
                 "keyValue": "={{ $('Telegram Trigger').item.json.message.chat.id }}"
               },
               {
-                "keyName": "Process",
+                "keyName": "process",
                 "keyValue": "/createlook"
               },
               {
-                "keyName": "Status",
+                "keyName": "status",
                 "condition": "neq",
                 "keyValue": "Done"
               }
@@ -998,7 +998,11 @@
           "columns": {
             "mappingMode": "defineBelow",
             "value": {
-              "Status": "Error"
+              "replyToMessageIdGallery": 0,
+              "lookSelected": 0,
+              "imgsCount": 0,
+              "quotaWarningSet": 0,
+              "status": "Error"
             },
             "matchingColumns": [],
             "schema": [
@@ -1023,8 +1027,8 @@
                 "removed": false
               },
               {
-                "id": "Process",
-                "displayName": "Process",
+                "id": "process",
+                "displayName": "process",
                 "required": false,
                 "defaultMatch": false,
                 "display": true,
@@ -1033,12 +1037,42 @@
                 "removed": false
               },
               {
-                "id": "Status",
-                "displayName": "Status",
+                "id": "status",
+                "displayName": "status",
                 "required": false,
                 "defaultMatch": false,
                 "display": true,
                 "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "quotaWarningSet",
+                "displayName": "quotaWarningSet",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "lookSelected",
+                "displayName": "lookSelected",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
                 "readOnly": false,
                 "removed": false
               },
@@ -1053,8 +1087,68 @@
                 "removed": false
               },
               {
-                "id": "faceGalleryUrl",
-                "displayName": "faceGalleryUrl",
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "concatDescr",
+                "displayName": "concatDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "creativeScenarios",
+                "displayName": "creativeScenarios",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "selectedScenario",
+                "displayName": "selectedScenario",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
                 "required": false,
                 "defaultMatch": false,
                 "display": true,
@@ -2548,11 +2642,11 @@
                 "keyValue": "={{ $('Telegram Trigger').item.json.message.chat.id }}"
               },
               {
-                "keyName": "Process",
+                "keyName": "process",
                 "keyValue": "/createmodel"
               },
               {
-                "keyName": "Status",
+                "keyName": "status",
                 "condition": "neq",
                 "keyValue": "Done"
               }
@@ -2561,7 +2655,11 @@
           "columns": {
             "mappingMode": "defineBelow",
             "value": {
-              "Status": "Error"
+              "replyToMessageIdGallery": 0,
+              "lookSelected": 0,
+              "imgsCount": 0,
+              "quotaWarningSet": 0,
+              "status": "Error"
             },
             "matchingColumns": [],
             "schema": [
@@ -2586,8 +2684,8 @@
                 "removed": false
               },
               {
-                "id": "Process",
-                "displayName": "Process",
+                "id": "process",
+                "displayName": "process",
                 "required": false,
                 "defaultMatch": false,
                 "display": true,
@@ -2596,12 +2694,42 @@
                 "removed": false
               },
               {
-                "id": "Status",
-                "displayName": "Status",
+                "id": "status",
+                "displayName": "status",
                 "required": false,
                 "defaultMatch": false,
                 "display": true,
                 "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "quotaWarningSet",
+                "displayName": "quotaWarningSet",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "imgsCount",
+                "displayName": "imgsCount",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "lookSelected",
+                "displayName": "lookSelected",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
                 "readOnly": false,
                 "removed": false
               },
@@ -2616,8 +2744,68 @@
                 "removed": false
               },
               {
-                "id": "faceGalleryUrl",
-                "displayName": "faceGalleryUrl",
+                "id": "faceDescr",
+                "displayName": "faceDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "concatDescr",
+                "displayName": "concatDescr",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "creativeScenarios",
+                "displayName": "creativeScenarios",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "selectedScenario",
+                "displayName": "selectedScenario",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "replyToMessageIdGallery",
+                "displayName": "replyToMessageIdGallery",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "number",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelUrl",
+                "displayName": "generatedModelUrl",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "readOnly": false,
+                "removed": false
+              },
+              {
+                "id": "generatedModelPrompt",
+                "displayName": "generatedModelPrompt",
                 "required": false,
                 "defaultMatch": false,
                 "display": true,
@@ -3773,7 +3961,7 @@
                   "options": {
                     "caseSensitive": true,
                     "leftValue": "",
-                    "typeValidation": "strict",
+                    "typeValidation": "loose",
                     "version": 3
                   },
                   "conditions": [
@@ -3797,7 +3985,7 @@
                   "options": {
                     "caseSensitive": true,
                     "leftValue": "",
-                    "typeValidation": "strict",
+                    "typeValidation": "loose",
                     "version": 3
                   },
                   "conditions": [
@@ -3822,7 +4010,7 @@
                   "options": {
                     "caseSensitive": true,
                     "leftValue": "",
-                    "typeValidation": "strict",
+                    "typeValidation": "loose",
                     "version": 3
                   },
                   "conditions": [
@@ -3845,7 +4033,7 @@
                   "options": {
                     "caseSensitive": true,
                     "leftValue": "",
-                    "typeValidation": "strict",
+                    "typeValidation": "loose",
                     "version": 3
                   },
                   "conditions": [
@@ -3864,35 +4052,14 @@
                 },
                 "renameOutput": true,
                 "outputKey": "settings"
-              },
-              {
-                "conditions": {
-                  "options": {
-                    "caseSensitive": true,
-                    "leftValue": "",
-                    "typeValidation": "strict",
-                    "version": 3
-                  },
-                  "conditions": [
-                    {
-                      "id": "a3a3f833-5f6f-4140-aa48-ffc4e37d93d4",
-                      "leftValue": "={{ $('Telegram Trigger').item.json.message.text !== \"/createmodel\" \n&& $('Telegram Trigger').item.json.message.text !== \"/createlook\" \n&& $('Telegram Trigger').item.json.message.text !== \"/settings\"\n}}",
-                      "rightValue": "={{\"/ideas\" || \"/changeface\" || \"Ошибка\"}}",
-                      "operator": {
-                        "type": "boolean",
-                        "operation": "true",
-                        "singleValue": true
-                      }
-                    }
-                  ],
-                  "combinator": "and"
-                },
-                "renameOutput": true,
-                "outputKey": "other"
               }
             ]
           },
-          "options": {}
+          "looseTypeValidation": true,
+          "options": {
+            "fallbackOutput": "extra",
+            "renameFallbackOutput": "other1"
+          }
         },
         "type": "n8n-nodes-base.switch",
         "typeVersion": 3.4,
@@ -9252,7 +9419,7 @@
       {
         "parameters": {
           "chatId": "={{ $('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id\n}}",
-          "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\" + \"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id)\n}}",
+          "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\\n\" +\n\"Name: \" + \n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.from.first_name\n    :$('Telegram Trigger').item.json.callback_query.from.first_name) \n+ ' ' +\n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.from.last_name\n    :$('Telegram Trigger').item.json.callback_query.from.last_name) \n\n+\"\\n\" +\n\"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id)\n}}",
           "additionalFields": {
             "appendAttribution": false
           }
@@ -12371,11 +12538,11 @@
       }
     },
     "authors": "DLS  ",
-    "name": "Version c923e8b3",
+    "name": "Version da43a6f6",
     "description": "",
     "autosaved": true
   },
-  "activeVersionId": "c923e8b3-ec85-4c16-810d-81a34f6f7263",
+  "activeVersionId": "da43a6f6-6e00-4cc1-b1e6-7a695e40220a",
   "connections": {
     "Telegram Trigger": {
       "main": [
@@ -15387,11 +15554,11 @@
               "keyValue": "={{ $('Telegram Trigger').item.json.message.chat.id }}"
             },
             {
-              "keyName": "Process",
+              "keyName": "process",
               "keyValue": "/createlook"
             },
             {
-              "keyName": "Status",
+              "keyName": "status",
               "condition": "neq",
               "keyValue": "Done"
             }
@@ -15400,7 +15567,11 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Status": "Error"
+            "replyToMessageIdGallery": 0,
+            "lookSelected": 0,
+            "imgsCount": 0,
+            "quotaWarningSet": 0,
+            "status": "Error"
           },
           "matchingColumns": [],
           "schema": [
@@ -15425,8 +15596,8 @@
               "removed": false
             },
             {
-              "id": "Process",
-              "displayName": "Process",
+              "id": "process",
+              "displayName": "process",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -15435,12 +15606,42 @@
               "removed": false
             },
             {
-              "id": "Status",
-              "displayName": "Status",
+              "id": "status",
+              "displayName": "status",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "quotaWarningSet",
+              "displayName": "quotaWarningSet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "lookSelected",
+              "displayName": "lookSelected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
               "readOnly": false,
               "removed": false
             },
@@ -15455,8 +15656,68 @@
               "removed": false
             },
             {
-              "id": "faceGalleryUrl",
-              "displayName": "faceGalleryUrl",
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "concatDescr",
+              "displayName": "concatDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "creativeScenarios",
+              "displayName": "creativeScenarios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "selectedScenario",
+              "displayName": "selectedScenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -16950,11 +17211,11 @@
               "keyValue": "={{ $('Telegram Trigger').item.json.message.chat.id }}"
             },
             {
-              "keyName": "Process",
+              "keyName": "process",
               "keyValue": "/createmodel"
             },
             {
-              "keyName": "Status",
+              "keyName": "status",
               "condition": "neq",
               "keyValue": "Done"
             }
@@ -16963,7 +17224,11 @@
         "columns": {
           "mappingMode": "defineBelow",
           "value": {
-            "Status": "Error"
+            "replyToMessageIdGallery": 0,
+            "lookSelected": 0,
+            "imgsCount": 0,
+            "quotaWarningSet": 0,
+            "status": "Error"
           },
           "matchingColumns": [],
           "schema": [
@@ -16988,8 +17253,8 @@
               "removed": false
             },
             {
-              "id": "Process",
-              "displayName": "Process",
+              "id": "process",
+              "displayName": "process",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -16998,12 +17263,42 @@
               "removed": false
             },
             {
-              "id": "Status",
-              "displayName": "Status",
+              "id": "status",
+              "displayName": "status",
               "required": false,
               "defaultMatch": false,
               "display": true,
               "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "quotaWarningSet",
+              "displayName": "quotaWarningSet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "imgsCount",
+              "displayName": "imgsCount",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "lookSelected",
+              "displayName": "lookSelected",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
               "readOnly": false,
               "removed": false
             },
@@ -17018,8 +17313,68 @@
               "removed": false
             },
             {
-              "id": "faceGalleryUrl",
-              "displayName": "faceGalleryUrl",
+              "id": "faceDescr",
+              "displayName": "faceDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "concatDescr",
+              "displayName": "concatDescr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "creativeScenarios",
+              "displayName": "creativeScenarios",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "selectedScenario",
+              "displayName": "selectedScenario",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "replyToMessageIdGallery",
+              "displayName": "replyToMessageIdGallery",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelUrl",
+              "displayName": "generatedModelUrl",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "generatedModelPrompt",
+              "displayName": "generatedModelPrompt",
               "required": false,
               "defaultMatch": false,
               "display": true,
@@ -18175,7 +18530,7 @@
                 "options": {
                   "caseSensitive": true,
                   "leftValue": "",
-                  "typeValidation": "strict",
+                  "typeValidation": "loose",
                   "version": 3
                 },
                 "conditions": [
@@ -18199,7 +18554,7 @@
                 "options": {
                   "caseSensitive": true,
                   "leftValue": "",
-                  "typeValidation": "strict",
+                  "typeValidation": "loose",
                   "version": 3
                 },
                 "conditions": [
@@ -18224,7 +18579,7 @@
                 "options": {
                   "caseSensitive": true,
                   "leftValue": "",
-                  "typeValidation": "strict",
+                  "typeValidation": "loose",
                   "version": 3
                 },
                 "conditions": [
@@ -18247,7 +18602,7 @@
                 "options": {
                   "caseSensitive": true,
                   "leftValue": "",
-                  "typeValidation": "strict",
+                  "typeValidation": "loose",
                   "version": 3
                 },
                 "conditions": [
@@ -18266,35 +18621,14 @@
               },
               "renameOutput": true,
               "outputKey": "settings"
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 3
-                },
-                "conditions": [
-                  {
-                    "id": "a3a3f833-5f6f-4140-aa48-ffc4e37d93d4",
-                    "leftValue": "={{ $('Telegram Trigger').item.json.message.text !== \"/createmodel\" \n&& $('Telegram Trigger').item.json.message.text !== \"/createlook\" \n&& $('Telegram Trigger').item.json.message.text !== \"/settings\"\n}}",
-                    "rightValue": "={{\"/ideas\" || \"/changeface\" || \"Ошибка\"}}",
-                    "operator": {
-                      "type": "boolean",
-                      "operation": "true",
-                      "singleValue": true
-                    }
-                  }
-                ],
-                "combinator": "and"
-              },
-              "renameOutput": true,
-              "outputKey": "other"
             }
           ]
         },
-        "options": {}
+        "looseTypeValidation": true,
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "other1"
+        }
       },
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
@@ -23654,7 +23988,7 @@
     {
       "parameters": {
         "chatId": "={{ $('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id\n}}",
-        "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\" + \"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id)\n}}",
+        "text": "={{ \"Ваш доступ не авторизован!\" +\"\\n\\n\" +\n\"Name: \" + \n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.from.first_name\n    :$('Telegram Trigger').item.json.callback_query.from.first_name) \n+ ' ' +\n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.from.last_name\n    :$('Telegram Trigger').item.json.callback_query.from.last_name) \n\n+\"\\n\" +\n\"Telegram ID: \" + \n\n($('Telegram Trigger').item.json.message?.chat.id\n    ?$('Telegram Trigger').item.json.message.chat.id\n    :$('Telegram Trigger').item.json.callback_query.message.chat.id)\n}}",
         "additionalFields": {
           "appendAttribution": false
         }
@@ -24794,6 +25128,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2026-04-15T11:38:21.481Z",
-  "versionId": "c923e8b3-ec85-4c16-810d-81a34f6f7263"
+  "updatedAt": "2026-05-06T18:55:30.002Z",
+  "versionId": "da43a6f6-6e00-4cc1-b1e6-7a695e40220a"
 }
