@@ -378,6 +378,7 @@
         ]
       }
     },
+    "nodeGroups": [],
     "authors": "DLS  ",
     "name": "Version 004eb671",
     "description": "",
@@ -781,7 +782,7 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrenceRules": [
-        160
+        165
       ]
     }
   },
