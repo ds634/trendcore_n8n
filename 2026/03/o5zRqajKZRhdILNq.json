@@ -1625,6 +1625,7 @@
   "isArchived": false,
   "meta": null,
   "name": "subTR_CL_ScenarioPhotos",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
