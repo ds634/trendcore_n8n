@@ -3081,6 +3081,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "subTR_API_AI_Selector",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
