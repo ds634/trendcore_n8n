@@ -1554,6 +1554,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "subTR_CM_UpdScenario",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
