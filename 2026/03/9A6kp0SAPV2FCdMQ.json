@@ -1312,6 +1312,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "subTR_NB_Fal",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
