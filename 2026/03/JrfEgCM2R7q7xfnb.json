@@ -14575,6 +14575,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "_Trendcore working version",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
