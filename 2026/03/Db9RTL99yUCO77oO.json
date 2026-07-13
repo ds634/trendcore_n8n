@@ -128,6 +128,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "subTR_PROD_Error_workflow",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {},
