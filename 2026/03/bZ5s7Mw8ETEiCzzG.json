@@ -2266,6 +2266,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "subTR_CL_Photoset",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
