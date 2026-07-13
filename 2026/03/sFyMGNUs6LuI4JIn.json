@@ -496,6 +496,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "BACKUPS",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {},
@@ -782,7 +783,10 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrenceRules": [
-        190
+        195
+      ],
+      "recurrenceRuleSignatures": [
+        "days:5"
       ]
     }
   },
