@@ -2472,6 +2472,7 @@
     "templateCredsSetupCompleted": true
   },
   "name": "subTR_CM_Photo",
+  "nodeGroups": [],
   "nodes": [
     {
       "parameters": {
